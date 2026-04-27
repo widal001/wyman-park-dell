@@ -151,7 +151,7 @@ export const about: PageContent = {
           alt: 'Wyman Park Dell in fall',
         },
         {
-          src: `${WP}/2021/11/WPD_Summer.jpg`,
+          src: `${WP}/2026/01/Wyman-Park-Dell-2.jpg`,
           alt: 'Wyman Park Dell in summer',
         },
         {
