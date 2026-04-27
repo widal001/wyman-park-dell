@@ -1,0 +1,107 @@
+---
+import type { SocialLink } from "../../types/content";
+
+type Props = {
+  links: SocialLink[];
+  variant?: "pills" | "plain" | "plain-inverse";
+};
+
+const { links, variant = "pills" } = Astro.props;
+
+const ICONS: Record<SocialLink["network"], string> = {
+  facebook:
+    '<path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.42V9.86c0-2.39 1.42-3.71 3.6-3.71 1.04 0 2.13.18 2.13.18v2.34h-1.2c-1.18 0-1.55.74-1.55 1.5v1.8h2.64l-.42 2.91h-2.22V22c4.78-.76 8.44-4.92 8.44-9.94z"/>',
+  instagram:
+    '<path d="M12 2.16c3.2 0 3.58.01 4.84.07 1.17.05 1.81.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.26.07 1.64.07 4.84 0 3.2-.01 3.58-.07 4.84-.05 1.17-.25 1.81-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.26.06-1.64.07-4.84.07-3.2 0-3.58-.01-4.84-.07-1.17-.05-1.81-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.26-.07-1.64-.07-4.84 0-3.2.01-3.58.07-4.84.05-1.17.25-1.81.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0-2.16C8.74 0 8.33.01 7.05.07 5.78.13 4.9.34 4.14.63a5.86 5.86 0 0 0-2.13 1.38A5.86 5.86 0 0 0 .63 4.14C.34 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.27 2.15.56 2.91.3.79.7 1.46 1.38 2.13.67.68 1.34 1.08 2.13 1.38.76.29 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.27 2.91-.56a5.86 5.86 0 0 0 2.13-1.38 5.86 5.86 0 0 0 1.38-2.13c.29-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.27-2.15-.56-2.91a5.86 5.86 0 0 0-1.38-2.13A5.86 5.86 0 0 0 19.86.63c-.76-.29-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"/><path d="M12 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/><circle cx="18.41" cy="5.59" r="1.44"/>',
+  youtube:
+    '<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4L15.8 12l-6.2 3.6z"/>',
+  twitter:
+    '<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>',
+  email:
+    '<path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm10 7.4 9.6-6.6H2.4L12 11.4zM22 18V6.8l-9.4 6.5a1 1 0 0 1-1.2 0L2 6.8V18h20z"/>',
+};
+
+const LABELS: Record<SocialLink["network"], string> = {
+  facebook: "Facebook",
+  instagram: "Instagram",
+  youtube: "YouTube",
+  twitter: "X / Twitter",
+  email: "Email",
+};
+---
+
+<ul role="list" class:list={["social", `social--${variant}`]}>
+  {
+    links.map((link) => (
+      <li>
+        <a
+          class="social__link"
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={link.label}
+        >
+          <svg
+            aria-hidden="true"
+            focusable="false"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            set:html={ICONS[link.network]}
+          />
+          <span class="visually-hidden">{LABELS[link.network]}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .social__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .social--pills .social__link {
+    width: 40px;
+    height: 40px;
+    background: var(--color-brand-orange);
+    color: var(--color-white);
+    border-radius: var(--radius-pill);
+  }
+
+  .social--pills .social__link:hover {
+    transform: translateY(-2px);
+  }
+
+  .social--plain .social__link {
+    color: var(--color-text-accent);
+    padding: var(--space-1);
+  }
+
+  .social--plain .social__link:hover {
+    color: var(--color-brand-green-dark);
+  }
+
+  .social--plain-inverse .social__link {
+    color: var(--color-white);
+    padding: var(--space-1);
+  }
+
+  .social--plain-inverse .social__link:hover {
+    color: var(--color-brand-green-dark);
+    transform: translateY(-2px);
+  }
+</style>

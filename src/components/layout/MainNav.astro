@@ -1,0 +1,63 @@
+---
+import type { NavItem } from '../../types/content';
+
+type Props = {
+  items: NavItem[];
+  ariaLabel?: string;
+};
+
+const { items, ariaLabel = 'Primary' } = Astro.props;
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+---
+
+<nav class="main-nav" aria-label={ariaLabel}>
+  <ul role="list" class="main-nav__list">
+    {items.map((item) => {
+      const itemPath = item.href.replace(/\/+$/, '') || '/';
+      const isCurrent =
+        !item.external && (itemPath === currentPath ||
+          (itemPath !== '/' && currentPath.startsWith(itemPath)));
+      return (
+        <li>
+          <a
+            href={item.href}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
+            aria-current={isCurrent ? 'page' : undefined}
+            class:list={['main-nav__link', isCurrent && 'is-current']}
+          >
+            {item.label}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</nav>
+
+<style>
+  .main-nav__list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: var(--space-5);
+    align-items: center;
+  }
+
+  .main-nav__link {
+    display: inline-block;
+    padding: var(--space-2) 0;
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-md);
+    color: var(--color-brand-green-dark);
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--transition-fast);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .main-nav__link:hover,
+  .main-nav__link:focus-visible,
+  .main-nav__link.is-current {
+    border-bottom-color: var(--color-brand-orange);
+  }
+</style>

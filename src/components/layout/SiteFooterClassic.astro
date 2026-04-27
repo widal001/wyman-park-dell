@@ -1,0 +1,206 @@
+---
+import Container from '../ui/Container.astro';
+import SocialLinks from './SocialLinks.astro';
+import NewsletterForm from './NewsletterForm.astro';
+import { site } from '../../content/site';
+---
+
+<footer class="site-footer-classic">
+  <Container width="wide">
+    <div class="site-footer-classic__grid">
+      <div class="site-footer-classic__brand">
+        {site.logoInverse && (
+          <img
+            class="site-footer-classic__logo"
+            src={site.logoInverse.src}
+            alt={site.logoInverse.alt}
+            width={site.logoInverse.width}
+            height={site.logoInverse.height}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+
+        {site.tagline && <p class="site-footer-classic__tagline">{site.tagline}</p>}
+
+        <address class="site-footer-classic__address">
+          {site.contact.address.map((line) => <div>{line}</div>)}
+        </address>
+
+        <a class="site-footer-classic__email" href={`mailto:${site.contact.email}`}>
+          {site.contact.email}
+        </a>
+
+        <div class="site-footer-classic__social">
+          <SocialLinks links={site.social} variant="pills" />
+        </div>
+      </div>
+
+      <nav class="site-footer-classic__nav" aria-label="Footer">
+        <h2 class="site-footer-classic__heading">Explore</h2>
+        <ul role="list">
+          {site.footerNav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="site-footer-classic__signup">
+        <h2 class="site-footer-classic__heading">Stay in Touch</h2>
+        <p class="site-footer-classic__signup-intro">
+          Get news from the Dell — events, clean-ups, and stories from the
+          park, straight to your inbox.
+        </p>
+        <NewsletterForm config={site.newsletter} />
+      </div>
+    </div>
+
+    <div class="site-footer-classic__bottom">
+      <p>{site.copyright}</p>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  .site-footer-classic {
+    background: var(--color-brand-green-dark);
+    color: var(--color-white);
+    padding-block: var(--space-16) var(--space-6);
+    margin-top: auto;
+  }
+
+  .site-footer-classic :global(a) {
+    color: var(--color-white);
+  }
+
+  .site-footer-classic :global(a:hover) {
+    color: var(--color-brand-orange);
+  }
+
+  .site-footer-classic__grid {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.2fr) 1fr 1.4fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .site-footer-classic__heading {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-white);
+    margin-bottom: var(--space-4);
+  }
+
+  /* === Brand column === */
+  .site-footer-classic__logo {
+    width: 120px;
+    height: auto;
+    border-radius: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  .site-footer-classic__tagline {
+    margin-bottom: var(--space-5);
+    line-height: var(--line-height-base);
+    max-width: 32ch;
+  }
+
+  .site-footer-classic__address {
+    font-style: normal;
+    line-height: var(--line-height-base);
+    margin-bottom: var(--space-2);
+  }
+
+  .site-footer-classic__email {
+    display: inline-block;
+    margin-bottom: var(--space-5);
+    text-decoration: underline;
+  }
+
+  .site-footer-classic__social :global(.social) {
+    gap: var(--space-2);
+  }
+
+  .site-footer-classic__social :global(.social--pills .social__link) {
+    width: 36px;
+    height: 36px;
+  }
+
+  .site-footer-classic__social :global(.social--pills .social__link svg) {
+    width: 18px;
+    height: 18px;
+  }
+
+  .site-footer-classic__social :global(.social--pills .social__link:hover) {
+    background: var(--color-brand-orange);
+    color: var(--color-white);
+  }
+
+  /* === Nav column === */
+  .site-footer-classic__nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .site-footer-classic__nav a {
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+  }
+
+  .site-footer-classic__nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* === Signup column === */
+  .site-footer-classic__signup-intro {
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-base);
+    max-width: 36ch;
+  }
+
+  .site-footer-classic__signup :global(.newsletter__heading) {
+    display: none;
+  }
+
+  /* === Bottom === */
+  .site-footer-classic__bottom {
+    margin-top: var(--space-12);
+    padding-top: var(--space-5);
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  @media (max-width: 1024px) {
+    .site-footer-classic__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-10);
+    }
+
+    .site-footer-classic__signup {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .site-footer-classic__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .site-footer-classic__signup {
+      grid-column: auto;
+    }
+  }
+</style>

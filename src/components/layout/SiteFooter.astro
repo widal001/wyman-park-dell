@@ -1,0 +1,126 @@
+---
+import Container from '../ui/Container.astro';
+import SocialLinks from './SocialLinks.astro';
+import NewsletterForm from './NewsletterForm.astro';
+import { site } from '../../content/site';
+---
+
+<footer class="site-footer">
+  <Container width="wide">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        {site.logoInverse && (
+          <img
+            src={site.logoInverse.src}
+            alt={site.logoInverse.alt}
+            width={site.logoInverse.width}
+            height={site.logoInverse.height}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
+
+      <div class="site-footer__contact">
+        <address>
+          {site.contact.address.map((line) => <div>{line}</div>)}
+        </address>
+        <a class="site-footer__email" href={`mailto:${site.contact.email}`}>
+          {site.contact.email}
+        </a>
+        <SocialLinks links={site.social} variant="plain-inverse" />
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Footer">
+        <ul role="list">
+          {site.footerNav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener noreferrer' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="site-footer__newsletter">
+        <NewsletterForm config={site.newsletter} />
+      </div>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-brand-orange);
+    color: var(--color-white);
+    padding-block: var(--space-16);
+    margin-top: auto;
+  }
+
+  .site-footer :global(a) {
+    color: var(--color-white);
+  }
+
+  .site-footer :global(a:hover) {
+    color: var(--color-brand-green-dark);
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) 1.2fr 1fr 1.6fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .site-footer__brand img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .site-footer__contact address {
+    font-style: normal;
+    line-height: var(--line-height-base);
+    margin-bottom: var(--space-4);
+  }
+
+  .site-footer__email {
+    display: inline-block;
+    margin-bottom: var(--space-5);
+    text-decoration: none;
+  }
+
+  .site-footer__email:hover {
+    text-decoration: underline;
+  }
+
+  .site-footer__nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .site-footer__nav a {
+    font-weight: var(--font-weight-medium);
+  }
+
+  @media (max-width: 1024px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+</style>
