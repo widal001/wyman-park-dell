@@ -1,0 +1,37 @@
+---
+import type { RichTextBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<RichTextBlock, 'type'>;
+
+const {
+  html,
+  align = 'left',
+  width = 'narrow',
+  background = 'base',
+  paddingTop,
+  paddingBottom,
+} = Astro.props;
+---
+
+<Section
+  padding="small"
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+  background={background}
+>
+  <Container width={width}>
+    <div class:list={['prose', `prose--${align}`]} set:html={html} />
+  </Container>
+</Section>
+
+<style>
+  .prose--center {
+    text-align: center;
+  }
+
+  .prose--center :global(blockquote) {
+    text-align: left;
+  }
+</style>

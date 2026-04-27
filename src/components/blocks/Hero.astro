@@ -1,0 +1,180 @@
+---
+import type { HeroBlock } from '../../types/content';
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+
+type Props = Omit<HeroBlock, 'type'>;
+
+const {
+  heading,
+  subheading,
+  body,
+  image,
+  ctas = [],
+  variant = 'standard',
+} = Astro.props;
+---
+
+<section class:list={['hero', `hero--${variant}`]}>
+  {image && (
+    <div class="hero__media">
+      <img
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        loading="eager"
+        decoding="sync"
+        fetchpriority="high"
+      />
+    </div>
+  )}
+
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <Container width="wide">
+    <div class="hero__content">
+      <h1 class="hero__heading">{heading}</h1>
+      {subheading && <p class="hero__subheading">{subheading}</p>}
+      {body && <p class="hero__body">{body}</p>}
+      {ctas.length > 0 && (
+        <div class="hero__ctas">
+          {ctas.map((cta) => (
+            <Button {...cta} size="lg" />
+          ))}
+        </div>
+      )}
+    </div>
+  </Container>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    color: var(--color-text-inverse);
+    background: var(--color-brand-green-dark);
+    overflow: hidden;
+    display: grid;
+    align-items: start;
+  }
+
+  .hero--standard {
+    min-height: 380px;
+    align-items: center;
+    padding-block: var(--space-10);
+  }
+
+  .hero--fullscreen {
+    min-height: 600px;
+    max-height: 680px;
+    align-items: center;
+    padding-block: var(--space-16);
+  }
+
+  .hero__media,
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero__media {
+    z-index: 0;
+  }
+
+  .hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0;
+    display: block;
+  }
+
+  .hero__overlay {
+    z-index: 1;
+  }
+
+  /* Fullscreen hero: deep near-black side gradient with a subtle green undertone. */
+  .hero--fullscreen .hero__overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(10, 25, 5, 0.7) 0%,
+        rgba(10, 25, 5, 0.35) 55%,
+        rgba(10, 25, 5, 0.18) 100%
+      ),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.45));
+  }
+
+  /* Standard hero: uniform near-black wash for legibility on inner pages. */
+  .hero--standard .hero__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.7)
+    );
+  }
+
+  .hero :global(.container) {
+    position: relative;
+    z-index: 2;
+    grid-area: 1 / 1;
+    width: 100%;
+  }
+
+  .hero__content {
+    max-width: 720px;
+  }
+
+  /* Standard hero gives content a wider track for the lighter heading. */
+  .hero--standard .hero__content {
+    max-width: var(--container-max);
+  }
+
+  .hero__heading {
+    color: var(--color-white);
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-5);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero--standard .hero__heading {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: -0.005em;
+    margin-bottom: 0;
+  }
+
+  .hero__subheading {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__body {
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-base);
+    margin-bottom: var(--space-8);
+    max-width: 60ch;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 768px) {
+    .hero__heading {
+      font-size: var(--font-size-3xl);
+    }
+
+    .hero--fullscreen {
+      min-height: 560px;
+    }
+  }
+</style>

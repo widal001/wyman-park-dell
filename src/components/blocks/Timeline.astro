@@ -1,0 +1,123 @@
+---
+import type { TimelineBlock } from "../../types/content";
+import Section from "../ui/Section.astro";
+import Container from "../ui/Container.astro";
+
+type Props = Omit<TimelineBlock, "type">;
+
+const { eyebrow, heading, entries } = Astro.props;
+---
+
+<Section padding="default" background="raised">
+  <Container width="narrow">
+    {
+      (eyebrow || heading) && (
+        <header class="timeline__header">
+          {eyebrow && <p class="timeline__eyebrow">{eyebrow}</p>}
+          {heading && <h2 class="timeline__heading">{heading}</h2>}
+        </header>
+      )
+    }
+    <ol role="list" class="timeline">
+      {
+        entries.map((entry) => (
+          <li class="timeline__entry">
+            <div class="timeline__marker" aria-hidden="true" />
+            <div class="timeline__body">
+              <div class="timeline__date">{entry.date}</div>
+              <h3 class="timeline__title">{entry.title}</h3>
+              <p class="timeline__text">{entry.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </Container>
+</Section>
+
+<style>
+  .timeline__header {
+    margin-bottom: var(--space-12);
+    text-align: left;
+  }
+
+  .timeline__eyebrow {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-brand-green-dark);
+    margin-bottom: var(--space-2);
+    line-height: var(--line-height-snug);
+  }
+
+  .timeline__heading {
+    font-size: var(--font-size-4xl);
+    color: var(--color-brand-green-dark);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    position: relative;
+    padding-left: var(--space-8);
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 6.5px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--color-brand-orange);
+  }
+
+  .timeline__entry {
+    position: relative;
+  }
+
+  .timeline__marker {
+    position: absolute;
+    left: calc(var(--space-8) * -1);
+    top: 6px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--color-brand-orange);
+  }
+
+  .timeline__body {
+    padding-left: var(--space-2);
+  }
+
+  .timeline__date {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-black);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-accent);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    margin-bottom: var(--space-2);
+  }
+
+  .timeline__title {
+    font-size: var(--font-size-xl);
+    color: var(--color-brand-green-dark);
+    margin-bottom: var(--space-2);
+    text-transform: none;
+    letter-spacing: var(--letter-spacing-base);
+  }
+
+  .timeline__text {
+    color: var(--color-text-base);
+    line-height: var(--line-height-base);
+  }
+
+  @media (max-width: 768px) {
+    .timeline__heading {
+      font-size: var(--font-size-3xl);
+    }
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+import type { TestimonialBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<TestimonialBlock, 'type'>;
+
+const { quote, attribution } = Astro.props;
+---
+
+<Section padding="default">
+  <Container width="wide">
+    <figure class="testimonial">
+      <svg
+        class="testimonial__mark"
+        viewBox="0 0 60 50"
+        width="64"
+        height="54"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M0 50V30C0 13 10 0 26 0v10c-9 0-14 7-14 14h14v26H0zm34 0V30c0-17 10-30 26-30v10c-9 0-14 7-14 14h14v26H34z" />
+      </svg>
+      <blockquote class="testimonial__quote">
+        <p>{quote}</p>
+      </blockquote>
+      {attribution && (
+        <figcaption class="testimonial__attribution">
+          <span class="testimonial__rule" aria-hidden="true"></span>
+          <span>{attribution}</span>
+        </figcaption>
+      )}
+    </figure>
+  </Container>
+</Section>
+
+<style>
+  .testimonial {
+    position: relative;
+    background: var(--color-brand-green-dark);
+    color: var(--color-text-inverse);
+    padding: var(--space-20) var(--space-16);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .testimonial__mark {
+    display: block;
+    color: var(--color-brand-orange);
+    margin: 0 auto var(--space-8);
+  }
+
+  .testimonial__quote {
+    margin: 0 auto var(--space-10);
+    max-width: 56ch;
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-snug);
+    font-weight: var(--font-weight-regular);
+  }
+
+  .testimonial__quote p {
+    font-size: inherit;
+    margin: 0;
+  }
+
+  .testimonial__attribution {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-sm);
+    color: var(--color-brand-orange);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .testimonial__rule {
+    width: 32px;
+    height: 2px;
+    background: var(--color-brand-orange);
+    border-radius: var(--radius-pill);
+  }
+
+  @media (max-width: 768px) {
+    .testimonial {
+      padding: var(--space-14) var(--space-8);
+    }
+
+    .testimonial__mark {
+      width: 48px;
+      height: auto;
+    }
+
+    .testimonial__quote {
+      font-size: var(--font-size-md);
+    }
+  }
+</style>

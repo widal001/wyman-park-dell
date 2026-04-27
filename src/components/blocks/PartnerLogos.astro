@@ -1,0 +1,92 @@
+---
+import type { PartnersBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<PartnersBlock, 'type'>;
+
+const { heading, intro, partners } = Astro.props;
+---
+
+<Section padding="default" background="base">
+  <Container width="wide">
+    <header class="partners__header">
+      <h2>{heading}</h2>
+    </header>
+
+    <ul role="list" class="partners__grid">
+      {partners.map((partner) => (
+        <li>
+          <a
+            href={partner.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="partners__link"
+            aria-label={partner.name}
+          >
+            <img
+              src={partner.logo.src}
+              alt={partner.logo.alt || partner.name}
+              width={partner.logo.width}
+              height={partner.logo.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </Container>
+</Section>
+
+<style>
+  .partners__header {
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .partners__header h2 {
+    font-size: var(--font-size-3xl);
+    color: var(--color-brand-green-dark);
+    font-weight: var(--font-weight-black);
+    margin-bottom: var(--space-2);
+  }
+
+  .partners__link {
+    /* On a white section, the white-card-on-white logos need a subtle border. */
+    border: 1px solid var(--color-border-base);
+  }
+
+  .partners__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-6);
+    align-items: center;
+    justify-items: center;
+  }
+
+  .partners__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    width: 100%;
+    height: 120px;
+    transition: transform var(--transition-fast),
+                box-shadow var(--transition-fast);
+  }
+
+  .partners__link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .partners__link img {
+    max-width: 100%;
+    max-height: 80px;
+    width: auto;
+    object-fit: contain;
+  }
+</style>

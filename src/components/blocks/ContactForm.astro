@@ -1,0 +1,218 @@
+---
+import type { ContactFormBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<ContactFormBlock, 'type'>;
+
+const {
+  heading = 'Get In Touch',
+  html,
+  interests = [
+    { label: 'Volunteering', value: 'volunteering' },
+    { label: 'Partnership', value: 'partnership' },
+    { label: 'Using the Park for an Event', value: 'event' },
+    { label: 'Other', value: 'other' },
+  ],
+  action = '',
+  method = 'POST',
+  submitLabel = 'Submit',
+  background = 'base',
+} = Astro.props;
+---
+
+<Section padding="default" background={background}>
+  <Container width="wide">
+    <div class="cform">
+      <header class="cform__intro">
+        <h2 class="cform__heading">{heading}</h2>
+        {html && <div class="cform__prose prose" set:html={html} />}
+      </header>
+
+      <form
+        class="cform__form"
+        action={action || '#'}
+        method={method}
+        data-contact-form
+      >
+        <label class="cform__field">
+          <span class="visually-hidden">First Name</span>
+          <input
+            type="text"
+            name="first_name"
+            placeholder="First Name"
+            autocomplete="given-name"
+            required
+          />
+        </label>
+
+        <label class="cform__field">
+          <span class="visually-hidden">Last Name</span>
+          <input
+            type="text"
+            name="last_name"
+            placeholder="Last Name"
+            autocomplete="family-name"
+            required
+          />
+        </label>
+
+        <label class="cform__field">
+          <span class="visually-hidden">Email Address</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            autocomplete="email"
+            required
+          />
+        </label>
+
+        <label class="cform__field">
+          <span class="visually-hidden">I am interested in</span>
+          <select name="interest" required>
+            <option value="" disabled selected>I am Interested In</option>
+            {interests.map((opt) => (
+              <option value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
+        </label>
+
+        <label class="cform__field cform__field--full">
+          <span class="visually-hidden">Message</span>
+          <textarea name="message" placeholder="Message" rows={5} required></textarea>
+        </label>
+
+        <div class="cform__actions">
+          <button type="submit" class="cform__submit">{submitLabel}</button>
+        </div>
+      </form>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .cform {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--space-12);
+    align-items: start;
+  }
+
+  .cform__intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .cform__heading {
+    font-size: var(--font-size-4xl);
+    color: var(--color-brand-green-dark);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+  }
+
+  .cform__prose {
+    color: var(--color-text-base);
+  }
+
+  .cform__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  .cform__field--full {
+    grid-column: 1 / -1;
+  }
+
+  .cform__field input,
+  .cform__field select,
+  .cform__field textarea {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface-raised);
+    color: var(--color-brand-green-dark);
+    border: 1px solid var(--color-border-base);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-snug);
+  }
+
+  .cform__field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='none' stroke='%231B3C03' stroke-width='2' d='M1 1l5 5 5-5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right var(--space-4) center;
+    padding-right: var(--space-10);
+  }
+
+  .cform__field textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  .cform__field input::placeholder,
+  .cform__field textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .cform__field input:focus-visible,
+  .cform__field select:focus-visible,
+  .cform__field textarea:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+    border-color: var(--color-brand-orange);
+  }
+
+  .cform__actions {
+    grid-column: 1 / -1;
+    margin-top: var(--space-2);
+  }
+
+  .cform__submit {
+    width: 100%;
+    padding: var(--space-3) var(--space-6);
+    background: transparent;
+    color: var(--color-brand-green-dark);
+    border: 2px solid var(--color-brand-orange);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast);
+  }
+
+  .cform__submit:hover {
+    background: var(--color-brand-orange-light);
+    border-color: var(--color-brand-orange-light);
+    color: var(--color-brand-green-dark);
+  }
+
+  .cform__submit:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .cform {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+
+    .cform__heading {
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  @media (max-width: 540px) {
+    .cform__form {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

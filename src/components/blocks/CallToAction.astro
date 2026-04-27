@@ -1,0 +1,91 @@
+---
+import type { CallToActionBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+import GhostLink from '../ui/GhostLink.astro';
+
+type Props = Omit<CallToActionBlock, 'type'>;
+
+const { heading, body, ctas, background = 'accent' } = Astro.props;
+
+const sectionBg =
+  background === 'dark'
+    ? 'inverse'
+    : background === 'accent'
+      ? 'accent'
+      : background === 'bar'
+        ? 'raised'
+        : 'raised';
+
+const sectionPadding = background === 'bar' ? 'small' : 'default';
+const containerWidth = background === 'bar' ? 'wide' : 'narrow';
+---
+
+<Section padding={sectionPadding} background={sectionBg as any}>
+  <Container width={containerWidth}>
+    <div class:list={['cta', `cta--${background}`]}>
+      <h2>{heading}</h2>
+      {body && <p>{body}</p>}
+      {ctas.length > 0 && (
+        <div class="cta__buttons">
+          {background === 'bar'
+            ? ctas.map((cta) => <GhostLink {...cta} />)
+            : ctas.map((cta) => <Button {...cta} size="lg" />)}
+        </div>
+      )}
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .cta {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .cta h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-text-accent);
+  }
+
+  .cta--dark h2 {
+    color: var(--color-white);
+  }
+
+  .cta--accent h2 {
+    color: var(--color-brand-green-dark);
+  }
+
+  .cta--bar {
+    gap: var(--space-3);
+    padding-block: var(--space-6);
+    border-top: 1px solid var(--color-border-base);
+    border-bottom: 1px solid var(--color-border-base);
+  }
+
+  .cta--bar h2 {
+    color: var(--color-brand-green-dark);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-base);
+    text-transform: none;
+  }
+
+  .cta p {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-base);
+    max-width: 56ch;
+  }
+
+  .cta__buttons {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>

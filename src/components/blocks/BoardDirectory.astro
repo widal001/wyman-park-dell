@@ -1,0 +1,145 @@
+---
+import type { BoardDirectoryBlock } from "../../types/content";
+import Section from "../ui/Section.astro";
+import Container from "../ui/Container.astro";
+
+type Props = Omit<BoardDirectoryBlock, "type">;
+
+const { heading, members } = Astro.props;
+---
+
+<Section padding="default" paddingTop="none">
+  <Container width="narrow">
+    <details class="board" id="fwpd-board">
+      <summary class="board__summary">
+        <div class="board__summary-inner">
+          <span class="board__heading">{heading}</span>
+          <span class="board__chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"></circle>
+              <path
+                d="M8 10l4 4 4-4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+          </span>
+        </div>
+      </summary>
+
+      <ul role="list" class="board__list">
+        {
+          members.map((member) => (
+            <li class="board__member">
+              <span class="board__name">{member.name}</span>,{" "}
+              <em class="board__role">{member.role}</em>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </Container>
+</Section>
+
+<style>
+  .board {
+    border: 2px solid var(--color-border-base);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-base);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-5) var(--space-6);
+    transition: border-color var(--transition-fast);
+  }
+
+  .board:hover,
+  .board:focus-within {
+    border-color: var(--color-brand-orange);
+  }
+
+  .board__summary {
+    display: block;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  /* Suppress the default disclosure triangle across browsers. */
+  .board__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .board__summary::marker {
+    content: "";
+    display: none;
+  }
+
+  .board__summary:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+  }
+
+  .board__summary-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .board__heading {
+    font-family: var(--font-display);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-accent);
+    line-height: var(--line-height-snug);
+  }
+
+  .board__chevron {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-neutral-300);
+    transition:
+      transform var(--transition-base),
+      color var(--transition-fast);
+  }
+
+  .board[open] .board__chevron {
+    transform: rotate(180deg);
+  }
+
+  .board:hover .board__chevron,
+  .board:focus-within .board__chevron {
+    color: var(--color-brand-orange);
+  }
+
+  .board__list {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .board__member {
+    color: var(--color-text-base);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-snug);
+  }
+
+  .board__name {
+    font-weight: var(--font-weight-regular);
+  }
+
+  .board__role {
+    color: var(--color-text-base);
+    font-style: italic;
+  }
+</style>

@@ -1,0 +1,136 @@
+---
+import type { NewsletterBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import { site } from '../../content/site';
+
+type Props = Omit<NewsletterBlock, 'type'>;
+
+const {
+  heading,
+  subheading,
+  config = site.newsletter,
+  background = 'raised',
+} = Astro.props;
+
+const action = config.action || '#';
+---
+
+<Section padding="default" background={background}>
+  <Container width="medium">
+    <div class="newsletter-block">
+      <header class="newsletter-block__header">
+        <h2>{heading}</h2>
+        {subheading && <p>{subheading}</p>}
+      </header>
+
+      <form
+        class="newsletter-block__form"
+        action={action}
+        method={config.method ?? 'POST'}
+        data-newsletter-form
+      >
+        {config.hiddenFields?.map((field) => (
+          <input type="hidden" name={field.name} value={field.value} />
+        ))}
+
+        <label class="newsletter-block__field">
+          <span class="visually-hidden">{config.fields.name.label}</span>
+          <input
+            type="text"
+            name={config.fields.name.name}
+            placeholder={config.fields.name.placeholder}
+            autocomplete="name"
+          />
+        </label>
+
+        <label class="newsletter-block__field">
+          <span class="visually-hidden">{config.fields.email.label}</span>
+          <input
+            type="email"
+            name={config.fields.email.name}
+            placeholder={config.fields.email.placeholder}
+            autocomplete="email"
+            required
+          />
+        </label>
+
+        <button type="submit" class="newsletter-block__submit">
+          {config.submitLabel}
+        </button>
+      </form>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .newsletter-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    align-items: center;
+    text-align: center;
+  }
+
+  .newsletter-block__header h2 {
+    font-size: var(--font-size-3xl);
+    color: var(--color-brand-green-dark);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-3);
+  }
+
+  .newsletter-block__header p {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-base);
+    max-width: 56ch;
+  }
+
+  .newsletter-block__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .newsletter-block__field input {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-white);
+    color: var(--color-brand-green-dark);
+    border: 1px solid var(--color-border-base);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-snug);
+  }
+
+  .newsletter-block__field input:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+    border-color: var(--color-brand-orange);
+  }
+
+  .newsletter-block__submit {
+    width: 100%;
+    padding: var(--space-3) var(--space-6);
+    background: transparent;
+    color: var(--color-brand-green-dark);
+    border: 2px solid var(--color-brand-orange);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast);
+  }
+
+  .newsletter-block__submit:hover {
+    background: var(--color-brand-orange-light);
+    border-color: var(--color-brand-orange-light);
+    color: var(--color-brand-green-dark);
+  }
+</style>

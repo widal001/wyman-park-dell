@@ -1,0 +1,125 @@
+---
+import type { ActivityGridBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<ActivityGridBlock, 'type'>;
+
+const { heading, subheading, image, items } = Astro.props;
+const hasHeading = Boolean(heading || subheading);
+---
+
+<Section padding="default">
+  <Container width="wide">
+    {hasHeading && (
+      <div class="activity__heading">
+        {heading && <h2>{heading}</h2>}
+        {subheading && <p>{subheading}</p>}
+      </div>
+    )}
+
+    <div class="activity__layout">
+      {image && (
+        <figure class="activity__image">
+          <img
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      )}
+
+      <ul role="list" class="activity__list">
+        {items.map((item) => (
+          <li class="activity__item">
+            {item.icon && (
+              <img
+                class="activity__icon"
+                src={item.icon.src}
+                alt=""
+                width={item.icon.width ?? 60}
+                height={item.icon.height ?? 60}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+            <span class="activity__label">{item.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .activity__heading {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .activity__heading h2 {
+    font-size: var(--font-size-4xl);
+    color: var(--color-text-accent);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-3);
+  }
+
+  .activity__heading p {
+    font-size: var(--font-size-lg);
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  .activity__layout {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .activity__image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+
+  .activity__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .activity__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-snug);
+  }
+
+  .activity__icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .activity__label {
+    flex: 1;
+  }
+
+  @media (max-width: 900px) {
+    .activity__layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .activity__heading h2 {
+      font-size: var(--font-size-2xl);
+    }
+  }
+</style>

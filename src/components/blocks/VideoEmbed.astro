@@ -1,0 +1,138 @@
+---
+import type { VideoEmbedBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<VideoEmbedBlock, 'type'>;
+
+const {
+  youtubeId,
+  title,
+  poster,
+  caption,
+  background = 'base',
+} = Astro.props;
+
+const posterSrc =
+  poster?.src ?? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
+const posterAlt = poster?.alt ?? `Play video: ${title}`;
+const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`;
+---
+
+<Section padding="default" background={background}>
+  <Container width="wide">
+    <div class="video" data-video-embed>
+      <button
+        type="button"
+        class="video__poster"
+        aria-label={`Play video: ${title}`}
+        data-video-trigger
+        data-embed-url={embedUrl}
+      >
+        <img
+          src={posterSrc}
+          alt={posterAlt}
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="video__play" aria-hidden="true">
+          <svg viewBox="0 0 80 80" width="80" height="80">
+            <circle cx="40" cy="40" r="40" fill="rgba(255,255,255,0.95)" />
+            <polygon points="32,24 60,40 32,56" fill="var(--play-fill, #1B3C03)" />
+          </svg>
+        </span>
+      </button>
+
+      <template data-video-template>
+        <iframe
+          class="video__iframe"
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </template>
+
+      {caption && <p class="video__caption">{caption}</p>}
+    </div>
+  </Container>
+</Section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-video-embed]').forEach((root) => {
+    const trigger = root.querySelector<HTMLButtonElement>('[data-video-trigger]');
+    const tpl = root.querySelector<HTMLTemplateElement>('[data-video-template]');
+    if (!trigger || !tpl) return;
+
+    trigger.addEventListener('click', () => {
+      const embedUrl = trigger.dataset.embedUrl;
+      if (!embedUrl) return;
+      const frag = tpl.content.cloneNode(true) as DocumentFragment;
+      const iframe = frag.querySelector('iframe');
+      if (iframe) iframe.src = embedUrl;
+      trigger.replaceWith(frag);
+    });
+  });
+</script>
+
+<style>
+  .video {
+    --play-fill: var(--color-brand-green-dark);
+    position: relative;
+    max-width: 960px;
+    margin-inline: auto;
+  }
+
+  .video__poster {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    padding: 0;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--color-neutral-100);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: box-shadow var(--transition-base), transform var(--transition-fast);
+  }
+
+  .video__poster:hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .video__poster:hover .video__play {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  .video__poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .video__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform var(--transition-base);
+    pointer-events: none;
+  }
+
+  .video__iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    display: block;
+  }
+
+  .video__caption {
+    margin-top: var(--space-3);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+</style>

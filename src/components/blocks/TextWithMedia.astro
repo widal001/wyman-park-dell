@@ -1,0 +1,134 @@
+---
+import type { TextWithMediaBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import GhostLink from '../ui/GhostLink.astro';
+import Button from '../ui/Button.astro';
+
+type Props = Omit<TextWithMediaBlock, 'type'>;
+
+const {
+  eyebrow,
+  heading,
+  html,
+  image,
+  ctas = [],
+  mediaPosition = 'left',
+} = Astro.props;
+---
+
+<Section padding="default">
+  <Container width="wide">
+    <div class:list={['twm', `twm--media-${mediaPosition}`]}>
+      <figure class="twm__media">
+        <img
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <div class="twm__body">
+        {eyebrow && <p class="twm__eyebrow">{eyebrow}</p>}
+        <h2 class="twm__heading">{heading}</h2>
+        <div class="twm__prose prose" set:html={html} />
+        {ctas.length > 0 && (
+          <ul role="list" class="twm__ctas">
+            {ctas.map((cta) => (
+              <li>
+                {cta.variant && cta.variant !== 'ghost' ? (
+                  <Button {...cta} />
+                ) : (
+                  <GhostLink {...cta} />
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .twm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .twm--media-right {
+    direction: rtl;
+  }
+
+  .twm--media-right > * {
+    direction: ltr;
+  }
+
+  .twm__media {
+    margin: 0;
+  }
+
+  .twm__media img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  .twm__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .twm__eyebrow {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-text-accent);
+  }
+
+  .twm__heading {
+    font-size: var(--font-size-3xl);
+    color: var(--color-brand-green-dark);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    text-transform: none;
+    letter-spacing: var(--letter-spacing-base);
+  }
+
+  .twm__prose {
+    color: var(--color-text-base);
+  }
+
+  .twm__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    margin-top: var(--space-4);
+  }
+
+  @media (max-width: 900px) {
+    .twm,
+    .twm--media-right {
+      grid-template-columns: 1fr;
+      direction: ltr;
+      gap: var(--space-8);
+    }
+
+    .twm--media-right .twm__media {
+      order: 2;
+    }
+
+    .twm__heading {
+      font-size: var(--font-size-2xl);
+    }
+  }
+</style>

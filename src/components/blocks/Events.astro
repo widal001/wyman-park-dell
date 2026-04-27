@@ -1,0 +1,243 @@
+---
+import type { EventsBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import Button from '../ui/Button.astro';
+
+type Props = Omit<EventsBlock, 'type'>;
+
+const { heading, intro, events, viewAllCta } = Astro.props;
+
+const monthFmt = new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' });
+const dayFmt = new Intl.DateTimeFormat('en-US', { day: 'numeric', timeZone: 'UTC' });
+const weekdayFmt = new Intl.DateTimeFormat('en-US', { weekday: 'long', timeZone: 'UTC' });
+const longDateFmt = new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+function parseISODate(value: string): Date {
+  return new Date(`${value}T00:00:00Z`);
+}
+---
+
+<Section padding="default" background="raised">
+  <Container width="wide">
+    <header class="events__header">
+      <h2>{heading}</h2>
+      {intro && <p>{intro}</p>}
+    </header>
+
+    <ul role="list" class="events__grid">
+      {events.map((event) => {
+        const start = parseISODate(event.date);
+        const end = event.endDate ? parseISODate(event.endDate) : null;
+        const startLong = longDateFmt.format(start);
+        const endLong = end ? longDateFmt.format(end) : null;
+        const datetimeAttr = end ? `${event.date}/${event.endDate}` : event.date;
+
+        return (
+          <li class="events__card">
+            {event.image && (
+              <a
+                class="events__media"
+                href={event.cta?.href ?? '#'}
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <img
+                  src={event.image.src}
+                  alt={event.image.alt}
+                  width={event.image.width}
+                  height={event.image.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            )}
+
+            <div class="events__body">
+              <time class="events__date" datetime={datetimeAttr}>
+                <span class="events__date-month">{monthFmt.format(start)}</span>
+                <span class="events__date-day">{dayFmt.format(start)}</span>
+              </time>
+
+              <div class="events__details">
+                <h3 class="events__title">{event.title}</h3>
+                <p class="events__meta">
+                  <span>{weekdayFmt.format(start)}</span>
+                  {endLong ? (
+                    <span>{startLong} – {endLong}</span>
+                  ) : (
+                    <span>{startLong}</span>
+                  )}
+                  {event.time && <span>{event.time}</span>}
+                  {event.location && <span>{event.location}</span>}
+                </p>
+                <p class="events__excerpt">{event.body}</p>
+                {event.cta && (
+                  <a href={event.cta.href} class="events__cta">
+                    {event.cta.label} →
+                  </a>
+                )}
+              </div>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+
+    {viewAllCta && (
+      <div class="events__view-all">
+        <Button {...viewAllCta} size="lg" />
+      </div>
+    )}
+  </Container>
+</Section>
+
+<style>
+  .events__header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+    max-width: 60ch;
+    margin-inline: auto;
+  }
+
+  .events__header h2 {
+    font-size: var(--font-size-4xl);
+    color: var(--color-brand-green-dark);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-3);
+  }
+
+  .events__header p {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-base);
+  }
+
+  .events__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .events__card {
+    background: var(--color-surface-base);
+    border: 2px solid var(--color-brand-green);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-fast),
+                box-shadow var(--transition-fast);
+  }
+
+  .events__card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .events__media img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  .events__body {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    flex: 1;
+  }
+
+  .events__date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 64px;
+    padding: var(--space-3) var(--space-2);
+    background: var(--color-brand-green-dark);
+    color: var(--color-white);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .events__date-month {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    letter-spacing: var(--letter-spacing-wide);
+    margin-bottom: var(--space-1);
+  }
+
+  .events__date-day {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-black);
+    font-size: var(--font-size-2xl);
+  }
+
+  .events__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    flex: 1;
+    min-height: 0;
+  }
+
+  .events__title {
+    font-size: var(--font-size-lg);
+    color: var(--color-brand-green-dark);
+    text-transform: none;
+    letter-spacing: var(--letter-spacing-base);
+    line-height: var(--line-height-snug);
+  }
+
+  .events__meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    line-height: var(--line-height-snug);
+  }
+
+  .events__excerpt {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    flex: 1;
+  }
+
+  .events__cta {
+    margin-top: auto;
+    padding: var(--space-2) 0;
+    align-self: flex-start;
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-text-accent);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--transition-fast);
+  }
+
+  .events__cta:hover,
+  .events__cta:focus-visible {
+    border-bottom-color: var(--color-brand-orange);
+  }
+
+  .events__view-all {
+    margin-top: var(--space-10);
+    display: flex;
+    justify-content: center;
+  }
+</style>

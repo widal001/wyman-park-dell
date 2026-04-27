@@ -1,0 +1,46 @@
+---
+import type { MapEmbedBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<MapEmbedBlock, 'type'>;
+
+const {
+  embedUrl,
+  title,
+  maxHeight = 320,
+  background = 'base',
+} = Astro.props;
+---
+
+<Section padding="default" background={background}>
+  <Container width="wide">
+    <div class="map-embed" style={`--map-embed-max-height: ${maxHeight}px`}>
+      <iframe
+        src={embedUrl}
+        title={title}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .map-embed {
+    width: 100%;
+    height: var(--map-embed-max-height);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--color-surface-raised);
+  }
+
+  .map-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+</style>

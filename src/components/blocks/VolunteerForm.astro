@@ -1,0 +1,231 @@
+---
+import type { VolunteerFormBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<VolunteerFormBlock, 'type'>;
+
+const {
+  heading,
+  html,
+  image,
+  mediaPosition = 'right',
+  action = '',
+  method = 'POST',
+  submitLabel = 'Sign-Up',
+  background = 'base',
+} = Astro.props;
+---
+
+<Section padding="default" background={background}>
+  <Container width="wide">
+    <div class:list={['vform', `vform--media-${mediaPosition}`]}>
+      <figure class="vform__media">
+        <img
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+
+      <div class="vform__body">
+        <h2 class="vform__heading">{heading}</h2>
+        {html && <div class="vform__prose prose" set:html={html} />}
+
+        <form
+          class="vform__form"
+          action={action || '#'}
+          method={method}
+          data-volunteer-form
+        >
+          <label class="vform__field vform__field--full">
+            <span class="visually-hidden">Name</span>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              autocomplete="name"
+              required
+            />
+          </label>
+
+          <label class="vform__field">
+            <span class="visually-hidden">Email Address</span>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              autocomplete="email"
+              required
+            />
+          </label>
+
+          <label class="vform__field">
+            <span class="visually-hidden">Phone Number</span>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
+              autocomplete="tel"
+            />
+          </label>
+
+          <label class="vform__field vform__field--full">
+            <span class="visually-hidden">Leave a Message</span>
+            <textarea name="message" placeholder="Leave a Message" rows={4}></textarea>
+          </label>
+
+          <div class="vform__actions">
+            <button type="submit" class="vform__submit">{submitLabel}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .vform {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  .vform--media-right {
+    direction: rtl;
+  }
+
+  .vform--media-right > * {
+    direction: ltr;
+  }
+
+  .vform__media {
+    margin: 0;
+  }
+
+  .vform__media img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+
+  .vform__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .vform__heading {
+    font-size: var(--font-size-3xl);
+    color: var(--color-brand-green-dark);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+  }
+
+  .vform__prose {
+    color: var(--color-text-base);
+  }
+
+  .vform__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .vform__field--full {
+    grid-column: 1 / -1;
+  }
+
+  .vform__field input,
+  .vform__field textarea {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface-raised);
+    color: var(--color-brand-green-dark);
+    border: 1px solid var(--color-border-base);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-snug);
+  }
+
+  .vform__field textarea {
+    resize: vertical;
+    min-height: 7rem;
+  }
+
+  .vform__field input::placeholder,
+  .vform__field textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .vform__field input:focus-visible,
+  .vform__field textarea:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+    border-color: var(--color-brand-orange);
+  }
+
+  .vform__actions {
+    grid-column: 1 / -1;
+    margin-top: var(--space-2);
+  }
+
+  .vform__submit {
+    width: 100%;
+    padding: var(--space-3) var(--space-6);
+    background: transparent;
+    color: var(--color-brand-green-dark);
+    border: 2px solid var(--color-brand-orange);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-display);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast);
+  }
+
+  .vform__submit:hover {
+    background: var(--color-brand-orange-light);
+    border-color: var(--color-brand-orange-light);
+    color: var(--color-brand-green-dark);
+  }
+
+  .vform__submit:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .vform,
+    .vform--media-right {
+      grid-template-columns: 1fr;
+      direction: ltr;
+      gap: var(--space-8);
+    }
+
+    .vform--media-right .vform__media {
+      order: 2;
+    }
+
+    .vform__heading {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  @media (max-width: 540px) {
+    .vform__form {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

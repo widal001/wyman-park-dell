@@ -1,0 +1,78 @@
+---
+import type { ContentBlock } from '../../types/content';
+import Hero from './Hero.astro';
+import RichText from './RichText.astro';
+import ImageGallery from './ImageGallery.astro';
+import Timeline from './Timeline.astro';
+import BoardDirectory from './BoardDirectory.astro';
+import PartnerLogos from './PartnerLogos.astro';
+import ActivityGrid from './ActivityGrid.astro';
+import Testimonial from './Testimonial.astro';
+import CallToAction from './CallToAction.astro';
+import Projects from './Projects.astro';
+import SectionHeading from './SectionHeading.astro';
+import Events from './Events.astro';
+import TextWithMedia from './TextWithMedia.astro';
+import TwoColumnText from './TwoColumnText.astro';
+import VideoEmbed from './VideoEmbed.astro';
+import Newsletter from './Newsletter.astro';
+import VolunteerForm from './VolunteerForm.astro';
+import MapEmbed from './MapEmbed.astro';
+import ContactForm from './ContactForm.astro';
+import FollowUs from './FollowUs.astro';
+
+type Props = {
+  blocks: ContentBlock[];
+};
+
+const { blocks } = Astro.props;
+---
+
+{blocks.map((block) => {
+  switch (block.type) {
+    case 'hero':
+      return <Hero {...block} />;
+    case 'richText':
+      return <RichText {...block} />;
+    case 'gallery':
+      return <ImageGallery {...block} />;
+    case 'timeline':
+      return <Timeline {...block} />;
+    case 'board':
+      return <BoardDirectory {...block} />;
+    case 'partners':
+      return <PartnerLogos {...block} />;
+    case 'activityGrid':
+      return <ActivityGrid {...block} />;
+    case 'testimonial':
+      return <Testimonial {...block} />;
+    case 'cta':
+      return <CallToAction {...block} />;
+    case 'projects':
+      return <Projects {...block} />;
+    case 'sectionHeading':
+      return <SectionHeading {...block} />;
+    case 'events':
+      return <Events {...block} />;
+    case 'textWithMedia':
+      return <TextWithMedia {...block} />;
+    case 'twoColumnText':
+      return <TwoColumnText {...block} />;
+    case 'videoEmbed':
+      return <VideoEmbed {...block} />;
+    case 'newsletter':
+      return <Newsletter {...block} />;
+    case 'volunteerForm':
+      return <VolunteerForm {...block} />;
+    case 'mapEmbed':
+      return <MapEmbed {...block} />;
+    case 'contactForm':
+      return <ContactForm {...block} />;
+    case 'followUs':
+      return <FollowUs {...block} />;
+    default: {
+      const _exhaustive: never = block;
+      return null;
+    }
+  }
+})}

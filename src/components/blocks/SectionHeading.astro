@@ -1,0 +1,100 @@
+---
+import type { SectionHeadingBlock } from "../../types/content";
+import Section from "../ui/Section.astro";
+import Container from "../ui/Container.astro";
+
+type Props = Omit<SectionHeadingBlock, "type">;
+
+const {
+  heading,
+  subheading,
+  align = "center",
+  background = "base",
+  headingColor = "accent",
+  variant = "heading",
+  width = "narrow",
+} = Astro.props;
+---
+
+<Section padding="small" background={background}>
+  <Container width={width}>
+    <div
+      class:list={[
+        "section-heading",
+        `section-heading--${align}`,
+        `section-heading--color-${headingColor}`,
+        `section-heading--${variant}`,
+      ]}
+    >
+      {
+        variant === "lead" ? (
+          <p class="section-heading__lead">{heading}</p>
+        ) : (
+          <h2>{heading}</h2>
+        )
+      }
+      {subheading && <p class="section-heading__sub">{subheading}</p>}
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .section-heading {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .section-heading--center {
+    text-align: center;
+    align-items: center;
+  }
+
+  .section-heading h2 {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+  }
+
+  .section-heading__lead {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-base);
+  }
+
+  .section-heading--color-accent h2,
+  .section-heading--color-accent .section-heading__lead {
+    color: var(--color-text-accent);
+  }
+
+  .section-heading--color-dark h2,
+  .section-heading--color-dark .section-heading__lead {
+    color: var(--color-brand-green-dark);
+  }
+
+  .section-heading--color-inverse h2,
+  .section-heading--color-inverse .section-heading__lead {
+    color: var(--color-white);
+  }
+
+  .section-heading--color-muted h2,
+  .section-heading--color-muted .section-heading__lead {
+    color: var(--color-text-muted);
+  }
+
+  .section-heading__sub {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-muted);
+    max-width: 56ch;
+  }
+
+  @media (max-width: 768px) {
+    .section-heading h2 {
+      font-size: var(--font-size-2xl);
+    }
+
+    .section-heading__lead {
+      font-size: var(--font-size-md);
+    }
+  }
+</style>

@@ -1,0 +1,145 @@
+---
+import type { GalleryBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<GalleryBlock, 'type'>;
+
+const {
+  images,
+  layout = 'grid',
+  columns = 3,
+  paddingTop,
+  paddingBottom,
+} = Astro.props;
+---
+
+<Section
+  padding="small"
+  paddingTop={paddingTop}
+  paddingBottom={paddingBottom}
+  bleed={layout === 'mosaic'}
+>
+  <Container width={layout === 'mosaic' ? 'full' : 'wide'}>
+    <ul
+      role="list"
+      class:list={['gallery', `gallery--${layout}`]}
+      style={layout === 'grid' ? `--gallery-columns: ${columns};` : undefined}
+    >
+      {images.map((image) => (
+        <li class="gallery__item">
+          <figure>
+            <img
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              loading="lazy"
+              decoding="async"
+            />
+            {image.caption && (
+              <figcaption>{image.caption}</figcaption>
+            )}
+          </figure>
+        </li>
+      ))}
+    </ul>
+  </Container>
+</Section>
+
+<style>
+  .gallery {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .gallery--grid {
+    grid-template-columns: repeat(var(--gallery-columns, 3), minmax(0, 1fr));
+  }
+
+  .gallery--mosaic {
+    grid-template-columns: 1.1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    aspect-ratio: 16 / 9;
+    gap: var(--space-2);
+  }
+
+  .gallery--mosaic .gallery__item:nth-child(1) {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+
+  .gallery--mosaic .gallery__item:nth-child(2) {
+    grid-area: 1 / 2 / 2 / 4;
+  }
+
+  .gallery--mosaic .gallery__item:nth-child(3) {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+
+  .gallery--mosaic .gallery__item:nth-child(4) {
+    grid-area: 2 / 3 / 3 / 4;
+  }
+
+  .gallery__item {
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--color-neutral-100);
+  }
+
+  .gallery__item figure {
+    margin: 0;
+    height: 100%;
+  }
+
+  .gallery__item img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  .gallery--mosaic .gallery__item img {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  .gallery__item:hover img {
+    transform: scale(1.03);
+  }
+
+  .gallery__item figcaption {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .gallery--grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery--mosaic {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      aspect-ratio: auto;
+    }
+
+    .gallery--mosaic .gallery__item:nth-child(1),
+    .gallery--mosaic .gallery__item:nth-child(2),
+    .gallery--mosaic .gallery__item:nth-child(3),
+    .gallery--mosaic .gallery__item:nth-child(4) {
+      grid-area: auto;
+    }
+
+    .gallery--mosaic .gallery__item img {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery--grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
