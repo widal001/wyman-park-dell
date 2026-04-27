@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlockRenderer from '../components/blocks/BlockRenderer.astro';
+import { getInvolved } from '../content/get-involved';
+---
+
+<BaseLayout title={getInvolved.title} description={getInvolved.metaDescription}>
+  <BlockRenderer blocks={getInvolved.blocks} />
+</BaseLayout>

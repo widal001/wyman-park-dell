@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlockRenderer from '../components/blocks/BlockRenderer.astro';
+import { friends } from '../content/friends';
+---
+
+<BaseLayout title={friends.title} description={friends.metaDescription}>
+  <BlockRenderer blocks={friends.blocks} />
+</BaseLayout>

@@ -1,0 +1,55 @@
+import type { PageContent } from "../types/content";
+
+const WP = "https://wymanparkdell.org/site/wp-content/uploads";
+
+export const contact: PageContent = {
+  slug: "contact",
+  title: "Visit Us",
+  metaDescription:
+    "Find Wyman Park Dell at North Charles and 29th Streets in Baltimore. Get in touch with the Friends of Wyman Park Dell about volunteering, partnerships, or events.",
+  blocks: [
+    {
+      type: "hero",
+      variant: "standard",
+      heading: "Visit Us",
+      image: {
+        src: `${WP}/2021/11/Contact-Us_WymanPark-Snow-2021.jpg`,
+        alt: "Wyman Park Dell on a snowy day",
+      },
+    },
+    {
+      type: "richText",
+      align: "left",
+      paddingTop: "default",
+      paddingBottom: "large",
+      width: "wide",
+      background: "raised",
+      html: `
+        <h2>Wyman Park Dell<br />North Charles and 29th Streets<br />Baltimore, MD 21218</h2>
+        <p>From North Charles Street and 29th Street, an ADA-accessible paved path leads past the playground to the lower Dell.</p>
+        <p>The lower Dell can also be accessed by stairs on the southwest and northeast corners of the park, as well as stairs on Art Museum Drive across from the Baltimore Museum of Art.</p>
+      `,
+    },
+    {
+      type: "mapEmbed",
+      title: "Map of Wyman Park Dell",
+      maxHeight: 480,
+      embedUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3086.4057036343315!2d-76.62091608427365!3d39.324392779507065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c804de05619787%3A0x7130601107e09bfa!2sWyman%20Park%20Dell!5e0!3m2!1sen!2sus!4v1638995904483!5m2!1sen!2sus",
+    },
+    {
+      type: "contactForm",
+      heading: "Get In Touch",
+      html: `
+        <p>Fill out the form or email us directly at <a href="mailto:wymanparkdell@gmail.com">wymanparkdell@gmail.com</a>.</p>
+      `,
+      submitLabel: "Submit",
+      background: "base",
+    },
+    {
+      type: "followUs",
+      paddingTop: "xl",
+      paddingBottom: "xl",
+    },
+  ],
+};

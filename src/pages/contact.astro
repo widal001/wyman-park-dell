@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlockRenderer from '../components/blocks/BlockRenderer.astro';
+import { contact } from '../content/contact';
+---
+
+<BaseLayout title={contact.title} description={contact.metaDescription}>
+  <BlockRenderer blocks={contact.blocks} />
+</BaseLayout>
