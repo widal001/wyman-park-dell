@@ -6,12 +6,12 @@ import Container from '../ui/Container.astro';
 type Props = Omit<ContactFormBlock, 'type'>;
 
 const {
-  heading = 'Get In Touch',
+  heading = 'Get in touch',
   html,
   interests = [
     { label: 'Volunteering', value: 'volunteering' },
     { label: 'Partnership', value: 'partnership' },
-    { label: 'Using the Park for an Event', value: 'event' },
+    { label: 'Using the park for an event', value: 'event' },
     { label: 'Other', value: 'other' },
   ],
   action = '',
@@ -36,33 +36,33 @@ const {
         data-contact-form
       >
         <label class="cform__field">
-          <span class="visually-hidden">First Name</span>
+          <span class="visually-hidden">First name</span>
           <input
             type="text"
             name="first_name"
-            placeholder="First Name"
+            placeholder="First name"
             autocomplete="given-name"
             required
           />
         </label>
 
         <label class="cform__field">
-          <span class="visually-hidden">Last Name</span>
+          <span class="visually-hidden">Last name</span>
           <input
             type="text"
             name="last_name"
-            placeholder="Last Name"
+            placeholder="Last name"
             autocomplete="family-name"
             required
           />
         </label>
 
         <label class="cform__field">
-          <span class="visually-hidden">Email Address</span>
+          <span class="visually-hidden">Email address</span>
           <input
             type="email"
             name="email"
-            placeholder="Email Address"
+            placeholder="Email address"
             autocomplete="email"
             required
           />
@@ -71,7 +71,7 @@ const {
         <label class="cform__field">
           <span class="visually-hidden">I am interested in</span>
           <select name="interest" required>
-            <option value="" disabled selected>I am Interested In</option>
+            <option value="" disabled selected>I am interested in</option>
             {interests.map((opt) => (
               <option value={opt.value}>{opt.label}</option>
             ))}

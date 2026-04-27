@@ -4,7 +4,7 @@ const WP = "https://wymanparkdell.org/site/wp-content/uploads";
 
 export const getInvolved: PageContent = {
   slug: "get-involved",
-  title: "Get Involved",
+  title: "Get involved",
   metaDescription:
     "Become a Friend of the Dell. Donate, volunteer, or partner with the Friends of Wyman Park Dell to help keep this Baltimore park accessible and extraordinary for everyone.",
   blocks: [
@@ -28,7 +28,7 @@ export const getInvolved: PageContent = {
     },
     {
       type: "textWithMedia",
-      heading: "Make a Donation",
+      heading: "Make a donation",
       mediaPosition: "left",
       image: {
         src: `${WP}/2021/12/Volunteer.jpg`,
@@ -50,7 +50,7 @@ export const getInvolved: PageContent = {
     },
     {
       type: "volunteerForm",
-      heading: "Become a Volunteer",
+      heading: "Become a volunteer",
       mediaPosition: "right",
       image: {
         src: `${WP}/2021/11/Get-Involved-2-1.jpg`,
@@ -60,7 +60,7 @@ export const getInvolved: PageContent = {
         <p>The Dell needs you!</p>
         <p>Keep an eye on the <a href="/events/">Events Page</a> for upcoming park maintenance days or sign up to receive opportunities in your inbox.</p>
       `,
-      submitLabel: "Sign-Up",
+      submitLabel: "Sign up",
     },
     {
       type: "testimonial",

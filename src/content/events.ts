@@ -19,7 +19,7 @@ export const events: PageContent = {
     },
     {
       type: "events",
-      heading: "Our Events",
+      heading: "Our events",
       intro:
         "A variety of events take place in Wyman Park Dell throughout the year. From park clean-ups to neighborhood festivals, the Dell is the perfect place to celebrate community.",
       events: [
@@ -81,7 +81,7 @@ export const events: PageContent = {
     },
     {
       type: "projects",
-      heading: "Annual Events",
+      heading: "Annual events",
       intro:
         "A handful of beloved gatherings return to the Dell every year — celebrate the seasons and the community alongside us.",
       projects: [

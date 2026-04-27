@@ -28,7 +28,7 @@ export const friends: PageContent = {
     },
     {
       type: "textWithMedia",
-      heading: "How We Got Started",
+      heading: "How we got started",
       mediaPosition: "left",
       image: {
         src: `${WP}/2021/11/WPD_Friends.jpg`,
@@ -49,7 +49,7 @@ export const friends: PageContent = {
     },
     {
       type: "board",
-      heading: "FWPD Board of Directors",
+      heading: "FWPD board of directors",
       intro:
         "A volunteer board of neighbors and community partners stewards the work of the FWPD.",
       members: [
@@ -82,7 +82,7 @@ export const friends: PageContent = {
     },
     {
       type: "sectionHeading",
-      heading: "Our Mission",
+      heading: "Our mission",
       subheading:
         "The mission of the Friends of Wyman Park Dell is to engage our community in the preservation, protection, and promotion of this distinctive, historic Olmsted park.",
       align: "center",
@@ -114,7 +114,7 @@ export const friends: PageContent = {
     },
     {
       type: "projects",
-      heading: "Featured Projects",
+      heading: "Featured projects",
       intro:
         "The Friends of Wyman Park Dell are dedicated to the past, present, and future of the Wyman Park Dell. Many of these initiatives are made possible by grants and sponsorships.",
       projects: [
@@ -129,7 +129,7 @@ export const friends: PageContent = {
             "Interpretive signage installed at the grove’s rededication, 2018–2020.",
         },
         {
-          title: "Goats on the Slope",
+          title: "Goats on the slope",
           body: 'A herd of hungry goats helped to clear the "BMA Slope" in a completely eco-friendly way, funded entirely by neighbors.',
           image: {
             src: `${WP}/2021/12/Projects_Goats-on-the-Slope-Photo.jpg`,
@@ -139,7 +139,7 @@ export const friends: PageContent = {
             "Eco-Goats clearing invasive vegetation on the BMA Slope, 2020.",
         },
         {
-          title: "Traffic Calming Efforts",
+          title: "Traffic calming efforts",
           body: 'Narrowed lanes to calm traffic and closing the "sweep" along 29th and Howard Streets are huge steps toward improving pedestrian safety and park access. Thanks to the Greater Remington Improvement Association, Charles Village Civic Association, Bikemore, and former Councilwoman Mary Pat Clarke for pushing these improvements.',
           image: {
             src: `${WP}/2021/12/Projects_Traffic-Calming.jpg`,
@@ -152,7 +152,7 @@ export const friends: PageContent = {
     },
     {
       type: "partners",
-      heading: "Special Thanks To Our Partners",
+      heading: "Special thanks to our partners",
       partners: [
         {
           name: "Baltimore City",

@@ -4,14 +4,14 @@ const WP = "https://wymanparkdell.org/site/wp-content/uploads";
 
 export const contact: PageContent = {
   slug: "contact",
-  title: "Visit Us",
+  title: "Visit us",
   metaDescription:
     "Find Wyman Park Dell at North Charles and 29th Streets in Baltimore. Get in touch with the Friends of Wyman Park Dell about volunteering, partnerships, or events.",
   blocks: [
     {
       type: "hero",
       variant: "standard",
-      heading: "Visit Us",
+      heading: "Visit us",
       image: {
         src: `${WP}/2021/11/Contact-Us_WymanPark-Snow-2021.jpg`,
         alt: "Wyman Park Dell on a snowy day",
@@ -39,7 +39,7 @@ export const contact: PageContent = {
     },
     {
       type: "contactForm",
-      heading: "Get In Touch",
+      heading: "Get in touch",
       html: `
         <p>Fill out the form or email us directly at <a href="mailto:wymanparkdell@gmail.com">wymanparkdell@gmail.com</a>.</p>
       `,

@@ -4,7 +4,7 @@ const WP = 'https://wymanparkdell.org/site/wp-content/uploads';
 
 export const about: PageContent = {
   slug: 'about-the-park',
-  title: 'About the Park',
+  title: 'About the park',
   metaDescription:
     'The Wyman Park Dell is a 16-acre Olmsted-designed public park in Central Baltimore. Read about its history, master plan, and Harriet Tubman Grove.',
   blocks: [
@@ -19,7 +19,7 @@ export const about: PageContent = {
     },
     {
       type: 'textWithMedia',
-      heading: 'Park History',
+      heading: 'Park history',
       mediaPosition: 'left',
       image: {
         src: `${WP}/2021/12/Park-History.jpg`,
@@ -45,51 +45,51 @@ export const about: PageContent = {
     {
       type: 'timeline',
       eyebrow: 'Wyman Park',
-      heading: 'Master Plan',
+      heading: 'Master plan',
       entries: [
         {
           date: 'Early 2000s',
-          title: 'Developing the Master Plan',
+          title: 'Developing the master plan',
           body:
             'The Wyman Park Dell Master Plan Steering Committee engaged local landscape architecture firm Mahan Rykiel Associates to lead the local community in developing a Master Plan for the Dell. The master plan process was grounded in community-based planning with involvement from the surrounding communities and institutions.',
         },
         {
           date: 'August 2006',
-          title: 'Plan Approved',
+          title: 'Plan approved',
           body:
             'The plan was presented by the Baltimore City Department of Recreation and Parks to the Baltimore City Commission for Historical and Architectural Preservation (CHAP) and approved with the exception of two items.',
         },
         {
           date: '2010',
-          title: 'Dry Stone Wall Restored',
+          title: 'Dry stone wall restored',
           body: 'Restoration of the dry stone wall in the Lower Dell, an important Dell icon.',
         },
         {
           date: '2013',
-          title: 'Park Information Board Installed',
+          title: 'Park information board installed',
           body:
             'Welcome signs with message boards at the main entrances to the park are installed to orient visitors and provide space to market community events.',
         },
         {
           date: '2015',
-          title: 'Playground Constructed',
+          title: 'Playground constructed',
           body:
             'Baltimore City Department of Recreation and Parks constructs a new playground in the Dell. Ping Pong Baltimore partners with FWPD to install a ping pong table nearby.',
         },
         {
           date: '2016',
-          title: 'Shade Sail Installed',
+          title: 'Shade sail installed',
           body:
             'As an extension of the playground project, a shade sail is installed with support from the Homewood Community Partners Initiative.',
         },
         {
           date: '2017',
-          title: 'Tree Pruning',
+          title: 'Tree pruning',
           body: 'A grant from the Johns Hopkins Neighborhood Fund helps prune trees to improve safety and visibility.',
         },
         {
           date: '2020',
-          title: 'Slope Clearing',
+          title: 'Slope clearing',
           body: 'The FWPD crowdfunds money to hire Eco-Goats to clear the “BMA Slope” of invasive vegetation.',
         },
       ],

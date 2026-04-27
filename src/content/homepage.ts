@@ -21,13 +21,13 @@ export const homepage: PageContent = {
       },
       ctas: [
         {
-          label: "Get Involved",
+          label: "Get involved",
           href: "https://wymanparkdell.org/get-involved/",
           variant: "solid-inverse",
           external: true,
         },
         {
-          label: "Plan Your Visit",
+          label: "Plan your visit",
           href: "https://wymanparkdell.org/contact/#address",
           variant: "outline-inverse",
           external: true,
@@ -36,7 +36,7 @@ export const homepage: PageContent = {
     },
     {
       type: "events",
-      heading: "Upcoming Events",
+      heading: "Upcoming events",
       intro:
         "A variety of events take place in Wyman Park Dell throughout the year. From park clean-ups to neighborhood festivals, the Dell is the perfect place to celebrate community.",
       events: [
@@ -98,7 +98,7 @@ export const homepage: PageContent = {
     },
     {
       type: "sectionHeading",
-      heading: "How Will You Discover the Dell?",
+      heading: "How will you discover the Dell?",
       width: "medium",
       subheading:
         "The Wyman Park Dell is a 16-acre public park located south of Johns Hopkins University and the Baltimore Museum of Art.",
