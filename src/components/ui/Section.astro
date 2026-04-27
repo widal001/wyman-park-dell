@@ -1,0 +1,166 @@
+---
+type Padding = "default" | "small" | "large" | "xl" | "none";
+
+type Props = {
+  background?: "base" | "raised" | "inverse" | "accent";
+  padding?: Padding;
+  /** Optional override of the top padding only. Falls back to `padding` if omitted. */
+  paddingTop?: Padding;
+  /** Optional override of the bottom padding only. Falls back to `padding` if omitted. */
+  paddingBottom?: Padding;
+  bleed?: boolean;
+  class?: string;
+};
+
+const {
+  background = "base",
+  padding = "default",
+  paddingTop,
+  paddingBottom,
+  bleed = false,
+  class: className,
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    "section",
+    `section--bg-${background}`,
+    `section--pad-${padding}`,
+    paddingTop && `section--pt-${paddingTop}`,
+    paddingBottom && `section--pb-${paddingBottom}`,
+    bleed && "section--bleed",
+    className,
+  ]}
+>
+  <slot />
+</section>
+
+<style>
+  .section {
+    width: 100%;
+  }
+
+  /* Symmetric padding (default API). */
+  .section--pad-default {
+    padding-block: var(--section-padding-y);
+  }
+
+  .section--pad-small {
+    padding-block: var(--section-padding-y-sm);
+  }
+
+  .section--pad-large {
+    padding-block: var(--section-padding-y-lg);
+  }
+
+  .section--pad-xl {
+    padding-block: var(--section-padding-y-2xl);
+  }
+
+  .section--pad-none {
+    padding-block: 0;
+  }
+
+  /* Per-edge overrides — only emitted when paddingTop / paddingBottom are
+     explicitly passed. They override the symmetric rule above. */
+  .section--pt-default {
+    padding-block-start: var(--section-padding-y);
+  }
+  .section--pt-small {
+    padding-block-start: var(--section-padding-y-sm);
+  }
+  .section--pt-large {
+    padding-block-start: var(--section-padding-y-lg);
+  }
+  .section--pt-xl {
+    padding-block-start: var(--section-padding-y-xl);
+  }
+  .section--pt-none {
+    padding-block-start: 0;
+  }
+
+  .section--pb-default {
+    padding-block-end: var(--section-padding-y);
+  }
+  .section--pb-small {
+    padding-block-end: var(--section-padding-y-sm);
+  }
+  .section--pb-large {
+    padding-block-end: var(--section-padding-y-lg);
+  }
+  .section--pb-xl {
+    padding-block-end: var(--section-padding-y-xl);
+  }
+  .section--pb-none {
+    padding-block-end: 0;
+  }
+
+  .section--bg-base {
+    background: var(--color-surface-base);
+  }
+
+  .section--bg-raised {
+    background: var(--color-surface-raised);
+  }
+
+  .section--bg-inverse {
+    background: var(--color-surface-inverse);
+    color: var(--color-text-inverse);
+  }
+
+  .section--bg-inverse :global(h1),
+  .section--bg-inverse :global(h2),
+  .section--bg-inverse :global(h3),
+  .section--bg-inverse :global(h4) {
+    color: var(--color-text-inverse);
+  }
+
+  .section--bg-accent {
+    background: var(--color-brand-lime);
+  }
+
+  .section--bleed > :global(.container) {
+    padding-inline: 0;
+  }
+
+  @media (max-width: 768px) {
+    .section--pad-default {
+      padding-block: var(--space-12);
+    }
+    .section--pad-small {
+      padding-block: var(--space-10);
+    }
+    .section--pad-large {
+      padding-block: var(--space-16);
+    }
+    .section--pad-xl {
+      padding-block: var(--space-20);
+    }
+
+    .section--pt-default {
+      padding-block-start: var(--space-12);
+    }
+    .section--pt-small {
+      padding-block-start: var(--space-10);
+    }
+    .section--pt-large {
+      padding-block-start: var(--space-16);
+    }
+    .section--pt-xl {
+      padding-block-start: var(--space-20);
+    }
+    .section--pb-default {
+      padding-block-end: var(--space-12);
+    }
+    .section--pb-small {
+      padding-block-end: var(--space-10);
+    }
+    .section--pb-large {
+      padding-block-end: var(--space-16);
+    }
+    .section--pb-xl {
+      padding-block-end: var(--space-20);
+    }
+  }
+</style>
