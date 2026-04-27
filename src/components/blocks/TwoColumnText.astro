@@ -109,36 +109,8 @@ const hasCtaRow = leftCtas.length > 0 || resolvedRightCtas.length > 0;
     column-gap: var(--space-10);
   }
 
-  /* === Aligned variant: shared grid rows so headings, bodies, and CTAs line up across columns === */
-  .two-col--aligned {
-    grid-template-rows: 1fr;
-    row-gap: var(--space-2);
-  }
-
-  .two-col--aligned.two-col--has-heading {
-    grid-template-rows: auto 1fr;
-  }
-
-  .two-col--aligned.two-col--has-cta {
-    grid-template-rows: 1fr auto;
-  }
-
-  .two-col--aligned.two-col--has-heading.two-col--has-cta {
-    grid-template-rows: auto 1fr auto;
-  }
-
-  .two-col--aligned .two-col__heading--left  { grid-column: 1; grid-row: 1; }
-  .two-col--aligned .two-col__heading--right { grid-column: 2; grid-row: 1; }
-
-  .two-col--aligned .two-col__body--left  { grid-column: 1; }
-  .two-col--aligned .two-col__body--right { grid-column: 2; }
-
-  .two-col--aligned.two-col--has-heading .two-col__body--left,
-  .two-col--aligned.two-col--has-heading .two-col__body--right { grid-row: 2; }
-
-  .two-col--aligned:not(.two-col--has-heading) .two-col__body--left,
-  .two-col--aligned:not(.two-col--has-heading) .two-col__body--right { grid-row: 1; }
-
+  /* === Aligned variant: shared grid rows so headings, bodies, and CTAs line up across columns. ===
+     Grid placements are scoped to desktop so they don't conflict with the mobile single-column flow. */
   .two-col--aligned .two-col__ctas--left,
   .two-col--aligned .two-col__ctas--right {
     display: flex;
@@ -146,14 +118,45 @@ const hasCtaRow = leftCtas.length > 0 || resolvedRightCtas.length > 0;
     gap: var(--space-3);
   }
 
-  .two-col--aligned .two-col__ctas--left  { grid-column: 1; }
-  .two-col--aligned .two-col__ctas--right { grid-column: 2; }
+  @media (min-width: 769px) {
+    .two-col--aligned {
+      grid-template-rows: 1fr;
+      row-gap: var(--space-2);
+    }
 
-  .two-col--aligned.two-col--has-heading.two-col--has-cta .two-col__ctas--left,
-  .two-col--aligned.two-col--has-heading.two-col--has-cta .two-col__ctas--right { grid-row: 3; }
+    .two-col--aligned.two-col--has-heading {
+      grid-template-rows: auto 1fr;
+    }
 
-  .two-col--aligned:not(.two-col--has-heading).two-col--has-cta .two-col__ctas--left,
-  .two-col--aligned:not(.two-col--has-heading).two-col--has-cta .two-col__ctas--right { grid-row: 2; }
+    .two-col--aligned.two-col--has-cta {
+      grid-template-rows: 1fr auto;
+    }
+
+    .two-col--aligned.two-col--has-heading.two-col--has-cta {
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .two-col--aligned .two-col__heading--left  { grid-column: 1; grid-row: 1; }
+    .two-col--aligned .two-col__heading--right { grid-column: 2; grid-row: 1; }
+
+    .two-col--aligned .two-col__body--left  { grid-column: 1; }
+    .two-col--aligned .two-col__body--right { grid-column: 2; }
+
+    .two-col--aligned.two-col--has-heading .two-col__body--left,
+    .two-col--aligned.two-col--has-heading .two-col__body--right { grid-row: 2; }
+
+    .two-col--aligned:not(.two-col--has-heading) .two-col__body--left,
+    .two-col--aligned:not(.two-col--has-heading) .two-col__body--right { grid-row: 1; }
+
+    .two-col--aligned .two-col__ctas--left  { grid-column: 1; }
+    .two-col--aligned .two-col__ctas--right { grid-column: 2; }
+
+    .two-col--aligned.two-col--has-heading.two-col--has-cta .two-col__ctas--left,
+    .two-col--aligned.two-col--has-heading.two-col--has-cta .two-col__ctas--right { grid-row: 3; }
+
+    .two-col--aligned:not(.two-col--has-heading).two-col--has-cta .two-col__ctas--left,
+    .two-col--aligned:not(.two-col--has-heading).two-col--has-cta .two-col__ctas--right { grid-row: 2; }
+  }
 
   /* === Independent variant: each column flows its own content top-to-bottom === */
   .two-col--independent .two-col__column {
@@ -185,20 +188,10 @@ const hasCtaRow = leftCtas.length > 0 || resolvedRightCtas.length > 0;
   @media (max-width: 768px) {
     .two-col {
       grid-template-columns: 1fr;
-      grid-template-rows: none;
       row-gap: var(--space-6);
     }
 
-    .two-col--aligned .two-col__heading--left,
-    .two-col--aligned .two-col__heading--right,
-    .two-col--aligned .two-col__body--left,
-    .two-col--aligned .two-col__body--right,
-    .two-col--aligned .two-col__ctas--left,
-    .two-col--aligned .two-col__ctas--right {
-      grid-column: 1;
-      grid-row: auto;
-    }
-
+    /* Mobile stack order: left column first, then right column. */
     .two-col--aligned .two-col__heading--left  { order: 1; }
     .two-col--aligned .two-col__body--left     { order: 2; }
     .two-col--aligned .two-col__ctas--left     { order: 3; }
