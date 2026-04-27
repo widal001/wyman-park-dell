@@ -86,16 +86,24 @@ const { quote, attribution } = Astro.props;
 
   @media (max-width: 768px) {
     .testimonial {
-      padding: var(--space-14) var(--space-8);
+      padding: var(--space-12) var(--space-6);
     }
 
     .testimonial__mark {
       width: 48px;
       height: auto;
+      margin-bottom: var(--space-6);
     }
 
     .testimonial__quote {
       font-size: var(--font-size-md);
+      margin-bottom: var(--space-8);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .testimonial {
+      padding: var(--space-10) var(--space-5);
     }
   }
 </style>

@@ -36,9 +36,8 @@ export const site: SiteContent = {
   ],
   donateCta: {
     label: 'Donate',
-    href: 'https://wymanparkdell.org/donate/',
+    href: '/get-involved/',
     variant: 'outline',
-    external: true,
   },
   contact: {
     address: [
