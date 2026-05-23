@@ -47,7 +47,7 @@ export const homepage: PageContent = {
           location: "Wyman Park Dell — meet at the playground",
           body: "Join your neighbors for our biggest clean-up of the year. Tools, gloves, and refreshments provided. All ages welcome — kids especially love the wheelbarrows.",
           image: {
-            src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Friends.jpg",
+            src: "/_emdash/api/media/file/01KSB4BAACPZJKD91JH65Z79V6.jpg",
             alt: "Volunteers at a Wyman Park Dell clean-up",
           },
           cta: {
@@ -63,7 +63,7 @@ export const homepage: PageContent = {
           location: "Lower lawn, Wyman Park Dell",
           body: "Bring a blanket, a picnic, and the whole family. We project a family-friendly film on the big inflatable screen as the sun sets behind the slopes.",
           image: {
-            src: "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-2.jpg",
+            src: "/_emdash/api/media/file/01KSB4BADVHCJN58QM9P5R5F36.jpg",
             alt: "Wyman Park Dell at golden hour",
           },
           cta: {
@@ -79,7 +79,7 @@ export const homepage: PageContent = {
           location: "Wyman Park Dell",
           body: "A celebration of the Dell, the neighborhoods around it, and the people who keep it special. Live music, local food, kid activities, and a chance to meet the FWPD board.",
           image: {
-            src: "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-4.jpg",
+            src: "/_emdash/api/media/file/01KSB4BAFXVGKG0S6RH5JZSH4Y.jpg",
             alt: "A community gathering at Wyman Park Dell",
           },
           cta: {

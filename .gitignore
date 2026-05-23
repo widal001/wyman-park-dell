@@ -35,6 +35,7 @@ pnpm-debug.log*
 data.db
 data.db-*
 uploads/
+.image-cache/
 
 # Claude Code local settings
 .claude/

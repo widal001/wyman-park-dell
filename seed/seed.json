@@ -872,12 +872,12 @@
           "hero_heading": "Welcome to the Wyman Park Dell",
           "hero_body": "Surrounded by tree-lined slopes, the Dell is a green oasis in the heart of Central Baltimore where all are welcome. Your support is needed to keep this unique public space accessible — and extraordinary — for everyone.",
           "hero_image": {
-            "id": "ext_1cb33675fc20f33a",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Home-Page-Image-1024x554.webp",
+            "id": "01KSB460BG1CEMD83T8JTE4RBY",
+            "src": "/_emdash/api/media/file/01KSB460B743BDNXZSEKRGSQS4.webp",
             "alt": "Aerial view of Wyman Park Dell in summer",
             "width": 1024,
             "height": 554,
-            "provider": "external"
+            "provider": "local"
           },
           "hero_cta1_label": "Get involved",
           "hero_cta1_href": "https://wymanparkdell.org/get-involved/",
@@ -890,46 +890,46 @@
           "discover_heading": "How will you discover the Dell?",
           "discover_subheading": "The Wyman Park Dell is a 16-acre public park located south of Johns Hopkins University and the Baltimore Museum of Art.",
           "activity_grid_image": {
-            "id": "ext_c99ca920d8536d9a",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Dell-Plan.jpg",
+            "id": "01KSB460G9TXS3CGKQ716EVYHX",
+            "src": "/_emdash/api/media/file/01KSB460DRNMGTM4Z3AP07XH1P.jpg",
             "alt": "Master plan illustration of Wyman Park Dell",
             "width": 800,
             "height": 660,
-            "provider": "external"
+            "provider": "local"
           },
           "testimonial_quote": "Wyman Park Dell is a beautiful, charming oasis in Charles Village. Great place to unwind, walk your dog, read a book, or just quietly reflect.",
           "testimonial_attribution": "Park Visitor",
           "gallery_image_1": {
-            "id": "ext_8eb2f50f89ac6da4",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Home-Page_WPD.jpg",
+            "id": "01KSB460N1J8SA6JKR6XFCFF19",
+            "src": "/_emdash/api/media/file/01KSB460K9YS8KR625SAYMCJDB.jpg",
             "alt": "A sunny day at Wyman Park Dell",
             "width": 792,
             "height": 792,
-            "provider": "external"
+            "provider": "local"
           },
           "gallery_image_2": {
-            "id": "ext_2e50b5c257fea3d0",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-2.jpg",
+            "id": "01KSB460R1VGF4XXWHJ9T7RQ2W",
+            "src": "/_emdash/api/media/file/01KSB460Q56084MRDN4VDWFA6G.jpg",
             "alt": "Visitors enjoying the lower lawn",
             "width": 700,
             "height": 467,
-            "provider": "external"
+            "provider": "local"
           },
           "gallery_image_3": {
-            "id": "ext_56de9f5560ad20c2",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-3.jpg",
+            "id": "01KSB460V5H7REYREZDWK2RJS3",
+            "src": "/_emdash/api/media/file/01KSB460T2BZSKPG350BH98M8P.jpg",
             "alt": "Tree-lined slopes of the Dell in fall",
             "width": 800,
             "height": 533,
-            "provider": "external"
+            "provider": "local"
           },
           "gallery_image_4": {
-            "id": "ext_9fd84626e3596cf3",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-4.jpg",
+            "id": "01KSB460YEVTVT8DFFTV1JW49W",
+            "src": "/_emdash/api/media/file/01KSB460X9N2NQQ0B93MRZSZ4C.jpg",
             "alt": "A community gathering at Wyman Park Dell",
             "width": 800,
             "height": 533,
-            "provider": "external"
+            "provider": "local"
           }
         }
       }
@@ -942,17 +942,17 @@
         "data": {
           "hero_heading": "About Wyman Park Dell",
           "hero_image": {
-            "id": "ext_de1a21860a91d7dc",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/About_Dell.jpg",
+            "id": "01KSB4611JPG0X0T5XCH562K1M",
+            "src": "/_emdash/api/media/file/01KSB4610E7PJNGP1YDR3MKXF1.jpg",
             "alt": "Wyman Park Dell from above",
-            "provider": "external"
+            "provider": "local"
           },
           "history_heading": "Park history",
           "history_image": {
-            "id": "ext_987f856f0ba94273",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/12/Park-History.jpg",
+            "id": "01KSB4614KPD8CKA7E2SF64Y84",
+            "src": "/_emdash/api/media/file/01KSB4613Z5T23D90W3W1EJN9D.jpg",
             "alt": "Historic photograph of the Wyman Park Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "history_body": [
             {
@@ -1161,10 +1161,10 @@
           "credits_cta_href": "/friends-of-wyman-park-dell/",
           "tubman_heading": "Harriet Tubman Grove",
           "tubman_image": {
-            "id": "ext_1a03ff45934e6f80",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Harriet-Tubman-Grove.jpg",
+            "id": "01KSB461B2VNBK0PA14GWN24VW",
+            "src": "/_emdash/api/media/file/01KSB46177GAYAQK599BH1S8SP.jpg",
             "alt": "Harriet Tubman Grove at Wyman Park Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "tubman_body": [
             {
@@ -1272,28 +1272,28 @@
           "testimonial_quote": "Great little slice of nature in the middle of Charles Village.",
           "testimonial_attribution": "Park Visitor",
           "gallery_image_1": {
-            "id": "ext_90f4a92420e5d217",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Park_Stairs.jpg",
+            "id": "01KSB461DGV6H5D915V9KYHFDJ",
+            "src": "/_emdash/api/media/file/01KSB461D0D3SS0JX7Q2EY1NA1.jpg",
             "alt": "Stone stairs leading into the Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "gallery_image_2": {
-            "id": "ext_30b35851e7f9f5b0",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Fall.jpg",
+            "id": "01KSB461FYSCSD7QBVESECB4CX",
+            "src": "/_emdash/api/media/file/01KSB461FCSNK0ECJNGC32Z700.jpg",
             "alt": "Wyman Park Dell in fall",
-            "provider": "external"
+            "provider": "local"
           },
           "gallery_image_3": {
-            "id": "ext_2e50b5c257fea3d0",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-2.jpg",
+            "id": "01KSB460R1VGF4XXWHJ9T7RQ2W",
+            "src": "/_emdash/api/media/file/01KSB460Q56084MRDN4VDWFA6G.jpg",
             "alt": "Wyman Park Dell in summer",
-            "provider": "external"
+            "provider": "local"
           },
           "gallery_image_4": {
-            "id": "ext_25ee30779b1be577",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Winter.jpg",
+            "id": "01KSB461K5T65KTMY42R0XV0V8",
+            "src": "/_emdash/api/media/file/01KSB461J7WR09A36BRNJ8RT93.jpg",
             "alt": "Wyman Park Dell in winter",
-            "provider": "external"
+            "provider": "local"
           }
         }
       }
@@ -1306,10 +1306,10 @@
         "data": {
           "hero_heading": "Visit us",
           "hero_image": {
-            "id": "ext_caa5760cb0033274",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Contact-Us_WymanPark-Snow-2021.jpg",
+            "id": "01KSB461P4PSQ655H1B4D9975X",
+            "src": "/_emdash/api/media/file/01KSB461N2JGKYFV527XJQZ1C3.jpg",
             "alt": "Wyman Park Dell on a snowy day",
-            "provider": "external"
+            "provider": "local"
           },
           "address_body": [
             {
@@ -1428,10 +1428,10 @@
         "data": {
           "hero_heading": "Join us at the Dell",
           "hero_image": {
-            "id": "ext_90b8549b0d4367ca",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/12/Events-banner-scaled.jpg",
+            "id": "01KSB461WH45MBFGBBSHG4HWD9",
+            "src": "/_emdash/api/media/file/01KSB461R5BZ2YS36RX221RFB9.jpg",
             "alt": "A community gathering at Wyman Park Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "events_section_heading": "Our events",
           "events_section_intro": "A variety of events take place in Wyman Park Dell throughout the year. From park clean-ups to neighborhood festivals, the Dell is the perfect place to celebrate community.",
@@ -1505,18 +1505,18 @@
         "data": {
           "hero_heading": "Friends of Wyman Park Dell",
           "hero_image": {
-            "id": "ext_4243e9edd6c01a65",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/1_Home-Page_DellWeb_05172020-7-1.jpg",
+            "id": "01KSB46246N0FXC0EERRVYA0G9",
+            "src": "/_emdash/api/media/file/01KSB461YVGGRJWEQQ0AK8SVFC.jpg",
             "alt": "A boy on a scooter at Wyman Park Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "lead_paragraph": "The Friends of Wyman Park Dell is a 501(c)(3) volunteer-run nonprofit with a mission to preserve, protect, and maintain Wyman Park Dell, an Olmsted legacy park at the intersection of Baltimore’s Charles Village and Remington neighborhoods.",
           "history_heading": "How we got started",
           "history_image": {
-            "id": "ext_a75970df803fe836",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Friends.jpg",
+            "id": "01KSB4626R1XTFM9YZRT20R25N",
+            "src": "/_emdash/api/media/file/01KSB462637JCDMJB23J16J8WM.jpg",
             "alt": "FWPD volunteers cleaning up the Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "history_body": [
             {
@@ -1737,18 +1737,18 @@
         "data": {
           "hero_heading": "Become a Friend of the Dell",
           "hero_image": {
-            "id": "ext_9a3357329158049a",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/12/241433689_10159395889436061_7809489849254585591_n.jpg",
+            "id": "01KSB462CMTJ51HSB0TZNSGMT2",
+            "src": "/_emdash/api/media/file/01KSB4628MXYQRWT1V780962AT.jpg",
             "alt": "Friends of Wyman Park Dell volunteers gathered for a clean-up",
-            "provider": "external"
+            "provider": "local"
           },
           "lead_paragraph": "The Dell is almost entirely supported by people like you. As a nonprofit, the Friends of Wyman Park Dell need your support to keep this public space accessible — and extraordinary — for everyone.",
           "donate_heading": "Make a donation",
           "donate_image": {
-            "id": "ext_2c0c883c905bdad5",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/12/Volunteer.jpg",
+            "id": "01KSB462FB25TNK0CDDPH11KDQ",
+            "src": "/_emdash/api/media/file/01KSB462EP20HM79Z8Q128EP5X.jpg",
             "alt": "Volunteers gathered at Wyman Park Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "donate_body": [
             {
@@ -1836,10 +1836,10 @@
           "donate_cta_href": "https://wymanparkdell.org/donate/",
           "volunteer_heading": "Become a volunteer",
           "volunteer_image": {
-            "id": "ext_264a7a713f51b8a6",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Get-Involved-2-1.jpg",
+            "id": "01KSB462SB6GD5NRZJ7MV6MA29",
+            "src": "/_emdash/api/media/file/01KSB462H9YHG368TE0ZNH1G8N.jpg",
             "alt": "Volunteers smiling after a Wyman Park Dell clean-up",
-            "provider": "external"
+            "provider": "local"
           },
           "volunteer_body": [
             {
@@ -1894,28 +1894,28 @@
           "testimonial_quote": "We’re always looking to collaborate with local businesses and organizations. Email us if you’d like to collaborate on making something happen at the Dell.",
           "testimonial_attribution": "Friends of Wyman Park Dell",
           "gallery_image_1": {
-            "id": "ext_23dfb13c9a72575a",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Volunteer_1.jpg",
+            "id": "01KSB462XATQBJNT38PVT531FF",
+            "src": "/_emdash/api/media/file/01KSB462VE8XX7VF146ETTFX8F.jpg",
             "alt": "Volunteers gathered at Wyman Park Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "gallery_image_2": {
-            "id": "ext_cc57df7114d52a10",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Volunteer_2.jpg",
+            "id": "01KSB46302YERBP87THVPC4R9H",
+            "src": "/_emdash/api/media/file/01KSB462Z92P77WGJPEPFR5VPP.jpg",
             "alt": "FWPD volunteers tending to the park",
-            "provider": "external"
+            "provider": "local"
           },
           "gallery_image_3": {
-            "id": "ext_da0d5a09d10b2b74",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Volunteer_3.jpg",
+            "id": "01KSB4632KA7CM09KDPP3A5H4K",
+            "src": "/_emdash/api/media/file/01KSB46327F5V47FVXBY1M0EKF.jpg",
             "alt": "A volunteer working in the Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "gallery_image_4": {
-            "id": "ext_40677e7f62ca733f",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Volunteer_4.jpg",
+            "id": "01KSB4634WJS3HRNA9C36XVZKR",
+            "src": "/_emdash/api/media/file/01KSB4634FT782VCDKYXPQD6AH.jpg",
             "alt": "Volunteers smiling after a clean-up",
-            "provider": "external"
+            "provider": "local"
           }
         }
       }
@@ -1932,10 +1932,10 @@
           "location": "Wyman Park Dell — meet at the playground",
           "summary": "Join your neighbors for our biggest clean-up of the year. Tools, gloves, and refreshments provided. All ages welcome — kids especially love the wheelbarrows.",
           "image": {
-            "id": "ext_a75970df803fe836",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Friends.jpg",
+            "id": "01KSB4626R1XTFM9YZRT20R25N",
+            "src": "/_emdash/api/media/file/01KSB462637JCDMJB23J16J8WM.jpg",
             "alt": "Volunteers at a Wyman Park Dell clean-up",
-            "provider": "external"
+            "provider": "local"
           },
           "cta_label": "RSVP",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -1952,10 +1952,10 @@
           "location": "Lower lawn, Wyman Park Dell",
           "summary": "Bring a blanket, a picnic, and the whole family. We project a family-friendly film on the big inflatable screen as the sun sets behind the slopes.",
           "image": {
-            "id": "ext_2e50b5c257fea3d0",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-2.jpg",
+            "id": "01KSB460R1VGF4XXWHJ9T7RQ2W",
+            "src": "/_emdash/api/media/file/01KSB460Q56084MRDN4VDWFA6G.jpg",
             "alt": "Wyman Park Dell at golden hour",
-            "provider": "external"
+            "provider": "local"
           },
           "cta_label": "Add to calendar",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -1972,10 +1972,10 @@
           "location": "Wyman Park Dell",
           "summary": "A celebration of the Dell, the neighborhoods around it, and the people who keep it special. Live music, local food, kid activities, and a chance to meet the FWPD board.",
           "image": {
-            "id": "ext_9fd84626e3596cf3",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-4.jpg",
+            "id": "01KSB460YEVTVT8DFFTV1JW49W",
+            "src": "/_emdash/api/media/file/01KSB460X9N2NQQ0B93MRZSZ4C.jpg",
             "alt": "A community gathering at Wyman Park Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "cta_label": "Learn more",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -1992,10 +1992,10 @@
           "location": "Lower Dell",
           "summary": "A joyful “color fight” in the lower Dell to mark the arrival of spring, organized by local restaurant Sweet 27 in partnership with the Friends of Wyman Park Dell.",
           "image": {
-            "id": "ext_149bd7f741ac0bf3",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Events_Holi-Colors-Celebration.jpg",
+            "id": "01KSB4637TTGGHGFWP4P31Z1A1",
+            "src": "/_emdash/api/media/file/01KSB4636M1ZK75976VK99A8EG.jpg",
             "alt": "Holi Color Celebration at the Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "cta_label": "Learn more",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -2012,10 +2012,10 @@
           "location": "Wyman Park Dell",
           "summary": "Gather with neighbors to celebrate the Winter Solstice. Music, marshmallows, and hot drinks and cookies provided by local restaurant Gertrude’s.",
           "image": {
-            "id": "ext_57bc410b6f476191",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Events_Winter-Solstice.jpg",
+            "id": "01KSB463ANTKKQ00F7Y7M8V62P",
+            "src": "/_emdash/api/media/file/01KSB4639NGZPPD2JXRM46G64C.jpg",
             "alt": "Winter Solstice gathering at the Dell",
-            "provider": "external"
+            "provider": "local"
           },
           "cta_label": "Add to calendar",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -2222,12 +2222,12 @@
         "data": {
           "name": "Baltimore City",
           "logo": {
-            "id": "ext_d3d46e91fcedddd2",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/B-More-City-Logo.jpg",
+            "id": "01KSB463CPTN897XB4R9AR4R9P",
+            "src": "/_emdash/api/media/file/01KSB463CJJ7KYFCBK8NXVBAX3.jpg",
             "alt": "Baltimore City",
             "width": 200,
             "height": 80,
-            "provider": "external"
+            "provider": "local"
           },
           "url": "https://baltimorecity.gov/",
           "sort_order": 0
@@ -2240,12 +2240,12 @@
         "data": {
           "name": "Baltimore National Heritage Area",
           "logo": {
-            "id": "ext_a07a7772a1c50ca9",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/B-more-National-logo.jpg",
+            "id": "01KSB463EJNZZ12YSSCXQ0X440",
+            "src": "/_emdash/api/media/file/01KSB463EESAWGGBR2YSYFNJST.jpg",
             "alt": "Baltimore National Heritage Area",
             "width": 200,
             "height": 80,
-            "provider": "external"
+            "provider": "local"
           },
           "url": "https://explorebaltimore.org/",
           "sort_order": 1
@@ -2258,12 +2258,12 @@
         "data": {
           "name": "Charles Village Civic Association",
           "logo": {
-            "id": "ext_ee0c2129c02ad025",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Charles-Village-Logo.jpg",
+            "id": "01KSB463GN7TDEQQXZCFPVDKTW",
+            "src": "/_emdash/api/media/file/01KSB463GHSTG6D177A9GSFA4S.jpg",
             "alt": "Charles Village Civic Association",
             "width": 200,
             "height": 80,
-            "provider": "external"
+            "provider": "local"
           },
           "url": "https://charlesvillage.org/",
           "sort_order": 2
@@ -2276,12 +2276,12 @@
         "data": {
           "name": "Johns Hopkins University",
           "logo": {
-            "id": "ext_dfa5d10ca5554d17",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/John-Hopkins-logo.jpg",
+            "id": "01KSB463JGZ2DTM32CBJMXR2F8",
+            "src": "/_emdash/api/media/file/01KSB463JC5FXEZNCY83J1EHNE.jpg",
             "alt": "Johns Hopkins University",
             "width": 200,
             "height": 80,
-            "provider": "external"
+            "provider": "local"
           },
           "url": "https://www.jhu.edu/",
           "sort_order": 3
@@ -2294,12 +2294,12 @@
         "data": {
           "name": "Maryland",
           "logo": {
-            "id": "ext_301648cd9f88a97d",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Maryland-Logo.jpg",
+            "id": "01KSB463M96Y5HJSQ8CBRXFER7",
+            "src": "/_emdash/api/media/file/01KSB463M4W7QGJZC1MZCN4QJM.jpg",
             "alt": "State of Maryland",
             "width": 200,
             "height": 80,
-            "provider": "external"
+            "provider": "local"
           },
           "url": "https://www.maryland.gov/",
           "sort_order": 4
@@ -2312,12 +2312,12 @@
         "data": {
           "name": "Maryland State Arts Council",
           "logo": {
-            "id": "ext_5ed74589097c71a2",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/MSAC-logo.jpg",
+            "id": "01KSB463PEWKXTEA5RAQKNHNTH",
+            "src": "/_emdash/api/media/file/01KSB463PAFEF4ABVMXW65DVQA.jpg",
             "alt": "Maryland State Arts Council",
             "width": 200,
             "height": 80,
-            "provider": "external"
+            "provider": "local"
           },
           "url": "https://msac.org/",
           "sort_order": 5
@@ -2330,12 +2330,12 @@
         "data": {
           "name": "Ace Hardware",
           "logo": {
-            "id": "ext_9364cae71376fcf2",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Ace-logo.jpg",
+            "id": "01KSB463RAJGY8SVA8DW68YZRR",
+            "src": "/_emdash/api/media/file/01KSB463R57HDNRNW2A9YR6P00.jpg",
             "alt": "Ace Hardware",
             "width": 200,
             "height": 80,
-            "provider": "external"
+            "provider": "local"
           },
           "url": "https://www.acehardware.com/",
           "sort_order": 6
@@ -2349,12 +2349,12 @@
         "status": "published",
         "data": {
           "logo_inverse": {
-            "id": "ext_ec15be6ca342ec97",
-            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/FWPD-WHITE.png",
+            "id": "01KSB463V72N65QM07MNH3517H",
+            "src": "/_emdash/api/media/file/01KSB463T1TJ9CJ7005HK9N6HB.png",
             "alt": "Friends of Wyman Park Dell",
             "width": 200,
             "height": 80,
-            "provider": "external"
+            "provider": "local"
           },
           "donate_cta_label": "Donate",
           "donate_cta_href": "/get-involved/",
