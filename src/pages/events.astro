@@ -7,7 +7,8 @@ import { ptToHtml } from '../lib/pt';
 import type { ContentBlock } from '../types/content';
 
 const { entries } = await getEmDashCollection('events_page_content');
-const c = entries[0]?.data;
+const entry = entries[0];
+const c = entry?.data;
 
 if (!c) {
   return new Response('Events page content has not been seeded. Visit /_emdash/admin.', { status: 503 });
@@ -117,5 +118,7 @@ const blocks = compact<ContentBlock>([
 ---
 
 <BaseLayout title="Events" description="Join us at Wyman Park Dell. Annual celebrations, neighborhood gatherings, and community events year-round.">
-  <BlockRenderer blocks={blocks} />
+  <div {...entry?.edit}>
+    <BlockRenderer blocks={blocks} />
+  </div>
 </BaseLayout>

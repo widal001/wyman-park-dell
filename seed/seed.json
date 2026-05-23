@@ -134,7 +134,8 @@
           "label": "Gallery image 4",
           "type": "image"
         }
-      ]
+      ],
+      "urlPattern": "/"
     },
     {
       "slug": "about_content",
@@ -279,7 +280,8 @@
           "label": "Gallery image 4",
           "type": "image"
         }
-      ]
+      ],
+      "urlPattern": "/about-the-park/"
     },
     {
       "slug": "contact_content",
@@ -326,7 +328,8 @@
           "label": "Contact form intro",
           "type": "portableText"
         }
-      ]
+      ],
+      "urlPattern": "/contact/"
     },
     {
       "slug": "events_page_content",
@@ -437,7 +440,8 @@
           "label": "Newsletter subheading",
           "type": "string"
         }
-      ]
+      ],
+      "urlPattern": "/events/"
     },
     {
       "slug": "friends_content",
@@ -561,7 +565,8 @@
           "label": "Testimonial attribution",
           "type": "string"
         }
-      ]
+      ],
+      "urlPattern": "/friends-of-wyman-park-dell/"
     },
     {
       "slug": "get_involved_content",
@@ -665,7 +670,8 @@
           "label": "Gallery image 4",
           "type": "image"
         }
-      ]
+      ],
+      "urlPattern": "/get-involved/"
     },
     {
       "slug": "events",

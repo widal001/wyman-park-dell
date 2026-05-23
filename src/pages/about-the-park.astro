@@ -7,7 +7,8 @@ import { ptToHtml } from '../lib/pt';
 import type { ContentBlock } from '../types/content';
 
 const { entries } = await getEmDashCollection('about_content');
-const c = entries[0]?.data;
+const entry = entries[0];
+const c = entry?.data;
 
 if (!c) {
   return new Response(
@@ -133,5 +134,7 @@ const blocks = compact<ContentBlock>([
 ---
 
 <BaseLayout title={c.hero_heading} description="The Wyman Park Dell is a 16-acre Olmsted-designed public park in Central Baltimore. Read about its history, master plan, and Harriet Tubman Grove.">
-  <BlockRenderer blocks={blocks} />
+  <div {...entry?.edit}>
+    <BlockRenderer blocks={blocks} />
+  </div>
 </BaseLayout>

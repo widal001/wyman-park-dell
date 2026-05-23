@@ -7,7 +7,8 @@ import { ptToHtml } from '../lib/pt';
 import type { ContentBlock } from '../types/content';
 
 const { entries } = await getEmDashCollection('friends_content');
-const c = entries[0]?.data;
+const entry = entries[0];
+const c = entry?.data;
 
 if (!c) {
   return new Response('Friends page content has not been seeded. Visit /_emdash/admin.', { status: 503 });
@@ -143,5 +144,7 @@ const blocks = compact<ContentBlock>([
 ---
 
 <BaseLayout title="Friends of Wyman Park Dell" description="The Friends of Wyman Park Dell is a 501(c)(3) volunteer-run nonprofit dedicated to preserving, protecting, and maintaining Wyman Park Dell.">
-  <BlockRenderer blocks={blocks} />
+  <div {...entry?.edit}>
+    <BlockRenderer blocks={blocks} />
+  </div>
 </BaseLayout>

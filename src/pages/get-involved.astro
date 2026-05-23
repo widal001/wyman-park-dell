@@ -7,7 +7,8 @@ import { ptToHtml } from '../lib/pt';
 import type { ContentBlock } from '../types/content';
 
 const { entries } = await getEmDashCollection('get_involved_content');
-const c = entries[0]?.data;
+const entry = entries[0];
+const c = entry?.data;
 
 if (!c) {
   return new Response('Get-involved content has not been seeded. Visit /_emdash/admin.', { status: 503 });
@@ -67,5 +68,7 @@ const blocks = compact<ContentBlock>([
 ---
 
 <BaseLayout title="Get involved" description="Become a Friend of the Dell. Donate, volunteer, or partner with the Friends of Wyman Park Dell to help keep this Baltimore park accessible and extraordinary for everyone.">
-  <BlockRenderer blocks={blocks} />
+  <div {...entry?.edit}>
+    <BlockRenderer blocks={blocks} />
+  </div>
 </BaseLayout>
