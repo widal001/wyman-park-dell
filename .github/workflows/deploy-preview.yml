@@ -1,0 +1,67 @@
+name: Deploy preview
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+# One preview per PR; new commits cancel the in-flight build.
+concurrency:
+  group: deploy-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  preview:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm astro check
+
+      - name: Build
+        run: pnpm build
+
+      - name: Upload Worker version (preview)
+        id: deploy
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >
+            versions upload
+            --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}"
+
+      - name: Extract preview URL
+        id: url
+        run: |
+          # `wrangler versions upload` prints "Version Preview URL: https://<id>-<name>.workers.dev"
+          url=$(printf '%s\n' "${{ steps.deploy.outputs.command-output }}" | grep -Eo 'https://[a-z0-9.-]+\.workers\.dev' | head -n1)
+          echo "url=${url}" >> "$GITHUB_OUTPUT"
+
+      - name: Comment preview URL on PR
+        if: steps.url.outputs.url != ''
+        uses: marocchino/sticky-pull-request-comment@v3
+        with:
+          header: cloudflare-preview
+          message: |
+            ### Cloudflare Workers preview
+
+            Preview deployed for `${{ github.event.pull_request.head.sha }}`:
+
+            **${{ steps.url.outputs.url }}**
+
+            This preview hits the same D1 + R2 bindings as production, so it shows live data with this PR's code on top. Edits made via the admin in the preview persist to prod.
