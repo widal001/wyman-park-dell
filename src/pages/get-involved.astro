@@ -1,9 +1,71 @@
 ---
+import { getEmDashCollection } from 'emdash';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
-import { getInvolved } from '../content/get-involved';
+import { compact, cta, imageRef } from '../lib/content-adapter';
+import { ptToHtml } from '../lib/pt';
+import type { ContentBlock } from '../types/content';
+
+const { entries } = await getEmDashCollection('get_involved_content');
+const c = entries[0]?.data;
+
+if (!c) {
+  return new Response('Get-involved content has not been seeded. Visit /_emdash/admin.', { status: 503 });
+}
+
+const blocks = compact<ContentBlock>([
+  {
+    type: 'hero',
+    variant: 'standard',
+    heading: c.hero_heading,
+    image: imageRef(c.hero_image),
+  },
+  c.lead_paragraph
+    ? {
+        type: 'sectionHeading',
+        variant: 'lead',
+        width: 'medium',
+        heading: c.lead_paragraph,
+        align: 'center',
+        headingColor: 'dark',
+      }
+    : undefined,
+  {
+    type: 'textWithMedia',
+    heading: c.donate_heading,
+    mediaPosition: 'left',
+    image: imageRef(c.donate_image) ?? { src: '', alt: '' },
+    html: ptToHtml(c.donate_body),
+    ctas: compact([cta(c.donate_cta_label, c.donate_cta_href, { variant: 'outline', external: true })]),
+  },
+  {
+    type: 'volunteerForm',
+    heading: c.volunteer_heading,
+    mediaPosition: 'right',
+    image: imageRef(c.volunteer_image) ?? { src: '', alt: '' },
+    html: ptToHtml(c.volunteer_body),
+    submitLabel: 'Sign up',
+  },
+  c.testimonial_quote
+    ? {
+        type: 'testimonial',
+        quote: c.testimonial_quote,
+        attribution: c.testimonial_attribution,
+      }
+    : undefined,
+  {
+    type: 'gallery',
+    layout: 'mosaic',
+    images: compact([
+      imageRef(c.gallery_image_1),
+      imageRef(c.gallery_image_2),
+      imageRef(c.gallery_image_3),
+      imageRef(c.gallery_image_4),
+    ]),
+  },
+]);
 ---
 
-<BaseLayout title={getInvolved.title} description={getInvolved.metaDescription}>
-  <BlockRenderer blocks={getInvolved.blocks} />
+<BaseLayout title="Get involved" description="Become a Friend of the Dell. Donate, volunteer, or partner with the Friends of Wyman Park Dell to help keep this Baltimore park accessible and extraordinary for everyone.">
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

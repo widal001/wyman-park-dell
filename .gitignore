@@ -29,6 +29,12 @@ pnpm-debug.log*
 # Cloudflare wrangler
 .wrangler/
 .dev.vars
+.dev.vars.*
+
+# EmDash local-only state (replaced by D1 + R2 in production)
+data.db
+data.db-*
+uploads/
 
 # Claude Code local settings
 .claude/

@@ -1,0 +1,2446 @@
+{
+  "$schema": "https://emdashcms.com/seed.schema.json",
+  "version": "1",
+  "meta": {
+    "name": "Friends of Wyman Park Dell",
+    "description": "Friends of Wyman Park Dell site, powered by EmDash CMS"
+  },
+  "settings": {
+    "title": "Friends of Wyman Park Dell",
+    "tagline": "A green oasis in the heart of Central Baltimore where all are welcome.",
+    "timezone": "America/New_York",
+    "dateFormat": "MMMM d, yyyy",
+    "postsPerPage": 10,
+    "social": {
+      "facebook": "https://www.facebook.com/wymanparkdell/",
+      "instagram": "https://www.instagram.com/wymanparkdell/",
+      "youtube": "https://www.youtube.com/channel/UCHgICuR617nXurJEXxILXEw/videos"
+    }
+  },
+  "collections": [
+    {
+      "slug": "homepage_content",
+      "label": "Homepage",
+      "labelSingular": "Homepage content",
+      "description": "Editable content for the site homepage. Layout (block order) is fixed in code.",
+      "icon": "home",
+      "supports": [
+        "drafts",
+        "search"
+      ],
+      "fields": [
+        {
+          "slug": "hero_heading",
+          "label": "Hero heading",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "hero_body",
+          "label": "Hero body",
+          "type": "text",
+          "searchable": true
+        },
+        {
+          "slug": "hero_image",
+          "label": "Hero image",
+          "type": "image"
+        },
+        {
+          "slug": "hero_cta1_label",
+          "label": "Hero CTA 1 label",
+          "type": "string"
+        },
+        {
+          "slug": "hero_cta1_href",
+          "label": "Hero CTA 1 URL",
+          "type": "string"
+        },
+        {
+          "slug": "hero_cta2_label",
+          "label": "Hero CTA 2 label",
+          "type": "string"
+        },
+        {
+          "slug": "hero_cta2_href",
+          "label": "Hero CTA 2 URL",
+          "type": "string"
+        },
+        {
+          "slug": "events_section_heading",
+          "label": "Events section heading",
+          "type": "string",
+          "searchable": true
+        },
+        {
+          "slug": "events_section_intro",
+          "label": "Events section intro",
+          "type": "text"
+        },
+        {
+          "slug": "events_view_all_label",
+          "label": "Events \"view all\" label",
+          "type": "string"
+        },
+        {
+          "slug": "events_view_all_href",
+          "label": "Events \"view all\" URL",
+          "type": "string"
+        },
+        {
+          "slug": "discover_heading",
+          "label": "\"Discover\" heading",
+          "type": "string",
+          "searchable": true
+        },
+        {
+          "slug": "discover_subheading",
+          "label": "\"Discover\" subheading",
+          "type": "text"
+        },
+        {
+          "slug": "activity_grid_image",
+          "label": "Activity grid feature image (master plan illustration)",
+          "type": "image"
+        },
+        {
+          "slug": "testimonial_quote",
+          "label": "Testimonial quote",
+          "type": "text"
+        },
+        {
+          "slug": "testimonial_attribution",
+          "label": "Testimonial attribution",
+          "type": "string"
+        },
+        {
+          "slug": "gallery_image_1",
+          "label": "Gallery image 1",
+          "type": "image"
+        },
+        {
+          "slug": "gallery_image_2",
+          "label": "Gallery image 2",
+          "type": "image"
+        },
+        {
+          "slug": "gallery_image_3",
+          "label": "Gallery image 3",
+          "type": "image"
+        },
+        {
+          "slug": "gallery_image_4",
+          "label": "Gallery image 4",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "slug": "about_content",
+      "label": "About page",
+      "labelSingular": "About page content",
+      "description": "Editable content for /about-the-park/. Block sequence is fixed in code.",
+      "icon": "info",
+      "supports": [
+        "drafts",
+        "search",
+        "seo"
+      ],
+      "fields": [
+        {
+          "slug": "hero_heading",
+          "label": "Hero heading",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "hero_image",
+          "label": "Hero image",
+          "type": "image"
+        },
+        {
+          "slug": "history_heading",
+          "label": "Park history heading",
+          "type": "string",
+          "searchable": true
+        },
+        {
+          "slug": "history_image",
+          "label": "Park history image",
+          "type": "image"
+        },
+        {
+          "slug": "history_body",
+          "label": "Park history body",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "history_cta1_label",
+          "label": "Park history CTA 1 label",
+          "type": "string"
+        },
+        {
+          "slug": "history_cta1_href",
+          "label": "Park history CTA 1 URL",
+          "type": "string"
+        },
+        {
+          "slug": "history_cta2_label",
+          "label": "Park history CTA 2 label",
+          "type": "string"
+        },
+        {
+          "slug": "history_cta2_href",
+          "label": "Park history CTA 2 URL",
+          "type": "string"
+        },
+        {
+          "slug": "cta_bar_heading",
+          "label": "CTA bar heading (improvements prompt)",
+          "type": "string"
+        },
+        {
+          "slug": "cta_bar_label",
+          "label": "CTA bar button label",
+          "type": "string"
+        },
+        {
+          "slug": "cta_bar_href",
+          "label": "CTA bar button URL",
+          "type": "string"
+        },
+        {
+          "slug": "credits_left_body",
+          "label": "Master plan credits body",
+          "type": "portableText"
+        },
+        {
+          "slug": "credits_right_body",
+          "label": "Continuing implementation body",
+          "type": "portableText"
+        },
+        {
+          "slug": "credits_cta_label",
+          "label": "Credits CTA label",
+          "type": "string"
+        },
+        {
+          "slug": "credits_cta_href",
+          "label": "Credits CTA URL",
+          "type": "string"
+        },
+        {
+          "slug": "tubman_heading",
+          "label": "Harriet Tubman Grove heading",
+          "type": "string",
+          "searchable": true
+        },
+        {
+          "slug": "tubman_image",
+          "label": "Harriet Tubman Grove image",
+          "type": "image"
+        },
+        {
+          "slug": "tubman_body",
+          "label": "Harriet Tubman Grove body",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "testimonial_quote",
+          "label": "Testimonial quote",
+          "type": "text"
+        },
+        {
+          "slug": "testimonial_attribution",
+          "label": "Testimonial attribution",
+          "type": "string"
+        },
+        {
+          "slug": "gallery_image_1",
+          "label": "Gallery image 1",
+          "type": "image"
+        },
+        {
+          "slug": "gallery_image_2",
+          "label": "Gallery image 2",
+          "type": "image"
+        },
+        {
+          "slug": "gallery_image_3",
+          "label": "Gallery image 3",
+          "type": "image"
+        },
+        {
+          "slug": "gallery_image_4",
+          "label": "Gallery image 4",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "slug": "contact_content",
+      "label": "Contact page",
+      "labelSingular": "Contact page content",
+      "description": "Editable content for /contact/.",
+      "icon": "mail",
+      "supports": [
+        "drafts",
+        "search",
+        "seo"
+      ],
+      "fields": [
+        {
+          "slug": "hero_heading",
+          "label": "Hero heading",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "hero_image",
+          "label": "Hero image",
+          "type": "image"
+        },
+        {
+          "slug": "address_body",
+          "label": "Address & access instructions",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "map_embed_url",
+          "label": "Map embed URL (Google Maps iframe src)",
+          "type": "string"
+        },
+        {
+          "slug": "form_heading",
+          "label": "Contact form heading",
+          "type": "string"
+        },
+        {
+          "slug": "form_intro",
+          "label": "Contact form intro",
+          "type": "portableText"
+        }
+      ]
+    },
+    {
+      "slug": "events_page_content",
+      "label": "Events page",
+      "labelSingular": "Events page content",
+      "description": "Editable content for /events/. The actual event list is pulled from the Events collection.",
+      "icon": "calendar",
+      "supports": [
+        "drafts",
+        "search",
+        "seo"
+      ],
+      "fields": [
+        {
+          "slug": "hero_heading",
+          "label": "Hero heading",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "hero_image",
+          "label": "Hero image",
+          "type": "image"
+        },
+        {
+          "slug": "events_section_heading",
+          "label": "Events section heading",
+          "type": "string"
+        },
+        {
+          "slug": "events_section_intro",
+          "label": "Events section intro",
+          "type": "text"
+        },
+        {
+          "slug": "events_max",
+          "label": "Max upcoming events to show on this page",
+          "type": "integer"
+        },
+        {
+          "slug": "events_view_all_label",
+          "label": "Events \"view all\" label",
+          "type": "string"
+        },
+        {
+          "slug": "events_view_all_href",
+          "label": "Events \"view all\" URL",
+          "type": "string"
+        },
+        {
+          "slug": "annual_events_heading",
+          "label": "Annual events heading",
+          "type": "string"
+        },
+        {
+          "slug": "annual_events_intro",
+          "label": "Annual events intro",
+          "type": "text"
+        },
+        {
+          "slug": "host_left_heading",
+          "label": "How to host heading",
+          "type": "string"
+        },
+        {
+          "slug": "host_left_body",
+          "label": "How to host body",
+          "type": "portableText"
+        },
+        {
+          "slug": "host_left_cta_label",
+          "label": "How to host CTA label",
+          "type": "string"
+        },
+        {
+          "slug": "host_left_cta_href",
+          "label": "How to host CTA URL",
+          "type": "string"
+        },
+        {
+          "slug": "host_right_heading",
+          "label": "Partner heading",
+          "type": "string"
+        },
+        {
+          "slug": "host_right_body",
+          "label": "Partner body",
+          "type": "portableText"
+        },
+        {
+          "slug": "host_right_cta_label",
+          "label": "Partner CTA label",
+          "type": "string"
+        },
+        {
+          "slug": "host_right_cta_href",
+          "label": "Partner CTA URL",
+          "type": "string"
+        },
+        {
+          "slug": "newsletter_heading",
+          "label": "Newsletter heading",
+          "type": "string"
+        },
+        {
+          "slug": "newsletter_subheading",
+          "label": "Newsletter subheading",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "slug": "friends_content",
+      "label": "Friends page",
+      "labelSingular": "Friends page content",
+      "description": "Editable content for /friends-of-wyman-park-dell/. Board members and partners come from their own collections.",
+      "icon": "users",
+      "supports": [
+        "drafts",
+        "search",
+        "seo"
+      ],
+      "fields": [
+        {
+          "slug": "hero_heading",
+          "label": "Hero heading",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "hero_image",
+          "label": "Hero image",
+          "type": "image"
+        },
+        {
+          "slug": "lead_paragraph",
+          "label": "Lead paragraph",
+          "type": "text",
+          "searchable": true
+        },
+        {
+          "slug": "history_heading",
+          "label": "How we started heading",
+          "type": "string"
+        },
+        {
+          "slug": "history_image",
+          "label": "How we started image",
+          "type": "image"
+        },
+        {
+          "slug": "history_body",
+          "label": "How we started body",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "history_cta_label",
+          "label": "How we started CTA label",
+          "type": "string"
+        },
+        {
+          "slug": "history_cta_href",
+          "label": "How we started CTA URL",
+          "type": "string"
+        },
+        {
+          "slug": "board_heading",
+          "label": "Board heading",
+          "type": "string"
+        },
+        {
+          "slug": "board_intro",
+          "label": "Board intro",
+          "type": "text"
+        },
+        {
+          "slug": "mission_heading",
+          "label": "Mission heading",
+          "type": "string"
+        },
+        {
+          "slug": "mission_subheading",
+          "label": "Mission subheading",
+          "type": "text"
+        },
+        {
+          "slug": "mission_body",
+          "label": "Mission body (bulleted activities)",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "video_youtube_id",
+          "label": "Intro video YouTube ID",
+          "type": "string"
+        },
+        {
+          "slug": "video_title",
+          "label": "Intro video title",
+          "type": "string"
+        },
+        {
+          "slug": "video_caption",
+          "label": "Intro video caption",
+          "type": "text"
+        },
+        {
+          "slug": "projects_heading",
+          "label": "Featured projects heading",
+          "type": "string"
+        },
+        {
+          "slug": "projects_intro",
+          "label": "Featured projects intro",
+          "type": "text"
+        },
+        {
+          "slug": "partners_heading",
+          "label": "Partners heading",
+          "type": "string"
+        },
+        {
+          "slug": "testimonial_quote",
+          "label": "Testimonial quote",
+          "type": "text"
+        },
+        {
+          "slug": "testimonial_attribution",
+          "label": "Testimonial attribution",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "slug": "get_involved_content",
+      "label": "Get involved page",
+      "labelSingular": "Get involved page content",
+      "description": "Editable content for /get-involved/.",
+      "icon": "heart",
+      "supports": [
+        "drafts",
+        "search",
+        "seo"
+      ],
+      "fields": [
+        {
+          "slug": "hero_heading",
+          "label": "Hero heading",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "hero_image",
+          "label": "Hero image",
+          "type": "image"
+        },
+        {
+          "slug": "lead_paragraph",
+          "label": "Lead paragraph",
+          "type": "text",
+          "searchable": true
+        },
+        {
+          "slug": "donate_heading",
+          "label": "Donate heading",
+          "type": "string"
+        },
+        {
+          "slug": "donate_image",
+          "label": "Donate image",
+          "type": "image"
+        },
+        {
+          "slug": "donate_body",
+          "label": "Donate body",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "donate_cta_label",
+          "label": "Donate CTA label",
+          "type": "string"
+        },
+        {
+          "slug": "donate_cta_href",
+          "label": "Donate CTA URL",
+          "type": "string"
+        },
+        {
+          "slug": "volunteer_heading",
+          "label": "Volunteer heading",
+          "type": "string"
+        },
+        {
+          "slug": "volunteer_image",
+          "label": "Volunteer image",
+          "type": "image"
+        },
+        {
+          "slug": "volunteer_body",
+          "label": "Volunteer body",
+          "type": "portableText",
+          "searchable": true
+        },
+        {
+          "slug": "testimonial_quote",
+          "label": "Testimonial quote",
+          "type": "text"
+        },
+        {
+          "slug": "testimonial_attribution",
+          "label": "Testimonial attribution",
+          "type": "string"
+        },
+        {
+          "slug": "gallery_image_1",
+          "label": "Gallery image 1",
+          "type": "image"
+        },
+        {
+          "slug": "gallery_image_2",
+          "label": "Gallery image 2",
+          "type": "image"
+        },
+        {
+          "slug": "gallery_image_3",
+          "label": "Gallery image 3",
+          "type": "image"
+        },
+        {
+          "slug": "gallery_image_4",
+          "label": "Gallery image 4",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "slug": "events",
+      "label": "Events",
+      "labelSingular": "Event",
+      "description": "Upcoming and past events in the park. Surfaced on the homepage and /events/ page.",
+      "icon": "calendar",
+      "supports": [
+        "drafts",
+        "search",
+        "seo"
+      ],
+      "urlPattern": "/events/{slug}/",
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Title",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "starts_at",
+          "label": "Starts",
+          "type": "datetime",
+          "required": true
+        },
+        {
+          "slug": "ends_at",
+          "label": "Ends",
+          "type": "datetime"
+        },
+        {
+          "slug": "time_text",
+          "label": "Time display (e.g. \"10am – 12pm\")",
+          "type": "string"
+        },
+        {
+          "slug": "location",
+          "label": "Location",
+          "type": "string"
+        },
+        {
+          "slug": "summary",
+          "label": "Summary",
+          "type": "text",
+          "searchable": true
+        },
+        {
+          "slug": "image",
+          "label": "Image",
+          "type": "image"
+        },
+        {
+          "slug": "cta_label",
+          "label": "CTA label",
+          "type": "string"
+        },
+        {
+          "slug": "cta_href",
+          "label": "CTA URL",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "slug": "team_members",
+      "label": "Board members",
+      "labelSingular": "Board member",
+      "description": "Members of the FWPD board of directors.",
+      "icon": "users",
+      "supports": [
+        "drafts"
+      ],
+      "fields": [
+        {
+          "slug": "name",
+          "label": "Name",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "role",
+          "label": "Role",
+          "type": "string"
+        },
+        {
+          "slug": "photo",
+          "label": "Photo",
+          "type": "image"
+        },
+        {
+          "slug": "bio",
+          "label": "Bio",
+          "type": "text",
+          "searchable": true
+        },
+        {
+          "slug": "sort_order",
+          "label": "Sort order (lower = first)",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "slug": "partners",
+      "label": "Partners",
+      "labelSingular": "Partner",
+      "description": "Partner organizations with logos. Surfaced on the Friends page.",
+      "icon": "handshake",
+      "supports": [
+        "drafts"
+      ],
+      "fields": [
+        {
+          "slug": "name",
+          "label": "Name",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "logo",
+          "label": "Logo",
+          "type": "image",
+          "required": true
+        },
+        {
+          "slug": "url",
+          "label": "Website URL",
+          "type": "string"
+        },
+        {
+          "slug": "sort_order",
+          "label": "Sort order (lower = first)",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "slug": "site_extras",
+      "label": "Site extras",
+      "labelSingular": "Site extras",
+      "description": "Cross-cutting site config: contact info, donate CTA, copyright, newsletter, inverse logo.",
+      "icon": "settings",
+      "supports": [],
+      "fields": [
+        {
+          "slug": "logo_inverse",
+          "label": "Inverse logo (white-on-dark)",
+          "type": "image"
+        },
+        {
+          "slug": "donate_cta_label",
+          "label": "Donate CTA label",
+          "type": "string"
+        },
+        {
+          "slug": "donate_cta_href",
+          "label": "Donate CTA URL",
+          "type": "string"
+        },
+        {
+          "slug": "contact_email",
+          "label": "Contact email",
+          "type": "string"
+        },
+        {
+          "slug": "contact_address",
+          "label": "Contact address (one line per row)",
+          "type": "text"
+        },
+        {
+          "slug": "copyright",
+          "label": "Copyright line (omit year — auto-appended)",
+          "type": "string"
+        },
+        {
+          "slug": "newsletter_heading",
+          "label": "Newsletter heading",
+          "type": "string"
+        },
+        {
+          "slug": "newsletter_action",
+          "label": "Newsletter form action URL",
+          "type": "string"
+        },
+        {
+          "slug": "newsletter_submit_label",
+          "label": "Newsletter submit label",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "content": {
+    "homepage_content": [
+      {
+        "id": "homepage-main",
+        "slug": "main",
+        "status": "published",
+        "data": {
+          "hero_heading": "Welcome to the Wyman Park Dell",
+          "hero_body": "Surrounded by tree-lined slopes, the Dell is a green oasis in the heart of Central Baltimore where all are welcome. Your support is needed to keep this unique public space accessible — and extraordinary — for everyone.",
+          "hero_image": {
+            "id": "ext_1cb33675fc20f33a",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Home-Page-Image-1024x554.webp",
+            "alt": "Aerial view of Wyman Park Dell in summer",
+            "width": 1024,
+            "height": 554,
+            "provider": "external"
+          },
+          "hero_cta1_label": "Get involved",
+          "hero_cta1_href": "https://wymanparkdell.org/get-involved/",
+          "hero_cta2_label": "Plan your visit",
+          "hero_cta2_href": "https://wymanparkdell.org/contact/#address",
+          "events_section_heading": "Upcoming events",
+          "events_section_intro": "A variety of events take place in Wyman Park Dell throughout the year. From park clean-ups to neighborhood festivals, the Dell is the perfect place to celebrate community.",
+          "events_view_all_label": "See all events",
+          "events_view_all_href": "https://wymanparkdell.org/events/",
+          "discover_heading": "How will you discover the Dell?",
+          "discover_subheading": "The Wyman Park Dell is a 16-acre public park located south of Johns Hopkins University and the Baltimore Museum of Art.",
+          "activity_grid_image": {
+            "id": "ext_c99ca920d8536d9a",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Dell-Plan.jpg",
+            "alt": "Master plan illustration of Wyman Park Dell",
+            "width": 800,
+            "height": 660,
+            "provider": "external"
+          },
+          "testimonial_quote": "Wyman Park Dell is a beautiful, charming oasis in Charles Village. Great place to unwind, walk your dog, read a book, or just quietly reflect.",
+          "testimonial_attribution": "Park Visitor",
+          "gallery_image_1": {
+            "id": "ext_8eb2f50f89ac6da4",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Home-Page_WPD.jpg",
+            "alt": "A sunny day at Wyman Park Dell",
+            "width": 792,
+            "height": 792,
+            "provider": "external"
+          },
+          "gallery_image_2": {
+            "id": "ext_2e50b5c257fea3d0",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-2.jpg",
+            "alt": "Visitors enjoying the lower lawn",
+            "width": 700,
+            "height": 467,
+            "provider": "external"
+          },
+          "gallery_image_3": {
+            "id": "ext_56de9f5560ad20c2",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-3.jpg",
+            "alt": "Tree-lined slopes of the Dell in fall",
+            "width": 800,
+            "height": 533,
+            "provider": "external"
+          },
+          "gallery_image_4": {
+            "id": "ext_9fd84626e3596cf3",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-4.jpg",
+            "alt": "A community gathering at Wyman Park Dell",
+            "width": 800,
+            "height": 533,
+            "provider": "external"
+          }
+        }
+      }
+    ],
+    "about_content": [
+      {
+        "id": "about-main",
+        "slug": "main",
+        "status": "published",
+        "data": {
+          "hero_heading": "About Wyman Park Dell",
+          "hero_image": {
+            "id": "ext_de1a21860a91d7dc",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/About_Dell.jpg",
+            "alt": "Wyman Park Dell from above",
+            "provider": "external"
+          },
+          "history_heading": "Park history",
+          "history_image": {
+            "id": "ext_987f856f0ba94273",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/12/Park-History.jpg",
+            "alt": "Historic photograph of the Wyman Park Dell",
+            "provider": "external"
+          },
+          "history_body": [
+            {
+              "_type": "block",
+              "_key": "b2",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s1",
+                  "marks": [],
+                  "text": "The Wyman Park Dell is a 16-acre public park that is a landmark in Central Baltimore. Located south of Johns Hopkins University and the Baltimore Museum of Art, it is surrounded by two neighborhoods: Charles Village to the east and south, and Remington to the west."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b4",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s3",
+                  "marks": [],
+                  "text": "The Dell is noted for its steep enclosing slopes and a large, sweeping lower lawn. It is one of the few parks in Baltimore fully conceived and designed by the Olmsted Brothers, the landscape architecture firm responsible for the City's first comprehensive park system plan in 1904."
+                }
+              ]
+            }
+          ],
+          "history_cta1_label": "Wyman Park & the Dell",
+          "history_cta1_href": "https://drive.google.com/file/d/0B0AAMIyar9c0TDlNaVhQY09NNVdGMUM1NmtKRGtDd2JjeUJn/view?resourcekey=0-rJ0bR9EfnlPTePnDr4RPRw",
+          "history_cta2_label": "Olmsted Brothers’ Vision",
+          "history_cta2_href": "https://www.olmstedmaryland.org/olmsted-brothers-vision-for-wyman-and-the-stony-run-stream-valley/",
+          "cta_bar_heading": "What improvements would you like to see at the park?",
+          "cta_bar_label": "Contact us with suggestions and comments",
+          "cta_bar_href": "https://wymanparkdell.org/contact/",
+          "credits_left_body": [
+            {
+              "_type": "block",
+              "_key": "br",
+              "style": "normal",
+              "markDefs": [
+                {
+                  "_key": "lk6",
+                  "_type": "link",
+                  "href": "https://www.goldsekerfoundation.org/"
+                },
+                {
+                  "_key": "lk9",
+                  "_type": "link",
+                  "href": "https://artbma.org/"
+                },
+                {
+                  "_key": "lkc",
+                  "_type": "link",
+                  "href": "https://www.jhu.edu/"
+                },
+                {
+                  "_key": "lkf",
+                  "_type": "link",
+                  "href": "https://charlesvillage.org/"
+                },
+                {
+                  "_key": "lki",
+                  "_type": "link",
+                  "href": "https://www.olmstedmaryland.org/"
+                },
+                {
+                  "_key": "lkl",
+                  "_type": "link",
+                  "href": "https://bcrp.baltimorecity.gov/"
+                },
+                {
+                  "_key": "lko",
+                  "_type": "link",
+                  "href": "https://www.bcf.org/"
+                }
+              ],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s5",
+                  "marks": [],
+                  "text": "The Wyman Park Dell Master Plan process was underwritten through a generous grant from the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "s7",
+                  "marks": [
+                    "lk6"
+                  ],
+                  "text": "Goldseker Foundation"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s8",
+                  "marks": [],
+                  "text": " with additional contributions from the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "sa",
+                  "marks": [
+                    "lk9"
+                  ],
+                  "text": "Baltimore Museum of Art"
+                },
+                {
+                  "_type": "span",
+                  "_key": "sb",
+                  "marks": [],
+                  "text": ", "
+                },
+                {
+                  "_type": "span",
+                  "_key": "sd",
+                  "marks": [
+                    "lkc"
+                  ],
+                  "text": "Johns Hopkins University"
+                },
+                {
+                  "_type": "span",
+                  "_key": "se",
+                  "marks": [],
+                  "text": ", the Friends of Wyman Park Dell, Remington community members, the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "sg",
+                  "marks": [
+                    "lkf"
+                  ],
+                  "text": "Charles Village Civic Association"
+                },
+                {
+                  "_type": "span",
+                  "_key": "sh",
+                  "marks": [],
+                  "text": ", the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "sj",
+                  "marks": [
+                    "lki"
+                  ],
+                  "text": "Friends of Maryland's Olmsted Parks and Landscapes"
+                },
+                {
+                  "_type": "span",
+                  "_key": "sk",
+                  "marks": [],
+                  "text": ", the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "sm",
+                  "marks": [
+                    "lkl"
+                  ],
+                  "text": "Baltimore City Department of Recreation and Parks"
+                },
+                {
+                  "_type": "span",
+                  "_key": "sn",
+                  "marks": [],
+                  "text": ", and the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "sp",
+                  "marks": [
+                    "lko"
+                  ],
+                  "text": "Baltimore Community Foundation"
+                },
+                {
+                  "_type": "span",
+                  "_key": "sq",
+                  "marks": [],
+                  "text": "."
+                }
+              ]
+            }
+          ],
+          "credits_right_body": [
+            {
+              "_type": "block",
+              "_key": "bt",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "ss",
+                  "marks": [],
+                  "text": "The Friends of Wyman Park Dell continue to implement the Master Plan with the support of volunteers and Baltimore's philanthropic community."
+                }
+              ]
+            }
+          ],
+          "credits_cta_label": "Learn more about the Friends of Wyman Park Dell",
+          "credits_cta_href": "/friends-of-wyman-park-dell/",
+          "tubman_heading": "Harriet Tubman Grove",
+          "tubman_image": {
+            "id": "ext_1a03ff45934e6f80",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Harriet-Tubman-Grove.jpg",
+            "alt": "Harriet Tubman Grove at Wyman Park Dell",
+            "provider": "external"
+          },
+          "tubman_body": [
+            {
+              "_type": "block",
+              "_key": "bv",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "su",
+                  "marks": [],
+                  "text": "The grove on the western plateau of the Dell is now named in honor of Harriet Tubman, an abolitionist and “conductor” on the Underground Railroad. At a community celebration on March 10, 2018, Tubman’s living descendants joined community residents, local activists, and City and State officials to rededicate the area of Wyman Park Dell where a Confederate monument once stood. The monument base remains."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b13",
+              "style": "normal",
+              "markDefs": [
+                {
+                  "_key": "lkx",
+                  "_type": "link",
+                  "href": "https://chap.baltimorecity.gov/confederate-monuments"
+                },
+                {
+                  "_key": "lk10",
+                  "_type": "link",
+                  "href": "https://baltimoreplanning.wixsite.com/monumentcommission/leeandjacksonmonument"
+                }
+              ],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "sw",
+                  "marks": [],
+                  "text": "The Lee and Jackson Monument was removed from the Dell on August 16, 2017, as national debate around Confederate monuments intensified after deadly white supremacist violence in Charlottesville, Virginia. More information is available through the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "sy",
+                  "marks": [
+                    "lkx"
+                  ],
+                  "text": "Baltimore Commission on Historical and Architectural Preservation"
+                },
+                {
+                  "_type": "span",
+                  "_key": "sz",
+                  "marks": [],
+                  "text": " and the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "s11",
+                  "marks": [
+                    "lk10"
+                  ],
+                  "text": "Special Commission to Review Baltimore’s Confederate Monuments"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s12",
+                  "marks": [],
+                  "text": "."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b18",
+              "style": "normal",
+              "markDefs": [
+                {
+                  "_key": "lk15",
+                  "_type": "link",
+                  "href": "https://www.baltimoresun.com/maryland/baltimore-city/bs-md-ci-harriet-tubman-grove-signs-wyman-park-dell-20200914-frw5es5rhjdidczjnjdlbfhzl4-story.html"
+                }
+              ],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s14",
+                  "marks": [],
+                  "text": "In 2020, placemaking and "
+                },
+                {
+                  "_type": "span",
+                  "_key": "s16",
+                  "marks": [
+                    "lk15"
+                  ],
+                  "text": "interpretive signage"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s17",
+                  "marks": [],
+                  "text": " was installed in the grove in collaboration with Baltimore City Department of Recreation and Parks and the Commission for Historical and Architectural Preservation. This project was made possible by the Baltimore National Heritage Area."
+                }
+              ]
+            }
+          ],
+          "testimonial_quote": "Great little slice of nature in the middle of Charles Village.",
+          "testimonial_attribution": "Park Visitor",
+          "gallery_image_1": {
+            "id": "ext_90f4a92420e5d217",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Park_Stairs.jpg",
+            "alt": "Stone stairs leading into the Dell",
+            "provider": "external"
+          },
+          "gallery_image_2": {
+            "id": "ext_30b35851e7f9f5b0",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Fall.jpg",
+            "alt": "Wyman Park Dell in fall",
+            "provider": "external"
+          },
+          "gallery_image_3": {
+            "id": "ext_2e50b5c257fea3d0",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-2.jpg",
+            "alt": "Wyman Park Dell in summer",
+            "provider": "external"
+          },
+          "gallery_image_4": {
+            "id": "ext_25ee30779b1be577",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Winter.jpg",
+            "alt": "Wyman Park Dell in winter",
+            "provider": "external"
+          }
+        }
+      }
+    ],
+    "contact_content": [
+      {
+        "id": "contact-main",
+        "slug": "main",
+        "status": "published",
+        "data": {
+          "hero_heading": "Visit us",
+          "hero_image": {
+            "id": "ext_caa5760cb0033274",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Contact-Us_WymanPark-Snow-2021.jpg",
+            "alt": "Wyman Park Dell on a snowy day",
+            "provider": "external"
+          },
+          "address_body": [
+            {
+              "_type": "block",
+              "_key": "b1e",
+              "style": "h2",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s19",
+                  "marks": [],
+                  "text": "Wyman Park Dell"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1a",
+                  "marks": [],
+                  "text": "\n"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1b",
+                  "marks": [],
+                  "text": "North Charles and 29th Streets"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1c",
+                  "marks": [],
+                  "text": "\n"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1d",
+                  "marks": [],
+                  "text": "Baltimore, MD 21218"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b1g",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s1f",
+                  "marks": [],
+                  "text": "From North Charles Street and 29th Street, an ADA-accessible paved path leads past the playground to the lower Dell."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b1i",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s1h",
+                  "marks": [],
+                  "text": "The lower Dell can also be accessed by stairs on the southwest and northeast corners of the park, as well as stairs on Art Museum Drive across from the Baltimore Museum of Art."
+                }
+              ]
+            }
+          ],
+          "map_embed_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3086.4057036343315!2d-76.62091608427365!3d39.324392779507065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c804de05619787%3A0x7130601107e09bfa!2sWyman%20Park%20Dell!5e0!3m2!1sen!2sus!4v1638995904483!5m2!1sen!2sus",
+          "form_heading": "Get in touch",
+          "form_intro": [
+            {
+              "_type": "block",
+              "_key": "b1n",
+              "style": "normal",
+              "markDefs": [
+                {
+                  "_key": "lk1k",
+                  "_type": "link",
+                  "href": "mailto:wymanparkdell@gmail.com"
+                }
+              ],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s1j",
+                  "marks": [],
+                  "text": "Fill out the form or email us directly at "
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1l",
+                  "marks": [
+                    "lk1k"
+                  ],
+                  "text": "wymanparkdell@gmail.com"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1m",
+                  "marks": [],
+                  "text": "."
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "events_page_content": [
+      {
+        "id": "events-page-main",
+        "slug": "main",
+        "status": "published",
+        "data": {
+          "hero_heading": "Join us at the Dell",
+          "hero_image": {
+            "id": "ext_90b8549b0d4367ca",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/12/Events-banner-scaled.jpg",
+            "alt": "A community gathering at Wyman Park Dell",
+            "provider": "external"
+          },
+          "events_section_heading": "Our events",
+          "events_section_intro": "A variety of events take place in Wyman Park Dell throughout the year. From park clean-ups to neighborhood festivals, the Dell is the perfect place to celebrate community.",
+          "events_max": 3,
+          "events_view_all_label": "See all events",
+          "events_view_all_href": "https://wymanparkdell.org/events/",
+          "annual_events_heading": "Annual events",
+          "annual_events_intro": "A handful of beloved gatherings return to the Dell every year — celebrate the seasons and the community alongside us.",
+          "host_left_heading": "How to host an event",
+          "host_left_body": [
+            {
+              "_type": "block",
+              "_key": "b1r",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s1o",
+                  "marks": [],
+                  "text": "Special events in Wyman Park Dell are permitted by Baltimore City. We recommend reviewing the process early and applying at least "
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1p",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "eight weeks"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1q",
+                  "marks": [],
+                  "text": " prior to your event. We also suggest checking the Friends of Wyman Park Dell calendar to avoid conflicts with scheduled events."
+                }
+              ]
+            }
+          ],
+          "host_left_cta_label": "Permit information",
+          "host_left_cta_href": "https://bcrp.baltimorecity.gov/parks-permits",
+          "host_right_heading": "Interested in partnering?",
+          "host_right_body": [
+            {
+              "_type": "block",
+              "_key": "b1t",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s1s",
+                  "marks": [],
+                  "text": "The Friends of Wyman Park Dell love collaborating with neighbors, local businesses, and community groups. Whether you have an idea for a new gathering or want to co-host an existing one, we’d love to hear from you."
+                }
+              ]
+            }
+          ],
+          "host_right_cta_label": "Get in touch with the Friends today",
+          "host_right_cta_href": "https://wymanparkdell.org/contact/",
+          "newsletter_heading": "Sign up for our newsletter",
+          "newsletter_subheading": "Never miss an event at the Dell."
+        }
+      }
+    ],
+    "friends_content": [
+      {
+        "id": "friends-main",
+        "slug": "main",
+        "status": "published",
+        "data": {
+          "hero_heading": "Friends of Wyman Park Dell",
+          "hero_image": {
+            "id": "ext_4243e9edd6c01a65",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/1_Home-Page_DellWeb_05172020-7-1.jpg",
+            "alt": "A boy on a scooter at Wyman Park Dell",
+            "provider": "external"
+          },
+          "lead_paragraph": "The Friends of Wyman Park Dell is a 501(c)(3) volunteer-run nonprofit with a mission to preserve, protect, and maintain Wyman Park Dell, an Olmsted legacy park at the intersection of Baltimore’s Charles Village and Remington neighborhoods.",
+          "history_heading": "How we got started",
+          "history_image": {
+            "id": "ext_a75970df803fe836",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Friends.jpg",
+            "alt": "FWPD volunteers cleaning up the Dell",
+            "provider": "external"
+          },
+          "history_body": [
+            {
+              "_type": "block",
+              "_key": "b1x",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s1u",
+                  "marks": [],
+                  "text": "Neighbors from Charles Village and Remington established the Friends of Wyman Park Dell (FWPD) in "
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1v",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "1983"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s1w",
+                  "marks": [],
+                  "text": " to stimulate and promote the interest of the public in the preservation, beautification, protection, and maintenance of Wyman Park Dell."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b1z",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s1y",
+                  "marks": [],
+                  "text": "More than four decades later, the FWPD continues to focus on the Dell’s place within the community, both physically and historically."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b21",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s20",
+                  "marks": [],
+                  "text": "We’re always looking for new board members to help us work toward the FWPD’s mission."
+                }
+              ]
+            }
+          ],
+          "history_cta_label": "Get involved",
+          "history_cta_href": "/get-involved/",
+          "board_heading": "FWPD board of directors",
+          "board_intro": "A volunteer board of neighbors and community partners stewards the work of the FWPD.",
+          "mission_heading": "Our mission",
+          "mission_subheading": "The mission of the Friends of Wyman Park Dell is to engage our community in the preservation, protection, and promotion of this distinctive, historic Olmsted park.",
+          "mission_body": [
+            {
+              "_type": "block",
+              "_key": "b23",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s22",
+                  "marks": [],
+                  "text": "The FWPD, led by an all-volunteer Board of Directors, engages in the following activities:"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b26",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s24",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Organizing"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s25",
+                  "marks": [],
+                  "text": " regular volunteer clean-ups of the Dell to maintain the existing landscaping, clear out invasive vegetation, and place more suitable plantings to improve the appearance and long-term viability."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b29",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s27",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Advocating"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s28",
+                  "marks": [],
+                  "text": " for major capital improvements in the Dell, such as restoration of its lower lawn and slopes, improvement to its stormwater drainage, lighting, and electrical systems, repair of its stone walls, stairs, and paths, and installation of a new playground."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b2c",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s2a",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Engaging"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2b",
+                  "marks": [],
+                  "text": " with our community through programming that offers everyone from long-time visitors to first-timers a chance to enjoy the Dell through community campouts, movie nights, festivals, concerts and more (like goats!)."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b2f",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s2d",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Preserving"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2e",
+                  "marks": [],
+                  "text": " the Dell’s historic features and design by using the Wyman Park Dell Master Plan to guide design projects that promote usage of the Dell while honoring its roots as an Olmsted Park."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b2i",
+              "style": "normal",
+              "listItem": "bullet",
+              "level": 1,
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s2g",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Partnering"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2h",
+                  "marks": [],
+                  "text": " with local businesses, institutions, and neighbors to ensure that the Dell continues to be a place where community members are able to unwind, relax, commune, and play in a safe and beautiful green environment."
+                }
+              ]
+            }
+          ],
+          "video_youtube_id": "MijsOH-eYu8",
+          "video_title": "Friends of Wyman Park Dell",
+          "video_caption": "Watch a short introduction to the Dell and the volunteers who keep it thriving.",
+          "projects_heading": "Featured projects",
+          "projects_intro": "The Friends of Wyman Park Dell are dedicated to the past, present, and future of the Wyman Park Dell. Many of these initiatives are made possible by grants and sponsorships.",
+          "partners_heading": "Special thanks to our partners",
+          "testimonial_quote": "Being part of a community of people who love the Dell and are invested in its future is one of my favorite things about living in Baltimore!",
+          "testimonial_attribution": "Board Member"
+        }
+      }
+    ],
+    "get_involved_content": [
+      {
+        "id": "get-involved-main",
+        "slug": "main",
+        "status": "published",
+        "data": {
+          "hero_heading": "Become a Friend of the Dell",
+          "hero_image": {
+            "id": "ext_9a3357329158049a",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/12/241433689_10159395889436061_7809489849254585591_n.jpg",
+            "alt": "Friends of Wyman Park Dell volunteers gathered for a clean-up",
+            "provider": "external"
+          },
+          "lead_paragraph": "The Dell is almost entirely supported by people like you. As a nonprofit, the Friends of Wyman Park Dell need your support to keep this public space accessible — and extraordinary — for everyone.",
+          "donate_heading": "Make a donation",
+          "donate_image": {
+            "id": "ext_2c0c883c905bdad5",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/12/Volunteer.jpg",
+            "alt": "Volunteers gathered at Wyman Park Dell",
+            "provider": "external"
+          },
+          "donate_body": [
+            {
+              "_type": "block",
+              "_key": "b2k",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s2j",
+                  "marks": [],
+                  "text": "Donors like you are critical to maintaining, beautifying, and programming the Dell. Donate today by making a one-time gift or setting up a recurring donation to maximize your impact."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b2o",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s2l",
+                  "marks": [],
+                  "text": "Prefer to give by mail? Make checks payable to the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2m",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Friends of Wyman Park Dell"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2n",
+                  "marks": [],
+                  "text": " and send them to:"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b2u",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s2p",
+                  "marks": [],
+                  "text": "Friends of Wyman Park Dell"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2q",
+                  "marks": [],
+                  "text": "\n"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2r",
+                  "marks": [],
+                  "text": "1008 West 42nd Street"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2s",
+                  "marks": [],
+                  "text": "\n"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2t",
+                  "marks": [],
+                  "text": "Baltimore, MD 21211"
+                }
+              ]
+            }
+          ],
+          "donate_cta_label": "Donate online",
+          "donate_cta_href": "https://wymanparkdell.org/donate/",
+          "volunteer_heading": "Become a volunteer",
+          "volunteer_image": {
+            "id": "ext_264a7a713f51b8a6",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Get-Involved-2-1.jpg",
+            "alt": "Volunteers smiling after a Wyman Park Dell clean-up",
+            "provider": "external"
+          },
+          "volunteer_body": [
+            {
+              "_type": "block",
+              "_key": "b2w",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s2v",
+                  "marks": [],
+                  "text": "The Dell needs you!"
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "b31",
+              "style": "normal",
+              "markDefs": [
+                {
+                  "_key": "lk2y",
+                  "_type": "link",
+                  "href": "/events/"
+                }
+              ],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "s2x",
+                  "marks": [],
+                  "text": "Keep an eye on the "
+                },
+                {
+                  "_type": "span",
+                  "_key": "s2z",
+                  "marks": [
+                    "lk2y"
+                  ],
+                  "text": "Events Page"
+                },
+                {
+                  "_type": "span",
+                  "_key": "s30",
+                  "marks": [],
+                  "text": " for upcoming park maintenance days or sign up to receive opportunities in your inbox."
+                }
+              ]
+            }
+          ],
+          "testimonial_quote": "We’re always looking to collaborate with local businesses and organizations. Email us if you’d like to collaborate on making something happen at the Dell.",
+          "testimonial_attribution": "Friends of Wyman Park Dell",
+          "gallery_image_1": {
+            "id": "ext_23dfb13c9a72575a",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Volunteer_1.jpg",
+            "alt": "Volunteers gathered at Wyman Park Dell",
+            "provider": "external"
+          },
+          "gallery_image_2": {
+            "id": "ext_cc57df7114d52a10",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Volunteer_2.jpg",
+            "alt": "FWPD volunteers tending to the park",
+            "provider": "external"
+          },
+          "gallery_image_3": {
+            "id": "ext_da0d5a09d10b2b74",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Volunteer_3.jpg",
+            "alt": "A volunteer working in the Dell",
+            "provider": "external"
+          },
+          "gallery_image_4": {
+            "id": "ext_40677e7f62ca733f",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Volunteer_4.jpg",
+            "alt": "Volunteers smiling after a clean-up",
+            "provider": "external"
+          }
+        }
+      }
+    ],
+    "events": [
+      {
+        "id": "event-spring-park-clean-up",
+        "slug": "spring-park-clean-up",
+        "status": "published",
+        "data": {
+          "title": "Spring Park Clean-Up",
+          "starts_at": "2026-05-09T00:00:00.000Z",
+          "time_text": "9:00 AM – 12:00 PM",
+          "location": "Wyman Park Dell — meet at the playground",
+          "summary": "Join your neighbors for our biggest clean-up of the year. Tools, gloves, and refreshments provided. All ages welcome — kids especially love the wheelbarrows.",
+          "image": {
+            "id": "ext_a75970df803fe836",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Friends.jpg",
+            "alt": "Volunteers at a Wyman Park Dell clean-up",
+            "provider": "external"
+          },
+          "cta_label": "RSVP",
+          "cta_href": "https://wymanparkdell.org/events/"
+        }
+      },
+      {
+        "id": "event-movie-night-in-the-dell",
+        "slug": "movie-night-in-the-dell",
+        "status": "published",
+        "data": {
+          "title": "Movie Night in the Dell",
+          "starts_at": "2026-06-13T00:00:00.000Z",
+          "time_text": "Sundown (≈ 8:30 PM)",
+          "location": "Lower lawn, Wyman Park Dell",
+          "summary": "Bring a blanket, a picnic, and the whole family. We project a family-friendly film on the big inflatable screen as the sun sets behind the slopes.",
+          "image": {
+            "id": "ext_2e50b5c257fea3d0",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-2.jpg",
+            "alt": "Wyman Park Dell at golden hour",
+            "provider": "external"
+          },
+          "cta_label": "Add to calendar",
+          "cta_href": "https://wymanparkdell.org/events/"
+        }
+      },
+      {
+        "id": "event-dellfest-community-festival",
+        "slug": "dellfest-community-festival",
+        "status": "published",
+        "data": {
+          "title": "DellFest: Community Festival",
+          "starts_at": "2026-09-19T00:00:00.000Z",
+          "time_text": "11:00 AM – 4:00 PM",
+          "location": "Wyman Park Dell",
+          "summary": "A celebration of the Dell, the neighborhoods around it, and the people who keep it special. Live music, local food, kid activities, and a chance to meet the FWPD board.",
+          "image": {
+            "id": "ext_9fd84626e3596cf3",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-4.jpg",
+            "alt": "A community gathering at Wyman Park Dell",
+            "provider": "external"
+          },
+          "cta_label": "Learn more",
+          "cta_href": "https://wymanparkdell.org/events/"
+        }
+      },
+      {
+        "id": "event-holi-color-celebration",
+        "slug": "holi-color-celebration",
+        "status": "published",
+        "data": {
+          "title": "Holi Color Celebration",
+          "starts_at": "2026-03-21T00:00:00.000Z",
+          "time_text": "12:00 PM – 3:00 PM",
+          "location": "Lower Dell",
+          "summary": "A joyful “color fight” in the lower Dell to mark the arrival of spring, organized by local restaurant Sweet 27 in partnership with the Friends of Wyman Park Dell.",
+          "image": {
+            "id": "ext_149bd7f741ac0bf3",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Events_Holi-Colors-Celebration.jpg",
+            "alt": "Holi Color Celebration at the Dell",
+            "provider": "external"
+          },
+          "cta_label": "Learn more",
+          "cta_href": "https://wymanparkdell.org/events/"
+        }
+      },
+      {
+        "id": "event-winter-solstice-in-the-dell",
+        "slug": "winter-solstice-in-the-dell",
+        "status": "published",
+        "data": {
+          "title": "Winter Solstice in the Dell",
+          "starts_at": "2026-12-21T00:00:00.000Z",
+          "time_text": "Sundown",
+          "location": "Wyman Park Dell",
+          "summary": "Gather with neighbors to celebrate the Winter Solstice. Music, marshmallows, and hot drinks and cookies provided by local restaurant Gertrude’s.",
+          "image": {
+            "id": "ext_57bc410b6f476191",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Events_Winter-Solstice.jpg",
+            "alt": "Winter Solstice gathering at the Dell",
+            "provider": "external"
+          },
+          "cta_label": "Add to calendar",
+          "cta_href": "https://wymanparkdell.org/events/"
+        }
+      }
+    ],
+    "team_members": [
+      {
+        "id": "member-jason-mathias",
+        "slug": "jason-mathias",
+        "status": "published",
+        "data": {
+          "name": "Jason Mathias",
+          "role": "President",
+          "sort_order": 0
+        }
+      },
+      {
+        "id": "member-tom-mcgilloway",
+        "slug": "tom-mcgilloway",
+        "status": "published",
+        "data": {
+          "name": "Tom McGilloway",
+          "role": "Co-Vice President of Maintenance",
+          "sort_order": 1
+        }
+      },
+      {
+        "id": "member-harry-holt",
+        "slug": "harry-holt",
+        "status": "published",
+        "data": {
+          "name": "Harry Holt",
+          "role": "Co-Vice President of Maintenance",
+          "sort_order": 2
+        }
+      },
+      {
+        "id": "member-courtney-belew",
+        "slug": "courtney-belew",
+        "status": "published",
+        "data": {
+          "name": "Courtney Belew",
+          "role": "Vice President of Events & Fundraising",
+          "sort_order": 3
+        }
+      },
+      {
+        "id": "member-jessica-douglas",
+        "slug": "jessica-douglas",
+        "status": "published",
+        "data": {
+          "name": "Jessica Douglas",
+          "role": "Secretary",
+          "sort_order": 4
+        }
+      },
+      {
+        "id": "member-savannah-fisher",
+        "slug": "savannah-fisher",
+        "status": "published",
+        "data": {
+          "name": "Savannah Fisher",
+          "role": "Treasurer",
+          "sort_order": 5
+        }
+      },
+      {
+        "id": "member-kelly-danz",
+        "slug": "kelly-danz",
+        "status": "published",
+        "data": {
+          "name": "Kelly Danz",
+          "role": "Director",
+          "sort_order": 6
+        }
+      },
+      {
+        "id": "member-randy-lewis",
+        "slug": "randy-lewis",
+        "status": "published",
+        "data": {
+          "name": "Randy Lewis",
+          "role": "Director",
+          "sort_order": 7
+        }
+      },
+      {
+        "id": "member-julia-mcaleer",
+        "slug": "julia-mcaleer",
+        "status": "published",
+        "data": {
+          "name": "Julia McAleer",
+          "role": "Director",
+          "sort_order": 8
+        }
+      },
+      {
+        "id": "member-chris-merriam",
+        "slug": "chris-merriam",
+        "status": "published",
+        "data": {
+          "name": "Chris Merriam",
+          "role": "Director",
+          "sort_order": 9
+        }
+      },
+      {
+        "id": "member-anastasia-tantaros",
+        "slug": "anastasia-tantaros",
+        "status": "published",
+        "data": {
+          "name": "Anastasia Tantaros",
+          "role": "Director",
+          "sort_order": 10
+        }
+      },
+      {
+        "id": "member-circe-trevant",
+        "slug": "circe-trevant",
+        "status": "published",
+        "data": {
+          "name": "Circe Trevant",
+          "role": "Director",
+          "sort_order": 11
+        }
+      },
+      {
+        "id": "member-martha-waldron",
+        "slug": "martha-waldron",
+        "status": "published",
+        "data": {
+          "name": "Martha Waldron",
+          "role": "Director",
+          "sort_order": 12
+        }
+      },
+      {
+        "id": "member-alice-young",
+        "slug": "alice-young",
+        "status": "published",
+        "data": {
+          "name": "Alice Young",
+          "role": "Director",
+          "sort_order": 13
+        }
+      },
+      {
+        "id": "member-cailin-mcgough",
+        "slug": "cailin-mcgough",
+        "status": "published",
+        "data": {
+          "name": "Cailin McGough",
+          "role": "Emeritus Director",
+          "sort_order": 14
+        }
+      },
+      {
+        "id": "member-john-shields",
+        "slug": "john-shields",
+        "status": "published",
+        "data": {
+          "name": "John Shields",
+          "role": "Emeritus Director",
+          "sort_order": 15
+        }
+      },
+      {
+        "id": "member-sandy-sparks",
+        "slug": "sandy-sparks",
+        "status": "published",
+        "data": {
+          "name": "Sandy Sparks",
+          "role": "Emeritus Director",
+          "sort_order": 16
+        }
+      },
+      {
+        "id": "member-jessica-bell-brown",
+        "slug": "jessica-bell-brown",
+        "status": "published",
+        "data": {
+          "name": "Jessica Bell Brown",
+          "role": "Ex-Officio, Baltimore Museum of Art",
+          "sort_order": 17
+        }
+      },
+      {
+        "id": "member-vacant",
+        "slug": "vacant",
+        "status": "published",
+        "data": {
+          "name": "Vacant",
+          "role": "Ex-Officio, Johns Hopkins University",
+          "sort_order": 18
+        }
+      }
+    ],
+    "partners": [
+      {
+        "id": "partner-baltimore-city",
+        "slug": "baltimore-city",
+        "status": "published",
+        "data": {
+          "name": "Baltimore City",
+          "logo": {
+            "id": "ext_d3d46e91fcedddd2",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/B-More-City-Logo.jpg",
+            "alt": "Baltimore City",
+            "width": 200,
+            "height": 80,
+            "provider": "external"
+          },
+          "url": "https://baltimorecity.gov/",
+          "sort_order": 0
+        }
+      },
+      {
+        "id": "partner-baltimore-national-heritage-area",
+        "slug": "baltimore-national-heritage-area",
+        "status": "published",
+        "data": {
+          "name": "Baltimore National Heritage Area",
+          "logo": {
+            "id": "ext_a07a7772a1c50ca9",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/B-more-National-logo.jpg",
+            "alt": "Baltimore National Heritage Area",
+            "width": 200,
+            "height": 80,
+            "provider": "external"
+          },
+          "url": "https://explorebaltimore.org/",
+          "sort_order": 1
+        }
+      },
+      {
+        "id": "partner-charles-village-civic-association",
+        "slug": "charles-village-civic-association",
+        "status": "published",
+        "data": {
+          "name": "Charles Village Civic Association",
+          "logo": {
+            "id": "ext_ee0c2129c02ad025",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Charles-Village-Logo.jpg",
+            "alt": "Charles Village Civic Association",
+            "width": 200,
+            "height": 80,
+            "provider": "external"
+          },
+          "url": "https://charlesvillage.org/",
+          "sort_order": 2
+        }
+      },
+      {
+        "id": "partner-johns-hopkins-university",
+        "slug": "johns-hopkins-university",
+        "status": "published",
+        "data": {
+          "name": "Johns Hopkins University",
+          "logo": {
+            "id": "ext_dfa5d10ca5554d17",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/John-Hopkins-logo.jpg",
+            "alt": "Johns Hopkins University",
+            "width": 200,
+            "height": 80,
+            "provider": "external"
+          },
+          "url": "https://www.jhu.edu/",
+          "sort_order": 3
+        }
+      },
+      {
+        "id": "partner-maryland",
+        "slug": "maryland",
+        "status": "published",
+        "data": {
+          "name": "Maryland",
+          "logo": {
+            "id": "ext_301648cd9f88a97d",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Maryland-Logo.jpg",
+            "alt": "State of Maryland",
+            "width": 200,
+            "height": 80,
+            "provider": "external"
+          },
+          "url": "https://www.maryland.gov/",
+          "sort_order": 4
+        }
+      },
+      {
+        "id": "partner-maryland-state-arts-council",
+        "slug": "maryland-state-arts-council",
+        "status": "published",
+        "data": {
+          "name": "Maryland State Arts Council",
+          "logo": {
+            "id": "ext_5ed74589097c71a2",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/MSAC-logo.jpg",
+            "alt": "Maryland State Arts Council",
+            "width": 200,
+            "height": 80,
+            "provider": "external"
+          },
+          "url": "https://msac.org/",
+          "sort_order": 5
+        }
+      },
+      {
+        "id": "partner-ace-hardware",
+        "slug": "ace-hardware",
+        "status": "published",
+        "data": {
+          "name": "Ace Hardware",
+          "logo": {
+            "id": "ext_9364cae71376fcf2",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Ace-logo.jpg",
+            "alt": "Ace Hardware",
+            "width": 200,
+            "height": 80,
+            "provider": "external"
+          },
+          "url": "https://www.acehardware.com/",
+          "sort_order": 6
+        }
+      }
+    ],
+    "site_extras": [
+      {
+        "id": "site-extras-main",
+        "slug": "main",
+        "status": "published",
+        "data": {
+          "logo_inverse": {
+            "id": "ext_ec15be6ca342ec97",
+            "src": "https://wymanparkdell.org/site/wp-content/uploads/2021/11/FWPD-WHITE.png",
+            "alt": "Friends of Wyman Park Dell",
+            "width": 200,
+            "height": 80,
+            "provider": "external"
+          },
+          "donate_cta_label": "Donate",
+          "donate_cta_href": "/get-involved/",
+          "contact_email": "wymanparkdell@gmail.com",
+          "contact_address": "Wyman Park Dell\nNorth Charles and 29th Streets\nBaltimore, MD 21218",
+          "copyright": "Friends of Wyman Park Dell. All rights reserved.",
+          "newsletter_heading": "Sign up for our newsletter",
+          "newsletter_action": "",
+          "newsletter_submit_label": "Subscribe"
+        }
+      }
+    ]
+  },
+  "menus": [
+    {
+      "name": "primary",
+      "label": "Primary navigation",
+      "items": [
+        {
+          "type": "custom",
+          "label": "About the park",
+          "url": "/about-the-park/"
+        },
+        {
+          "type": "custom",
+          "label": "Friends of Wyman Park Dell",
+          "url": "/friends-of-wyman-park-dell/"
+        },
+        {
+          "type": "custom",
+          "label": "Events",
+          "url": "/events/"
+        },
+        {
+          "type": "custom",
+          "label": "Get involved",
+          "url": "/get-involved/"
+        },
+        {
+          "type": "custom",
+          "label": "Contact",
+          "url": "/contact/"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "label": "Footer navigation",
+      "items": [
+        {
+          "type": "custom",
+          "label": "Home",
+          "url": "/"
+        },
+        {
+          "type": "custom",
+          "label": "About",
+          "url": "/about-the-park/"
+        },
+        {
+          "type": "custom",
+          "label": "Friends",
+          "url": "/friends-of-wyman-park-dell/"
+        },
+        {
+          "type": "custom",
+          "label": "Get involved",
+          "url": "/get-involved/"
+        },
+        {
+          "type": "custom",
+          "label": "Events",
+          "url": "/events/"
+        },
+        {
+          "type": "custom",
+          "label": "Shop",
+          "url": "https://wymanparkdell.org/shop/",
+          "target": "_blank"
+        },
+        {
+          "type": "custom",
+          "label": "Contact us",
+          "url": "/contact/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,121 @@
 ---
+import { getEmDashCollection } from 'emdash';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
-import { events } from '../content/events';
+import { compact, cta, imageRef } from '../lib/content-adapter';
+import { ptToHtml } from '../lib/pt';
+import type { ContentBlock } from '../types/content';
+
+const { entries } = await getEmDashCollection('events_page_content');
+const c = entries[0]?.data;
+
+if (!c) {
+  return new Response('Events page content has not been seeded. Visit /_emdash/admin.', { status: 503 });
+}
+
+const { entries: eventEntries } = await getEmDashCollection('events', { status: 'published' });
+const eventsLimit = typeof c.events_max === 'number' && c.events_max > 0 ? c.events_max : 3;
+const sortedEvents = [...eventEntries]
+  .filter((e) => e.data.starts_at)
+  .sort((a, b) => String(a.data.starts_at).localeCompare(String(b.data.starts_at)))
+  .slice(0, eventsLimit)
+  .map((e) => ({
+    title: e.data.title,
+    date: String(e.data.starts_at).slice(0, 10),
+    endDate: e.data.ends_at ? String(e.data.ends_at).slice(0, 10) : undefined,
+    time: e.data.time_text,
+    location: e.data.location,
+    body: e.data.summary,
+    image: imageRef(e.data.image),
+    cta: cta(e.data.cta_label, e.data.cta_href, { external: true }),
+  }));
+
+// Annual events curated list — kept in code as it's historical/editorial.
+const annualProjects = [
+  {
+    title: 'Holi Colors Celebration',
+    body: 'The Holi Color Celebration invites the community to a "color fight" in the lower Dell to mark the arrival of spring. This event is organized by local restaurant Sweet 27 in partnership with the Friends of Wyman Park Dell.',
+    image: {
+      src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Events_Holi-Colors-Celebration.jpg',
+      alt: 'Holi Color Celebration at Wyman Park Dell',
+    },
+    caption: 'Held each spring in partnership with Sweet 27.',
+  },
+  {
+    title: 'Charles Village Festival',
+    body: 'For more than 25 years, the Charles Village Festival filled the Dell with live music, performances, food, and vendors. This long-running event came to a close in 2024.',
+    image: {
+      src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/12/WPD-Event-Charles-Village-Festival.jpg',
+      alt: 'Charles Village Festival at the Dell',
+    },
+    caption: 'A 25-year tradition that concluded in 2024.',
+  },
+  {
+    title: 'Spooky Tuesdays in the Dell',
+    body: 'Spooky Tuesdays in the Dell brings the big screen to the park each October with showings of scary (and family-friendly!) films. This event is led by the Friends of Wyman Park Dell with the support of local businesses and sponsors.',
+    image: {
+      src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Events_Spooky-Tuesdays-in-the-Dell.jpg',
+      alt: 'Outdoor movie night at Wyman Park Dell',
+    },
+    caption: 'Outdoor movie nights every Tuesday in October.',
+  },
+  {
+    title: 'Winter Solstice in the Dell',
+    body: 'Every December 21, we invite neighbors to gather in the park to celebrate the Winter Solstice in the Dell. Enjoy music, marshmallows, and hot drinks and cookies provided by local restaurant Gertrude’s.',
+    image: {
+      src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Events_Winter-Solstice.jpg',
+      alt: 'Winter Solstice gathering at Wyman Park Dell',
+    },
+    caption: 'December 21 each year — courtesy of Gertrude’s.',
+  },
+];
+
+const blocks = compact<ContentBlock>([
+  {
+    type: 'hero',
+    variant: 'standard',
+    heading: c.hero_heading,
+    image: imageRef(c.hero_image),
+  },
+  sortedEvents.length > 0
+    ? {
+        type: 'events',
+        heading: c.events_section_heading,
+        intro: c.events_section_intro,
+        events: sortedEvents,
+        viewAllCta: cta(c.events_view_all_label, c.events_view_all_href, {
+          variant: 'ghost',
+          external: true,
+        }),
+      }
+    : undefined,
+  {
+    type: 'projects',
+    heading: c.annual_events_heading,
+    intro: c.annual_events_intro,
+    projects: annualProjects,
+  },
+  {
+    type: 'twoColumnText',
+    background: 'raised',
+    leftHeading: c.host_left_heading,
+    leftHtml: ptToHtml(c.host_left_body),
+    leftCtas: compact([cta(c.host_left_cta_label, c.host_left_cta_href, { external: true })]),
+    rightHeading: c.host_right_heading,
+    rightHtml: ptToHtml(c.host_right_body),
+    rightCtas: compact([cta(c.host_right_cta_label, c.host_right_cta_href, { external: true })]),
+  },
+  c.newsletter_heading
+    ? {
+        type: 'newsletter',
+        heading: c.newsletter_heading,
+        subheading: c.newsletter_subheading,
+        background: 'base',
+      }
+    : undefined,
+]);
 ---
 
-<BaseLayout title={events.title} description={events.metaDescription}>
-  <BlockRenderer blocks={events.blocks} />
+<BaseLayout title="Events" description="Join us at Wyman Park Dell. Annual celebrations, neighborhood gatherings, and community events year-round.">
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

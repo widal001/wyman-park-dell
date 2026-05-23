@@ -1,9 +1,147 @@
 ---
+import { getEmDashCollection } from 'emdash';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
-import { friends } from '../content/friends';
+import { compact, cta, imageRef } from '../lib/content-adapter';
+import { ptToHtml } from '../lib/pt';
+import type { ContentBlock } from '../types/content';
+
+const { entries } = await getEmDashCollection('friends_content');
+const c = entries[0]?.data;
+
+if (!c) {
+  return new Response('Friends page content has not been seeded. Visit /_emdash/admin.', { status: 503 });
+}
+
+const { entries: memberEntries } = await getEmDashCollection('team_members', { status: 'published' });
+const members = [...memberEntries]
+  .sort((a, b) => (a.data.sort_order ?? 0) - (b.data.sort_order ?? 0))
+  .map((e) => ({
+    name: e.data.name,
+    role: e.data.role,
+    photo: imageRef(e.data.photo),
+    bio: e.data.bio,
+  }));
+
+const { entries: partnerEntries } = await getEmDashCollection('partners', { status: 'published' });
+const partners = [...partnerEntries]
+  .sort((a, b) => (a.data.sort_order ?? 0) - (b.data.sort_order ?? 0))
+  .map((e) => ({
+    name: e.data.name,
+    logo: imageRef(e.data.logo) ?? { src: '', alt: e.data.name },
+    url: e.data.url ?? '#',
+  }));
+
+// Featured projects — historical curated list, stays in code.
+const featuredProjects = [
+  {
+    title: 'Harriet Tubman Grove',
+    body: 'Identity and interpretive signage have been installed in the grove, along with new picnic tables. The FWPD also worked with multi-media artist Ada Pinkston to host three public listening sessions focusing on the former Lee-Jackson monument site and the future of this part of the park.',
+    image: {
+      src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/12/Projects_Harriet-Tubman-Grove.jpg',
+      alt: 'Harriet Tubman Grove signage at Wyman Park Dell',
+    },
+    caption: 'Interpretive signage installed at the grove’s rededication, 2018–2020.',
+  },
+  {
+    title: 'Goats on the slope',
+    body: 'A herd of hungry goats helped to clear the "BMA Slope" in a completely eco-friendly way, funded entirely by neighbors.',
+    image: {
+      src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/12/Projects_Goats-on-the-Slope-Photo.jpg',
+      alt: 'Goats grazing the Dell slope',
+    },
+    caption: 'Eco-Goats clearing invasive vegetation on the BMA Slope, 2020.',
+  },
+  {
+    title: 'Traffic calming efforts',
+    body: 'Narrowed lanes to calm traffic and closing the "sweep" along 29th and Howard Streets are huge steps toward improving pedestrian safety and park access. Thanks to the Greater Remington Improvement Association, Charles Village Civic Association, Bikemore, and former Councilwoman Mary Pat Clarke for pushing these improvements.',
+    image: {
+      src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/12/Projects_Traffic-Calming.jpg',
+      alt: 'Pedestrians along 29th Street near the Dell',
+    },
+    caption: 'Narrowed lanes and closed “sweep” along 29th and Howard Streets.',
+  },
+];
+
+const blocks = compact<ContentBlock>([
+  {
+    type: 'hero',
+    variant: 'standard',
+    heading: c.hero_heading,
+    image: imageRef(c.hero_image),
+  },
+  c.lead_paragraph
+    ? {
+        type: 'sectionHeading',
+        variant: 'lead',
+        width: 'medium',
+        heading: c.lead_paragraph,
+        align: 'center',
+        headingColor: 'dark',
+      }
+    : undefined,
+  {
+    type: 'textWithMedia',
+    heading: c.history_heading,
+    mediaPosition: 'left',
+    image: imageRef(c.history_image) ?? { src: '', alt: '' },
+    html: ptToHtml(c.history_body),
+    ctas: compact([cta(c.history_cta_label, c.history_cta_href, { variant: 'outline' })]),
+  },
+  members.length > 0
+    ? {
+        type: 'board',
+        heading: c.board_heading,
+        intro: c.board_intro,
+        members,
+      }
+    : undefined,
+  {
+    type: 'sectionHeading',
+    heading: c.mission_heading,
+    subheading: c.mission_subheading,
+    align: 'center',
+    background: 'raised',
+    headingColor: 'dark',
+  },
+  {
+    type: 'richText',
+    width: 'narrow',
+    background: 'raised',
+    html: ptToHtml(c.mission_body),
+  },
+  c.video_youtube_id
+    ? {
+        type: 'videoEmbed',
+        youtubeId: c.video_youtube_id,
+        title: c.video_title,
+        caption: c.video_caption,
+        background: 'base',
+      }
+    : undefined,
+  {
+    type: 'projects',
+    heading: c.projects_heading,
+    intro: c.projects_intro,
+    projects: featuredProjects,
+  },
+  partners.length > 0
+    ? {
+        type: 'partners',
+        heading: c.partners_heading,
+        partners,
+      }
+    : undefined,
+  c.testimonial_quote
+    ? {
+        type: 'testimonial',
+        quote: c.testimonial_quote,
+        attribution: c.testimonial_attribution,
+      }
+    : undefined,
+]);
 ---
 
-<BaseLayout title={friends.title} description={friends.metaDescription}>
-  <BlockRenderer blocks={friends.blocks} />
+<BaseLayout title="Friends of Wyman Park Dell" description="The Friends of Wyman Park Dell is a 501(c)(3) volunteer-run nonprofit dedicated to preserving, protecting, and maintaining Wyman Park Dell.">
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

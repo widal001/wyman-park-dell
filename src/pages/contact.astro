@@ -1,9 +1,57 @@
 ---
+import { getEmDashCollection } from 'emdash';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
-import { contact } from '../content/contact';
+import { compact, imageRef } from '../lib/content-adapter';
+import { ptToHtml } from '../lib/pt';
+import type { ContentBlock } from '../types/content';
+
+const { entries } = await getEmDashCollection('contact_content');
+const c = entries[0]?.data;
+
+if (!c) {
+  return new Response('Contact content has not been seeded. Visit /_emdash/admin.', { status: 503 });
+}
+
+const blocks = compact<ContentBlock>([
+  {
+    type: 'hero',
+    variant: 'standard',
+    heading: c.hero_heading,
+    image: imageRef(c.hero_image),
+  },
+  {
+    type: 'richText',
+    align: 'left',
+    paddingTop: 'default',
+    paddingBottom: 'large',
+    width: 'wide',
+    background: 'raised',
+    html: ptToHtml(c.address_body),
+  },
+  c.map_embed_url
+    ? {
+        type: 'mapEmbed',
+        title: 'Map of Wyman Park Dell',
+        maxHeight: 480,
+        embedUrl: c.map_embed_url,
+      }
+    : undefined,
+  {
+    type: 'contactForm',
+    heading: c.form_heading,
+    html: ptToHtml(c.form_intro),
+    submitLabel: 'Submit',
+    background: 'base',
+  },
+  {
+    type: 'followUs',
+    paddingTop: 'xl',
+    paddingBottom: 'xl',
+  },
+]);
 ---
 
-<BaseLayout title={contact.title} description={contact.metaDescription}>
-  <BlockRenderer blocks={contact.blocks} />
+<BaseLayout title="Visit us" description="Find Wyman Park Dell at North Charles and 29th Streets in Baltimore. Get in touch with the Friends of Wyman Park Dell about volunteering, partnerships, or events.">
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

@@ -1,9 +1,137 @@
 ---
+import { getEmDashCollection } from 'emdash';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
-import { about } from '../content/about';
+import { compact, cta, imageRef } from '../lib/content-adapter';
+import { ptToHtml } from '../lib/pt';
+import type { ContentBlock } from '../types/content';
+
+const { entries } = await getEmDashCollection('about_content');
+const c = entries[0]?.data;
+
+if (!c) {
+  return new Response(
+    'About content has not been seeded yet. Visit /_emdash/admin to add an entry.',
+    { status: 503 },
+  );
+}
+
+const blocks = compact<ContentBlock>([
+  {
+    type: 'hero',
+    variant: 'standard',
+    heading: c.hero_heading,
+    image: imageRef(c.hero_image),
+  },
+  {
+    type: 'textWithMedia',
+    heading: c.history_heading,
+    mediaPosition: 'left',
+    image: imageRef(c.history_image) ?? { src: '', alt: '' },
+    html: ptToHtml(c.history_body),
+    ctas: compact([
+      cta(c.history_cta1_label, c.history_cta1_href, { external: true }),
+      cta(c.history_cta2_label, c.history_cta2_href, { external: true }),
+    ]),
+  },
+  // Timeline is hardcoded — historical milestones rarely change.
+  {
+    type: 'timeline',
+    eyebrow: 'Wyman Park',
+    heading: 'Master plan',
+    entries: [
+      {
+        date: 'Early 2000s',
+        title: 'Developing the master plan',
+        body:
+          'The Wyman Park Dell Master Plan Steering Committee engaged local landscape architecture firm Mahan Rykiel Associates to lead the local community in developing a Master Plan for the Dell. The master plan process was grounded in community-based planning with involvement from the surrounding communities and institutions.',
+      },
+      {
+        date: 'August 2006',
+        title: 'Plan approved',
+        body:
+          'The plan was presented by the Baltimore City Department of Recreation and Parks to the Baltimore City Commission for Historical and Architectural Preservation (CHAP) and approved with the exception of two items.',
+      },
+      {
+        date: '2010',
+        title: 'Dry stone wall restored',
+        body: 'Restoration of the dry stone wall in the Lower Dell, an important Dell icon.',
+      },
+      {
+        date: '2013',
+        title: 'Park information board installed',
+        body:
+          'Welcome signs with message boards at the main entrances to the park are installed to orient visitors and provide space to market community events.',
+      },
+      {
+        date: '2015',
+        title: 'Playground constructed',
+        body:
+          'Baltimore City Department of Recreation and Parks constructs a new playground in the Dell. Ping Pong Baltimore partners with FWPD to install a ping pong table nearby.',
+      },
+      {
+        date: '2016',
+        title: 'Shade sail installed',
+        body:
+          'As an extension of the playground project, a shade sail is installed with support from the Homewood Community Partners Initiative.',
+      },
+      {
+        date: '2017',
+        title: 'Tree pruning',
+        body:
+          'A grant from the Johns Hopkins Neighborhood Fund helps prune trees to improve safety and visibility.',
+      },
+      {
+        date: '2020',
+        title: 'Slope clearing',
+        body: 'The FWPD crowdfunds money to hire Eco-Goats to clear the “BMA Slope” of invasive vegetation.',
+      },
+    ],
+  },
+  c.cta_bar_heading && c.cta_bar_label && c.cta_bar_href
+    ? {
+        type: 'cta',
+        background: 'bar',
+        heading: c.cta_bar_heading,
+        ctas: compact([cta(c.cta_bar_label, c.cta_bar_href, { external: true })]),
+      }
+    : undefined,
+  {
+    type: 'twoColumnText',
+    background: 'raised',
+    alignAcross: false,
+    paddingTop: 'none',
+    leftHtml: ptToHtml(c.credits_left_body),
+    rightHtml: ptToHtml(c.credits_right_body),
+    ctas: compact([cta(c.credits_cta_label, c.credits_cta_href)]),
+  },
+  {
+    type: 'textWithMedia',
+    heading: c.tubman_heading,
+    mediaPosition: 'right',
+    image: imageRef(c.tubman_image) ?? { src: '', alt: '' },
+    html: ptToHtml(c.tubman_body),
+  },
+  {
+    type: 'gallery',
+    layout: 'mosaic',
+    images: compact([
+      imageRef(c.gallery_image_1),
+      imageRef(c.gallery_image_2),
+      imageRef(c.gallery_image_3),
+      imageRef(c.gallery_image_4),
+    ]),
+  },
+  c.testimonial_quote
+    ? {
+        type: 'testimonial',
+        quote: c.testimonial_quote,
+        attribution: c.testimonial_attribution ?? undefined,
+      }
+    : undefined,
+]);
 ---
 
-<BaseLayout title={about.title} description={about.metaDescription}>
-  <BlockRenderer blocks={about.blocks} />
+<BaseLayout title={c.hero_heading} description="The Wyman Park Dell is a 16-acre Olmsted-designed public park in Central Baltimore. Read about its history, master plan, and Harriet Tubman Grove.">
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

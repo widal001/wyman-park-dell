@@ -1,9 +1,164 @@
 ---
+import { getEmDashCollection } from 'emdash';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
-import { homepage } from '../content/homepage';
+import { compact, cta, imageRef } from '../lib/content-adapter';
+import type { ContentBlock } from '../types/content';
+
+const { entries } = await getEmDashCollection('homepage_content');
+const c = entries[0]?.data;
+
+if (!c) {
+  return new Response('Homepage content has not been seeded. Visit /_emdash/admin.', { status: 503 });
+}
+
+// Top upcoming events surfaced on the homepage — pulled from the events collection.
+const { entries: eventEntries } = await getEmDashCollection('events', { status: 'published' });
+const sortedEvents = [...eventEntries]
+  .filter((e) => e.data.starts_at)
+  .sort((a, b) => String(a.data.starts_at).localeCompare(String(b.data.starts_at)))
+  .slice(0, 3)
+  .map((e) => ({
+    title: e.data.title,
+    date: String(e.data.starts_at).slice(0, 10),
+    endDate: e.data.ends_at ? String(e.data.ends_at).slice(0, 10) : undefined,
+    time: e.data.time_text,
+    location: e.data.location,
+    body: e.data.summary,
+    image: imageRef(e.data.image),
+    cta: cta(e.data.cta_label, e.data.cta_href, { external: true }),
+  }));
+
+const blocks = compact<ContentBlock>([
+  {
+    type: 'hero',
+    variant: 'fullscreen',
+    heading: c.hero_heading,
+    body: c.hero_body,
+    image: imageRef(c.hero_image),
+    ctas: compact([
+      cta(c.hero_cta1_label, c.hero_cta1_href, { variant: 'solid-inverse', external: true }),
+      cta(c.hero_cta2_label, c.hero_cta2_href, { variant: 'outline-inverse', external: true }),
+    ]),
+  },
+  sortedEvents.length > 0
+    ? {
+        type: 'events',
+        heading: c.events_section_heading,
+        intro: c.events_section_intro,
+        events: sortedEvents,
+        viewAllCta: cta(c.events_view_all_label, c.events_view_all_href, {
+          variant: 'ghost',
+          external: true,
+        }),
+      }
+    : undefined,
+  {
+    type: 'sectionHeading',
+    heading: c.discover_heading,
+    width: 'medium',
+    subheading: c.discover_subheading,
+    align: 'center',
+    headingColor: 'dark',
+  },
+  // Activity grid items are hardcoded — they're a fixed set of park usage suggestions
+  // tied to specific lifestyle illustrations. Editor swaps the feature image only.
+  {
+    type: 'activityGrid',
+    image: imageRef(c.activity_grid_image) ?? { src: '', alt: '' },
+    items: [
+      {
+        label: 'Stroll the park’s winding paths or people-watch from park benches.',
+        icon: {
+          src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Web-1280-–-1-1.png',
+          alt: '',
+          width: 60,
+          height: 60,
+        },
+      },
+      {
+        label: 'Throw a frisbee or kick a soccer ball on the lower lawn.',
+        icon: {
+          src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Web-1280-–-2.png',
+          alt: '',
+          width: 60,
+          height: 60,
+        },
+      },
+      {
+        label: 'Spend time using the playground, ping-pong table, and Little Library.',
+        icon: {
+          src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Web-1280-–-3.png',
+          alt: '',
+          width: 60,
+          height: 60,
+        },
+      },
+      {
+        label: 'Explore historic features including the Union Sailors & Soldiers Monument.',
+        icon: {
+          src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Web-1280-–-6.png',
+          alt: '',
+          width: 60,
+          height: 60,
+        },
+      },
+      {
+        label: 'Walk your dog.',
+        icon: {
+          src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Web-1280-–-7.png',
+          alt: '',
+          width: 60,
+          height: 60,
+        },
+      },
+      {
+        label: 'Picnic at tables in Harriet Tubman Grove.',
+        icon: {
+          src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Web-1280-–-4.png',
+          alt: '',
+          width: 60,
+          height: 60,
+        },
+      },
+      {
+        label: 'String up a hammock for an afternoon under the trees.',
+        icon: {
+          src: 'https://wymanparkdell.org/site/wp-content/uploads/2021/11/Web-1280-–-5.png',
+          alt: '',
+          width: 60,
+          height: 60,
+        },
+      },
+    ],
+  },
+  c.testimonial_quote
+    ? {
+        type: 'testimonial',
+        quote: c.testimonial_quote,
+        attribution: c.testimonial_attribution ?? undefined,
+      }
+    : undefined,
+  {
+    type: 'gallery',
+    layout: 'mosaic',
+    paddingTop: 'none',
+    paddingBottom: 'none',
+    images: compact([
+      imageRef(c.gallery_image_1),
+      imageRef(c.gallery_image_2),
+      imageRef(c.gallery_image_3),
+      imageRef(c.gallery_image_4),
+    ]),
+  },
+  {
+    type: 'followUs',
+    paddingTop: 'xl',
+    paddingBottom: 'xl',
+  },
+]);
 ---
 
-<BaseLayout title={homepage.title} description={homepage.metaDescription}>
-  <BlockRenderer blocks={homepage.blocks} />
+<BaseLayout title="Friends of Wyman Park Dell" description="Wyman Park Dell is a 16-acre Olmsted-designed public park in Central Baltimore. A green oasis where all are welcome.">
+  <BlockRenderer blocks={blocks} />
 </BaseLayout>

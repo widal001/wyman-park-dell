@@ -1,8 +1,23 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "wyman-park-dell",
+	"main": "./src/worker.ts",
 	"compatibility_date": "2026-04-15",
+	"compatibility_flags": ["nodejs_compat"],
 	"observability": {
 		"enabled": true
-	}
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "wyman-park-dell"
+		}
+	],
+	"r2_buckets": [
+		{
+			"binding": "MEDIA",
+			"bucket_name": "wyman-park-dell-media"
+		}
+	]
+	// No worker_loaders block: plugin sandbox is disabled, keeping us on the free Workers tier.
 }
