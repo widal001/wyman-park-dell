@@ -14,7 +14,7 @@ export const homepage: PageContent = {
       heading: "Welcome to the Wyman Park Dell",
       body: "Surrounded by tree-lined slopes, the Dell is a green oasis in the heart of Central Baltimore where all are welcome. Your support is needed to keep this unique public space accessible — and extraordinary — for everyone.",
       image: {
-        src: `${WP}/2026/01/Home-Page-Image-1024x554.webp`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Home-Page-Image-1024x554.webp`,
         alt: "Aerial view of Wyman Park Dell in summer",
         width: 1024,
         height: 554,
@@ -47,7 +47,7 @@ export const homepage: PageContent = {
           location: "Wyman Park Dell — meet at the playground",
           body: "Join your neighbors for our biggest clean-up of the year. Tools, gloves, and refreshments provided. All ages welcome — kids especially love the wheelbarrows.",
           image: {
-            src: "/_emdash/api/media/file/01KSB4BAACPZJKD91JH65Z79V6.jpg",
+            src: "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Friends.jpg",
             alt: "Volunteers at a Wyman Park Dell clean-up",
           },
           cta: {
@@ -63,7 +63,7 @@ export const homepage: PageContent = {
           location: "Lower lawn, Wyman Park Dell",
           body: "Bring a blanket, a picnic, and the whole family. We project a family-friendly film on the big inflatable screen as the sun sets behind the slopes.",
           image: {
-            src: "/_emdash/api/media/file/01KSB4BADVHCJN58QM9P5R5F36.jpg",
+            src: "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-2.jpg",
             alt: "Wyman Park Dell at golden hour",
           },
           cta: {
@@ -79,7 +79,7 @@ export const homepage: PageContent = {
           location: "Wyman Park Dell",
           body: "A celebration of the Dell, the neighborhoods around it, and the people who keep it special. Live music, local food, kid activities, and a chance to meet the FWPD board.",
           image: {
-            src: "/_emdash/api/media/file/01KSB4BAFXVGKG0S6RH5JZSH4Y.jpg",
+            src: "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-4.jpg",
             alt: "A community gathering at Wyman Park Dell",
           },
           cta: {
@@ -108,7 +108,7 @@ export const homepage: PageContent = {
     {
       type: "activityGrid",
       image: {
-        src: `${WP}/2026/01/Dell-Plan.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Dell-Plan.jpg`,
         alt: "Master plan illustration of Wyman Park Dell",
         width: 800,
         height: 660,
@@ -118,7 +118,7 @@ export const homepage: PageContent = {
           label:
             "Stroll the park’s winding paths or people-watch from park benches.",
           icon: {
-            src: `${WP}/2021/11/Web-1280-–-1-1.png`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Web-1280-%E2%80%93-1-1.png`,
             alt: "",
             width: 60,
             height: 60,
@@ -127,7 +127,7 @@ export const homepage: PageContent = {
         {
           label: "Throw a frisbee or kick a soccer ball on the lower lawn.",
           icon: {
-            src: `${WP}/2021/11/Web-1280-–-2.png`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Web-1280-%E2%80%93-2.png`,
             alt: "",
             width: 60,
             height: 60,
@@ -137,7 +137,7 @@ export const homepage: PageContent = {
           label:
             "Spend time using the playground, ping-pong table, and Little Library.",
           icon: {
-            src: `${WP}/2021/11/Web-1280-–-3.png`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Web-1280-%E2%80%93-3.png`,
             alt: "",
             width: 60,
             height: 60,
@@ -147,7 +147,7 @@ export const homepage: PageContent = {
           label:
             "Explore historic features including the Union Sailors & Soldiers Monument.",
           icon: {
-            src: `${WP}/2021/11/Web-1280-–-6.png`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Web-1280-%E2%80%93-6.png`,
             alt: "",
             width: 60,
             height: 60,
@@ -156,7 +156,7 @@ export const homepage: PageContent = {
         {
           label: "Walk your dog.",
           icon: {
-            src: `${WP}/2021/11/Web-1280-–-7.png`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Web-1280-%E2%80%93-7.png`,
             alt: "",
             width: 60,
             height: 60,
@@ -165,7 +165,7 @@ export const homepage: PageContent = {
         {
           label: "Picnic at tables in Harriet Tubman Grove.",
           icon: {
-            src: `${WP}/2021/11/Web-1280-–-4.png`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Web-1280-%E2%80%93-4.png`,
             alt: "",
             width: 60,
             height: 60,
@@ -174,7 +174,7 @@ export const homepage: PageContent = {
         {
           label: "String up a hammock for an afternoon under the trees.",
           icon: {
-            src: `${WP}/2021/11/Web-1280-–-5.png`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Web-1280-%E2%80%93-5.png`,
             alt: "",
             width: 60,
             height: 60,
@@ -195,25 +195,25 @@ export const homepage: PageContent = {
       paddingBottom: "none",
       images: [
         {
-          src: `${WP}/2021/11/Home-Page_WPD.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Home-Page_WPD.jpg`,
           alt: "A sunny day at Wyman Park Dell",
           width: 792,
           height: 792,
         },
         {
-          src: `${WP}/2026/01/Wyman-Park-Dell-2.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-2.jpg`,
           alt: "Visitors enjoying the lower lawn",
           width: 700,
           height: 467,
         },
         {
-          src: `${WP}/2026/01/Wyman-Park-Dell-3.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-3.jpg`,
           alt: "Tree-lined slopes of the Dell in fall",
           width: 800,
           height: 533,
         },
         {
-          src: `${WP}/2026/01/Wyman-Park-Dell-4.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-4.jpg`,
           alt: "A community gathering at Wyman Park Dell",
           width: 800,
           height: 533,

@@ -13,7 +13,7 @@ export const contact: PageContent = {
       variant: "standard",
       heading: "Visit us",
       image: {
-        src: `${WP}/2021/11/Contact-Us_WymanPark-Snow-2021.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Contact-Us_WymanPark-Snow-2021.jpg`,
         alt: "Wyman Park Dell on a snowy day",
       },
     },

@@ -13,7 +13,7 @@ export const about: PageContent = {
       variant: 'standard',
       heading: 'About Wyman Park Dell',
       image: {
-        src: `${WP}/2021/11/About_Dell.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/About_Dell.jpg`,
         alt: 'Wyman Park Dell from above',
       },
     },
@@ -22,7 +22,7 @@ export const about: PageContent = {
       heading: 'Park history',
       mediaPosition: 'left',
       image: {
-        src: `${WP}/2021/12/Park-History.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Park-History.jpg`,
         alt: 'Historic photograph of the Wyman Park Dell',
       },
       html: `
@@ -129,7 +129,7 @@ export const about: PageContent = {
       heading: 'Harriet Tubman Grove',
       mediaPosition: 'right',
       image: {
-        src: `${WP}/2021/11/WPD_Harriet-Tubman-Grove.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Harriet-Tubman-Grove.jpg`,
         alt: 'Harriet Tubman Grove at Wyman Park Dell',
       },
       html: `
@@ -143,19 +143,19 @@ export const about: PageContent = {
       layout: 'mosaic',
       images: [
         {
-          src: `${WP}/2021/11/WPD_Park_Stairs.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Park_Stairs.jpg`,
           alt: 'Stone stairs leading into the Dell',
         },
         {
-          src: `${WP}/2021/11/WPD_Fall.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Fall.jpg`,
           alt: 'Wyman Park Dell in fall',
         },
         {
-          src: `${WP}/2026/01/Wyman-Park-Dell-2.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-2.jpg`,
           alt: 'Wyman Park Dell in summer',
         },
         {
-          src: `${WP}/2021/11/WPD_Winter.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Winter.jpg`,
           alt: 'Wyman Park Dell in winter',
         },
       ],

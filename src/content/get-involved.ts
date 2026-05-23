@@ -13,7 +13,7 @@ export const getInvolved: PageContent = {
       variant: "standard",
       heading: "Become a Friend of the Dell",
       image: {
-        src: `${WP}/2021/12/241433689_10159395889436061_7809489849254585591_n.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/241433689_10159395889436061_7809489849254585591_n.jpg`,
         alt: "Friends of Wyman Park Dell volunteers gathered for a clean-up",
       },
     },
@@ -31,7 +31,7 @@ export const getInvolved: PageContent = {
       heading: "Make a donation",
       mediaPosition: "left",
       image: {
-        src: `${WP}/2021/12/Volunteer.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Volunteer.jpg`,
         alt: "Volunteers gathered at Wyman Park Dell",
       },
       html: `
@@ -53,7 +53,7 @@ export const getInvolved: PageContent = {
       heading: "Become a volunteer",
       mediaPosition: "right",
       image: {
-        src: `${WP}/2021/11/Get-Involved-2-1.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Get-Involved-2-1.jpg`,
         alt: "Volunteers smiling after a Wyman Park Dell clean-up",
       },
       html: `
@@ -73,19 +73,19 @@ export const getInvolved: PageContent = {
       layout: "mosaic",
       images: [
         {
-          src: `${WP}/2021/11/WPD_Volunteer_1.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Volunteer_1.jpg`,
           alt: "Volunteers gathered at Wyman Park Dell",
         },
         {
-          src: `${WP}/2021/11/WPD_Volunteer_2.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Volunteer_2.jpg`,
           alt: "FWPD volunteers tending to the park",
         },
         {
-          src: `${WP}/2021/11/WPD_Volunteer_3.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Volunteer_3.jpg`,
           alt: "A volunteer working in the Dell",
         },
         {
-          src: `${WP}/2021/11/WPD_Volunteer_4.jpg`,
+          src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Volunteer_4.jpg`,
           alt: "Volunteers smiling after a clean-up",
         },
       ],

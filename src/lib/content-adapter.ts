@@ -17,16 +17,25 @@ type EmDashImage = {
   height?: number;
   provider?: string;
   previewUrl?: string;
-  meta?: Record<string, unknown>;
+  meta?: { storageKey?: string; [k: string]: unknown };
 } | null | undefined;
 
 /**
- * Map an EmDash image field value to ImageRef. Returns undefined if no usable
- * source is available so callers can guard with `?:`.
+ * Map an EmDash image field value to ImageRef. Handles three cases produced
+ * by EmDash's apply flow:
+ *  - provider:"external" with `src` → use src directly (e.g. canonical R2 URL)
+ *  - provider:"local" with `meta.storageKey` → construct the env-local URL
+ *    served by /_emdash/api/media/file/<storageKey>
+ *  - legacy/preview URLs via `src` or `previewUrl`
+ * Returns undefined when nothing resolvable is present.
  */
 export function imageRef(img: EmDashImage): ImageRef | undefined {
   if (!img) return undefined;
-  const src = img.src ?? img.previewUrl;
+  const storageKey = img.meta?.storageKey;
+  const src =
+    img.src ??
+    img.previewUrl ??
+    (typeof storageKey === 'string' ? `/_emdash/api/media/file/${storageKey}` : undefined);
   if (!src) return undefined;
   return {
     src,

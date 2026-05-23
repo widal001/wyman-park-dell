@@ -1,17 +1,19 @@
 import type { SiteContent } from '../types/content';
 
+const WP = 'https://wymanparkdell.org/site/wp-content/uploads';
+
 export const site: SiteContent = {
   name: 'Friends of Wyman Park Dell',
   tagline:
     'A green oasis in the heart of Central Baltimore where all are welcome.',
   logo: {
-    src: '/_emdash/api/media/file/01KSB4ENK6C7114GQHRK90XSBT.jpg',
+    src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/FWPD-RGB.jpg`,
     alt: 'Friends of Wyman Park Dell',
     width: 160,
     height: 160,
   },
   logoInverse: {
-    src: '/_emdash/api/media/file/01KSB463T1TJ9CJ7005HK9N6HB.png',
+    src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/FWPD-WHITE.png`,
     alt: 'Friends of Wyman Park Dell',
     width: 200,
     height: 80,

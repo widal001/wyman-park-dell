@@ -13,7 +13,7 @@ export const friends: PageContent = {
       variant: "standard",
       heading: "Friends of Wyman Park Dell",
       image: {
-        src: `${WP}/2021/11/1_Home-Page_DellWeb_05172020-7-1.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/1_Home-Page_DellWeb_05172020-7-1.jpg`,
         alt: "A boy on a scooter at Wyman Park Dell",
       },
     },
@@ -31,7 +31,7 @@ export const friends: PageContent = {
       heading: "How we got started",
       mediaPosition: "left",
       image: {
-        src: `${WP}/2021/11/WPD_Friends.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Friends.jpg`,
         alt: "FWPD volunteers cleaning up the Dell",
       },
       html: `
@@ -122,7 +122,7 @@ export const friends: PageContent = {
           title: "Harriet Tubman Grove",
           body: "Identity and interpretive signage have been installed in the grove, along with new picnic tables. The FWPD also worked with multi-media artist Ada Pinkston to host three public listening sessions focusing on the former Lee-Jackson monument site and the future of this part of the park.",
           image: {
-            src: `${WP}/2021/12/Projects_Harriet-Tubman-Grove.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Projects_Harriet-Tubman-Grove.jpg`,
             alt: "Harriet Tubman Grove signage at Wyman Park Dell",
           },
           caption:
@@ -132,7 +132,7 @@ export const friends: PageContent = {
           title: "Goats on the slope",
           body: 'A herd of hungry goats helped to clear the "BMA Slope" in a completely eco-friendly way, funded entirely by neighbors.',
           image: {
-            src: `${WP}/2021/12/Projects_Goats-on-the-Slope-Photo.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Projects_Goats-on-the-Slope-Photo.jpg`,
             alt: "Goats grazing the Dell slope",
           },
           caption:
@@ -142,7 +142,7 @@ export const friends: PageContent = {
           title: "Traffic calming efforts",
           body: 'Narrowed lanes to calm traffic and closing the "sweep" along 29th and Howard Streets are huge steps toward improving pedestrian safety and park access. Thanks to the Greater Remington Improvement Association, Charles Village Civic Association, Bikemore, and former Councilwoman Mary Pat Clarke for pushing these improvements.',
           image: {
-            src: `${WP}/2021/12/Projects_Traffic-Calming.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Projects_Traffic-Calming.jpg`,
             alt: "Pedestrians along 29th Street near the Dell",
           },
           caption:
@@ -158,7 +158,7 @@ export const friends: PageContent = {
           name: "Baltimore City",
           url: "https://baltimorecity.gov/",
           logo: {
-            src: `${WP}/2021/11/B-More-City-Logo.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/B-More-City-Logo.jpg`,
             alt: "Baltimore City",
             width: 200,
             height: 80,
@@ -168,7 +168,7 @@ export const friends: PageContent = {
           name: "Baltimore National Heritage Area",
           url: "https://explorebaltimore.org/",
           logo: {
-            src: `${WP}/2021/11/B-more-National-logo.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/B-more-National-logo.jpg`,
             alt: "Baltimore National Heritage Area",
             width: 200,
             height: 80,
@@ -178,7 +178,7 @@ export const friends: PageContent = {
           name: "Charles Village Civic Association",
           url: "https://charlesvillage.org/",
           logo: {
-            src: `${WP}/2021/11/Charles-Village-Logo.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Charles-Village-Logo.jpg`,
             alt: "Charles Village Civic Association",
             width: 200,
             height: 80,
@@ -188,7 +188,7 @@ export const friends: PageContent = {
           name: "Johns Hopkins University",
           url: "https://www.jhu.edu/",
           logo: {
-            src: `${WP}/2021/11/John-Hopkins-logo.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/John-Hopkins-logo.jpg`,
             alt: "Johns Hopkins University",
             width: 200,
             height: 80,
@@ -198,7 +198,7 @@ export const friends: PageContent = {
           name: "Maryland",
           url: "https://www.maryland.gov/",
           logo: {
-            src: `${WP}/2021/11/Maryland-Logo.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Maryland-Logo.jpg`,
             alt: "State of Maryland",
             width: 200,
             height: 80,
@@ -208,7 +208,7 @@ export const friends: PageContent = {
           name: "Maryland State Arts Council",
           url: "https://msac.org/",
           logo: {
-            src: `${WP}/2021/11/MSAC-logo.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/MSAC-logo.jpg`,
             alt: "Maryland State Arts Council",
             width: 200,
             height: 80,
@@ -218,7 +218,7 @@ export const friends: PageContent = {
           name: "Ace Hardware",
           url: "https://www.acehardware.com/",
           logo: {
-            src: `${WP}/2021/11/Ace-logo.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Ace-logo.jpg`,
             alt: "Ace Hardware",
             width: 200,
             height: 80,

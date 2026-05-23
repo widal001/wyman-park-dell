@@ -13,7 +13,7 @@ export const events: PageContent = {
       variant: "standard",
       heading: "Join us at the Dell",
       image: {
-        src: `${WP}/2021/12/Events-banner-scaled.jpg`,
+        src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Events-banner-scaled.jpg`,
         alt: "A community gathering at Wyman Park Dell",
       },
     },
@@ -30,7 +30,7 @@ export const events: PageContent = {
           location: "Wyman Park Dell — meet at the playground",
           body: "Join your neighbors for our biggest clean-up of the year. Tools, gloves, and refreshments provided. All ages welcome — kids especially love the wheelbarrows.",
           image: {
-            src: `${WP}/2021/11/WPD_Friends.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Friends.jpg`,
             alt: "Volunteers at a Wyman Park Dell clean-up",
           },
           cta: {
@@ -46,7 +46,7 @@ export const events: PageContent = {
           location: "Lower Dell",
           body: "A joyful “color fight” in the lower Dell to mark the arrival of spring, organized by local restaurant Sweet 27 in partnership with the Friends of Wyman Park Dell.",
           image: {
-            src: `${WP}/2021/11/Events_Holi-Colors-Celebration.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Events_Holi-Colors-Celebration.jpg`,
             alt: "Holi Color Celebration at the Dell",
           },
           cta: {
@@ -62,7 +62,7 @@ export const events: PageContent = {
           location: "Wyman Park Dell",
           body: "Gather with neighbors to celebrate the Winter Solstice. Music, marshmallows, and hot drinks and cookies provided by local restaurant Gertrude’s.",
           image: {
-            src: `${WP}/2021/11/Events_Winter-Solstice.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Events_Winter-Solstice.jpg`,
             alt: "Winter Solstice gathering at the Dell",
           },
           cta: {
@@ -89,7 +89,7 @@ export const events: PageContent = {
           title: "Holi Colors Celebration",
           body: 'The Holi Color Celebration invites the community to a "color fight" in the lower Dell to mark the arrival of spring. This event is organized by local restaurant Sweet 27 in partnership with the Friends of Wyman Park Dell.',
           image: {
-            src: `${WP}/2021/11/Events_Holi-Colors-Celebration.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Events_Holi-Colors-Celebration.jpg`,
             alt: "Holi Color Celebration at Wyman Park Dell",
           },
           caption: "Held each spring in partnership with Sweet 27.",
@@ -98,7 +98,7 @@ export const events: PageContent = {
           title: "Charles Village Festival",
           body: "For more than 25 years, the Charles Village Festival filled the Dell with live music, performances, food, and vendors. This long-running event came to a close in 2024.",
           image: {
-            src: `${WP}/2021/12/WPD-Event-Charles-Village-Festival.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD-Event-Charles-Village-Festival.jpg`,
             alt: "Charles Village Festival at the Dell",
           },
           caption: "A 25-year tradition that concluded in 2024.",
@@ -107,7 +107,7 @@ export const events: PageContent = {
           title: "Spooky Tuesdays in the Dell",
           body: "Spooky Tuesdays in the Dell brings the big screen to the park each October with showings of scary (and family-friendly!) films. This event is led by the Friends of Wyman Park Dell with the support of local businesses and sponsors.",
           image: {
-            src: `${WP}/2021/11/Events_Spooky-Tuesdays-in-the-Dell.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Events_Spooky-Tuesdays-in-the-Dell.jpg`,
             alt: "Outdoor movie night at Wyman Park Dell",
           },
           caption: "Outdoor movie nights every Tuesday in October.",
@@ -116,7 +116,7 @@ export const events: PageContent = {
           title: "Winter Solstice in the Dell",
           body: "Every December 21, we invite neighbors to gather in the park to celebrate the Winter Solstice in the Dell. Enjoy music, marshmallows, and hot drinks and cookies provided by local restaurant Gertrude’s.",
           image: {
-            src: `${WP}/2021/11/Events_Winter-Solstice.jpg`,
+            src: `https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Events_Winter-Solstice.jpg`,
             alt: "Winter Solstice gathering at Wyman Park Dell",
           },
           caption: "December 21 each year — courtesy of Gertrude’s.",

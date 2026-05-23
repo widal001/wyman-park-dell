@@ -872,12 +872,10 @@
           "hero_heading": "Welcome to the Wyman Park Dell",
           "hero_body": "Surrounded by tree-lined slopes, the Dell is a green oasis in the heart of Central Baltimore where all are welcome. Your support is needed to keep this unique public space accessible — and extraordinary — for everyone.",
           "hero_image": {
-            "id": "01KSB460BG1CEMD83T8JTE4RBY",
-            "src": "/_emdash/api/media/file/01KSB460B743BDNXZSEKRGSQS4.webp",
-            "alt": "Aerial view of Wyman Park Dell in summer",
-            "width": 1024,
-            "height": 554,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Home-Page-Image-1024x554.webp",
+              "alt": "Aerial view of Wyman Park Dell in summer"
+            }
           },
           "hero_cta1_label": "Get involved",
           "hero_cta1_href": "https://wymanparkdell.org/get-involved/",
@@ -890,46 +888,36 @@
           "discover_heading": "How will you discover the Dell?",
           "discover_subheading": "The Wyman Park Dell is a 16-acre public park located south of Johns Hopkins University and the Baltimore Museum of Art.",
           "activity_grid_image": {
-            "id": "01KSB460G9TXS3CGKQ716EVYHX",
-            "src": "/_emdash/api/media/file/01KSB460DRNMGTM4Z3AP07XH1P.jpg",
-            "alt": "Master plan illustration of Wyman Park Dell",
-            "width": 800,
-            "height": 660,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Dell-Plan.jpg",
+              "alt": "Master plan illustration of Wyman Park Dell"
+            }
           },
           "testimonial_quote": "Wyman Park Dell is a beautiful, charming oasis in Charles Village. Great place to unwind, walk your dog, read a book, or just quietly reflect.",
           "testimonial_attribution": "Park Visitor",
           "gallery_image_1": {
-            "id": "01KSB460N1J8SA6JKR6XFCFF19",
-            "src": "/_emdash/api/media/file/01KSB460K9YS8KR625SAYMCJDB.jpg",
-            "alt": "A sunny day at Wyman Park Dell",
-            "width": 792,
-            "height": 792,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Home-Page_WPD.jpg",
+              "alt": "A sunny day at Wyman Park Dell"
+            }
           },
           "gallery_image_2": {
-            "id": "01KSB460R1VGF4XXWHJ9T7RQ2W",
-            "src": "/_emdash/api/media/file/01KSB460Q56084MRDN4VDWFA6G.jpg",
-            "alt": "Visitors enjoying the lower lawn",
-            "width": 700,
-            "height": 467,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-2.jpg",
+              "alt": "Visitors enjoying the lower lawn"
+            }
           },
           "gallery_image_3": {
-            "id": "01KSB460V5H7REYREZDWK2RJS3",
-            "src": "/_emdash/api/media/file/01KSB460T2BZSKPG350BH98M8P.jpg",
-            "alt": "Tree-lined slopes of the Dell in fall",
-            "width": 800,
-            "height": 533,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-3.jpg",
+              "alt": "Tree-lined slopes of the Dell in fall"
+            }
           },
           "gallery_image_4": {
-            "id": "01KSB460YEVTVT8DFFTV1JW49W",
-            "src": "/_emdash/api/media/file/01KSB460X9N2NQQ0B93MRZSZ4C.jpg",
-            "alt": "A community gathering at Wyman Park Dell",
-            "width": 800,
-            "height": 533,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-4.jpg",
+              "alt": "A community gathering at Wyman Park Dell"
+            }
           }
         }
       }
@@ -942,17 +930,17 @@
         "data": {
           "hero_heading": "About Wyman Park Dell",
           "hero_image": {
-            "id": "01KSB4611JPG0X0T5XCH562K1M",
-            "src": "/_emdash/api/media/file/01KSB4610E7PJNGP1YDR3MKXF1.jpg",
-            "alt": "Wyman Park Dell from above",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/About_Dell.jpg",
+              "alt": "Wyman Park Dell from above"
+            }
           },
           "history_heading": "Park history",
           "history_image": {
-            "id": "01KSB4614KPD8CKA7E2SF64Y84",
-            "src": "/_emdash/api/media/file/01KSB4613Z5T23D90W3W1EJN9D.jpg",
-            "alt": "Historic photograph of the Wyman Park Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Park-History.jpg",
+              "alt": "Historic photograph of the Wyman Park Dell"
+            }
           },
           "history_body": [
             {
@@ -1161,10 +1149,10 @@
           "credits_cta_href": "/friends-of-wyman-park-dell/",
           "tubman_heading": "Harriet Tubman Grove",
           "tubman_image": {
-            "id": "01KSB461B2VNBK0PA14GWN24VW",
-            "src": "/_emdash/api/media/file/01KSB46177GAYAQK599BH1S8SP.jpg",
-            "alt": "Harriet Tubman Grove at Wyman Park Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Harriet-Tubman-Grove.jpg",
+              "alt": "Harriet Tubman Grove at Wyman Park Dell"
+            }
           },
           "tubman_body": [
             {
@@ -1272,28 +1260,28 @@
           "testimonial_quote": "Great little slice of nature in the middle of Charles Village.",
           "testimonial_attribution": "Park Visitor",
           "gallery_image_1": {
-            "id": "01KSB461DGV6H5D915V9KYHFDJ",
-            "src": "/_emdash/api/media/file/01KSB461D0D3SS0JX7Q2EY1NA1.jpg",
-            "alt": "Stone stairs leading into the Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Park_Stairs.jpg",
+              "alt": "Stone stairs leading into the Dell"
+            }
           },
           "gallery_image_2": {
-            "id": "01KSB461FYSCSD7QBVESECB4CX",
-            "src": "/_emdash/api/media/file/01KSB461FCSNK0ECJNGC32Z700.jpg",
-            "alt": "Wyman Park Dell in fall",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Fall.jpg",
+              "alt": "Wyman Park Dell in fall"
+            }
           },
           "gallery_image_3": {
-            "id": "01KSB460R1VGF4XXWHJ9T7RQ2W",
-            "src": "/_emdash/api/media/file/01KSB460Q56084MRDN4VDWFA6G.jpg",
-            "alt": "Wyman Park Dell in summer",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-2.jpg",
+              "alt": "Wyman Park Dell in summer"
+            }
           },
           "gallery_image_4": {
-            "id": "01KSB461K5T65KTMY42R0XV0V8",
-            "src": "/_emdash/api/media/file/01KSB461J7WR09A36BRNJ8RT93.jpg",
-            "alt": "Wyman Park Dell in winter",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Winter.jpg",
+              "alt": "Wyman Park Dell in winter"
+            }
           }
         }
       }
@@ -1306,10 +1294,10 @@
         "data": {
           "hero_heading": "Visit us",
           "hero_image": {
-            "id": "01KSB461P4PSQ655H1B4D9975X",
-            "src": "/_emdash/api/media/file/01KSB461N2JGKYFV527XJQZ1C3.jpg",
-            "alt": "Wyman Park Dell on a snowy day",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Contact-Us_WymanPark-Snow-2021.jpg",
+              "alt": "Wyman Park Dell on a snowy day"
+            }
           },
           "address_body": [
             {
@@ -1428,10 +1416,10 @@
         "data": {
           "hero_heading": "Join us at the Dell",
           "hero_image": {
-            "id": "01KSB461WH45MBFGBBSHG4HWD9",
-            "src": "/_emdash/api/media/file/01KSB461R5BZ2YS36RX221RFB9.jpg",
-            "alt": "A community gathering at Wyman Park Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Events-banner-scaled.jpg",
+              "alt": "A community gathering at Wyman Park Dell"
+            }
           },
           "events_section_heading": "Our events",
           "events_section_intro": "A variety of events take place in Wyman Park Dell throughout the year. From park clean-ups to neighborhood festivals, the Dell is the perfect place to celebrate community.",
@@ -1505,18 +1493,18 @@
         "data": {
           "hero_heading": "Friends of Wyman Park Dell",
           "hero_image": {
-            "id": "01KSB46246N0FXC0EERRVYA0G9",
-            "src": "/_emdash/api/media/file/01KSB461YVGGRJWEQQ0AK8SVFC.jpg",
-            "alt": "A boy on a scooter at Wyman Park Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/1_Home-Page_DellWeb_05172020-7-1.jpg",
+              "alt": "A boy on a scooter at Wyman Park Dell"
+            }
           },
           "lead_paragraph": "The Friends of Wyman Park Dell is a 501(c)(3) volunteer-run nonprofit with a mission to preserve, protect, and maintain Wyman Park Dell, an Olmsted legacy park at the intersection of Baltimore’s Charles Village and Remington neighborhoods.",
           "history_heading": "How we got started",
           "history_image": {
-            "id": "01KSB4626R1XTFM9YZRT20R25N",
-            "src": "/_emdash/api/media/file/01KSB462637JCDMJB23J16J8WM.jpg",
-            "alt": "FWPD volunteers cleaning up the Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Friends.jpg",
+              "alt": "FWPD volunteers cleaning up the Dell"
+            }
           },
           "history_body": [
             {
@@ -1737,18 +1725,18 @@
         "data": {
           "hero_heading": "Become a Friend of the Dell",
           "hero_image": {
-            "id": "01KSB462CMTJ51HSB0TZNSGMT2",
-            "src": "/_emdash/api/media/file/01KSB4628MXYQRWT1V780962AT.jpg",
-            "alt": "Friends of Wyman Park Dell volunteers gathered for a clean-up",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/241433689_10159395889436061_7809489849254585591_n.jpg",
+              "alt": "Friends of Wyman Park Dell volunteers gathered for a clean-up"
+            }
           },
           "lead_paragraph": "The Dell is almost entirely supported by people like you. As a nonprofit, the Friends of Wyman Park Dell need your support to keep this public space accessible — and extraordinary — for everyone.",
           "donate_heading": "Make a donation",
           "donate_image": {
-            "id": "01KSB462FB25TNK0CDDPH11KDQ",
-            "src": "/_emdash/api/media/file/01KSB462EP20HM79Z8Q128EP5X.jpg",
-            "alt": "Volunteers gathered at Wyman Park Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Volunteer.jpg",
+              "alt": "Volunteers gathered at Wyman Park Dell"
+            }
           },
           "donate_body": [
             {
@@ -1836,10 +1824,10 @@
           "donate_cta_href": "https://wymanparkdell.org/donate/",
           "volunteer_heading": "Become a volunteer",
           "volunteer_image": {
-            "id": "01KSB462SB6GD5NRZJ7MV6MA29",
-            "src": "/_emdash/api/media/file/01KSB462H9YHG368TE0ZNH1G8N.jpg",
-            "alt": "Volunteers smiling after a Wyman Park Dell clean-up",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Get-Involved-2-1.jpg",
+              "alt": "Volunteers smiling after a Wyman Park Dell clean-up"
+            }
           },
           "volunteer_body": [
             {
@@ -1894,28 +1882,28 @@
           "testimonial_quote": "We’re always looking to collaborate with local businesses and organizations. Email us if you’d like to collaborate on making something happen at the Dell.",
           "testimonial_attribution": "Friends of Wyman Park Dell",
           "gallery_image_1": {
-            "id": "01KSB462XATQBJNT38PVT531FF",
-            "src": "/_emdash/api/media/file/01KSB462VE8XX7VF146ETTFX8F.jpg",
-            "alt": "Volunteers gathered at Wyman Park Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Volunteer_1.jpg",
+              "alt": "Volunteers gathered at Wyman Park Dell"
+            }
           },
           "gallery_image_2": {
-            "id": "01KSB46302YERBP87THVPC4R9H",
-            "src": "/_emdash/api/media/file/01KSB462Z92P77WGJPEPFR5VPP.jpg",
-            "alt": "FWPD volunteers tending to the park",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Volunteer_2.jpg",
+              "alt": "FWPD volunteers tending to the park"
+            }
           },
           "gallery_image_3": {
-            "id": "01KSB4632KA7CM09KDPP3A5H4K",
-            "src": "/_emdash/api/media/file/01KSB46327F5V47FVXBY1M0EKF.jpg",
-            "alt": "A volunteer working in the Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Volunteer_3.jpg",
+              "alt": "A volunteer working in the Dell"
+            }
           },
           "gallery_image_4": {
-            "id": "01KSB4634WJS3HRNA9C36XVZKR",
-            "src": "/_emdash/api/media/file/01KSB4634FT782VCDKYXPQD6AH.jpg",
-            "alt": "Volunteers smiling after a clean-up",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Volunteer_4.jpg",
+              "alt": "Volunteers smiling after a clean-up"
+            }
           }
         }
       }
@@ -1932,10 +1920,10 @@
           "location": "Wyman Park Dell — meet at the playground",
           "summary": "Join your neighbors for our biggest clean-up of the year. Tools, gloves, and refreshments provided. All ages welcome — kids especially love the wheelbarrows.",
           "image": {
-            "id": "01KSB4626R1XTFM9YZRT20R25N",
-            "src": "/_emdash/api/media/file/01KSB462637JCDMJB23J16J8WM.jpg",
-            "alt": "Volunteers at a Wyman Park Dell clean-up",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/WPD_Friends.jpg",
+              "alt": "Volunteers at a Wyman Park Dell clean-up"
+            }
           },
           "cta_label": "RSVP",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -1952,10 +1940,10 @@
           "location": "Lower lawn, Wyman Park Dell",
           "summary": "Bring a blanket, a picnic, and the whole family. We project a family-friendly film on the big inflatable screen as the sun sets behind the slopes.",
           "image": {
-            "id": "01KSB460R1VGF4XXWHJ9T7RQ2W",
-            "src": "/_emdash/api/media/file/01KSB460Q56084MRDN4VDWFA6G.jpg",
-            "alt": "Wyman Park Dell at golden hour",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-2.jpg",
+              "alt": "Wyman Park Dell at golden hour"
+            }
           },
           "cta_label": "Add to calendar",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -1972,10 +1960,10 @@
           "location": "Wyman Park Dell",
           "summary": "A celebration of the Dell, the neighborhoods around it, and the people who keep it special. Live music, local food, kid activities, and a chance to meet the FWPD board.",
           "image": {
-            "id": "01KSB460YEVTVT8DFFTV1JW49W",
-            "src": "/_emdash/api/media/file/01KSB460X9N2NQQ0B93MRZSZ4C.jpg",
-            "alt": "A community gathering at Wyman Park Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Wyman-Park-Dell-4.jpg",
+              "alt": "A community gathering at Wyman Park Dell"
+            }
           },
           "cta_label": "Learn more",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -1992,10 +1980,10 @@
           "location": "Lower Dell",
           "summary": "A joyful “color fight” in the lower Dell to mark the arrival of spring, organized by local restaurant Sweet 27 in partnership with the Friends of Wyman Park Dell.",
           "image": {
-            "id": "01KSB4637TTGGHGFWP4P31Z1A1",
-            "src": "/_emdash/api/media/file/01KSB4636M1ZK75976VK99A8EG.jpg",
-            "alt": "Holi Color Celebration at the Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Events_Holi-Colors-Celebration.jpg",
+              "alt": "Holi Color Celebration at the Dell"
+            }
           },
           "cta_label": "Learn more",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -2012,10 +2000,10 @@
           "location": "Wyman Park Dell",
           "summary": "Gather with neighbors to celebrate the Winter Solstice. Music, marshmallows, and hot drinks and cookies provided by local restaurant Gertrude’s.",
           "image": {
-            "id": "01KSB463ANTKKQ00F7Y7M8V62P",
-            "src": "/_emdash/api/media/file/01KSB4639NGZPPD2JXRM46G64C.jpg",
-            "alt": "Winter Solstice gathering at the Dell",
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Events_Winter-Solstice.jpg",
+              "alt": "Winter Solstice gathering at the Dell"
+            }
           },
           "cta_label": "Add to calendar",
           "cta_href": "https://wymanparkdell.org/events/"
@@ -2222,12 +2210,10 @@
         "data": {
           "name": "Baltimore City",
           "logo": {
-            "id": "01KSB463CPTN897XB4R9AR4R9P",
-            "src": "/_emdash/api/media/file/01KSB463CJJ7KYFCBK8NXVBAX3.jpg",
-            "alt": "Baltimore City",
-            "width": 200,
-            "height": 80,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/B-More-City-Logo.jpg",
+              "alt": "Baltimore City"
+            }
           },
           "url": "https://baltimorecity.gov/",
           "sort_order": 0
@@ -2240,12 +2226,10 @@
         "data": {
           "name": "Baltimore National Heritage Area",
           "logo": {
-            "id": "01KSB463EJNZZ12YSSCXQ0X440",
-            "src": "/_emdash/api/media/file/01KSB463EESAWGGBR2YSYFNJST.jpg",
-            "alt": "Baltimore National Heritage Area",
-            "width": 200,
-            "height": 80,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/B-more-National-logo.jpg",
+              "alt": "Baltimore National Heritage Area"
+            }
           },
           "url": "https://explorebaltimore.org/",
           "sort_order": 1
@@ -2258,12 +2242,10 @@
         "data": {
           "name": "Charles Village Civic Association",
           "logo": {
-            "id": "01KSB463GN7TDEQQXZCFPVDKTW",
-            "src": "/_emdash/api/media/file/01KSB463GHSTG6D177A9GSFA4S.jpg",
-            "alt": "Charles Village Civic Association",
-            "width": 200,
-            "height": 80,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Charles-Village-Logo.jpg",
+              "alt": "Charles Village Civic Association"
+            }
           },
           "url": "https://charlesvillage.org/",
           "sort_order": 2
@@ -2276,12 +2258,10 @@
         "data": {
           "name": "Johns Hopkins University",
           "logo": {
-            "id": "01KSB463JGZ2DTM32CBJMXR2F8",
-            "src": "/_emdash/api/media/file/01KSB463JC5FXEZNCY83J1EHNE.jpg",
-            "alt": "Johns Hopkins University",
-            "width": 200,
-            "height": 80,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/John-Hopkins-logo.jpg",
+              "alt": "Johns Hopkins University"
+            }
           },
           "url": "https://www.jhu.edu/",
           "sort_order": 3
@@ -2294,12 +2274,10 @@
         "data": {
           "name": "Maryland",
           "logo": {
-            "id": "01KSB463M96Y5HJSQ8CBRXFER7",
-            "src": "/_emdash/api/media/file/01KSB463M4W7QGJZC1MZCN4QJM.jpg",
-            "alt": "State of Maryland",
-            "width": 200,
-            "height": 80,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Maryland-Logo.jpg",
+              "alt": "State of Maryland"
+            }
           },
           "url": "https://www.maryland.gov/",
           "sort_order": 4
@@ -2312,12 +2290,10 @@
         "data": {
           "name": "Maryland State Arts Council",
           "logo": {
-            "id": "01KSB463PEWKXTEA5RAQKNHNTH",
-            "src": "/_emdash/api/media/file/01KSB463PAFEF4ABVMXW65DVQA.jpg",
-            "alt": "Maryland State Arts Council",
-            "width": 200,
-            "height": 80,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/MSAC-logo.jpg",
+              "alt": "Maryland State Arts Council"
+            }
           },
           "url": "https://msac.org/",
           "sort_order": 5
@@ -2330,12 +2306,10 @@
         "data": {
           "name": "Ace Hardware",
           "logo": {
-            "id": "01KSB463RAJGY8SVA8DW68YZRR",
-            "src": "/_emdash/api/media/file/01KSB463R57HDNRNW2A9YR6P00.jpg",
-            "alt": "Ace Hardware",
-            "width": 200,
-            "height": 80,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/Ace-logo.jpg",
+              "alt": "Ace Hardware"
+            }
           },
           "url": "https://www.acehardware.com/",
           "sort_order": 6
@@ -2349,12 +2323,10 @@
         "status": "published",
         "data": {
           "logo_inverse": {
-            "id": "01KSB463V72N65QM07MNH3517H",
-            "src": "/_emdash/api/media/file/01KSB463T1TJ9CJ7005HK9N6HB.png",
-            "alt": "Friends of Wyman Park Dell",
-            "width": 200,
-            "height": 80,
-            "provider": "local"
+            "$media": {
+              "url": "https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/FWPD-WHITE.png",
+              "alt": "Friends of Wyman Park Dell"
+            }
           },
           "donate_cta_label": "Donate",
           "donate_cta_href": "/get-involved/",
