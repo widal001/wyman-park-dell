@@ -18,6 +18,9 @@ jobs:
   preview:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
+    environment:
+      name: preview
+      url: ${{ steps.url.outputs.url }}
     steps:
       - uses: actions/checkout@v6
 
@@ -48,8 +51,15 @@ jobs:
       - name: Extract preview URL
         id: url
         run: |
-          # `wrangler versions upload` prints "Version Preview URL: https://<id>-<name>.workers.dev"
-          url=$(printf '%s\n' "${{ steps.deploy.outputs.command-output }}" | grep -Eo 'https://[a-z0-9.-]+\.workers\.dev' | head -n1)
+          # `wrangler versions upload` prints the line "Version Preview URL: https://<id>-<name>.<subdomain>.workers.dev".
+          # Anchor on the prefix so we don't accidentally match other workers.dev URLs in the output.
+          url=$(printf '%s\n' "${{ steps.deploy.outputs.command-output }}" \
+            | grep -E '^[[:space:]]*Version Preview URL:' \
+            | sed -E 's/^[[:space:]]*Version Preview URL:[[:space:]]*//' \
+            | head -n1)
+          if [ -z "$url" ]; then
+            echo "::warning::Could not extract preview URL from wrangler output"
+          fi
           echo "url=${url}" >> "$GITHUB_OUTPUT"
 
       - name: Comment preview URL on PR
