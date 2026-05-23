@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import SiteHeader from "../components/layout/SiteHeader.astro";
-import SiteFooter from "../components/layout/SiteFooter.astro";
 import SiteFooterClassic from "../components/layout/SiteFooterClassic.astro";
 import { site } from "../content/site";
 
@@ -9,11 +8,9 @@ type Props = {
   title: string;
   description?: string;
   ogImage?: string;
-  /** Footer style. Defaults to the orange masthead-style footer. */
-  footerVariant?: "default" | "classic";
 };
 
-const { title, description, ogImage, footerVariant = "classic" } = Astro.props;
+const { title, description, ogImage } = Astro.props;
 const fullTitle = title === site.name ? title : `${title} — ${site.name}`;
 const canonical = new URL(
   Astro.url.pathname,
@@ -52,7 +49,7 @@ const canonical = new URL(
     <main id="main">
       <slot />
     </main>
-    {footerVariant === "classic" ? <SiteFooterClassic /> : <SiteFooter />}
+    <SiteFooterClassic />
   </body>
 </html>
 

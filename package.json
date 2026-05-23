@@ -30,7 +30,6 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "@cloudflare/workers-types": "^4.20260305.1",
-    "node-html-parser": "^7.1.0",
     "tsx": "^4.22.3",
     "typescript": "^6.0.3",
     "wrangler": "^4.83.0"
