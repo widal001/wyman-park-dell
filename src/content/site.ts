@@ -23,6 +23,7 @@ export const site: SiteContent = {
     { label: 'Friends of Wyman Park Dell', href: '/friends-of-wyman-park-dell/' },
     { label: 'Events', href: '/events/' },
     { label: 'Get involved', href: '/get-involved/' },
+    { label: 'Shop', href: '/shop/' },
     { label: 'Contact', href: '/contact/' },
   ],
   footerNav: [
@@ -31,7 +32,7 @@ export const site: SiteContent = {
     { label: 'Friends', href: '/friends-of-wyman-park-dell/' },
     { label: 'Get involved', href: '/get-involved/' },
     { label: 'Events', href: '/events/' },
-    { label: 'Shop', href: 'https://wymanparkdell.org/shop/', external: true },
+    { label: 'Shop', href: '/shop/' },
     { label: 'Contact us', href: '/contact/' },
   ],
   donateCta: {

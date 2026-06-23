@@ -20,6 +20,8 @@ import VolunteerForm from './VolunteerForm.astro';
 import MapEmbed from './MapEmbed.astro';
 import ContactForm from './ContactForm.astro';
 import FollowUs from './FollowUs.astro';
+import DonorboxEmbed from './DonorboxEmbed.astro';
+import EcwidStore from './EcwidStore.astro';
 
 type Props = {
   blocks: ContentBlock[];
@@ -70,6 +72,10 @@ const { blocks } = Astro.props;
       return <ContactForm {...block} />;
     case 'followUs':
       return <FollowUs {...block} />;
+    case 'donorbox':
+      return <DonorboxEmbed {...block} />;
+    case 'ecwidStore':
+      return <EcwidStore {...block} />;
     default: {
       const _exhaustive: never = block;
       return null;

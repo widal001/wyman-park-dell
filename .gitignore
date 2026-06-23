@@ -40,3 +40,6 @@ uploads/
 
 # Claude Code local settings
 .claude/
+
+# Local planning docs (not for version control)
+docs/

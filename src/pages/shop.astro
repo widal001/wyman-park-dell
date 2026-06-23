@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EcwidStore from '../components/blocks/EcwidStore.astro';
+import Hero from '../components/blocks/Hero.astro';
+import SectionHeading from '../components/blocks/SectionHeading.astro';
+---
+
+<BaseLayout
+  title="Shop"
+  description="Support the Friends of Wyman Park Dell by shopping our store. Every purchase helps us maintain and program this beloved Baltimore park."
+>
+  <Hero
+    variant="standard"
+    heading="Shop"
+    image={{ src: 'https://pub-793f2ed4365042cb96f36d101a563f6e.r2.dev/About_Dell.jpg', alt: 'Wyman Park Dell' }}
+  />
+  <SectionHeading
+    variant="lead"
+    heading="All profits will be dedicated to the Friends of Wyman Park Dell's mission of preserving, protecting, and maintaining Wyman Park Dell."
+    align="center"
+    width="medium"
+    headingColor="dark"
+  />
+  <EcwidStore storeId="75973520" />
+</BaseLayout>

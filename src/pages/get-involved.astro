@@ -2,7 +2,7 @@
 import { getEmDashCollection } from 'emdash';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
-import { compact, cta, imageRef } from '../lib/content-adapter';
+import { compact, imageRef } from '../lib/content-adapter';
 import { ptToHtml } from '../lib/pt';
 import type { ContentBlock } from '../types/content';
 
@@ -37,7 +37,13 @@ const blocks = compact<ContentBlock>([
     mediaPosition: 'left',
     image: imageRef(c.donate_image) ?? { src: '', alt: '' },
     html: ptToHtml(c.donate_body),
-    ctas: compact([cta(c.donate_cta_label, c.donate_cta_href, { variant: 'outline', external: true })]),
+  },
+  {
+    type: 'donorbox',
+    campaignUrl: 'https://donorbox.org/embed/website-donations-208?designation=Area%20of%20greatest%20need&default_interval=o&hide_donation_meter=true',
+    paypalExpress: true,
+    height: 900,
+    background: 'raised',
   },
   {
     type: 'volunteerForm',
