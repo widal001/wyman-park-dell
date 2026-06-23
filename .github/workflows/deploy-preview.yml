@@ -46,16 +46,17 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: >
             versions upload
+            --preview-alias pr-${{ github.event.pull_request.number }}
             --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}"
 
       - name: Extract preview URL
         id: url
         run: |
-          # `wrangler versions upload` prints the line "Version Preview URL: https://<id>-<name>.<subdomain>.workers.dev".
-          # Anchor on the prefix so we don't accidentally match other workers.dev URLs in the output.
+          # --preview-alias gives a stable URL: pr-<N>.<worker-name>.<subdomain>.workers.dev
+          # Extract it from the "Worker Version Preview URL:" line in the output.
           url=$(printf '%s\n' "${{ steps.deploy.outputs.command-output }}" \
-            | grep -E '^[[:space:]]*Version Preview URL:' \
-            | sed -E 's/^[[:space:]]*Version Preview URL:[[:space:]]*//' \
+            | grep -E '^[[:space:]]*(Version Preview URL|Worker Version Preview URL):' \
+            | sed -E 's/^[[:space:]]*(Version Preview URL|Worker Version Preview URL):[[:space:]]*//' \
             | head -n1)
           if [ -z "$url" ]; then
             echo "::warning::Could not extract preview URL from wrangler output"
@@ -68,10 +69,10 @@ jobs:
         with:
           header: cloudflare-preview
           message: |
-            ### Cloudflare Workers preview
-
-            Preview deployed for `${{ github.event.pull_request.head.sha }}`:
+            ### Cloudflare Workers preview — PR #${{ github.event.pull_request.number }}
 
             **${{ steps.url.outputs.url }}**
 
-            This preview hits the same D1 + R2 bindings as production, so it shows live data with this PR's code on top. Edits made via the admin in the preview persist to prod.
+            This URL is stable for the lifetime of the PR (alias `pr-${{ github.event.pull_request.number }}`). It hits the same D1 + R2 bindings as production — edits made via the admin in the preview persist to prod.
+
+            _Last updated: commit `${{ github.event.pull_request.head.sha }}`_
