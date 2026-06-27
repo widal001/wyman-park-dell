@@ -7,17 +7,37 @@
 	"observability": {
 		"enabled": true
 	},
+	// Prod bindings — fresh resources, seeded via pnpm seed:prod after deploy
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"database_name": "wyman-park-dell"
+			"database_name": "wyman-park-dell-prod",
+			"database_id": "b3a8668d-2b2d-458a-9bae-dd8da065e092"
 		}
 	],
 	"r2_buckets": [
 		{
 			"binding": "MEDIA",
-			"bucket_name": "wyman-park-dell-media"
+			"bucket_name": "wyman-park-dell-media-prod"
 		}
-	]
+	],
+	// Preview environment — old resources shared by all open PRs
+	"env": {
+		"preview": {
+			"d1_databases": [
+				{
+					"binding": "DB",
+					"database_name": "wyman-park-dell",
+					"database_id": "2e180725-f252-4436-8ce9-b46f1a73b18c"
+				}
+			],
+			"r2_buckets": [
+				{
+					"binding": "MEDIA",
+					"bucket_name": "wyman-park-dell-media"
+				}
+			]
+		}
+	}
 	// No worker_loaders block: plugin sandbox is disabled, keeping us on the free Workers tier.
 }

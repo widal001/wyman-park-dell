@@ -46,6 +46,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: >
             versions upload
+            --env preview
             --preview-alias pr-${{ github.event.pull_request.number }}
             --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}"
 
