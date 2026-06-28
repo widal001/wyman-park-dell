@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: preview
-      url: ${{ steps.url.outputs.url }}
+      url: ${{ steps.deploy.outputs.url }}
     steps:
       - uses: actions/checkout@v6
 
@@ -35,29 +35,29 @@ jobs:
 
       - run: pnpm astro check
 
-      - name: Build
+      # CLOUDFLARE_ENV tells @cloudflare/vite-plugin to resolve the env.preview
+      # bindings from wrangler.jsonc into dist/server/wrangler.json at build time.
+      # Without it the generated config only contains the top-level (prod) bindings.
+      - name: Build (preview env)
+        env:
+          CLOUDFLARE_ENV: preview
         run: pnpm build
 
       - name: Upload Worker version (preview)
         id: deploy
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: >
-            versions upload
-            --env preview
-            --preview-alias pr-${{ github.event.pull_request.number }}
-            --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}"
-
-      - name: Extract preview URL
-        id: url
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          # --preview-alias gives a stable URL: pr-<N>.<worker-name>.<subdomain>.workers.dev
-          # Extract it from the "Worker Version Preview URL:" line in the output.
-          url=$(printf '%s\n' "${{ steps.deploy.outputs.command-output }}" \
-            | grep -E '^[[:space:]]*(Version Preview URL|Worker Version Preview URL):' \
-            | sed -E 's/^[[:space:]]*(Version Preview URL|Worker Version Preview URL):[[:space:]]*//' \
+          # Bindings are already baked in by the preview build; no --env flag needed.
+          output=$(pnpm exec wrangler versions upload \
+            --preview-alias pr-${{ github.event.pull_request.number }} \
+            --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}" \
+            2>&1)
+          echo "$output"
+          url=$(echo "$output" \
+            | grep -E 'Version Preview Alias URL:' \
+            | sed -E 's/.*URL:[[:space:]]*//' \
             | head -n1)
           if [ -z "$url" ]; then
             echo "::warning::Could not extract preview URL from wrangler output"
@@ -65,15 +65,15 @@ jobs:
           echo "url=${url}" >> "$GITHUB_OUTPUT"
 
       - name: Comment preview URL on PR
-        if: steps.url.outputs.url != ''
+        if: steps.deploy.outputs.url != ''
         uses: marocchino/sticky-pull-request-comment@v3
         with:
           header: cloudflare-preview
           message: |
             ### Cloudflare Workers preview — PR #${{ github.event.pull_request.number }}
 
-            **${{ steps.url.outputs.url }}**
+            **${{ steps.deploy.outputs.url }}**
 
-            This URL is stable for the lifetime of the PR (alias `pr-${{ github.event.pull_request.number }}`). It hits the same D1 + R2 bindings as production — edits made via the admin in the preview persist to prod.
+            This URL is stable for the lifetime of the PR (alias `pr-${{ github.event.pull_request.number }}`). Uses the **preview** D1 + R2 bindings (isolated from prod).
 
             _Last updated: commit `${{ github.event.pull_request.head.sha }}`_
