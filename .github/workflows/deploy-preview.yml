@@ -35,9 +35,11 @@ jobs:
 
       - run: pnpm astro check
 
-      # CLOUDFLARE_ENV tells @cloudflare/vite-plugin to resolve the env.preview
-      # bindings from wrangler.jsonc into dist/server/wrangler.json at build time.
-      # Without it the generated config only contains the top-level (prod) bindings.
+      # CLOUDFLARE_ENV=preview tells @cloudflare/vite-plugin to resolve the
+      # env.preview block from wrangler.jsonc into the generated config, baking
+      # in the preview D1 + R2 bindings. env.preview sets name=wyman-park-dell
+      # so the version is uploaded to the prod worker (not a separate -preview
+      # one); --preview-alias gives each PR its own isolated test URL.
       - name: Build (preview env)
         env:
           CLOUDFLARE_ENV: preview

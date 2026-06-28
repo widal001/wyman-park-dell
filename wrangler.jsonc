@@ -24,6 +24,11 @@
 	// Preview environment — old resources shared by all open PRs
 	"env": {
 		"preview": {
+			// Keep the same worker name so CLOUDFLARE_ENV=preview at build time
+			// resolves preview bindings without creating a wyman-park-dell-preview
+			// worker. PR versions are uploaded to wyman-park-dell with preview
+			// D1 + R2 baked in; --preview-alias gives each PR its own test URL.
+			"name": "wyman-park-dell",
 			"d1_databases": [
 				{
 					"binding": "DB",
