@@ -1,0 +1,263 @@
+# Pages CMS config — experiment/pages-cms
+#
+# Editing happens on app.pagescms.org (no local admin). `blockKey: type` and
+# `format: yaml-frontmatter` make Pages CMS write the SAME files the Decap
+# experiment writes, validated by the same src/content.config.ts Zod schema.
+content:
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/content/pages
+    format: yaml-frontmatter
+    filename: "{fields.slug}.md"
+    view:
+      fields: [title, slug]
+      primary: title
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: slug, label: URL slug, type: string }
+      - { name: metaDescription, label: Meta description, type: text }
+      - name: blocks
+        label: Blocks
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+          # ---- hero ----
+          - name: hero
+            label: Hero
+            fields:
+              - { name: variant, label: Variant, type: select, options: { values: [fullscreen, standard] } }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: subheading, label: Subheading, type: string }
+              - { name: body, label: Body, type: text }
+              - name: image
+                label: Image
+                type: object
+                fields:
+                  - { name: src, label: Image URL, type: string, required: true }
+                  - { name: alt, label: Alt text, type: string }
+                  - { name: width, label: Width, type: number }
+                  - { name: height, label: Height, type: number }
+              - name: ctas
+                label: CTAs
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: href, label: URL, type: string, required: true }
+                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - { name: external, label: Opens in new tab, type: boolean }
+          # ---- events (list injected at render time from the events collection) ----
+          - name: events
+            label: Events section
+            fields:
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: intro, label: Intro, type: text }
+              - name: viewAllCta
+                label: '"View all" CTA'
+                type: object
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: href, label: URL, type: string, required: true }
+                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - { name: external, label: Opens in new tab, type: boolean }
+          # ---- sectionHeading ----
+          - name: sectionHeading
+            label: Section heading
+            fields:
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: subheading, label: Subheading, type: text }
+              - { name: align, label: Align, type: select, options: { values: [left, center] } }
+              - { name: background, label: Background, type: select, options: { values: [base, raised, inverse, accent] } }
+              - { name: headingColor, label: Heading color, type: select, options: { values: [accent, dark, inverse, muted] } }
+              - { name: variant, label: Variant, type: select, options: { values: [heading, lead] } }
+              - { name: width, label: Width, type: select, options: { values: [narrow, medium, wide] } }
+          # ---- activityGrid ----
+          - name: activityGrid
+            label: Activity grid
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: subheading, label: Subheading, type: string }
+              - name: image
+                label: Feature image
+                type: object
+                fields:
+                  - { name: src, label: Image URL, type: string, required: true }
+                  - { name: alt, label: Alt text, type: string }
+                  - { name: width, label: Width, type: number }
+                  - { name: height, label: Height, type: number }
+              - name: items
+                label: Items
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: href, label: URL, type: string }
+                  - name: icon
+                    label: Icon
+                    type: object
+                    fields:
+                      - { name: src, label: Image URL, type: string, required: true }
+                      - { name: alt, label: Alt text, type: string }
+                      - { name: width, label: Width, type: number }
+                      - { name: height, label: Height, type: number }
+          # ---- testimonial ----
+          - name: testimonial
+            label: Testimonial
+            fields:
+              - { name: quote, label: Quote, type: text, required: true }
+              - { name: attribution, label: Attribution, type: string }
+              - name: image
+                label: Image
+                type: object
+                fields:
+                  - { name: src, label: Image URL, type: string, required: true }
+                  - { name: alt, label: Alt text, type: string }
+          # ---- gallery ----
+          - name: gallery
+            label: Gallery
+            fields:
+              - { name: layout, label: Layout, type: select, options: { values: [grid, mosaic] } }
+              - { name: columns, label: Columns, type: number }
+              - { name: paddingTop, label: Padding top, type: select, options: { values: [default, small, none] } }
+              - { name: paddingBottom, label: Padding bottom, type: select, options: { values: [default, small, none] } }
+              - name: images
+                label: Images
+                type: object
+                list: true
+                fields:
+                  - { name: src, label: Image URL, type: string, required: true }
+                  - { name: alt, label: Alt text, type: string }
+                  - { name: width, label: Width, type: number }
+                  - { name: height, label: Height, type: number }
+          # ---- followUs ----
+          - name: followUs
+            label: Follow us
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+              - { name: paddingTop, label: Padding top, type: select, options: { values: [default, small, large, xl, none] } }
+              - { name: paddingBottom, label: Padding bottom, type: select, options: { values: [default, small, large, xl, none] } }
+          # ---- textWithMedia ----
+          - name: textWithMedia
+            label: Text with media
+            fields:
+              - { name: eyebrow, label: Eyebrow, type: string }
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: body, label: Body, type: rich-text }
+              - name: image
+                label: Image
+                type: object
+                fields:
+                  - { name: src, label: Image URL, type: string, required: true }
+                  - { name: alt, label: Alt text, type: string }
+                  - { name: width, label: Width, type: number }
+                  - { name: height, label: Height, type: number }
+              - { name: mediaPosition, label: Media position, type: select, options: { values: [left, right] } }
+              - name: ctas
+                label: CTAs
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: href, label: URL, type: string, required: true }
+                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - { name: external, label: Opens in new tab, type: boolean }
+          # ---- timeline ----
+          - name: timeline
+            label: Timeline
+            fields:
+              - { name: eyebrow, label: Eyebrow, type: string }
+              - { name: heading, label: Heading, type: string }
+              - name: entries
+                label: Entries
+                type: object
+                list: true
+                fields:
+                  - { name: date, label: Date, type: string, required: true }
+                  - { name: title, label: Title, type: string, required: true }
+                  - { name: body, label: Body, type: text, required: true }
+          # ---- cta ----
+          - name: cta
+            label: Call to action
+            fields:
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: body, label: Body, type: text }
+              - { name: background, label: Background, type: select, options: { values: [light, dark, accent, bar] } }
+              - name: ctas
+                label: CTAs
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: href, label: URL, type: string, required: true }
+                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - { name: external, label: Opens in new tab, type: boolean }
+          # ---- twoColumnText ----
+          - name: twoColumnText
+            label: Two-column text
+            fields:
+              - { name: leftHeading, label: Left heading, type: string }
+              - { name: leftBody, label: Left body, type: rich-text }
+              - { name: rightHeading, label: Right heading, type: string }
+              - { name: rightBody, label: Right body, type: rich-text }
+              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+              - { name: alignAcross, label: Align across columns, type: boolean }
+              - { name: paddingTop, label: Padding top, type: select, options: { values: [default, small, none] } }
+              - { name: paddingBottom, label: Padding bottom, type: select, options: { values: [default, small, none] } }
+              - name: ctas
+                label: CTAs
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: href, label: URL, type: string, required: true }
+                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - { name: external, label: Opens in new tab, type: boolean }
+          # ---- volunteerForm ----
+          - name: volunteerForm
+            label: Volunteer form
+            fields:
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: body, label: Body, type: rich-text }
+              - name: image
+                label: Image
+                type: object
+                fields:
+                  - { name: src, label: Image URL, type: string, required: true }
+                  - { name: alt, label: Alt text, type: string }
+              - { name: mediaPosition, label: Media position, type: select, options: { values: [left, right] } }
+              - { name: action, label: Form action URL, type: string }
+              - { name: method, label: Method, type: select, options: { values: [POST, GET] } }
+              - { name: submitLabel, label: Submit label, type: string }
+              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+
+  - name: events
+    label: Events
+    type: collection
+    path: src/content/events
+    format: yaml-frontmatter
+    filename: "{fields.title}.md"
+    view:
+      fields: [title, date]
+      primary: title
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: date, label: Date, type: string, required: true, description: "ISO date, e.g. 2026-05-09" }
+      - { name: time, label: Time, type: string }
+      - { name: location, label: Location, type: string }
+      - { name: body, label: Body, type: text, required: true }
+      - name: image
+        label: Image
+        type: object
+        fields:
+          - { name: src, label: Image URL, type: string, required: true }
+          - { name: alt, label: Alt text, type: string }
+      - name: cta
+        label: CTA
+        type: object
+        fields:
+          - { name: label, label: Label, type: string, required: true }
+          - { name: href, label: URL, type: string, required: true }
+          - { name: external, label: Opens in new tab, type: boolean }
