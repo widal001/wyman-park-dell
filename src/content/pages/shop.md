@@ -1,0 +1,20 @@
+---
+title: Shop
+slug: shop
+metaDescription: "Support the Friends of Wyman Park Dell by shopping our store. Every purchase helps us maintain and program this beloved Baltimore park."
+blocks:
+  - type: hero
+    variant: standard
+    heading: Shop
+    image:
+      src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/About_Dell.jpg"
+      alt: "Wyman Park Dell"
+  - type: sectionHeading
+    variant: lead
+    width: medium
+    heading: "All profits will be dedicated to the Friends of Wyman Park Dell's mission of preserving, protecting, and maintaining Wyman Park Dell."
+    align: center
+    headingColor: dark
+  - type: ecwidStore
+    storeId: "75973520"
+---

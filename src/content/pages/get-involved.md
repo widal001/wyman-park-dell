@@ -27,11 +27,11 @@ blocks:
       Prefer to give by mail? Make checks payable to the **Friends of Wyman Park Dell** and send them to:
 
       Friends of Wyman Park Dell<br />1008 West 42nd Street<br />Baltimore, MD 21211
-    ctas:
-      - label: "Donate online"
-        href: "https://wymanparkdell.org/donate/"
-        variant: outline
-        external: true
+  - type: donorbox
+    campaignUrl: "https://donorbox.org/embed/website-donations-208?designation=Area%20of%20greatest%20need&default_interval=o&hide_donation_meter=true"
+    paypalExpress: true
+    height: 900
+    background: raised
   - type: volunteerForm
     heading: Become a volunteer
     mediaPosition: right

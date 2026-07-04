@@ -24,6 +24,7 @@ blocks:
   - type: events
     heading: "Upcoming events"
     intro: "A variety of events take place in Wyman Park Dell throughout the year. From park clean-ups to neighborhood festivals, the Dell is the perfect place to celebrate community."
+    limit: 3
     viewAllCta:
       label: "See all events"
       href: "https://wymanparkdell.org/events/"
