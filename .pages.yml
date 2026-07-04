@@ -1,8 +1,9 @@
 # Pages CMS config — experiment/pages-cms
 #
-# Editing happens on app.pagescms.org (no local admin). `blockKey: type` and
-# `format: yaml-frontmatter` make Pages CMS write the SAME files the Decap
-# experiment writes, validated by the same src/content.config.ts Zod schema.
+# Editing happens on app.pagescms.org (no local admin). Content is stored as pure
+# YAML (`.yaml`, `format: yaml`) — no frontmatter fences or body — read by
+# Astro's glob loader and validated by the same src/content.config.ts Zod schema.
+# `blockKey: type` discriminates the block union.
 
 # Write Conventional Commit messages for edits made through the CMS (default is
 # "Action {path} (via Pages CMS)"). {path} is the file the editor changed.
@@ -27,8 +28,8 @@ content:
     label: Pages
     type: collection
     path: src/content/pages
-    format: yaml-frontmatter
-    filename: '{fields.slug}.md'
+    format: yaml
+    filename: '{fields.slug}.yaml'
     view:
       fields: [title, slug]
       primary: title
@@ -649,8 +650,8 @@ content:
     label: Events
     type: collection
     path: src/content/events
-    format: yaml-frontmatter
-    filename: '{fields.title}.md'
+    format: yaml
+    filename: '{fields.title}.yaml'
     view:
       fields: [title, date]
       primary: title

@@ -1,4 +1,3 @@
----
 title: Shop
 slug: shop
 metaDescription: "Support the Friends of Wyman Park Dell by shopping our store. Every purchase helps us maintain and program this beloved Baltimore park."
@@ -17,4 +16,3 @@ blocks:
     headingColor: dark
   - type: ecwidStore
     storeId: "75973520"
----

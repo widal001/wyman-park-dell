@@ -286,7 +286,7 @@ const block = z.discriminatedUnion('type', [
 /* ---------- Collections ---------- */
 
 const pages = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/pages' }),
+  loader: glob({ pattern: '*.yaml', base: './src/content/pages' }),
   schema: z.object({
     title: z.string(),
     slug: z.string(),
@@ -302,7 +302,7 @@ const ymd = z
   .transform((v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v));
 
 const events_collection = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/events' }),
+  loader: glob({ pattern: '*.yaml', base: './src/content/events' }),
   schema: z.object({
     title: z.string(),
     date: ymd,
