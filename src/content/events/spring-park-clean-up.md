@@ -1,0 +1,14 @@
+---
+title: Spring Park Clean-Up
+date: "2026-05-09"
+time: "9:00 AM – 12:00 PM"
+location: "Wyman Park Dell — meet at the playground"
+body: "Join your neighbors for our biggest clean-up of the year. Tools, gloves, and refreshments provided. All ages welcome — kids especially love the wheelbarrows."
+image:
+  src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Friends.jpg"
+  alt: "Volunteers at a Wyman Park Dell clean-up"
+cta:
+  label: "RSVP"
+  href: "https://wymanparkdell.org/events/"
+  external: true
+---
