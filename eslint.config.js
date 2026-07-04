@@ -37,6 +37,15 @@ export default tseslint.config(
   },
   {
     files: ['**/*.astro'],
+    languageOptions: {
+      parserOptions: {
+        // eslint-plugin-astro sets astro-eslint-parser as the parser; route the
+        // TypeScript inside the frontmatter to the TS parser and register the
+        // .astro extension so the parser stops warning about it.
+        parser: tseslint.parser,
+        extraFileExtensions: ['.astro'],
+      },
+    },
     rules: {
       // TS in Astro frontmatter references DOM lib globals (e.g.
       // HTMLElementTagNameMap). TypeScript already checks these, so core
