@@ -1,0 +1,76 @@
+name: CD - Preview
+
+# One preview per PR. `wrangler versions upload --preview-alias pr-N` uploads a
+# non-live version of the (single) worker and gives it a stable URL
+# (pr-N.wyman-park-dell.<subdomain>.workers.dev) that persists for the life of
+# the PR. No separate worker, no cleanup needed. Adapted from the EmDash branch,
+# minus the D1/R2 preview-env bindings this static site doesn't use.
+on:
+  pull_request:
+
+concurrency:
+  group: deploy-preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    environment:
+      name: preview
+      url: ${{ steps.deploy.outputs.url }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm run checks
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Upload Worker version (preview)
+        id: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          # wrangler resolves the adapter-generated dist/server/wrangler.json
+          # automatically (no --config needed).
+          output=$(pnpm exec wrangler versions upload \
+            --preview-alias "pr-${{ github.event.pull_request.number }}" \
+            --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}" \
+            2>&1)
+          echo "$output"
+          url=$(echo "$output" \
+            | grep -E 'Version Preview Alias URL:' \
+            | sed -E 's/.*URL:[[:space:]]*//' \
+            | head -n1)
+          if [ -z "$url" ]; then
+            echo "::warning::Could not extract preview URL from wrangler output"
+          fi
+          echo "url=${url}" >> "$GITHUB_OUTPUT"
+
+      - name: Comment preview URL on PR
+        if: steps.deploy.outputs.url != ''
+        uses: marocchino/sticky-pull-request-comment@v3
+        with:
+          header: cloudflare-preview
+          message: |
+            ### Cloudflare preview — PR #${{ github.event.pull_request.number }}
+
+            **${{ steps.deploy.outputs.url }}**
+
+            Stable for the life of the PR (alias `pr-${{ github.event.pull_request.number }}`).
+
+            _Last updated: commit `${{ github.event.pull_request.head.sha }}`_
