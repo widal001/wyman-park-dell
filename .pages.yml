@@ -3,6 +3,17 @@
 # Editing happens on app.pagescms.org (no local admin). `blockKey: type` and
 # `format: yaml-frontmatter` make Pages CMS write the SAME files the Decap
 # experiment writes, validated by the same src/content.config.ts Zod schema.
+
+# Write Conventional Commit messages for edits made through the CMS (default is
+# "Action {path} (via Pages CMS)"). {path} is the file the editor changed.
+settings:
+  commit:
+    templates:
+      create: "feat(content): add {path}"
+      update: "chore(content): update {path}"
+      delete: "chore(content): remove {path}"
+      rename: "chore(content): rename {oldPath} to {newPath}"
+
 content:
   - name: pages
     label: Pages
