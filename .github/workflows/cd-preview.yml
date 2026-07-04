@@ -45,8 +45,6 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          # wrangler resolves the adapter-generated dist/server/wrangler.json
-          # automatically (no --config needed).
           output=$(pnpm exec wrangler versions upload \
             --preview-alias "pr-${{ github.event.pull_request.number }}" \
             --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}" \
