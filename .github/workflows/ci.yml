@@ -1,0 +1,37 @@
+name: CI
+
+# Type-check, lint, format-check, and build on every push and PR. No secrets
+# required, so this runs on all branches (including forks) — unlike the deploy
+# workflows, which need Cloudflare credentials.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Type-check, lint, format
+        run: pnpm run checks
+
+      - name: Build
+        run: pnpm run build
