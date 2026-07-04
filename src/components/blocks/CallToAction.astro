@@ -27,13 +27,15 @@ const containerWidth = background === 'bar' ? 'wide' : 'narrow';
     <div class:list={['cta', `cta--${background}`]}>
       <h2>{heading}</h2>
       {body && <p>{body}</p>}
-      {ctas.length > 0 && (
-        <div class="cta__buttons">
-          {background === 'bar'
-            ? ctas.map((cta) => <GhostLink {...cta} />)
-            : ctas.map((cta) => <Button {...cta} size="lg" />)}
-        </div>
-      )}
+      {
+        ctas.length > 0 && (
+          <div class="cta__buttons">
+            {background === 'bar'
+              ? ctas.map((cta) => <GhostLink {...cta} />)
+              : ctas.map((cta) => <Button {...cta} size="lg" />)}
+          </div>
+        )
+      }
     </div>
   </Container>
 </Section>

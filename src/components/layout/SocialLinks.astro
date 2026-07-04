@@ -1,14 +1,14 @@
 ---
-import type { SocialLink } from "../../types/content";
+import type { SocialLink } from '../../types/content';
 
 type Props = {
   links: SocialLink[];
-  variant?: "pills" | "plain" | "plain-inverse";
+  variant?: 'pills' | 'plain' | 'plain-inverse';
 };
 
-const { links, variant = "pills" } = Astro.props;
+const { links, variant = 'pills' } = Astro.props;
 
-const ICONS: Record<SocialLink["network"], string> = {
+const ICONS: Record<SocialLink['network'], string> = {
   facebook:
     '<path d="M22 12.06C22 6.48 17.52 2 11.94 2 6.36 2 1.88 6.48 1.88 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.42V9.86c0-2.39 1.42-3.71 3.6-3.71 1.04 0 2.13.18 2.13.18v2.34h-1.2c-1.18 0-1.55.74-1.55 1.5v1.8h2.64l-.42 2.91h-2.22V22c4.78-.76 8.44-4.92 8.44-9.94z"/>',
   instagram:
@@ -21,16 +21,16 @@ const ICONS: Record<SocialLink["network"], string> = {
     '<path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm10 7.4 9.6-6.6H2.4L12 11.4zM22 18V6.8l-9.4 6.5a1 1 0 0 1-1.2 0L2 6.8V18h20z"/>',
 };
 
-const LABELS: Record<SocialLink["network"], string> = {
-  facebook: "Facebook",
-  instagram: "Instagram",
-  youtube: "YouTube",
-  twitter: "X / Twitter",
-  email: "Email",
+const LABELS: Record<SocialLink['network'], string> = {
+  facebook: 'Facebook',
+  instagram: 'Instagram',
+  youtube: 'YouTube',
+  twitter: 'X / Twitter',
+  email: 'Email',
 };
 ---
 
-<ul role="list" class:list={["social", `social--${variant}`]}>
+<ul role="list" class:list={['social', `social--${variant}`]}>
   {
     links.map((link) => (
       <li>

@@ -1,18 +1,18 @@
 ---
-import type { SectionHeadingBlock } from "../../types/content";
-import Section from "../ui/Section.astro";
-import Container from "../ui/Container.astro";
+import type { SectionHeadingBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
 
-type Props = Omit<SectionHeadingBlock, "type">;
+type Props = Omit<SectionHeadingBlock, 'type'>;
 
 const {
   heading,
   subheading,
-  align = "center",
-  background = "base",
-  headingColor = "accent",
-  variant = "heading",
-  width = "narrow",
+  align = 'center',
+  background = 'base',
+  headingColor = 'accent',
+  variant = 'heading',
+  width = 'narrow',
 } = Astro.props;
 ---
 
@@ -20,14 +20,14 @@ const {
   <Container width={width}>
     <div
       class:list={[
-        "section-heading",
+        'section-heading',
         `section-heading--${align}`,
         `section-heading--color-${headingColor}`,
         `section-heading--${variant}`,
       ]}
     >
       {
-        variant === "lead" ? (
+        variant === 'lead' ? (
           <p class="section-heading__lead">{heading}</p>
         ) : (
           <h2>{heading}</h2>

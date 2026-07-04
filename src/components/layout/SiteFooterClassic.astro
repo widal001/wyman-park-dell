@@ -9,25 +9,34 @@ import { site } from '../../content/site';
   <Container width="wide">
     <div class="site-footer-classic__grid">
       <div class="site-footer-classic__brand">
-        {site.logoInverse && (
-          <img
-            class="site-footer-classic__logo"
-            src={site.logoInverse.src}
-            alt={site.logoInverse.alt}
-            width={site.logoInverse.width}
-            height={site.logoInverse.height}
-            loading="lazy"
-            decoding="async"
-          />
-        )}
+        {
+          site.logoInverse && (
+            <img
+              class="site-footer-classic__logo"
+              src={site.logoInverse.src}
+              alt={site.logoInverse.alt}
+              width={site.logoInverse.width}
+              height={site.logoInverse.height}
+              loading="lazy"
+              decoding="async"
+            />
+          )
+        }
 
-        {site.tagline && <p class="site-footer-classic__tagline">{site.tagline}</p>}
+        {
+          site.tagline && (
+            <p class="site-footer-classic__tagline">{site.tagline}</p>
+          )
+        }
 
         <address class="site-footer-classic__address">
           {site.contact.address.map((line) => <div>{line}</div>)}
         </address>
 
-        <a class="site-footer-classic__email" href={`mailto:${site.contact.email}`}>
+        <a
+          class="site-footer-classic__email"
+          href={`mailto:${site.contact.email}`}
+        >
           {site.contact.email}
         </a>
 
@@ -39,25 +48,27 @@ import { site } from '../../content/site';
       <nav class="site-footer-classic__nav" aria-label="Footer">
         <h2 class="site-footer-classic__heading">Explore</h2>
         <ul role="list">
-          {site.footerNav.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                target={item.external ? '_blank' : undefined}
-                rel={item.external ? 'noopener noreferrer' : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {
+            site.footerNav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </nav>
 
       <div class="site-footer-classic__signup">
         <h2 class="site-footer-classic__heading">Stay in Touch</h2>
         <p class="site-footer-classic__signup-intro">
-          Get news from the Dell — events, clean-ups, and stories from the
-          park, straight to your inbox.
+          Get news from the Dell — events, clean-ups, and stories from the park,
+          straight to your inbox.
         </p>
         <NewsletterForm config={site.newsletter} />
       </div>

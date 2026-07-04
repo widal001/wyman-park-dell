@@ -9,16 +9,18 @@ import { site } from '../../content/site';
   <Container width="wide">
     <div class="site-footer__grid">
       <div class="site-footer__brand">
-        {site.logoInverse && (
-          <img
-            src={site.logoInverse.src}
-            alt={site.logoInverse.alt}
-            width={site.logoInverse.width}
-            height={site.logoInverse.height}
-            loading="lazy"
-            decoding="async"
-          />
-        )}
+        {
+          site.logoInverse && (
+            <img
+              src={site.logoInverse.src}
+              alt={site.logoInverse.alt}
+              width={site.logoInverse.width}
+              height={site.logoInverse.height}
+              loading="lazy"
+              decoding="async"
+            />
+          )
+        }
       </div>
 
       <div class="site-footer__contact">
@@ -33,17 +35,19 @@ import { site } from '../../content/site';
 
       <nav class="site-footer__nav" aria-label="Footer">
         <ul role="list">
-          {site.footerNav.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                target={item.external ? '_blank' : undefined}
-                rel={item.external ? 'noopener noreferrer' : undefined}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {
+            site.footerNav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noopener noreferrer' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </nav>
 

@@ -11,44 +11,50 @@ const hasHeading = Boolean(heading || subheading);
 
 <Section padding="default">
   <Container width="wide">
-    {hasHeading && (
-      <div class="activity__heading">
-        {heading && <h2>{heading}</h2>}
-        {subheading && <p>{subheading}</p>}
-      </div>
-    )}
+    {
+      hasHeading && (
+        <div class="activity__heading">
+          {heading && <h2>{heading}</h2>}
+          {subheading && <p>{subheading}</p>}
+        </div>
+      )
+    }
 
     <div class="activity__layout">
-      {image && (
-        <figure class="activity__image">
-          <img
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-      )}
+      {
+        image && (
+          <figure class="activity__image">
+            <img
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        )
+      }
 
       <ul role="list" class="activity__list">
-        {items.map((item) => (
-          <li class="activity__item">
-            {item.icon && (
-              <img
-                class="activity__icon"
-                src={item.icon.src}
-                alt=""
-                width={item.icon.width ?? 60}
-                height={item.icon.height ?? 60}
-                loading="lazy"
-                decoding="async"
-              />
-            )}
-            <span class="activity__label">{item.label}</span>
-          </li>
-        ))}
+        {
+          items.map((item) => (
+            <li class="activity__item">
+              {item.icon && (
+                <img
+                  class="activity__icon"
+                  src={item.icon.src}
+                  alt=""
+                  width={item.icon.width ?? 60}
+                  height={item.icon.height ?? 60}
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              <span class="activity__label">{item.label}</span>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </Container>

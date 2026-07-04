@@ -9,10 +9,10 @@
 settings:
   commit:
     templates:
-      create: "feat(content): add {path}"
-      update: "chore(content): update {path}"
-      delete: "chore(content): remove {path}"
-      rename: "chore(content): rename {oldPath} to {newPath}"
+      create: 'feat(content): add {path}'
+      update: 'chore(content): update {path}'
+      delete: 'chore(content): remove {path}'
+      rename: 'chore(content): rename {oldPath} to {newPath}'
 
 content:
   - name: pages
@@ -20,7 +20,7 @@ content:
     type: collection
     path: src/content/pages
     format: yaml-frontmatter
-    filename: "{fields.slug}.md"
+    filename: '{fields.slug}.md'
     view:
       fields: [title, slug]
       primary: title
@@ -38,7 +38,12 @@ content:
           - name: hero
             label: Hero
             fields:
-              - { name: variant, label: Variant, type: select, options: { values: [fullscreen, standard] } }
+              - {
+                  name: variant,
+                  label: Variant,
+                  type: select,
+                  options: { values: [fullscreen, standard] },
+                }
               - { name: heading, label: Heading, type: string, required: true }
               - { name: subheading, label: Subheading, type: string }
               - { name: body, label: Body, type: text }
@@ -46,7 +51,12 @@ content:
                 label: Image
                 type: object
                 fields:
-                  - { name: src, label: Image URL, type: string, required: true }
+                  - {
+                      name: src,
+                      label: Image URL,
+                      type: string,
+                      required: true,
+                    }
                   - { name: alt, label: Alt text, type: string }
                   - { name: width, label: Width, type: number }
                   - { name: height, label: Height, type: number }
@@ -57,7 +67,22 @@ content:
                 fields:
                   - { name: label, label: Label, type: string, required: true }
                   - { name: href, label: URL, type: string, required: true }
-                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - {
+                      name: variant,
+                      label: Style,
+                      type: select,
+                      options:
+                        {
+                          values:
+                            [
+                              primary,
+                              outline,
+                              outline-inverse,
+                              solid-inverse,
+                              ghost,
+                            ],
+                        },
+                    }
                   - { name: external, label: Opens in new tab, type: boolean }
           # ---- events (list injected at render time from the events collection) ----
           - name: events
@@ -65,14 +90,33 @@ content:
             fields:
               - { name: heading, label: Heading, type: string, required: true }
               - { name: intro, label: Intro, type: text }
-              - { name: limit, label: Max events to show (soonest first; blank = all), type: number }
+              - {
+                  name: limit,
+                  label: Max events to show (soonest first; blank = all),
+                  type: number,
+                }
               - name: viewAllCta
                 label: '"View all" CTA'
                 type: object
                 fields:
                   - { name: label, label: Label, type: string, required: true }
                   - { name: href, label: URL, type: string, required: true }
-                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - {
+                      name: variant,
+                      label: Style,
+                      type: select,
+                      options:
+                        {
+                          values:
+                            [
+                              primary,
+                              outline,
+                              outline-inverse,
+                              solid-inverse,
+                              ghost,
+                            ],
+                        },
+                    }
                   - { name: external, label: Opens in new tab, type: boolean }
           # ---- sectionHeading ----
           - name: sectionHeading
@@ -80,11 +124,36 @@ content:
             fields:
               - { name: heading, label: Heading, type: string, required: true }
               - { name: subheading, label: Subheading, type: text }
-              - { name: align, label: Align, type: select, options: { values: [left, center] } }
-              - { name: background, label: Background, type: select, options: { values: [base, raised, inverse, accent] } }
-              - { name: headingColor, label: Heading color, type: select, options: { values: [accent, dark, inverse, muted] } }
-              - { name: variant, label: Variant, type: select, options: { values: [heading, lead] } }
-              - { name: width, label: Width, type: select, options: { values: [narrow, medium, wide] } }
+              - {
+                  name: align,
+                  label: Align,
+                  type: select,
+                  options: { values: [left, center] },
+                }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised, inverse, accent] },
+                }
+              - {
+                  name: headingColor,
+                  label: Heading color,
+                  type: select,
+                  options: { values: [accent, dark, inverse, muted] },
+                }
+              - {
+                  name: variant,
+                  label: Variant,
+                  type: select,
+                  options: { values: [heading, lead] },
+                }
+              - {
+                  name: width,
+                  label: Width,
+                  type: select,
+                  options: { values: [narrow, medium, wide] },
+                }
           # ---- activityGrid ----
           - name: activityGrid
             label: Activity grid
@@ -95,7 +164,12 @@ content:
                 label: Feature image
                 type: object
                 fields:
-                  - { name: src, label: Image URL, type: string, required: true }
+                  - {
+                      name: src,
+                      label: Image URL,
+                      type: string,
+                      required: true,
+                    }
                   - { name: alt, label: Alt text, type: string }
                   - { name: width, label: Width, type: number }
                   - { name: height, label: Height, type: number }
@@ -110,7 +184,12 @@ content:
                     label: Icon
                     type: object
                     fields:
-                      - { name: src, label: Image URL, type: string, required: true }
+                      - {
+                          name: src,
+                          label: Image URL,
+                          type: string,
+                          required: true,
+                        }
                       - { name: alt, label: Alt text, type: string }
                       - { name: width, label: Width, type: number }
                       - { name: height, label: Height, type: number }
@@ -124,22 +203,47 @@ content:
                 label: Image
                 type: object
                 fields:
-                  - { name: src, label: Image URL, type: string, required: true }
+                  - {
+                      name: src,
+                      label: Image URL,
+                      type: string,
+                      required: true,
+                    }
                   - { name: alt, label: Alt text, type: string }
           # ---- gallery ----
           - name: gallery
             label: Gallery
             fields:
-              - { name: layout, label: Layout, type: select, options: { values: [grid, mosaic] } }
+              - {
+                  name: layout,
+                  label: Layout,
+                  type: select,
+                  options: { values: [grid, mosaic] },
+                }
               - { name: columns, label: Columns, type: number }
-              - { name: paddingTop, label: Padding top, type: select, options: { values: [default, small, none] } }
-              - { name: paddingBottom, label: Padding bottom, type: select, options: { values: [default, small, none] } }
+              - {
+                  name: paddingTop,
+                  label: Padding top,
+                  type: select,
+                  options: { values: [default, small, none] },
+                }
+              - {
+                  name: paddingBottom,
+                  label: Padding bottom,
+                  type: select,
+                  options: { values: [default, small, none] },
+                }
               - name: images
                 label: Images
                 type: object
                 list: true
                 fields:
-                  - { name: src, label: Image URL, type: string, required: true }
+                  - {
+                      name: src,
+                      label: Image URL,
+                      type: string,
+                      required: true,
+                    }
                   - { name: alt, label: Alt text, type: string }
                   - { name: width, label: Width, type: number }
                   - { name: height, label: Height, type: number }
@@ -148,9 +252,24 @@ content:
             label: Follow us
             fields:
               - { name: heading, label: Heading, type: string }
-              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
-              - { name: paddingTop, label: Padding top, type: select, options: { values: [default, small, large, xl, none] } }
-              - { name: paddingBottom, label: Padding bottom, type: select, options: { values: [default, small, large, xl, none] } }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised] },
+                }
+              - {
+                  name: paddingTop,
+                  label: Padding top,
+                  type: select,
+                  options: { values: [default, small, large, xl, none] },
+                }
+              - {
+                  name: paddingBottom,
+                  label: Padding bottom,
+                  type: select,
+                  options: { values: [default, small, large, xl, none] },
+                }
           # ---- textWithMedia ----
           - name: textWithMedia
             label: Text with media
@@ -162,11 +281,21 @@ content:
                 label: Image
                 type: object
                 fields:
-                  - { name: src, label: Image URL, type: string, required: true }
+                  - {
+                      name: src,
+                      label: Image URL,
+                      type: string,
+                      required: true,
+                    }
                   - { name: alt, label: Alt text, type: string }
                   - { name: width, label: Width, type: number }
                   - { name: height, label: Height, type: number }
-              - { name: mediaPosition, label: Media position, type: select, options: { values: [left, right] } }
+              - {
+                  name: mediaPosition,
+                  label: Media position,
+                  type: select,
+                  options: { values: [left, right] },
+                }
               - name: ctas
                 label: CTAs
                 type: object
@@ -174,7 +303,22 @@ content:
                 fields:
                   - { name: label, label: Label, type: string, required: true }
                   - { name: href, label: URL, type: string, required: true }
-                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - {
+                      name: variant,
+                      label: Style,
+                      type: select,
+                      options:
+                        {
+                          values:
+                            [
+                              primary,
+                              outline,
+                              outline-inverse,
+                              solid-inverse,
+                              ghost,
+                            ],
+                        },
+                    }
                   - { name: external, label: Opens in new tab, type: boolean }
           # ---- timeline ----
           - name: timeline
@@ -196,7 +340,12 @@ content:
             fields:
               - { name: heading, label: Heading, type: string, required: true }
               - { name: body, label: Body, type: text }
-              - { name: background, label: Background, type: select, options: { values: [light, dark, accent, bar] } }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [light, dark, accent, bar] },
+                }
               - name: ctas
                 label: CTAs
                 type: object
@@ -204,7 +353,22 @@ content:
                 fields:
                   - { name: label, label: Label, type: string, required: true }
                   - { name: href, label: URL, type: string, required: true }
-                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - {
+                      name: variant,
+                      label: Style,
+                      type: select,
+                      options:
+                        {
+                          values:
+                            [
+                              primary,
+                              outline,
+                              outline-inverse,
+                              solid-inverse,
+                              ghost,
+                            ],
+                        },
+                    }
                   - { name: external, label: Opens in new tab, type: boolean }
           # ---- twoColumnText ----
           - name: twoColumnText
@@ -214,10 +378,29 @@ content:
               - { name: leftBody, label: Left body, type: rich-text }
               - { name: rightHeading, label: Right heading, type: string }
               - { name: rightBody, label: Right body, type: rich-text }
-              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
-              - { name: alignAcross, label: Align across columns, type: boolean }
-              - { name: paddingTop, label: Padding top, type: select, options: { values: [default, small, none] } }
-              - { name: paddingBottom, label: Padding bottom, type: select, options: { values: [default, small, none] } }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised] },
+                }
+              - {
+                  name: alignAcross,
+                  label: Align across columns,
+                  type: boolean,
+                }
+              - {
+                  name: paddingTop,
+                  label: Padding top,
+                  type: select,
+                  options: { values: [default, small, none] },
+                }
+              - {
+                  name: paddingBottom,
+                  label: Padding bottom,
+                  type: select,
+                  options: { values: [default, small, none] },
+                }
               - name: ctas
                 label: CTAs
                 type: object
@@ -225,7 +408,22 @@ content:
                 fields:
                   - { name: label, label: Label, type: string, required: true }
                   - { name: href, label: URL, type: string, required: true }
-                  - { name: variant, label: Style, type: select, options: { values: [primary, outline, outline-inverse, solid-inverse, ghost] } }
+                  - {
+                      name: variant,
+                      label: Style,
+                      type: select,
+                      options:
+                        {
+                          values:
+                            [
+                              primary,
+                              outline,
+                              outline-inverse,
+                              solid-inverse,
+                              ghost,
+                            ],
+                        },
+                    }
                   - { name: external, label: Opens in new tab, type: boolean }
           # ---- volunteerForm ----
           - name: volunteerForm
@@ -237,23 +435,68 @@ content:
                 label: Image
                 type: object
                 fields:
-                  - { name: src, label: Image URL, type: string, required: true }
+                  - {
+                      name: src,
+                      label: Image URL,
+                      type: string,
+                      required: true,
+                    }
                   - { name: alt, label: Alt text, type: string }
-              - { name: mediaPosition, label: Media position, type: select, options: { values: [left, right] } }
+              - {
+                  name: mediaPosition,
+                  label: Media position,
+                  type: select,
+                  options: { values: [left, right] },
+                }
               - { name: action, label: Form action URL, type: string }
-              - { name: method, label: Method, type: select, options: { values: [POST, GET] } }
+              - {
+                  name: method,
+                  label: Method,
+                  type: select,
+                  options: { values: [POST, GET] },
+                }
               - { name: submitLabel, label: Submit label, type: string }
-              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised] },
+                }
           # ---- richText ----
           - name: richText
             label: Rich text
             fields:
               - { name: body, label: Body, type: rich-text }
-              - { name: align, label: Align, type: select, options: { values: [left, center] } }
-              - { name: width, label: Width, type: select, options: { values: [narrow, medium, wide, full] } }
-              - { name: background, label: Background, type: select, options: { values: [base, raised, inverse, accent] } }
-              - { name: paddingTop, label: Padding top, type: select, options: { values: [default, small, large, xl, none] } }
-              - { name: paddingBottom, label: Padding bottom, type: select, options: { values: [default, small, large, xl, none] } }
+              - {
+                  name: align,
+                  label: Align,
+                  type: select,
+                  options: { values: [left, center] },
+                }
+              - {
+                  name: width,
+                  label: Width,
+                  type: select,
+                  options: { values: [narrow, medium, wide, full] },
+                }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised, inverse, accent] },
+                }
+              - {
+                  name: paddingTop,
+                  label: Padding top,
+                  type: select,
+                  options: { values: [default, small, large, xl, none] },
+                }
+              - {
+                  name: paddingBottom,
+                  label: Padding bottom,
+                  type: select,
+                  options: { values: [default, small, large, xl, none] },
+                }
           # ---- projects ----
           - name: projects
             label: Projects
@@ -271,7 +514,12 @@ content:
                     label: Image
                     type: object
                     fields:
-                      - { name: src, label: Image URL, type: string, required: true }
+                      - {
+                          name: src,
+                          label: Image URL,
+                          type: string,
+                          required: true,
+                        }
                       - { name: alt, label: Alt text, type: string }
                   - { name: caption, label: Caption, type: string }
           # ---- board ----
@@ -291,7 +539,12 @@ content:
                     label: Photo
                     type: object
                     fields:
-                      - { name: src, label: Image URL, type: string, required: true }
+                      - {
+                          name: src,
+                          label: Image URL,
+                          type: string,
+                          required: true,
+                        }
                       - { name: alt, label: Alt text, type: string }
                   - { name: bio, label: Bio, type: text }
           # ---- partners ----
@@ -311,7 +564,12 @@ content:
                     label: Logo
                     type: object
                     fields:
-                      - { name: src, label: Image URL, type: string, required: true }
+                      - {
+                          name: src,
+                          label: Image URL,
+                          type: string,
+                          required: true,
+                        }
                       - { name: alt, label: Alt text, type: string }
                       - { name: width, label: Width, type: number }
                       - { name: height, label: Height, type: number }
@@ -319,31 +577,61 @@ content:
           - name: videoEmbed
             label: Video embed
             fields:
-              - { name: youtubeId, label: YouTube video ID, type: string, required: true }
+              - {
+                  name: youtubeId,
+                  label: YouTube video ID,
+                  type: string,
+                  required: true,
+                }
               - { name: title, label: Title, type: string, required: true }
               - { name: caption, label: Caption, type: string }
               - name: poster
                 label: Poster image
                 type: object
                 fields:
-                  - { name: src, label: Image URL, type: string, required: true }
+                  - {
+                      name: src,
+                      label: Image URL,
+                      type: string,
+                      required: true,
+                    }
                   - { name: alt, label: Alt text, type: string }
-              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised] },
+                }
           # ---- newsletter ----
           - name: newsletter
             label: Newsletter signup
             fields:
               - { name: heading, label: Heading, type: string, required: true }
               - { name: subheading, label: Subheading, type: text }
-              - { name: background, label: Background, type: select, options: { values: [base, raised, inverse, accent] } }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised, inverse, accent] },
+                }
           # ---- mapEmbed ----
           - name: mapEmbed
             label: Map embed
             fields:
-              - { name: embedUrl, label: Embed URL, type: string, required: true }
+              - {
+                  name: embedUrl,
+                  label: Embed URL,
+                  type: string,
+                  required: true,
+                }
               - { name: title, label: Title, type: string, required: true }
               - { name: maxHeight, label: Max height (px), type: number }
-              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised] },
+                }
           # ---- contactForm ----
           - name: contactForm
             label: Contact form
@@ -358,35 +646,70 @@ content:
                   - { name: label, label: Label, type: string, required: true }
                   - { name: value, label: Value, type: string, required: true }
               - { name: action, label: Form action URL, type: string }
-              - { name: method, label: Method, type: select, options: { values: [POST, GET] } }
+              - {
+                  name: method,
+                  label: Method,
+                  type: select,
+                  options: { values: [POST, GET] },
+                }
               - { name: submitLabel, label: Submit label, type: string }
-              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised] },
+                }
           # ---- donorbox ----
           - name: donorbox
             label: Donorbox embed
             fields:
-              - { name: campaignUrl, label: Donorbox campaign URL, type: string, required: true }
-              - { name: paypalExpress, label: Enable PayPal Express, type: boolean }
+              - {
+                  name: campaignUrl,
+                  label: Donorbox campaign URL,
+                  type: string,
+                  required: true,
+                }
+              - {
+                  name: paypalExpress,
+                  label: Enable PayPal Express,
+                  type: boolean,
+                }
               - { name: height, label: Height (px), type: number }
-              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+              - {
+                  name: background,
+                  label: Background,
+                  type: select,
+                  options: { values: [base, raised] },
+                }
           # ---- ecwidStore ----
           - name: ecwidStore
             label: Ecwid store
             fields:
-              - { name: storeId, label: Ecwid store ID, type: string, required: true }
+              - {
+                  name: storeId,
+                  label: Ecwid store ID,
+                  type: string,
+                  required: true,
+                }
 
   - name: events
     label: Events
     type: collection
     path: src/content/events
     format: yaml-frontmatter
-    filename: "{fields.title}.md"
+    filename: '{fields.title}.md'
     view:
       fields: [title, date]
       primary: title
     fields:
       - { name: title, label: Title, type: string, required: true }
-      - { name: date, label: Date, type: string, required: true, description: "ISO date, e.g. 2026-05-09" }
+      - {
+          name: date,
+          label: Date,
+          type: string,
+          required: true,
+          description: 'ISO date, e.g. 2026-05-09',
+        }
       - { name: time, label: Time, type: string }
       - { name: location, label: Location, type: string }
       - { name: description, label: Description, type: text, required: true }

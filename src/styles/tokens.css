@@ -3,23 +3,23 @@
 
 :root {
   /* Brand */
-  --color-brand-green-dark: #1B3C03;     /* primary text on light, dark CTAs */
-  --color-brand-green: #047B1F;          /* heading accent — AA-passing on white (5.38:1) */
-  --color-brand-green-deep: #263D18;     /* hero overlay */
-  --color-brand-lime: #CDDE00;           /* accent rule, quote border */
-  --color-brand-orange: #F89521;         /* outline border, social pills */
-  --color-brand-orange-light: #FBA94A;   /* primary CTA fill, outline hover fill — AAA on dark green text */
-  --color-brand-cream: #FFF7E6;
+  --color-brand-green-dark: #1b3c03; /* primary text on light, dark CTAs */
+  --color-brand-green: #047b1f; /* heading accent — AA-passing on white (5.38:1) */
+  --color-brand-green-deep: #263d18; /* hero overlay */
+  --color-brand-lime: #cdde00; /* accent rule, quote border */
+  --color-brand-orange: #f89521; /* outline border, social pills */
+  --color-brand-orange-light: #fba94a; /* primary CTA fill, outline hover fill — AAA on dark green text */
+  --color-brand-cream: #fff7e6;
 
   /* Neutrals */
-  --color-white: #FFFFFF;
-  --color-neutral-50: #FAFAFA;
-  --color-neutral-100: #F7F7F7;
-  --color-neutral-200: #ECECEC;
-  --color-neutral-300: #D7D7D7;
+  --color-white: #ffffff;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f7f7f7;
+  --color-neutral-200: #ececec;
+  --color-neutral-300: #d7d7d7;
   --color-neutral-500: #707070;
-  --color-neutral-700: #4A4A4A;
-  --color-neutral-900: #1A1A1A;
+  --color-neutral-700: #4a4a4a;
+  --color-neutral-900: #1a1a1a;
 
   /* Semantic */
   --color-surface-base: var(--color-white);
@@ -37,7 +37,9 @@
   --color-border-strong: var(--color-brand-green);
 
   /* Typography */
-  --font-sans: 'Lato', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans:
+    'Lato', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
   --font-display: var(--font-sans);
 
   --font-weight-regular: 400;
@@ -45,17 +47,17 @@
   --font-weight-bold: 700;
   --font-weight-black: 900;
 
-  --font-size-xs:   0.75rem;   /* 12 */
-  --font-size-sm:   0.875rem;  /* 14 */
-  --font-size-base: 1rem;      /* 16 */
-  --font-size-md:   1.125rem;  /* 18 */
-  --font-size-lg:   1.25rem;   /* 20 */
-  --font-size-xl:   1.5rem;    /* 24 */
-  --font-size-2xl:  1.875rem;  /* 30 */
-  --font-size-3xl:  2.25rem;   /* 36 */
-  --font-size-4xl:  3.25rem;   /* 52 */
-  --font-size-5xl:  4.375rem;  /* 70 */
-  --font-size-6xl:  4.5rem;    /* 72 — hero */
+  --font-size-xs: 0.75rem; /* 12 */
+  --font-size-sm: 0.875rem; /* 14 */
+  --font-size-base: 1rem; /* 16 */
+  --font-size-md: 1.125rem; /* 18 */
+  --font-size-lg: 1.25rem; /* 20 */
+  --font-size-xl: 1.5rem; /* 24 */
+  --font-size-2xl: 1.875rem; /* 30 */
+  --font-size-3xl: 2.25rem; /* 36 */
+  --font-size-4xl: 3.25rem; /* 52 */
+  --font-size-5xl: 4.375rem; /* 70 */
+  --font-size-6xl: 4.5rem; /* 72 — hero */
 
   --line-height-tight: 1.1;
   --line-height-snug: 1.25;
@@ -67,19 +69,19 @@
   --letter-spacing-wide: 0.06em;
 
   /* Spacing — 4px scale */
-  --space-1: 0.25rem;   /* 4 */
-  --space-2: 0.5rem;    /* 8 */
-  --space-3: 0.75rem;   /* 12 */
-  --space-4: 1rem;      /* 16 */
-  --space-5: 1.25rem;   /* 20 */
-  --space-6: 1.5rem;    /* 24 */
-  --space-8: 2rem;      /* 32 */
-  --space-10: 2.5rem;   /* 40 */
-  --space-12: 3rem;     /* 48 */
-  --space-16: 4rem;     /* 64 */
-  --space-20: 5rem;     /* 80 */
-  --space-24: 6rem;     /* 96 */
-  --space-32: 8rem;     /* 128 */
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-5: 1.25rem; /* 20 */
+  --space-6: 1.5rem; /* 24 */
+  --space-8: 2rem; /* 32 */
+  --space-10: 2.5rem; /* 40 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+  --space-20: 5rem; /* 80 */
+  --space-24: 6rem; /* 96 */
+  --space-32: 8rem; /* 128 */
 
   /* Layout */
   --container-max: 1200px;

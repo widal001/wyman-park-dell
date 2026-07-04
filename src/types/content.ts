@@ -17,7 +17,8 @@ export type ImageRef = {
 export type CtaRef = {
   label: string;
   href: string;
-  variant?: 'primary' | 'outline' | 'outline-inverse' | 'solid-inverse' | 'ghost';
+  variant?:
+    'primary' | 'outline' | 'outline-inverse' | 'solid-inverse' | 'ghost';
   external?: boolean;
 };
 

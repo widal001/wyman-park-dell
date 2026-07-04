@@ -12,25 +12,28 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 
 <nav class="main-nav" aria-label={ariaLabel}>
   <ul role="list" class="main-nav__list">
-    {items.map((item) => {
-      const itemPath = item.href.replace(/\/+$/, '') || '/';
-      const isCurrent =
-        !item.external && (itemPath === currentPath ||
-          (itemPath !== '/' && currentPath.startsWith(itemPath)));
-      return (
-        <li>
-          <a
-            href={item.href}
-            target={item.external ? '_blank' : undefined}
-            rel={item.external ? 'noopener noreferrer' : undefined}
-            aria-current={isCurrent ? 'page' : undefined}
-            class:list={['main-nav__link', isCurrent && 'is-current']}
-          >
-            {item.label}
-          </a>
-        </li>
-      );
-    })}
+    {
+      items.map((item) => {
+        const itemPath = item.href.replace(/\/+$/, '') || '/';
+        const isCurrent =
+          !item.external &&
+          (itemPath === currentPath ||
+            (itemPath !== '/' && currentPath.startsWith(itemPath)));
+        return (
+          <li>
+            <a
+              href={item.href}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noopener noreferrer' : undefined}
+              aria-current={isCurrent ? 'page' : undefined}
+              class:list={['main-nav__link', isCurrent && 'is-current']}
+            >
+              {item.label}
+            </a>
+          </li>
+        );
+      })
+    }
   </ul>
 </nav>
 

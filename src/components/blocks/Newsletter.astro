@@ -30,9 +30,11 @@ const action = config.action || '#';
         method={config.method ?? 'POST'}
         data-newsletter-form
       >
-        {config.hiddenFields?.map((field) => (
-          <input type="hidden" name={field.name} value={field.value} />
-        ))}
+        {
+          config.hiddenFields?.map((field) => (
+            <input type="hidden" name={field.name} value={field.value} />
+          ))
+        }
 
         <label class="newsletter-block__field">
           <span class="visually-hidden">{config.fields.name.label}</span>
@@ -124,8 +126,9 @@ const action = config.action || '#';
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wide);
     cursor: pointer;
-    transition: background-color var(--transition-fast),
-                color var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
   }
 
   .newsletter-block__submit:hover {

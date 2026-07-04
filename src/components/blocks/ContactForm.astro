@@ -72,15 +72,18 @@ const {
           <span class="visually-hidden">I am interested in</span>
           <select name="interest" required>
             <option value="" disabled selected>I am interested in</option>
-            {interests.map((opt) => (
-              <option value={opt.value}>{opt.label}</option>
-            ))}
+            {
+              interests.map((opt) => (
+                <option value={opt.value}>{opt.label}</option>
+              ))
+            }
           </select>
         </label>
 
         <label class="cform__field cform__field--full">
           <span class="visually-hidden">Message</span>
-          <textarea name="message" placeholder="Message" rows={5} required></textarea>
+          <textarea name="message" placeholder="Message" rows={5} required
+          ></textarea>
         </label>
 
         <div class="cform__actions">
@@ -184,8 +187,9 @@ const {
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing-wide);
     cursor: pointer;
-    transition: background-color var(--transition-fast),
-                color var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
   }
 
   .cform__submit:hover {

@@ -1,16 +1,16 @@
 {
-	"$schema": "node_modules/wrangler/config-schema.json",
-	// Pin compatibility settings only. The `@astrojs/cloudflare` adapter
-	// generates the deployable Worker config (name, main, assets, bindings)
-	// into `dist/client/wrangler.json` at build time; a plain `wrangler deploy`
-	// resolves it automatically via `.wrangler/deploy/config.json` (no --config
-	// flag needed). Keeping main/assets out here avoids dev (the vite plugin
-	// reads this file) and build (the adapter owns the deploy config) fighting
-	// over the same fields.
-	"name": "wyman-park-dell",
-	"compatibility_date": "2026-04-15",
-	"compatibility_flags": ["nodejs_compat"],
-	"observability": {
-		"enabled": true
-	}
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Pin compatibility settings only. The `@astrojs/cloudflare` adapter
+  // generates the deployable Worker config (name, main, assets, bindings)
+  // into `dist/client/wrangler.json` at build time; a plain `wrangler deploy`
+  // resolves it automatically via `.wrangler/deploy/config.json` (no --config
+  // flag needed). Keeping main/assets out here avoids dev (the vite plugin
+  // reads this file) and build (the adapter owns the deploy config) fighting
+  // over the same fields.
+  "name": "wyman-park-dell",
+  "compatibility_date": "2026-04-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+  },
 }

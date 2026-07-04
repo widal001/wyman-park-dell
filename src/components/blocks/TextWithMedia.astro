@@ -35,19 +35,21 @@ const {
         {eyebrow && <p class="twm__eyebrow">{eyebrow}</p>}
         <h2 class="twm__heading">{heading}</h2>
         <div class="twm__prose prose" set:html={html} />
-        {ctas.length > 0 && (
-          <ul role="list" class="twm__ctas">
-            {ctas.map((cta) => (
-              <li>
-                {cta.variant && cta.variant !== 'ghost' ? (
-                  <Button {...cta} />
-                ) : (
-                  <GhostLink {...cta} />
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
+        {
+          ctas.length > 0 && (
+            <ul role="list" class="twm__ctas">
+              {ctas.map((cta) => (
+                <li>
+                  {cta.variant && cta.variant !== 'ghost' ? (
+                    <Button {...cta} />
+                  ) : (
+                    <GhostLink {...cta} />
+                  )}
+                </li>
+              ))}
+            </ul>
+          )
+        }
       </div>
     </div>
   </Container>

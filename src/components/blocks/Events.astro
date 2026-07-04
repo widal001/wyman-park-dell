@@ -8,9 +8,18 @@ type Props = Omit<EventsBlock, 'type'>;
 
 const { heading, intro, events, viewAllCta } = Astro.props;
 
-const monthFmt = new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' });
-const dayFmt = new Intl.DateTimeFormat('en-US', { day: 'numeric', timeZone: 'UTC' });
-const weekdayFmt = new Intl.DateTimeFormat('en-US', { weekday: 'long', timeZone: 'UTC' });
+const monthFmt = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  timeZone: 'UTC',
+});
+const dayFmt = new Intl.DateTimeFormat('en-US', {
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+const weekdayFmt = new Intl.DateTimeFormat('en-US', {
+  weekday: 'long',
+  timeZone: 'UTC',
+});
 const longDateFmt = new Intl.DateTimeFormat('en-US', {
   month: 'long',
   day: 'numeric',
@@ -31,69 +40,79 @@ function parseISODate(value: string): Date {
     </header>
 
     <ul role="list" class="events__grid">
-      {events.map((event) => {
-        const start = parseISODate(event.date);
-        const end = event.endDate ? parseISODate(event.endDate) : null;
-        const startLong = longDateFmt.format(start);
-        const endLong = end ? longDateFmt.format(end) : null;
-        const datetimeAttr = end ? `${event.date}/${event.endDate}` : event.date;
+      {
+        events.map((event) => {
+          const start = parseISODate(event.date);
+          const end = event.endDate ? parseISODate(event.endDate) : null;
+          const startLong = longDateFmt.format(start);
+          const endLong = end ? longDateFmt.format(end) : null;
+          const datetimeAttr = end
+            ? `${event.date}/${event.endDate}`
+            : event.date;
 
-        return (
-          <li class="events__card">
-            {event.image && (
-              <a
-                class="events__media"
-                href={event.cta?.href ?? '#'}
-                tabindex="-1"
-                aria-hidden="true"
-              >
-                <img
-                  src={event.image.src}
-                  alt={event.image.alt}
-                  width={event.image.width}
-                  height={event.image.height}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-            )}
+          return (
+            <li class="events__card">
+              {event.image && (
+                <a
+                  class="events__media"
+                  href={event.cta?.href ?? '#'}
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <img
+                    src={event.image.src}
+                    alt={event.image.alt}
+                    width={event.image.width}
+                    height={event.image.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              )}
 
-            <div class="events__body">
-              <time class="events__date" datetime={datetimeAttr}>
-                <span class="events__date-month">{monthFmt.format(start)}</span>
-                <span class="events__date-day">{dayFmt.format(start)}</span>
-              </time>
+              <div class="events__body">
+                <time class="events__date" datetime={datetimeAttr}>
+                  <span class="events__date-month">
+                    {monthFmt.format(start)}
+                  </span>
+                  <span class="events__date-day">{dayFmt.format(start)}</span>
+                </time>
 
-              <div class="events__details">
-                <h3 class="events__title">{event.title}</h3>
-                <p class="events__meta">
-                  <span>{weekdayFmt.format(start)}</span>
-                  {endLong ? (
-                    <span>{startLong} – {endLong}</span>
-                  ) : (
-                    <span>{startLong}</span>
+                <div class="events__details">
+                  <h3 class="events__title">{event.title}</h3>
+                  <p class="events__meta">
+                    <span>{weekdayFmt.format(start)}</span>
+                    {endLong ? (
+                      <span>
+                        {startLong} – {endLong}
+                      </span>
+                    ) : (
+                      <span>{startLong}</span>
+                    )}
+                    {event.time && <span>{event.time}</span>}
+                    {event.location && <span>{event.location}</span>}
+                  </p>
+                  <p class="events__excerpt">{event.body}</p>
+                  {event.cta && (
+                    <a href={event.cta.href} class="events__cta">
+                      {event.cta.label} →
+                    </a>
                   )}
-                  {event.time && <span>{event.time}</span>}
-                  {event.location && <span>{event.location}</span>}
-                </p>
-                <p class="events__excerpt">{event.body}</p>
-                {event.cta && (
-                  <a href={event.cta.href} class="events__cta">
-                    {event.cta.label} →
-                  </a>
-                )}
+                </div>
               </div>
-            </div>
-          </li>
-        );
-      })}
+            </li>
+          );
+        })
+      }
     </ul>
 
-    {viewAllCta && (
-      <div class="events__view-all">
-        <Button {...viewAllCta} size="lg" />
-      </div>
-    )}
+    {
+      viewAllCta && (
+        <div class="events__view-all">
+          <Button {...viewAllCta} size="lg" />
+        </div>
+      )
+    }
   </Container>
 </Section>
 
@@ -132,8 +151,9 @@ function parseISODate(value: string): Date {
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition-fast),
-                box-shadow var(--transition-fast);
+    transition:
+      transform var(--transition-fast),
+      box-shadow var(--transition-fast);
   }
 
   .events__card:hover {
