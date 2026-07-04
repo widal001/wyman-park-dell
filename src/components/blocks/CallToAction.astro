@@ -22,7 +22,7 @@ const sectionPadding = background === 'bar' ? 'small' : 'default';
 const containerWidth = background === 'bar' ? 'wide' : 'narrow';
 ---
 
-<Section padding={sectionPadding} background={sectionBg as any}>
+<Section padding={sectionPadding} background={sectionBg}>
   <Container width={containerWidth}>
     <div class:list={['cta', `cta--${background}`]}>
       <h2>{heading}</h2>

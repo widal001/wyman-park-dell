@@ -36,16 +36,6 @@ export default tseslint.config(
     },
   },
   {
-    // Presentational block components are under an edit freeze (see project
-    // notes). Surface their remaining minor issues as warnings rather than
-    // editing the files or failing CI.
-    files: ['src/components/blocks/**/*.astro'],
-    rules: {
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': 'warn',
-    },
-  },
-  {
     files: ['**/*.astro'],
     rules: {
       // TS in Astro frontmatter references DOM lib globals (e.g.
