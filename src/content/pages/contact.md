@@ -7,7 +7,7 @@ blocks:
     variant: standard
     heading: Visit us
     image:
-      src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Contact-Us_WymanPark-Snow-2021.jpg"
+      src: "/media/2021/11/Contact-Us_WymanPark-Snow-2021.jpg"
       alt: "Wyman Park Dell on a snowy day"
   - type: richText
     align: left

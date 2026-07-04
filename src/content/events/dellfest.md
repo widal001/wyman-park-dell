@@ -5,7 +5,7 @@ time: "11:00 AM – 4:00 PM"
 location: "Wyman Park Dell"
 description: "A celebration of the Dell, the neighborhoods around it, and the people who keep it special. Live music, local food, kid activities, and a chance to meet the FWPD board."
 image:
-  src: "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-4.jpg"
+  src: "/media/2026/01/Wyman-Park-Dell-4.jpg"
   alt: "A community gathering at Wyman Park Dell"
 cta:
   label: "Learn more"

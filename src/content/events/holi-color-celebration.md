@@ -5,7 +5,7 @@ time: "12:00 PM – 3:00 PM"
 location: "Lower Dell"
 description: "A joyful “color fight” in the lower Dell to mark the arrival of spring, organized by local restaurant Sweet 27 in partnership with the Friends of Wyman Park Dell."
 image:
-  src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Events_Holi-Colors-Celebration.jpg"
+  src: "/media/2021/11/Events_Holi-Colors-Celebration.jpg"
   alt: "Holi Color Celebration at the Dell"
 cta:
   label: "Learn more"

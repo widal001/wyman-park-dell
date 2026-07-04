@@ -5,7 +5,7 @@ time: "Sundown"
 location: "Wyman Park Dell"
 description: "Gather with neighbors to celebrate the Winter Solstice. Music, marshmallows, and hot drinks and cookies provided by local restaurant Gertrude’s."
 image:
-  src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/Events_Winter-Solstice.jpg"
+  src: "/media/2021/11/Events_Winter-Solstice.jpg"
   alt: "Winter Solstice gathering at the Dell"
 cta:
   label: "Add to calendar"

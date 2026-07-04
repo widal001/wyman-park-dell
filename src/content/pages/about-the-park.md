@@ -7,13 +7,13 @@ blocks:
     variant: standard
     heading: About Wyman Park Dell
     image:
-      src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/About_Dell.jpg"
+      src: "/media/2021/11/About_Dell.jpg"
       alt: "Wyman Park Dell from above"
   - type: textWithMedia
     heading: Park history
     mediaPosition: left
     image:
-      src: "https://wymanparkdell.org/site/wp-content/uploads/2021/12/Park-History.jpg"
+      src: "/media/2021/12/Park-History.jpg"
       alt: "Historic photograph of the Wyman Park Dell"
     body: |
       The Wyman Park Dell is a 16-acre public park that is a landmark in Central Baltimore. Located south of Johns Hopkins University and the Baltimore Museum of Art, it is surrounded by two neighborhoods: Charles Village to the east and south, and Remington to the west.
@@ -76,7 +76,7 @@ blocks:
     heading: Harriet Tubman Grove
     mediaPosition: right
     image:
-      src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Harriet-Tubman-Grove.jpg"
+      src: "/media/2021/11/WPD_Harriet-Tubman-Grove.jpg"
       alt: "Harriet Tubman Grove at Wyman Park Dell"
     body: |
       The grove on the western plateau of the Dell is now named in honor of Harriet Tubman, an abolitionist and “conductor” on the Underground Railroad. At a community celebration on March 10, 2018, Tubman’s living descendants joined community residents, local activists, and City and State officials to rededicate the area of Wyman Park Dell where a Confederate monument once stood. The monument base remains.
@@ -87,13 +87,13 @@ blocks:
   - type: gallery
     layout: mosaic
     images:
-      - src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Park_Stairs.jpg"
+      - src: "/media/2021/11/WPD_Park_Stairs.jpg"
         alt: "Stone stairs leading into the Dell"
-      - src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Fall.jpg"
+      - src: "/media/2021/11/WPD_Fall.jpg"
         alt: "Wyman Park Dell in fall"
-      - src: "https://wymanparkdell.org/site/wp-content/uploads/2026/01/Wyman-Park-Dell-2.jpg"
+      - src: "/media/2026/01/Wyman-Park-Dell-2.jpg"
         alt: "Wyman Park Dell in summer"
-      - src: "https://wymanparkdell.org/site/wp-content/uploads/2021/11/WPD_Winter.jpg"
+      - src: "/media/2021/11/WPD_Winter.jpg"
         alt: "Wyman Park Dell in winter"
   - type: testimonial
     quote: "Great little slice of nature in the middle of Charles Village."
