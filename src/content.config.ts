@@ -181,15 +181,21 @@ const pages = defineCollection({
   }),
 });
 
+// CMS YAML serializers (Pages CMS, Decap) drop quotes on save, so an ISO date
+// can come back parsed as a JS Date. Normalize both forms to a YYYY-MM-DD string.
+const ymd = z
+  .union([z.string(), z.date()])
+  .transform((v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v));
+
 const events_collection = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/content/events' }),
   schema: z.object({
     title: z.string(),
-    date: z.string(),
-    endDate: z.string().optional(),
+    date: ymd,
+    endDate: ymd.optional(),
     time: z.string().optional(),
     location: z.string().optional(),
-    body: z.string(),
+    description: z.string(),
     image: image.optional(),
     cta: cta.optional(),
   }),
