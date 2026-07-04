@@ -20,7 +20,9 @@ export function renderBlocks(
   return raw.map((b) => {
     switch (b.type) {
       case 'textWithMedia':
-      case 'volunteerForm': {
+      case 'volunteerForm':
+      case 'richText':
+      case 'contactForm': {
         const { body, ...rest } = b;
         return { ...rest, html: md(body) };
       }
@@ -28,8 +30,13 @@ export function renderBlocks(
         const { leftBody, rightBody, ...rest } = b;
         return { ...rest, leftHtml: md(leftBody), rightHtml: md(rightBody) };
       }
-      case 'events':
-        return { ...b, events: ctx.events ?? [] };
+      case 'events': {
+        // Events come from their own collection; `limit` caps how many show
+        // (soonest first). Omit limit to show all (the /events page).
+        const { limit, ...rest } = b;
+        const all = ctx.events ?? [];
+        return { ...rest, events: limit ? all.slice(0, limit) : all };
+      }
       default:
         return b;
     }

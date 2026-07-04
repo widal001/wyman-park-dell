@@ -54,6 +54,7 @@ content:
             fields:
               - { name: heading, label: Heading, type: string, required: true }
               - { name: intro, label: Intro, type: text }
+              - { name: limit, label: Max events to show (soonest first; blank = all), type: number }
               - name: viewAllCta
                 label: '"View all" CTA'
                 type: object
@@ -232,6 +233,136 @@ content:
               - { name: method, label: Method, type: select, options: { values: [POST, GET] } }
               - { name: submitLabel, label: Submit label, type: string }
               - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+          # ---- richText ----
+          - name: richText
+            label: Rich text
+            fields:
+              - { name: body, label: Body, type: rich-text }
+              - { name: align, label: Align, type: select, options: { values: [left, center] } }
+              - { name: width, label: Width, type: select, options: { values: [narrow, medium, wide, full] } }
+              - { name: background, label: Background, type: select, options: { values: [base, raised, inverse, accent] } }
+              - { name: paddingTop, label: Padding top, type: select, options: { values: [default, small, large, xl, none] } }
+              - { name: paddingBottom, label: Padding bottom, type: select, options: { values: [default, small, large, xl, none] } }
+          # ---- projects ----
+          - name: projects
+            label: Projects
+            fields:
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: intro, label: Intro, type: text }
+              - name: projects
+                label: Projects
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: Title, type: string, required: true }
+                  - { name: body, label: Body, type: text, required: true }
+                  - name: image
+                    label: Image
+                    type: object
+                    fields:
+                      - { name: src, label: Image URL, type: string, required: true }
+                      - { name: alt, label: Alt text, type: string }
+                  - { name: caption, label: Caption, type: string }
+          # ---- board ----
+          - name: board
+            label: Board directory
+            fields:
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: intro, label: Intro, type: text }
+              - name: members
+                label: Members
+                type: object
+                list: true
+                fields:
+                  - { name: name, label: Name, type: string, required: true }
+                  - { name: role, label: Role, type: string, required: true }
+                  - name: photo
+                    label: Photo
+                    type: object
+                    fields:
+                      - { name: src, label: Image URL, type: string, required: true }
+                      - { name: alt, label: Alt text, type: string }
+                  - { name: bio, label: Bio, type: text }
+          # ---- partners ----
+          - name: partners
+            label: Partners
+            fields:
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: intro, label: Intro, type: text }
+              - name: partners
+                label: Partners
+                type: object
+                list: true
+                fields:
+                  - { name: name, label: Name, type: string, required: true }
+                  - { name: url, label: URL, type: string, required: true }
+                  - name: logo
+                    label: Logo
+                    type: object
+                    fields:
+                      - { name: src, label: Image URL, type: string, required: true }
+                      - { name: alt, label: Alt text, type: string }
+                      - { name: width, label: Width, type: number }
+                      - { name: height, label: Height, type: number }
+          # ---- videoEmbed ----
+          - name: videoEmbed
+            label: Video embed
+            fields:
+              - { name: youtubeId, label: YouTube video ID, type: string, required: true }
+              - { name: title, label: Title, type: string, required: true }
+              - { name: caption, label: Caption, type: string }
+              - name: poster
+                label: Poster image
+                type: object
+                fields:
+                  - { name: src, label: Image URL, type: string, required: true }
+                  - { name: alt, label: Alt text, type: string }
+              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+          # ---- newsletter ----
+          - name: newsletter
+            label: Newsletter signup
+            fields:
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: subheading, label: Subheading, type: text }
+              - { name: background, label: Background, type: select, options: { values: [base, raised, inverse, accent] } }
+          # ---- mapEmbed ----
+          - name: mapEmbed
+            label: Map embed
+            fields:
+              - { name: embedUrl, label: Embed URL, type: string, required: true }
+              - { name: title, label: Title, type: string, required: true }
+              - { name: maxHeight, label: Max height (px), type: number }
+              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+          # ---- contactForm ----
+          - name: contactForm
+            label: Contact form
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: body, label: Intro, type: rich-text }
+              - name: interests
+                label: Interest options
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: value, label: Value, type: string, required: true }
+              - { name: action, label: Form action URL, type: string }
+              - { name: method, label: Method, type: select, options: { values: [POST, GET] } }
+              - { name: submitLabel, label: Submit label, type: string }
+              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+          # ---- donorbox ----
+          - name: donorbox
+            label: Donorbox embed
+            fields:
+              - { name: campaignUrl, label: Donorbox campaign URL, type: string, required: true }
+              - { name: paypalExpress, label: Enable PayPal Express, type: boolean }
+              - { name: height, label: Height (px), type: number }
+              - { name: background, label: Background, type: select, options: { values: [base, raised] } }
+          # ---- ecwidStore ----
+          - name: ecwidStore
+            label: Ecwid store
+            fields:
+              - { name: storeId, label: Ecwid store ID, type: string, required: true }
 
   - name: events
     label: Events

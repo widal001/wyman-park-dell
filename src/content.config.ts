@@ -45,6 +45,8 @@ const events = z.object({
   heading: z.string(),
   intro: z.string().optional(),
   viewAllCta: cta.optional(),
+  /** Max events to show (soonest first). Omit to show all — e.g. the /events page. */
+  limit: z.number().optional(),
 });
 
 const sectionHeading = z.object({
@@ -154,6 +156,107 @@ const volunteerForm = z.object({
   background: z.enum(['base', 'raised']).optional(),
 });
 
+const richText = z.object({
+  type: z.literal('richText'),
+  body: z.string(), // markdown -> html
+  align: z.enum(['left', 'center']).optional(),
+  width: z.enum(['narrow', 'medium', 'wide', 'full']).optional(),
+  background: bg.optional(),
+  paddingTop: pad.optional(),
+  paddingBottom: pad.optional(),
+});
+
+const projects = z.object({
+  type: z.literal('projects'),
+  heading: z.string(),
+  intro: z.string().optional(),
+  projects: z.array(
+    z.object({
+      title: z.string(),
+      body: z.string(),
+      image: image.optional(),
+      caption: z.string().optional(),
+    }),
+  ),
+});
+
+const board = z.object({
+  type: z.literal('board'),
+  heading: z.string(),
+  intro: z.string().optional(),
+  members: z.array(
+    z.object({
+      name: z.string(),
+      role: z.string(),
+      photo: image.optional(),
+      bio: z.string().optional(),
+    }),
+  ),
+});
+
+const partners = z.object({
+  type: z.literal('partners'),
+  heading: z.string(),
+  intro: z.string().optional(),
+  partners: z.array(
+    z.object({
+      name: z.string(),
+      logo: image,
+      url: z.string(),
+    }),
+  ),
+});
+
+const videoEmbed = z.object({
+  type: z.literal('videoEmbed'),
+  youtubeId: z.string(),
+  title: z.string(),
+  poster: image.optional(),
+  caption: z.string().optional(),
+  background: z.enum(['base', 'raised']).optional(),
+});
+
+const newsletter = z.object({
+  type: z.literal('newsletter'),
+  heading: z.string(),
+  subheading: z.string().optional(),
+  background: bg.optional(),
+});
+
+const mapEmbed = z.object({
+  type: z.literal('mapEmbed'),
+  embedUrl: z.string(),
+  title: z.string(),
+  maxHeight: z.number().optional(),
+  background: z.enum(['base', 'raised']).optional(),
+});
+
+const contactForm = z.object({
+  type: z.literal('contactForm'),
+  heading: z.string().optional(),
+  body: z.string().optional(), // markdown -> html (intro copy)
+  interests: z
+    .array(z.object({ label: z.string(), value: z.string() }))
+    .optional(),
+  action: z.string().optional(),
+  method: z.enum(['POST', 'GET']).optional(),
+  submitLabel: z.string().optional(),
+  background: z.enum(['base', 'raised']).optional(),
+});
+
+const donorbox = z.object({
+  type: z.literal('donorbox'),
+  campaignUrl: z.string(),
+  paypalExpress: z.boolean().optional(),
+  height: z.number().optional(),
+  background: z.enum(['base', 'raised']).optional(),
+});
+
+const ecwidStore = z.object({
+  type: z.literal('ecwidStore'),
+  storeId: z.string(),
+});
+
 const block = z.discriminatedUnion('type', [
   hero,
   events,
@@ -167,6 +270,16 @@ const block = z.discriminatedUnion('type', [
   ctaBlock,
   twoColumnText,
   volunteerForm,
+  richText,
+  projects,
+  board,
+  partners,
+  videoEmbed,
+  newsletter,
+  mapEmbed,
+  contactForm,
+  donorbox,
+  ecwidStore,
 ]);
 
 /* ---------- Collections ---------- */
