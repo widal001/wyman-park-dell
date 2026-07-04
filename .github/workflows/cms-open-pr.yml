@@ -1,0 +1,43 @@
+name: CMS - Open PR
+
+# When Pages CMS saves to a content/** branch, open a PR to main if one doesn't
+# already exist. Previews are handled by cd-preview.yml (on: pull_request).
+#
+# NOTE: a PR opened by the default GITHUB_TOKEN does NOT trigger other workflows,
+# so cd-preview won't run on the "opened" event. It runs on the next push to the
+# branch (pull_request: synchronize) — i.e. the editor's second save onward. To
+# get a preview on the very first save, open the PR with a PAT/App token instead.
+on:
+  push:
+    branches: ['content/**']
+
+concurrency:
+  group: cms-open-pr-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write # applying the `content` label uses the Issues API
+
+jobs:
+  open-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Open PR to main if none exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="${GITHUB_REF_NAME}"
+          existing=$(gh pr list --head "$branch" --base main --state open \
+            --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            echo "PR #$existing already open for $branch; nothing to do."
+            exit 0
+          fi
+          gh pr create --head "$branch" --base main \
+            --title "$(git log -1 --pretty=%s)" \
+            --label content \
+            --body "Automated PR for content edits on \`$branch\`. Review the diff and the Cloudflare preview posted on this PR, then use **Publish** in Pages CMS (or merge here) to go live."

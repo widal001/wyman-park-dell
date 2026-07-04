@@ -1,11 +1,20 @@
 name: CD - Production
 
+# Build + deploy to production. This is the single deploy definition; it runs on
+# pushes to main, on manual dispatch, and when called by another workflow
+# (cms-publish invokes it via `uses:` after merging a content PR).
 on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      ref:
+        description: Git ref to build and deploy
+        type: string
+        default: main
 
-# Serialize prod deploys so two pushes back-to-back can't race.
+# Serialize prod deploys so two runs (e.g. a push and a CMS publish) can't race.
 concurrency:
   group: deploy-prod
   cancel-in-progress: false
@@ -21,6 +30,9 @@ jobs:
       url: ${{ steps.deploy.outputs.url }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          # On push/dispatch `inputs.ref` is empty, so fall back to main.
+          ref: ${{ inputs.ref || 'main' }}
 
       - uses: pnpm/action-setup@v6
 

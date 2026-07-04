@@ -1,0 +1,54 @@
+name: CMS - Publish
+
+# Dispatched by the "Publish" button in Pages CMS (workflow_dispatch, ref:
+# current). The `merge` job merges the current content branch's PR into main;
+# the `deploy` job then calls cd-prod.yml as a reusable workflow to build and
+# deploy the merged main. Because deploy runs as a nested job (not `gh workflow
+# run`), its success/failure rolls up into this run — so the Publish button
+# reflects the real deploy outcome.
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: 'Context payload sent by Pages CMS (unused).'
+        required: false
+        default: ''
+
+concurrency:
+  group: cms-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write # merge the PR into main
+  pull-requests: write # find + merge the PR
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Merge the current branch's PR into main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="${GITHUB_REF_NAME}"
+          if [ "$branch" = "main" ]; then
+            echo "::error::Publish must run from a content branch, not main."
+            exit 1
+          fi
+          pr=$(gh pr list --head "$branch" --base main --state open \
+            --json number --jq '.[0].number // empty')
+          if [ -z "$pr" ]; then
+            echo "::error::No open PR from '$branch' into main to publish."
+            exit 1
+          fi
+          echo "Merging PR #$pr ($branch -> main)…"
+          gh pr merge "$pr" --squash --delete-branch
+
+  deploy:
+    needs: merge
+    uses: ./.github/workflows/cd-prod.yml
+    with:
+      ref: main
+    secrets: inherit
