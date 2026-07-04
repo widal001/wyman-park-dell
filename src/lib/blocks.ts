@@ -14,6 +14,9 @@ marked.setOptions({ async: false });
 const md = (s?: string): string => (s ? (marked.parse(s) as string) : '');
 
 export function renderBlocks(
+  // Raw CMS block data has an open, discriminator-driven shape; it's narrowed
+  // to ContentBlock below. `any` is deliberate here.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   raw: Array<Record<string, any>>,
   ctx: { events?: EventItem[] } = {},
 ): ContentBlock[] {
