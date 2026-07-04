@@ -14,6 +14,14 @@ settings:
       delete: 'chore(content): remove {path}'
       rename: 'chore(content): rename {oldPath} to {newPath}'
 
+# Images live in the repo under public/, served by Astro at the site root. So a
+# file at public/media/foo.jpg is referenced as /media/foo.jpg. `image` fields
+# and rich-text uploads use this library to browse existing files and to store
+# new uploads.
+media:
+  input: public/media
+  output: /media
+
 content:
   - name: pages
     label: Pages
@@ -51,12 +59,7 @@ content:
                 label: Image
                 type: object
                 fields:
-                  - {
-                      name: src,
-                      label: Image URL,
-                      type: string,
-                      required: true,
-                    }
+                  - { name: src, label: Image, type: image, required: true }
                   - { name: alt, label: Alt text, type: string }
                   - { name: width, label: Width, type: number }
                   - { name: height, label: Height, type: number }
@@ -164,12 +167,7 @@ content:
                 label: Feature image
                 type: object
                 fields:
-                  - {
-                      name: src,
-                      label: Image URL,
-                      type: string,
-                      required: true,
-                    }
+                  - { name: src, label: Image, type: image, required: true }
                   - { name: alt, label: Alt text, type: string }
                   - { name: width, label: Width, type: number }
                   - { name: height, label: Height, type: number }
@@ -184,12 +182,7 @@ content:
                     label: Icon
                     type: object
                     fields:
-                      - {
-                          name: src,
-                          label: Image URL,
-                          type: string,
-                          required: true,
-                        }
+                      - { name: src, label: Image, type: image, required: true }
                       - { name: alt, label: Alt text, type: string }
                       - { name: width, label: Width, type: number }
                       - { name: height, label: Height, type: number }
@@ -203,12 +196,7 @@ content:
                 label: Image
                 type: object
                 fields:
-                  - {
-                      name: src,
-                      label: Image URL,
-                      type: string,
-                      required: true,
-                    }
+                  - { name: src, label: Image, type: image, required: true }
                   - { name: alt, label: Alt text, type: string }
           # ---- gallery ----
           - name: gallery
@@ -238,12 +226,7 @@ content:
                 type: object
                 list: true
                 fields:
-                  - {
-                      name: src,
-                      label: Image URL,
-                      type: string,
-                      required: true,
-                    }
+                  - { name: src, label: Image, type: image, required: true }
                   - { name: alt, label: Alt text, type: string }
                   - { name: width, label: Width, type: number }
                   - { name: height, label: Height, type: number }
@@ -281,12 +264,7 @@ content:
                 label: Image
                 type: object
                 fields:
-                  - {
-                      name: src,
-                      label: Image URL,
-                      type: string,
-                      required: true,
-                    }
+                  - { name: src, label: Image, type: image, required: true }
                   - { name: alt, label: Alt text, type: string }
                   - { name: width, label: Width, type: number }
                   - { name: height, label: Height, type: number }
@@ -435,12 +413,7 @@ content:
                 label: Image
                 type: object
                 fields:
-                  - {
-                      name: src,
-                      label: Image URL,
-                      type: string,
-                      required: true,
-                    }
+                  - { name: src, label: Image, type: image, required: true }
                   - { name: alt, label: Alt text, type: string }
               - {
                   name: mediaPosition,
@@ -514,12 +487,7 @@ content:
                     label: Image
                     type: object
                     fields:
-                      - {
-                          name: src,
-                          label: Image URL,
-                          type: string,
-                          required: true,
-                        }
+                      - { name: src, label: Image, type: image, required: true }
                       - { name: alt, label: Alt text, type: string }
                   - { name: caption, label: Caption, type: string }
           # ---- board ----
@@ -539,12 +507,7 @@ content:
                     label: Photo
                     type: object
                     fields:
-                      - {
-                          name: src,
-                          label: Image URL,
-                          type: string,
-                          required: true,
-                        }
+                      - { name: src, label: Image, type: image, required: true }
                       - { name: alt, label: Alt text, type: string }
                   - { name: bio, label: Bio, type: text }
           # ---- partners ----
@@ -564,12 +527,7 @@ content:
                     label: Logo
                     type: object
                     fields:
-                      - {
-                          name: src,
-                          label: Image URL,
-                          type: string,
-                          required: true,
-                        }
+                      - { name: src, label: Image, type: image, required: true }
                       - { name: alt, label: Alt text, type: string }
                       - { name: width, label: Width, type: number }
                       - { name: height, label: Height, type: number }
@@ -589,12 +547,7 @@ content:
                 label: Poster image
                 type: object
                 fields:
-                  - {
-                      name: src,
-                      label: Image URL,
-                      type: string,
-                      required: true,
-                    }
+                  - { name: src, label: Image, type: image, required: true }
                   - { name: alt, label: Alt text, type: string }
               - {
                   name: background,
@@ -717,7 +670,7 @@ content:
         label: Image
         type: object
         fields:
-          - { name: src, label: Image URL, type: string, required: true }
+          - { name: src, label: Image, type: image, required: true }
           - { name: alt, label: Alt text, type: string }
       - name: cta
         label: CTA
