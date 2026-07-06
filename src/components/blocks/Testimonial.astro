@@ -19,17 +19,21 @@ const { quote, attribution } = Astro.props;
         fill="currentColor"
         aria-hidden="true"
       >
-        <path d="M0 50V30C0 13 10 0 26 0v10c-9 0-14 7-14 14h14v26H0zm34 0V30c0-17 10-30 26-30v10c-9 0-14 7-14 14h14v26H34z" />
+        <path
+          d="M0 50V30C0 13 10 0 26 0v10c-9 0-14 7-14 14h14v26H0zm34 0V30c0-17 10-30 26-30v10c-9 0-14 7-14 14h14v26H34z"
+        ></path>
       </svg>
       <blockquote class="testimonial__quote">
         <p>{quote}</p>
       </blockquote>
-      {attribution && (
-        <figcaption class="testimonial__attribution">
-          <span class="testimonial__rule" aria-hidden="true"></span>
-          <span>{attribution}</span>
-        </figcaption>
-      )}
+      {
+        attribution && (
+          <figcaption class="testimonial__attribution">
+            <span class="testimonial__rule" aria-hidden="true" />
+            <span>{attribution}</span>
+          </figcaption>
+        )
+      }
     </figure>
   </Container>
 </Section>

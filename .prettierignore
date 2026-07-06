@@ -1,0 +1,9 @@
+dist/
+.astro/
+.wrangler/
+node_modules/
+pnpm-lock.yaml
+
+# Authored by Pages CMS — let the CMS own this formatting so editor commits
+# don't fail format:check.
+src/content/

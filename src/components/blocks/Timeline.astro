@@ -1,9 +1,9 @@
 ---
-import type { TimelineBlock } from "../../types/content";
-import Section from "../ui/Section.astro";
-import Container from "../ui/Container.astro";
+import type { TimelineBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
 
-type Props = Omit<TimelineBlock, "type">;
+type Props = Omit<TimelineBlock, 'type'>;
 
 const { eyebrow, heading, entries } = Astro.props;
 ---
@@ -65,7 +65,7 @@ const { eyebrow, heading, entries } = Astro.props;
   }
 
   .timeline::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 6.5px;
     top: 8px;

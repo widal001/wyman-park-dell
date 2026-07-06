@@ -1,10 +1,10 @@
 ---
-import type { TwoColumnTextBlock } from "../../types/content";
-import Section from "../ui/Section.astro";
-import Container from "../ui/Container.astro";
-import GhostLink from "../ui/GhostLink.astro";
+import type { TwoColumnTextBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+import GhostLink from '../ui/GhostLink.astro';
 
-type Props = Omit<TwoColumnTextBlock, "type">;
+type Props = Omit<TwoColumnTextBlock, 'type'>;
 
 const {
   leftHeading,
@@ -14,7 +14,7 @@ const {
   rightHtml,
   rightCtas,
   ctas,
-  background = "base",
+  background = 'base',
   alignAcross = true,
   paddingTop,
   paddingBottom,
@@ -41,63 +41,79 @@ const hasCtaRow = leftCtas.length > 0 || resolvedRightCtas.length > 0;
         hasCtaRow && 'two-col--has-cta',
       ]}
     >
-      {alignAcross ? (
-        <>
-          {hasHeadingRow && (
-            <>
-              <h2 class="two-col__heading two-col__heading--left">
-                {leftHeading}
-              </h2>
-              <h2 class="two-col__heading two-col__heading--right">
-                {rightHeading}
-              </h2>
-            </>
-          )}
-
-          <div class="two-col__body two-col__body--left prose" set:html={leftHtml} />
-          <div class="two-col__body two-col__body--right prose" set:html={rightHtml} />
-
-          {hasCtaRow && (
-            <>
-              <ul role="list" class="two-col__ctas two-col__ctas--left">
-                {leftCtas.map((cta) => (
-                  <li><GhostLink {...cta} /></li>
-                ))}
-              </ul>
-              <ul role="list" class="two-col__ctas two-col__ctas--right">
-                {resolvedRightCtas.map((cta) => (
-                  <li><GhostLink {...cta} /></li>
-                ))}
-              </ul>
-            </>
-          )}
-        </>
-      ) : (
-        <>
-          <div class="two-col__column">
-            {leftHeading && <h2 class="two-col__heading">{leftHeading}</h2>}
-            <div class="prose" set:html={leftHtml} />
-            {leftCtas.length > 0 && (
-              <ul role="list" class="two-col__ctas">
-                {leftCtas.map((cta) => (
-                  <li><GhostLink {...cta} /></li>
-                ))}
-              </ul>
+      {
+        alignAcross ? (
+          <>
+            {hasHeadingRow && (
+              <>
+                <h2 class="two-col__heading two-col__heading--left">
+                  {leftHeading}
+                </h2>
+                <h2 class="two-col__heading two-col__heading--right">
+                  {rightHeading}
+                </h2>
+              </>
             )}
-          </div>
-          <div class="two-col__column">
-            {rightHeading && <h2 class="two-col__heading">{rightHeading}</h2>}
-            <div class="prose" set:html={rightHtml} />
-            {resolvedRightCtas.length > 0 && (
-              <ul role="list" class="two-col__ctas">
-                {resolvedRightCtas.map((cta) => (
-                  <li><GhostLink {...cta} /></li>
-                ))}
-              </ul>
+
+            <div
+              class="two-col__body two-col__body--left prose"
+              set:html={leftHtml}
+            />
+            <div
+              class="two-col__body two-col__body--right prose"
+              set:html={rightHtml}
+            />
+
+            {hasCtaRow && (
+              <>
+                <ul role="list" class="two-col__ctas two-col__ctas--left">
+                  {leftCtas.map((cta) => (
+                    <li>
+                      <GhostLink {...cta} />
+                    </li>
+                  ))}
+                </ul>
+                <ul role="list" class="two-col__ctas two-col__ctas--right">
+                  {resolvedRightCtas.map((cta) => (
+                    <li>
+                      <GhostLink {...cta} />
+                    </li>
+                  ))}
+                </ul>
+              </>
             )}
-          </div>
-        </>
-      )}
+          </>
+        ) : (
+          <>
+            <div class="two-col__column">
+              {leftHeading && <h2 class="two-col__heading">{leftHeading}</h2>}
+              <div class="prose" set:html={leftHtml} />
+              {leftCtas.length > 0 && (
+                <ul role="list" class="two-col__ctas">
+                  {leftCtas.map((cta) => (
+                    <li>
+                      <GhostLink {...cta} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div class="two-col__column">
+              {rightHeading && <h2 class="two-col__heading">{rightHeading}</h2>}
+              <div class="prose" set:html={rightHtml} />
+              {resolvedRightCtas.length > 0 && (
+                <ul role="list" class="two-col__ctas">
+                  {resolvedRightCtas.map((cta) => (
+                    <li>
+                      <GhostLink {...cta} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </>
+        )
+      }
     </div>
   </Container>
 </Section>
@@ -136,26 +152,52 @@ const hasCtaRow = leftCtas.length > 0 || resolvedRightCtas.length > 0;
       grid-template-rows: auto 1fr auto;
     }
 
-    .two-col--aligned .two-col__heading--left  { grid-column: 1; grid-row: 1; }
-    .two-col--aligned .two-col__heading--right { grid-column: 2; grid-row: 1; }
+    .two-col--aligned .two-col__heading--left {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .two-col--aligned .two-col__heading--right {
+      grid-column: 2;
+      grid-row: 1;
+    }
 
-    .two-col--aligned .two-col__body--left  { grid-column: 1; }
-    .two-col--aligned .two-col__body--right { grid-column: 2; }
+    .two-col--aligned .two-col__body--left {
+      grid-column: 1;
+    }
+    .two-col--aligned .two-col__body--right {
+      grid-column: 2;
+    }
 
     .two-col--aligned.two-col--has-heading .two-col__body--left,
-    .two-col--aligned.two-col--has-heading .two-col__body--right { grid-row: 2; }
+    .two-col--aligned.two-col--has-heading .two-col__body--right {
+      grid-row: 2;
+    }
 
     .two-col--aligned:not(.two-col--has-heading) .two-col__body--left,
-    .two-col--aligned:not(.two-col--has-heading) .two-col__body--right { grid-row: 1; }
+    .two-col--aligned:not(.two-col--has-heading) .two-col__body--right {
+      grid-row: 1;
+    }
 
-    .two-col--aligned .two-col__ctas--left  { grid-column: 1; }
-    .two-col--aligned .two-col__ctas--right { grid-column: 2; }
+    .two-col--aligned .two-col__ctas--left {
+      grid-column: 1;
+    }
+    .two-col--aligned .two-col__ctas--right {
+      grid-column: 2;
+    }
 
-    .two-col--aligned.two-col--has-heading.two-col--has-cta .two-col__ctas--left,
-    .two-col--aligned.two-col--has-heading.two-col--has-cta .two-col__ctas--right { grid-row: 3; }
+    .two-col--aligned.two-col--has-heading.two-col--has-cta
+      .two-col__ctas--left,
+    .two-col--aligned.two-col--has-heading.two-col--has-cta
+      .two-col__ctas--right {
+      grid-row: 3;
+    }
 
-    .two-col--aligned:not(.two-col--has-heading).two-col--has-cta .two-col__ctas--left,
-    .two-col--aligned:not(.two-col--has-heading).two-col--has-cta .two-col__ctas--right { grid-row: 2; }
+    .two-col--aligned:not(.two-col--has-heading).two-col--has-cta
+      .two-col__ctas--left,
+    .two-col--aligned:not(.two-col--has-heading).two-col--has-cta
+      .two-col__ctas--right {
+      grid-row: 2;
+    }
   }
 
   /* === Independent variant: each column flows its own content top-to-bottom === */
@@ -192,11 +234,23 @@ const hasCtaRow = leftCtas.length > 0 || resolvedRightCtas.length > 0;
     }
 
     /* Mobile stack order: left column first, then right column. */
-    .two-col--aligned .two-col__heading--left  { order: 1; }
-    .two-col--aligned .two-col__body--left     { order: 2; }
-    .two-col--aligned .two-col__ctas--left     { order: 3; }
-    .two-col--aligned .two-col__heading--right { order: 4; }
-    .two-col--aligned .two-col__body--right    { order: 5; }
-    .two-col--aligned .two-col__ctas--right    { order: 6; }
+    .two-col--aligned .two-col__heading--left {
+      order: 1;
+    }
+    .two-col--aligned .two-col__body--left {
+      order: 2;
+    }
+    .two-col--aligned .two-col__ctas--left {
+      order: 3;
+    }
+    .two-col--aligned .two-col__heading--right {
+      order: 4;
+    }
+    .two-col--aligned .two-col__body--right {
+      order: 5;
+    }
+    .two-col--aligned .two-col__ctas--right {
+      order: 6;
+    }
   }
 </style>

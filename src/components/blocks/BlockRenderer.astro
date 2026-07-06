@@ -20,6 +20,8 @@ import VolunteerForm from './VolunteerForm.astro';
 import MapEmbed from './MapEmbed.astro';
 import ContactForm from './ContactForm.astro';
 import FollowUs from './FollowUs.astro';
+import DonorboxEmbed from './DonorboxEmbed.astro';
+import EcwidStore from './EcwidStore.astro';
 
 type Props = {
   blocks: ContentBlock[];
@@ -28,51 +30,57 @@ type Props = {
 const { blocks } = Astro.props;
 ---
 
-{blocks.map((block) => {
-  switch (block.type) {
-    case 'hero':
-      return <Hero {...block} />;
-    case 'richText':
-      return <RichText {...block} />;
-    case 'gallery':
-      return <ImageGallery {...block} />;
-    case 'timeline':
-      return <Timeline {...block} />;
-    case 'board':
-      return <BoardDirectory {...block} />;
-    case 'partners':
-      return <PartnerLogos {...block} />;
-    case 'activityGrid':
-      return <ActivityGrid {...block} />;
-    case 'testimonial':
-      return <Testimonial {...block} />;
-    case 'cta':
-      return <CallToAction {...block} />;
-    case 'projects':
-      return <Projects {...block} />;
-    case 'sectionHeading':
-      return <SectionHeading {...block} />;
-    case 'events':
-      return <Events {...block} />;
-    case 'textWithMedia':
-      return <TextWithMedia {...block} />;
-    case 'twoColumnText':
-      return <TwoColumnText {...block} />;
-    case 'videoEmbed':
-      return <VideoEmbed {...block} />;
-    case 'newsletter':
-      return <Newsletter {...block} />;
-    case 'volunteerForm':
-      return <VolunteerForm {...block} />;
-    case 'mapEmbed':
-      return <MapEmbed {...block} />;
-    case 'contactForm':
-      return <ContactForm {...block} />;
-    case 'followUs':
-      return <FollowUs {...block} />;
-    default: {
-      const _exhaustive: never = block;
-      return null;
+{
+  blocks.map((block) => {
+    switch (block.type) {
+      case 'hero':
+        return <Hero {...block} />;
+      case 'richText':
+        return <RichText {...block} />;
+      case 'gallery':
+        return <ImageGallery {...block} />;
+      case 'timeline':
+        return <Timeline {...block} />;
+      case 'board':
+        return <BoardDirectory {...block} />;
+      case 'partners':
+        return <PartnerLogos {...block} />;
+      case 'activityGrid':
+        return <ActivityGrid {...block} />;
+      case 'testimonial':
+        return <Testimonial {...block} />;
+      case 'cta':
+        return <CallToAction {...block} />;
+      case 'projects':
+        return <Projects {...block} />;
+      case 'sectionHeading':
+        return <SectionHeading {...block} />;
+      case 'events':
+        return <Events {...block} />;
+      case 'textWithMedia':
+        return <TextWithMedia {...block} />;
+      case 'twoColumnText':
+        return <TwoColumnText {...block} />;
+      case 'videoEmbed':
+        return <VideoEmbed {...block} />;
+      case 'newsletter':
+        return <Newsletter {...block} />;
+      case 'volunteerForm':
+        return <VolunteerForm {...block} />;
+      case 'mapEmbed':
+        return <MapEmbed {...block} />;
+      case 'contactForm':
+        return <ContactForm {...block} />;
+      case 'followUs':
+        return <FollowUs {...block} />;
+      case 'donorbox':
+        return <DonorboxEmbed {...block} />;
+      case 'ecwidStore':
+        return <EcwidStore {...block} />;
+      default: {
+        const _exhaustive: never = block;
+        return null;
+      }
     }
-  }
-})}
+  })
+}

@@ -1,0 +1,45 @@
+---
+// Single route for every entry in the `pages` collection. Each page's `slug`
+// field becomes its URL ("" => homepage), so adding a page in the CMS produces
+// a new URL with no code change. Dedicated static routes (contact, events,
+// friends-of-wyman-park-dell) take priority over this one.
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlockRenderer from '../components/blocks/BlockRenderer.astro';
+import { renderBlocks } from '../lib/blocks';
+import type { EventItem } from '../types/content';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((page) => ({
+    params: { slug: page.data.slug || undefined },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props as { page: CollectionEntry<'pages'> };
+
+// Events live in their own collection. Pass them all (soonest first); each
+// `events` block's `limit` caps how many it shows. renderBlocks handles the
+// injection and only touches the events block type.
+const eventEntries = await getCollection('events');
+const events: EventItem[] = eventEntries
+  .sort((a, b) => a.data.date.localeCompare(b.data.date))
+  .map((e) => ({
+    title: e.data.title,
+    date: e.data.date,
+    endDate: e.data.endDate,
+    time: e.data.time,
+    location: e.data.location,
+    body: e.data.description,
+    image: e.data.image,
+    cta: e.data.cta,
+  }));
+
+const blocks = renderBlocks(page.data.blocks, { events });
+---
+
+<BaseLayout title={page.data.title} description={page.data.metaDescription}>
+  <BlockRenderer blocks={blocks} />
+</BaseLayout>

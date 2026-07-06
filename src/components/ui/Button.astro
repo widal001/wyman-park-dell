@@ -23,12 +23,7 @@ const rel = external ? 'noopener noreferrer' : undefined;
   href={href}
   target={target}
   rel={rel}
-  class:list={[
-    'btn',
-    `btn--${variant}`,
-    `btn--${size}`,
-    className,
-  ]}
+  class:list={['btn', `btn--${variant}`, `btn--${size}`, className]}
 >
   {label}
 </a>
@@ -45,10 +40,11 @@ const rel = external ? 'noopener noreferrer' : undefined;
     letter-spacing: var(--letter-spacing-wide);
     border-radius: var(--radius-sm);
     border: 2px solid transparent;
-    transition: background-color var(--transition-base),
-                color var(--transition-base),
-                border-color var(--transition-base),
-                transform var(--transition-fast);
+    transition:
+      background-color var(--transition-base),
+      color var(--transition-base),
+      border-color var(--transition-base),
+      transform var(--transition-fast);
     text-decoration: none;
     cursor: pointer;
     white-space: nowrap;

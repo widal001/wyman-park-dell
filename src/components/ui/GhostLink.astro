@@ -5,12 +5,7 @@ type Props = CtaRef & {
   class?: string;
 };
 
-const {
-  label,
-  href,
-  external = false,
-  class: className,
-} = Astro.props;
+const { label, href, external = false, class: className } = Astro.props;
 ---
 
 <a
@@ -32,7 +27,7 @@ const {
     stroke-linejoin="round"
     aria-hidden="true"
   >
-    <path d="M5 12h14M13 5l7 7-7 7" />
+    <path d="M5 12h14M13 5l7 7-7 7"></path>
   </svg>
 </a>
 

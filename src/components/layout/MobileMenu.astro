@@ -59,33 +59,39 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
             stroke-linecap="round"
             stroke-linejoin="round"
           >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
       </div>
 
       <nav class="mobile-menu__nav" aria-label="Mobile">
         <ul role="list">
-          {items.map((item) => {
-            const itemPath = item.href.replace(/\/+$/, '') || '/';
-            const isCurrent =
-              !item.external && (itemPath === currentPath ||
-                (itemPath !== '/' && currentPath.startsWith(itemPath)));
-            return (
-              <li>
-                <a
-                  href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
-                  aria-current={isCurrent ? 'page' : undefined}
-                  class:list={['mobile-menu__link', isCurrent && 'is-current']}
-                >
-                  {item.label}
-                </a>
-              </li>
-            );
-          })}
+          {
+            items.map((item) => {
+              const itemPath = item.href.replace(/\/+$/, '') || '/';
+              const isCurrent =
+                !item.external &&
+                (itemPath === currentPath ||
+                  (itemPath !== '/' && currentPath.startsWith(itemPath)));
+              return (
+                <li>
+                  <a
+                    href={item.href}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer' : undefined}
+                    aria-current={isCurrent ? 'page' : undefined}
+                    class:list={[
+                      'mobile-menu__link',
+                      isCurrent && 'is-current',
+                    ]}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
         </ul>
       </nav>
 
@@ -99,11 +105,18 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 <script>
   const root = document.querySelector<HTMLElement>('[data-mobile-menu]');
   if (root) {
-    const trigger = root.querySelector<HTMLButtonElement>('[data-mobile-menu-trigger]');
+    const trigger = root.querySelector<HTMLButtonElement>(
+      '[data-mobile-menu-trigger]',
+    );
     const sheet = root.querySelector<HTMLElement>('[data-mobile-menu-sheet]');
-    const backdrop = root.querySelector<HTMLElement>('[data-mobile-menu-backdrop]');
-    const closeBtn = root.querySelector<HTMLButtonElement>('[data-mobile-menu-close]');
-    const links = root.querySelectorAll<HTMLAnchorElement>('.mobile-menu__link');
+    const backdrop = root.querySelector<HTMLElement>(
+      '[data-mobile-menu-backdrop]',
+    );
+    const closeBtn = root.querySelector<HTMLButtonElement>(
+      '[data-mobile-menu-close]',
+    );
+    const links =
+      root.querySelectorAll<HTMLAnchorElement>('.mobile-menu__link');
 
     let lastFocused: HTMLElement | null = null;
 
@@ -209,9 +222,16 @@ const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
     border-radius: 2px;
   }
 
-  .mobile-menu__bars span:nth-child(1) { top: 0; }
-  .mobile-menu__bars span:nth-child(2) { top: 50%; transform: translateY(-50%); }
-  .mobile-menu__bars span:nth-child(3) { bottom: 0; }
+  .mobile-menu__bars span:nth-child(1) {
+    top: 0;
+  }
+  .mobile-menu__bars span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .mobile-menu__bars span:nth-child(3) {
+    bottom: 0;
+  }
 
   .mobile-menu__sheet {
     position: fixed;

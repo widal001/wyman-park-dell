@@ -16,19 +16,21 @@ const {
 ---
 
 <section class:list={['hero', `hero--${variant}`]}>
-  {image && (
-    <div class="hero__media">
-      <img
-        src={image.src}
-        alt={image.alt}
-        width={image.width}
-        height={image.height}
-        loading="eager"
-        decoding="sync"
-        fetchpriority="high"
-      />
-    </div>
-  )}
+  {
+    image && (
+      <div class="hero__media">
+        <img
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          loading="eager"
+          decoding="sync"
+          fetchpriority="high"
+        />
+      </div>
+    )
+  }
 
   <div class="hero__overlay" aria-hidden="true"></div>
 
@@ -37,13 +39,15 @@ const {
       <h1 class="hero__heading">{heading}</h1>
       {subheading && <p class="hero__subheading">{subheading}</p>}
       {body && <p class="hero__body">{body}</p>}
-      {ctas.length > 0 && (
-        <div class="hero__ctas">
-          {ctas.map((cta) => (
-            <Button {...cta} size="lg" />
-          ))}
-        </div>
-      )}
+      {
+        ctas.length > 0 && (
+          <div class="hero__ctas">
+            {ctas.map((cta) => (
+              <Button {...cta} size="lg" />
+            ))}
+          </div>
+        )
+      }
     </div>
   </Container>
 </section>

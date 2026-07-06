@@ -1,0 +1,48 @@
+---
+import type { DonorboxEmbedBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<DonorboxEmbedBlock, 'type'>;
+
+const {
+  campaignUrl,
+  paypalExpress = true,
+  height = 900,
+  background = 'base',
+} = Astro.props;
+
+// Build the embed HTML as a string so the script's non-standard attribute
+// (paypalExpress) is preserved verbatim — Astro normalises JSX attributes
+// and would strip it otherwise.
+const scriptTag = `<script defer src="https://donorbox.org/widget.js" paypalExpress="${paypalExpress ? 'true' : 'false'}"></script>`;
+---
+
+<Section padding="default" background={background}>
+  <Container width="narrow">
+    <div class="donorbox-embed">
+      <Fragment set:html={scriptTag} />
+      <iframe
+        src={campaignUrl}
+        name="donorbox"
+        allow="payment"
+        height={`${height}px`}
+        width="100%"
+        loading="lazy"
+        title="Donation form"
+        style="border: 0; display: block; max-width: 500px; min-width: 350px;"
+      ></iframe>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .donorbox-embed {
+    display: flex;
+    justify-content: center;
+  }
+
+  .donorbox-embed iframe {
+    max-height: none !important;
+  }
+</style>

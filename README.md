@@ -11,12 +11,12 @@ Astro 6 rebuild of the [Friends of Wyman Park Dell](https://wymanparkdell.org/) 
 
 ## Commands
 
-| Command       | Action                                        |
-| ------------- | --------------------------------------------- |
-| `pnpm install`| Install dependencies                          |
-| `pnpm dev`    | Local dev server at `http://localhost:4321/`  |
-| `pnpm build`  | Build static site to `./dist/client/`         |
-| `pnpm preview`| Preview build locally                         |
+| Command        | Action                                       |
+| -------------- | -------------------------------------------- |
+| `pnpm install` | Install dependencies                         |
+| `pnpm dev`     | Local dev server at `http://localhost:4321/` |
+| `pnpm build`   | Build static site to `./dist/client/`        |
+| `pnpm preview` | Preview build locally                        |
 
 ## Project structure
 

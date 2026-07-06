@@ -17,9 +17,11 @@ const action = config.action || '#';
 >
   <h2 class="newsletter__heading">{config.heading}</h2>
 
-  {config.hiddenFields?.map((field) => (
-    <input type="hidden" name={field.name} value={field.value} />
-  ))}
+  {
+    config.hiddenFields?.map((field) => (
+      <input type="hidden" name={field.name} value={field.value} />
+    ))
+  }
 
   <label class="newsletter__field">
     <span class="visually-hidden">{config.fields.name.label}</span>
@@ -95,8 +97,9 @@ const action = config.action || '#';
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-bold);
     cursor: pointer;
-    transition: background-color var(--transition-fast),
-                color var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast);
   }
 
   .newsletter__submit:hover {

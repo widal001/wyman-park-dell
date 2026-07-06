@@ -1,9 +1,0 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro';
-import BlockRenderer from '../components/blocks/BlockRenderer.astro';
-import { homepage } from '../content/homepage';
----
-
-<BaseLayout title={homepage.title} description={homepage.metaDescription}>
-  <BlockRenderer blocks={homepage.blocks} />
-</BaseLayout>

@@ -1,8 +1,8 @@
 ---
-type Padding = "default" | "small" | "large" | "xl" | "none";
+type Padding = 'default' | 'small' | 'large' | 'xl' | 'none';
 
 type Props = {
-  background?: "base" | "raised" | "inverse" | "accent";
+  background?: 'base' | 'raised' | 'inverse' | 'accent';
   padding?: Padding;
   /** Optional override of the top padding only. Falls back to `padding` if omitted. */
   paddingTop?: Padding;
@@ -13,8 +13,8 @@ type Props = {
 };
 
 const {
-  background = "base",
-  padding = "default",
+  background = 'base',
+  padding = 'default',
   paddingTop,
   paddingBottom,
   bleed = false,
@@ -24,12 +24,12 @@ const {
 
 <section
   class:list={[
-    "section",
+    'section',
     `section--bg-${background}`,
     `section--pad-${padding}`,
     paddingTop && `section--pt-${paddingTop}`,
     paddingBottom && `section--pb-${paddingBottom}`,
-    bleed && "section--bleed",
+    bleed && 'section--bleed',
     className,
   ]}
 >

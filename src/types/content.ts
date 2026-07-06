@@ -17,7 +17,8 @@ export type ImageRef = {
 export type CtaRef = {
   label: string;
   href: string;
-  variant?: 'primary' | 'outline' | 'outline-inverse' | 'solid-inverse' | 'ghost';
+  variant?:
+    'primary' | 'outline' | 'outline-inverse' | 'solid-inverse' | 'ghost';
   external?: boolean;
 };
 
@@ -268,6 +269,19 @@ export type NewsletterBlock = {
   background?: 'base' | 'raised' | 'inverse' | 'accent';
 };
 
+export type DonorboxEmbedBlock = {
+  type: 'donorbox';
+  campaignUrl: string;
+  paypalExpress?: boolean;
+  height?: number;
+  background?: 'base' | 'raised';
+};
+
+export type EcwidStoreBlock = {
+  type: 'ecwidStore';
+  storeId: string;
+};
+
 export type VideoEmbedBlock = {
   type: 'videoEmbed';
   /** YouTube video ID, e.g. "MijsOH-eYu8". */
@@ -320,7 +334,9 @@ export type ContentBlock =
   | VolunteerFormBlock
   | MapEmbedBlock
   | ContactFormBlock
-  | FollowUsBlock;
+  | FollowUsBlock
+  | DonorboxEmbedBlock
+  | EcwidStoreBlock;
 
 /* ---------- Pages & site-wide ---------- */
 

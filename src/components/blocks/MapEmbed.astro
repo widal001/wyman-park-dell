@@ -5,12 +5,7 @@ import Container from '../ui/Container.astro';
 
 type Props = Omit<MapEmbedBlock, 'type'>;
 
-const {
-  embedUrl,
-  title,
-  maxHeight = 320,
-  background = 'base',
-} = Astro.props;
+const { embedUrl, title, maxHeight = 320, background = 'base' } = Astro.props;
 ---
 
 <Section padding="default" background={background}>
@@ -21,8 +16,7 @@ const {
         title={title}
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen
-      ></iframe>
+        allowfullscreen></iframe>
     </div>
   </Container>
 </Section>

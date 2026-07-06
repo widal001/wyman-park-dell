@@ -5,13 +5,7 @@ import Container from '../ui/Container.astro';
 
 type Props = Omit<VideoEmbedBlock, 'type'>;
 
-const {
-  youtubeId,
-  title,
-  poster,
-  caption,
-  background = 'base',
-} = Astro.props;
+const { youtubeId, title, poster, caption, background = 'base' } = Astro.props;
 
 const posterSrc =
   poster?.src ?? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
@@ -29,16 +23,13 @@ const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1
         data-video-trigger
         data-embed-url={embedUrl}
       >
-        <img
-          src={posterSrc}
-          alt={posterAlt}
-          loading="lazy"
-          decoding="async"
-        />
+        <img src={posterSrc} alt={posterAlt} loading="lazy" decoding="async" />
         <span class="video__play" aria-hidden="true">
           <svg viewBox="0 0 80 80" width="80" height="80">
-            <circle cx="40" cy="40" r="40" fill="rgba(255,255,255,0.95)" />
-            <polygon points="32,24 60,40 32,56" fill="var(--play-fill, #1B3C03)" />
+            <circle cx="40" cy="40" r="40" fill="rgba(255,255,255,0.95)"
+            ></circle>
+            <polygon points="32,24 60,40 32,56" fill="var(--play-fill, #1B3C03)"
+            ></polygon>
           </svg>
         </span>
       </button>
@@ -48,8 +39,7 @@ const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1
           class="video__iframe"
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+          allowfullscreen></iframe>
       </template>
 
       {caption && <p class="video__caption">{caption}</p>}
@@ -58,20 +48,26 @@ const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1
 </Section>
 
 <script>
-  document.querySelectorAll<HTMLElement>('[data-video-embed]').forEach((root) => {
-    const trigger = root.querySelector<HTMLButtonElement>('[data-video-trigger]');
-    const tpl = root.querySelector<HTMLTemplateElement>('[data-video-template]');
-    if (!trigger || !tpl) return;
+  document
+    .querySelectorAll<HTMLElement>('[data-video-embed]')
+    .forEach((root) => {
+      const trigger = root.querySelector<HTMLButtonElement>(
+        '[data-video-trigger]',
+      );
+      const tpl = root.querySelector<HTMLTemplateElement>(
+        '[data-video-template]',
+      );
+      if (!trigger || !tpl) return;
 
-    trigger.addEventListener('click', () => {
-      const embedUrl = trigger.dataset.embedUrl;
-      if (!embedUrl) return;
-      const frag = tpl.content.cloneNode(true) as DocumentFragment;
-      const iframe = frag.querySelector('iframe');
-      if (iframe) iframe.src = embedUrl;
-      trigger.replaceWith(frag);
+      trigger.addEventListener('click', () => {
+        const embedUrl = trigger.dataset.embedUrl;
+        if (!embedUrl) return;
+        const frag = tpl.content.cloneNode(true) as DocumentFragment;
+        const iframe = frag.querySelector('iframe');
+        if (iframe) iframe.src = embedUrl;
+        trigger.replaceWith(frag);
+      });
     });
-  });
 </script>
 
 <style>
@@ -93,7 +89,9 @@ const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1
     background: var(--color-neutral-100);
     box-shadow: var(--shadow-md);
     cursor: pointer;
-    transition: box-shadow var(--transition-base), transform var(--transition-fast);
+    transition:
+      box-shadow var(--transition-base),
+      transform var(--transition-fast);
   }
 
   .video__poster:hover {

@@ -26,23 +26,23 @@ const {
       class:list={['gallery', `gallery--${layout}`]}
       style={layout === 'grid' ? `--gallery-columns: ${columns};` : undefined}
     >
-      {images.map((image) => (
-        <li class="gallery__item">
-          <figure>
-            <img
-              src={image.src}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-              loading="lazy"
-              decoding="async"
-            />
-            {image.caption && (
-              <figcaption>{image.caption}</figcaption>
-            )}
-          </figure>
-        </li>
-      ))}
+      {
+        images.map((image) => (
+          <li class="gallery__item">
+            <figure>
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                loading="lazy"
+                decoding="async"
+              />
+              {image.caption && <figcaption>{image.caption}</figcaption>}
+            </figure>
+          </li>
+        ))
+      }
     </ul>
   </Container>
 </Section>

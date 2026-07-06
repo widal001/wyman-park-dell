@@ -1,9 +1,9 @@
 ---
-import type { ProjectsBlock } from "../../types/content";
-import Section from "../ui/Section.astro";
-import Container from "../ui/Container.astro";
+import type { ProjectsBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
 
-type Props = Omit<ProjectsBlock, "type">;
+type Props = Omit<ProjectsBlock, 'type'>;
 
 const { heading, intro, projects } = Astro.props;
 ---
@@ -22,9 +22,9 @@ const { heading, intro, projects } = Astro.props;
             {
               projects.map((project, i) => (
                 <figure
-                  class:list={["featured__slide", i === 0 && "is-active"]}
+                  class:list={['featured__slide', i === 0 && 'is-active']}
                   data-featured-slide={i}
-                  aria-hidden={i === 0 ? "false" : "true"}
+                  aria-hidden={i === 0 ? 'false' : 'true'}
                 >
                   {project.image && (
                     <img
@@ -32,7 +32,7 @@ const { heading, intro, projects } = Astro.props;
                       alt={project.image.alt || project.title}
                       width={project.image.width}
                       height={project.image.height}
-                      loading={i === 0 ? "eager" : "lazy"}
+                      loading={i === 0 ? 'eager' : 'lazy'}
                       decoding="async"
                     />
                   )}
@@ -47,11 +47,11 @@ const { heading, intro, projects } = Astro.props;
                 {projects.map((project, i) => (
                   <p
                     class:list={[
-                      "featured__caption-text",
-                      i === 0 && "is-active",
+                      'featured__caption-text',
+                      i === 0 && 'is-active',
                     ]}
                     data-featured-caption={i}
-                    aria-hidden={i === 0 ? "false" : "true"}
+                    aria-hidden={i === 0 ? 'false' : 'true'}
                   >
                     {project.caption}
                   </p>
@@ -67,9 +67,9 @@ const { heading, intro, projects } = Astro.props;
               <li class="featured__item">
                 <button
                   type="button"
-                  class:list={["featured__title", i === 0 && "is-active"]}
+                  class:list={['featured__title', i === 0 && 'is-active']}
                   data-featured-tab={i}
-                  aria-pressed={i === 0 ? "true" : "false"}
+                  aria-pressed={i === 0 ? 'true' : 'false'}
                 >
                   {project.title}
                 </button>
@@ -84,36 +84,36 @@ const { heading, intro, projects } = Astro.props;
 </Section>
 
 <script>
-  document.querySelectorAll<HTMLElement>("[data-featured]").forEach((root) => {
-    const slides = root.querySelectorAll<HTMLElement>("[data-featured-slide]");
+  document.querySelectorAll<HTMLElement>('[data-featured]').forEach((root) => {
+    const slides = root.querySelectorAll<HTMLElement>('[data-featured-slide]');
     const captions = root.querySelectorAll<HTMLElement>(
-      "[data-featured-caption]",
+      '[data-featured-caption]',
     );
     const tabs = root.querySelectorAll<HTMLButtonElement>(
-      "[data-featured-tab]",
+      '[data-featured-tab]',
     );
     if (slides.length === 0) return;
 
     function activate(index: number) {
       slides.forEach((slide, i) => {
         const on = i === index;
-        slide.classList.toggle("is-active", on);
-        slide.setAttribute("aria-hidden", on ? "false" : "true");
+        slide.classList.toggle('is-active', on);
+        slide.setAttribute('aria-hidden', on ? 'false' : 'true');
       });
       captions.forEach((cap, i) => {
         const on = i === index;
-        cap.classList.toggle("is-active", on);
-        cap.setAttribute("aria-hidden", on ? "false" : "true");
+        cap.classList.toggle('is-active', on);
+        cap.setAttribute('aria-hidden', on ? 'false' : 'true');
       });
       tabs.forEach((tab, i) => {
         const on = i === index;
-        tab.classList.toggle("is-active", on);
-        tab.setAttribute("aria-pressed", on ? "true" : "false");
+        tab.classList.toggle('is-active', on);
+        tab.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
     }
 
     tabs.forEach((tab, i) => {
-      tab.addEventListener("click", () => activate(i));
+      tab.addEventListener('click', () => activate(i));
     });
   });
 </script>

@@ -1,9 +1,9 @@
 ---
-import type { BoardDirectoryBlock } from "../../types/content";
-import Section from "../ui/Section.astro";
-import Container from "../ui/Container.astro";
+import type { BoardDirectoryBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
 
-type Props = Omit<BoardDirectoryBlock, "type">;
+type Props = Omit<BoardDirectoryBlock, 'type'>;
 
 const { heading, members } = Astro.props;
 ---
@@ -39,7 +39,7 @@ const { heading, members } = Astro.props;
         {
           members.map((member) => (
             <li class="board__member">
-              <span class="board__name">{member.name}</span>,{" "}
+              <span class="board__name">{member.name}</span>,{' '}
               <em class="board__role">{member.role}</em>
             </li>
           ))
@@ -76,7 +76,7 @@ const { heading, members } = Astro.props;
   }
 
   .board__summary::marker {
-    content: "";
+    content: '';
     display: none;
   }
 
