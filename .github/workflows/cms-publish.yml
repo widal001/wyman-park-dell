@@ -25,12 +25,14 @@ permissions:
 jobs:
   merge:
     runs-on: ubuntu-latest
+    # No checkout: gh talks to the API via --repo. This avoids `gh pr merge
+    # --delete-branch` trying to switch the local repo to main afterwards (which
+    # failed because only the content branch was fetched).
     steps:
-      - uses: actions/checkout@v7
-
       - name: Merge the current branch's PR into main
         env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
         run: |
           branch="${GITHUB_REF_NAME}"
           if [ "$branch" = "main" ]; then
