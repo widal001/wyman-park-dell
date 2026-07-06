@@ -1,15 +1,28 @@
 name: CD - Preview
 
-# One preview per PR. `wrangler versions upload --preview-alias pr-N` uploads a
-# non-live version of the (single) worker and gives it a stable URL
-# (pr-N.wyman-park-dell.<subdomain>.workers.dev) that persists for the life of
-# the PR. No separate worker, no cleanup needed. Adapted from the EmDash branch,
-# minus the D1/R2 preview-env bindings this static site doesn't use.
+# One preview per PR (stable pr-N alias via `wrangler versions upload
+# --preview-alias`). Runs two ways:
+#   - on: pull_request       — regular (dev) PRs.
+#   - on: workflow_call      — invoked by cms-open-pr for content/** branches,
+#                              whose bot-opened PRs don't fire pull_request
+#                              events (GITHUB_TOKEN limitation).
+# The pull_request path skips content/** heads so they aren't previewed twice
+# (cms-open-pr already calls this workflow for them).
 on:
   pull_request:
+  workflow_call:
+    inputs:
+      pr_number:
+        description: PR number to alias and comment on
+        type: string
+        required: true
+      sha:
+        description: Commit SHA to build and preview
+        type: string
+        required: true
 
 concurrency:
-  group: deploy-preview-${{ github.event.pull_request.number }}
+  group: deploy-preview-${{ inputs.pr_number || github.event.pull_request.number }}
   cancel-in-progress: true
 
 permissions:
@@ -18,12 +31,19 @@ permissions:
 
 jobs:
   preview:
+    # On the pull_request path, let cms-open-pr own content/** previews.
+    if: github.event_name != 'pull_request' || !startsWith(github.head_ref, 'content/')
     runs-on: ubuntu-latest
     environment:
       name: preview
       url: ${{ steps.deploy.outputs.url }}
+    env:
+      PR_NUMBER: ${{ inputs.pr_number || github.event.pull_request.number }}
+      HEAD_SHA: ${{ inputs.sha || github.event.pull_request.head.sha }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.HEAD_SHA }}
 
       - uses: pnpm/action-setup@v6
 
@@ -46,8 +66,8 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           output=$(pnpm exec wrangler versions upload \
-            --preview-alias "pr-${{ github.event.pull_request.number }}" \
-            --message "PR #${{ github.event.pull_request.number }} @ ${{ github.event.pull_request.head.sha }}" \
+            --preview-alias "pr-${PR_NUMBER}" \
+            --message "PR #${PR_NUMBER} @ ${HEAD_SHA}" \
             2>&1)
           echo "$output"
           url=$(echo "$output" \
@@ -63,12 +83,13 @@ jobs:
         if: steps.deploy.outputs.url != ''
         uses: marocchino/sticky-pull-request-comment@v3
         with:
+          number: ${{ env.PR_NUMBER }}
           header: cloudflare-preview
           message: |
-            ### Cloudflare preview — PR #${{ github.event.pull_request.number }}
+            ### Cloudflare preview — PR #${{ env.PR_NUMBER }}
 
             **${{ steps.deploy.outputs.url }}**
 
-            Stable for the life of the PR (alias `pr-${{ github.event.pull_request.number }}`).
+            Stable for the life of the PR (alias `pr-${{ env.PR_NUMBER }}`).
 
-            _Last updated: commit `${{ github.event.pull_request.head.sha }}`_
+            _Last updated: commit `${{ env.HEAD_SHA }}`_

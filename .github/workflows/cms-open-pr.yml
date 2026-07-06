@@ -1,12 +1,15 @@
 name: CMS - Open PR
 
-# When Pages CMS saves to a content/** branch, open a PR to main if one doesn't
-# already exist. Previews are handled by cd-preview.yml (on: pull_request).
+# When Pages CMS saves to a content/** branch: if the branch has changes vs main
+# and no PR exists yet, open one; then run a preview by calling the shared
+# cd-preview workflow via `uses:`.
 #
-# NOTE: a PR opened by the default GITHUB_TOKEN does NOT trigger other workflows,
-# so cd-preview won't run on the "opened" event. It runs on the next push to the
-# branch (pull_request: synchronize) — i.e. the editor's second save onward. To
-# get a preview on the very first save, open the PR with a PAT/App token instead.
+# Why call it here instead of letting cd-preview's pull_request trigger fire:
+#   1. A PR opened by GITHUB_TOKEN doesn't fire pull_request events at all.
+#   2. pull_request runs from outside/first-time contributors need manual
+#      "approve and run" — but this is a push workflow (the pusher already has
+#      write access), so it runs immediately. Fork/outside PRs still go through
+#      cd-preview's pull_request path and keep that approval gate.
 on:
   push:
     branches: ['content/**']
@@ -23,21 +26,52 @@ permissions:
 jobs:
   open-pr:
     runs-on: ubuntu-latest
+    outputs:
+      pr: ${{ steps.pr.outputs.number }}
+      has_diff: ${{ steps.diff.outputs.has_diff }}
     steps:
       - uses: actions/checkout@v7
 
+      - name: Skip if the branch has no changes vs main
+        id: diff
+        run: |
+          # Compare the branch tip tree against main's tip tree (shallow is fine
+          # — no merge base needed). Creating a branch in Pages CMS produces a
+          # push identical to main, which we skip so `gh pr create` doesn't fail.
+          git fetch --no-tags --depth=1 --quiet origin main
+          if git diff --quiet FETCH_HEAD HEAD; then
+            echo "has_diff=false" >> "$GITHUB_OUTPUT"
+            echo "No changes vs main yet — nothing to open a PR for."
+          else
+            echo "has_diff=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Open PR to main if none exists
+        id: pr
+        if: steps.diff.outputs.has_diff == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           branch="${GITHUB_REF_NAME}"
-          existing=$(gh pr list --head "$branch" --base main --state open \
+          number=$(gh pr list --head "$branch" --base main --state open \
             --json number --jq '.[0].number // empty')
-          if [ -n "$existing" ]; then
-            echo "PR #$existing already open for $branch; nothing to do."
-            exit 0
+          if [ -z "$number" ]; then
+            # Ensure the label exists (gh pr create fails on an unknown label).
+            gh label create content --color 0e8a16 \
+              --description "Content edits from Pages CMS" 2>/dev/null || true
+            url=$(gh pr create --head "$branch" --base main \
+              --title "$(git log -1 --pretty=%s)" \
+              --label content \
+              --body "Automated PR for content edits on \`$branch\`. Review the diff and the Cloudflare preview posted on this PR, then use **Publish** in Pages CMS (or merge here) to go live.")
+            number=$(echo "$url" | grep -oE '[0-9]+$')
           fi
-          gh pr create --head "$branch" --base main \
-            --title "$(git log -1 --pretty=%s)" \
-            --label content \
-            --body "Automated PR for content edits on \`$branch\`. Review the diff and the Cloudflare preview posted on this PR, then use **Publish** in Pages CMS (or merge here) to go live."
+          echo "number=${number}" >> "$GITHUB_OUTPUT"
+
+  preview:
+    needs: open-pr
+    if: needs.open-pr.outputs.has_diff == 'true'
+    uses: ./.github/workflows/cd-preview.yml
+    with:
+      pr_number: ${{ needs.open-pr.outputs.pr }}
+      sha: ${{ github.sha }}
+    secrets: inherit
