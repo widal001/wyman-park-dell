@@ -1,0 +1,45 @@
+---
+/**
+ * Cloudflare Turnstile widget slot.
+ *
+ * This renders ONLY an empty placeholder — no script, no network. The widget's
+ * api.js is injected and rendered lazily by forms-client.ts the first time a
+ * visitor interacts with the form, so visitors who never touch a form pay no
+ * cost. The site key is public by design (paired with a server-side secret).
+ *
+ * Dev default is Cloudflare's "always passes" TEST site key, so forms work
+ * end-to-end under `wrangler dev` without any dashboard setup.
+ */
+const siteKey =
+  import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA';
+---
+
+<div class="cf-turnstile-slot" data-sitekey={siteKey}></div>
+
+<style is:global>
+  .cf-turnstile-slot:not(:empty) {
+    margin-block: var(--space-3);
+  }
+
+  /* Inline status message shared by all forms. */
+  .form-status {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    min-height: 1.25em;
+  }
+  .form-status[data-state='error'] {
+    color: var(--color-error, #b3261e);
+  }
+  .form-status[data-state='success'] {
+    color: var(--color-brand-green-dark);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* Transient success state applied to any form's submit button on success. */
+  button.is-success {
+    background: var(--color-brand-green-dark) !important;
+    border-color: var(--color-brand-green-dark) !important;
+    color: var(--color-white) !important;
+    cursor: default;
+  }
+</style>
