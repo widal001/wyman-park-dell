@@ -48,6 +48,8 @@ const events = z.object({
   viewAllCta: cta.optional(),
   /** Max events to show (soonest first). Omit to show all — e.g. the /events page. */
   limit: z.number().optional(),
+  /** Layout: 'grid' (default) or 'carousel' (horizontal, swipeable). */
+  display: z.enum(['grid', 'carousel']).optional(),
 });
 
 const sectionHeading = z.object({
@@ -301,6 +303,18 @@ const ymd = z
   .union([z.string(), z.date()])
   .transform((v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v));
 
+// Monthly "Nth weekday" recurrence (e.g. the second Sunday of every month).
+// `date` still holds the series anchor; the route recomputes the next
+// occurrence at build time so a recurring event never shows a stale date.
+const recurrence = z.object({
+  /** Human-readable cadence shown on the card, e.g. "Second Sunday of every month". */
+  label: z.string(),
+  /** 0 = Sunday … 6 = Saturday. */
+  weekday: z.number().int().min(0).max(6),
+  /** Which occurrence in the month (1 = first … 5 = fifth). */
+  week: z.number().int().min(1).max(5),
+});
+
 const events_collection = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/events' }),
   schema: z.object({
@@ -312,6 +326,7 @@ const events_collection = defineCollection({
     description: z.string(),
     image: image.optional(),
     cta: cta.optional(),
+    recurrence: recurrence.optional(),
   }),
 });
 

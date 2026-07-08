@@ -13,22 +13,19 @@ blocks:
       height: 554
     ctas:
       - label: "Get involved"
-        href: "https://wymanparkdell.org/get-involved/"
+        href: "/get-involved"
         variant: "solid-inverse"
-        external: true
       - label: "Plan your visit"
-        href: "https://wymanparkdell.org/contact/#address"
+        href: "/contact"
         variant: "outline-inverse"
-        external: true
   - type: events
     heading: "Upcoming events"
     intro: "A variety of events take place in Wyman Park Dell throughout the year. From park clean-ups to neighborhood festivals, the Dell is the perfect place to celebrate community."
     limit: 3
     viewAllCta:
       label: "See all events"
-      href: "https://wymanparkdell.org/events/"
+      href: "/events"
       variant: "ghost"
-      external: true
   - type: sectionHeading
     heading: "How will you discover the Dell?"
     width: medium

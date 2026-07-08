@@ -10,6 +10,7 @@ blocks:
       alt: "A community gathering at Wyman Park Dell"
   - type: events
     heading: Our events
+    display: carousel
     intro: "A variety of events take place in Wyman Park Dell throughout the year. From park clean-ups to neighborhood festivals, the Dell is the perfect place to celebrate community."
   - type: projects
     heading: Annual events
@@ -53,8 +54,7 @@ blocks:
       The Friends of Wyman Park Dell love collaborating with neighbors, local businesses, and community groups. Whether you have an idea for a new gathering or want to co-host an existing one, we’d love to hear from you.
     rightCtas:
       - label: "Get in touch with the Friends today"
-        href: "https://wymanparkdell.org/contact/"
-        external: true
+        href: "/contact"
   - type: newsletter
     heading: Sign up for our newsletter
     subheading: "Never miss an event at the Dell."
