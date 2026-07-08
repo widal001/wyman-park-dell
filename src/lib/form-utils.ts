@@ -71,8 +71,15 @@ export async function checkSpam(
     return { pass: false, silent: false };
   }
 
-  // 3. Turnstile
-  const token = field(form, TURNSTILE_FIELD, 4096);
-  const ok = await verifyTurnstile(token, env.TURNSTILE_SECRET_KEY, remoteIp);
-  return ok ? { pass: true } : { pass: false, silent: false };
+  // 3. Turnstile — only when configured. With no secret set, Turnstile is off
+  // and we rely on the honeypot + timing checks above. It switches on
+  // automatically once TURNSTILE_SECRET_KEY (paired with the public site key)
+  // is present.
+  if (env.TURNSTILE_SECRET_KEY) {
+    const token = field(form, TURNSTILE_FIELD, 4096);
+    const ok = await verifyTurnstile(token, env.TURNSTILE_SECRET_KEY, remoteIp);
+    if (!ok) return { pass: false, silent: false };
+  }
+
+  return { pass: true };
 }

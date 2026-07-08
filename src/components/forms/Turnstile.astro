@@ -2,19 +2,19 @@
 /**
  * Cloudflare Turnstile widget slot.
  *
- * This renders ONLY an empty placeholder — no script, no network. The widget's
- * api.js is injected and rendered lazily by forms-client.ts the first time a
- * visitor interacts with the form, so visitors who never touch a form pay no
- * cost. The site key is public by design (paired with a server-side secret).
+ * Turnstile is PRESENCE-GATED: the slot only renders when a site key is set via
+ * PUBLIC_TURNSTILE_SITE_KEY. With no key (the default), no widget renders, no
+ * script loads, and forms fall back to honeypot + timing protection. Set the key
+ * (real or Cloudflare's `1x00000000000000000000AA` test key) to switch it on —
+ * the client renders it and the server enforces it, no code changes needed.
  *
- * Dev default is Cloudflare's "always passes" TEST site key, so forms work
- * end-to-end under `wrangler dev` without any dashboard setup.
+ * The slot itself is only a placeholder; forms-client.ts injects the widget's
+ * api.js lazily on first form interaction, so it costs nothing until engaged.
  */
-const siteKey =
-  import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA';
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '';
 ---
 
-<div class="cf-turnstile-slot" data-sitekey={siteKey}></div>
+{siteKey && <div class="cf-turnstile-slot" data-sitekey={siteKey} />}
 
 <style is:global>
   .cf-turnstile-slot:not(:empty) {

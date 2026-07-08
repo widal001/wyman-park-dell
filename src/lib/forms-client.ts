@@ -155,16 +155,21 @@ function initForm(form: HTMLFormElement, kind: FormKind): void {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     setStatus('');
-    await ensureWidget();
 
-    const token = await getToken();
-    if (!token) {
-      setStatus('Verification is still loading — please try again.', 'error');
-      return;
+    // Turnstile is presence-gated: the slot only exists when a site key is set.
+    // With no slot, submit without a token (honeypot + timing still apply).
+    let token = '';
+    if (slot) {
+      await ensureWidget();
+      token = await getToken();
+      if (!token) {
+        setStatus('Verification is still loading — please try again.', 'error');
+        return;
+      }
     }
 
     const data = new FormData(form);
-    data.set('cf-turnstile-response', token);
+    if (token) data.set('cf-turnstile-response', token);
 
     if (submitBtn) submitBtn.disabled = true;
     setStatus('Sending…');

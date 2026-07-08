@@ -2,13 +2,17 @@
 # and fill in real values. Read by the Worker at request time via
 # Astro.locals.runtime.env.
 #
-# NOTE: PUBLIC_TURNSTILE_SITE_KEY is a *build-time* public var (goes in `.env`,
-# or left to its always-pass test default in Turnstile.astro), NOT here.
+# NOTE: PUBLIC_TURNSTILE_SITE_KEY is a *build-time* public var (goes in `.env`),
+# NOT here.
 
-# --- Cloudflare Turnstile (server-side secret) ---
-# Dev default below is Cloudflare's "always passes" TEST secret. Swap for the
-# real secret key at go-live.
-TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+# --- Cloudflare Turnstile ---
+# Presence-gated: leave EMPTY to keep Turnstile OFF (forms fall back to honeypot
+# + timing). Set the site key and secret TOGETHER to switch it on — a secret
+# without a matching public site key makes every submit fail.
+# To exercise the widget locally, set BOTH to Cloudflare's always-pass test keys:
+#   .env       PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA
+#   .dev.vars  TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+TURNSTILE_SECRET_KEY=
 
 # --- Gmail SMTP (App Password) ---
 # Requires 2-Step Verification on the Google account, then an App Password.
