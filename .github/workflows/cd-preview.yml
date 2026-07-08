@@ -69,15 +69,16 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          output=$(pnpm exec wrangler versions upload \
+          # Stream wrangler's output to the log via tee (so failures are visible)
+          # while still capturing it to parse the preview URL. pipefail makes a
+          # wrangler failure fail the step instead of being swallowed.
+          set -o pipefail
+          pnpm exec wrangler versions upload \
             --preview-alias "pr-${PR_NUMBER}" \
-            --message "PR #${PR_NUMBER} @ ${HEAD_SHA}" \
-            2>&1)
-          echo "$output"
-          url=$(echo "$output" \
-            | grep -E 'Version Preview Alias URL:' \
+            --message "PR #${PR_NUMBER} @ ${HEAD_SHA}" 2>&1 | tee upload.log
+          url=$(grep -E 'Version Preview Alias URL:' upload.log \
             | sed -E 's/.*URL:[[:space:]]*//' \
-            | head -n1)
+            | head -n1 || true)
           if [ -z "$url" ]; then
             echo "::warning::Could not extract preview URL from wrangler output"
           fi
