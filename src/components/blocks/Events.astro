@@ -7,7 +7,13 @@ import SmartImage from '../ui/SmartImage.astro';
 
 type Props = Omit<EventsBlock, 'type'>;
 
-const { heading, intro, events, viewAllCta } = Astro.props;
+const { heading, intro, events, viewAllCta, display = 'grid' } = Astro.props;
+
+const isCarousel = display === 'carousel';
+// Carousel dots paginate the cards in fixed groups (must match PER_PAGE in the
+// client script below). One dot per group; no dots when everything fits on one.
+const perPage = 3;
+const pageCount = Math.ceil(events.length / perPage);
 
 const monthFmt = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -40,71 +46,180 @@ function parseISODate(value: string): Date {
       {intro && <p>{intro}</p>}
     </header>
 
-    <ul role="list" class="events__grid">
-      {
-        events.map((event) => {
-          const start = parseISODate(event.date);
-          const end = event.endDate ? parseISODate(event.endDate) : null;
-          const startLong = longDateFmt.format(start);
-          const endLong = end ? longDateFmt.format(end) : null;
-          const datetimeAttr = end
-            ? `${event.date}/${event.endDate}`
-            : event.date;
+    <div
+      class:list={['events__stage', isCarousel && 'events__stage--carousel']}
+      data-events-carousel={isCarousel ? '' : undefined}
+    >
+      <div class="events__viewport">
+        {
+          isCarousel && (
+            <button
+              type="button"
+              class="events__nav events__nav--prev"
+              data-events-prev
+              aria-label="Previous events"
+              hidden
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="15 6 9 12 15 18" />
+              </svg>
+            </button>
+          )
+        }
+        <ul
+          role="list"
+          class:list={['events__grid', isCarousel && 'events__track']}
+          data-events-track
+          tabindex={isCarousel ? -1 : undefined}
+        >
+          {
+            events.map((event) => {
+              const start = parseISODate(event.date);
+              const end = event.endDate ? parseISODate(event.endDate) : null;
+              const startLong = longDateFmt.format(start);
+              const endLong = end ? longDateFmt.format(end) : null;
+              const datetimeAttr = end
+                ? `${event.date}/${event.endDate}`
+                : event.date;
 
-          return (
-            <li class="events__card">
-              {event.image && (
-                <a
-                  class="events__media"
-                  href={event.cta?.href ?? '#'}
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
-                  <SmartImage
-                    image={event.image}
-                    loading="lazy"
-                    decoding="async"
-                    sizes="(max-width: 700px) 100vw, 350px"
-                    widths={[350, 700]}
-                  />
-                </a>
-              )}
-
-              <div class="events__body">
-                <time class="events__date" datetime={datetimeAttr}>
-                  <span class="events__date-month">
-                    {monthFmt.format(start)}
-                  </span>
-                  <span class="events__date-day">{dayFmt.format(start)}</span>
-                </time>
-
-                <div class="events__details">
-                  <h3 class="events__title">{event.title}</h3>
-                  <p class="events__meta">
-                    <span>{weekdayFmt.format(start)}</span>
-                    {endLong ? (
-                      <span>
-                        {startLong} – {endLong}
-                      </span>
+              return (
+                <li class="events__card">
+                  {event.image &&
+                    (event.cta ? (
+                      <a
+                        class="events__media"
+                        href={event.cta.href}
+                        tabindex="-1"
+                        aria-hidden="true"
+                      >
+                        <SmartImage
+                          image={event.image}
+                          loading="lazy"
+                          decoding="async"
+                          sizes="(max-width: 700px) 100vw, 350px"
+                          widths={[350, 700]}
+                        />
+                      </a>
                     ) : (
-                      <span>{startLong}</span>
-                    )}
-                    {event.time && <span>{event.time}</span>}
-                    {event.location && <span>{event.location}</span>}
-                  </p>
-                  <p class="events__excerpt">{event.body}</p>
-                  {event.cta && (
-                    <a href={event.cta.href} class="events__cta">
-                      {event.cta.label} →
-                    </a>
-                  )}
-                </div>
-              </div>
-            </li>
-          );
-        })
+                      <div class="events__media">
+                        <SmartImage
+                          image={event.image}
+                          loading="lazy"
+                          decoding="async"
+                          sizes="(max-width: 700px) 100vw, 350px"
+                          widths={[350, 700]}
+                        />
+                      </div>
+                    ))}
+
+                  <div class="events__body">
+                    <time class="events__date" datetime={datetimeAttr}>
+                      <span class="events__date-month">
+                        {monthFmt.format(start)}
+                      </span>
+                      <span class="events__date-day">
+                        {dayFmt.format(start)}
+                      </span>
+                    </time>
+
+                    <div class="events__details">
+                      <h3 class="events__title">{event.title}</h3>
+                      <p class="events__meta">
+                        <span>{weekdayFmt.format(start)}</span>
+                        {endLong ? (
+                          <span>
+                            {startLong} – {endLong}
+                          </span>
+                        ) : (
+                          <span>{startLong}</span>
+                        )}
+                        {event.time && <span>{event.time}</span>}
+                        {event.location && <span>{event.location}</span>}
+                        {event.recurrence && (
+                          <span class="events__recurring">
+                            ↻ {event.recurrence}
+                          </span>
+                        )}
+                      </p>
+                      <p class="events__excerpt">{event.body}</p>
+                      {event.cta && (
+                        <a href={event.cta.href} class="events__cta">
+                          {event.cta.label} →
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </li>
+              );
+            })
+          }
+        </ul>
+        {
+          isCarousel && (
+            <button
+              type="button"
+              class="events__nav events__nav--next"
+              data-events-next
+              aria-label="Next events"
+              hidden
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            </button>
+          )
+        }
+      </div>
+
+      {
+        isCarousel && pageCount > 1 && (
+          <div
+            class="events__dots"
+            data-events-dots
+            aria-label="Choose events"
+            hidden
+          >
+            {Array.from({ length: pageCount }, (_, i) => {
+              const start = i * perPage + 1;
+              const end = Math.min((i + 1) * perPage, events.length);
+              const label =
+                start === end
+                  ? `Go to event ${start}`
+                  : `Go to events ${start}–${end}`;
+              return (
+                <button
+                  type="button"
+                  class="events__dot"
+                  data-events-dot
+                  aria-label={label}
+                  aria-current={i === 0 ? 'true' : undefined}
+                />
+              );
+            })}
+          </div>
+        )
       }
-    </ul>
+    </div>
 
     {
       viewAllCta && (
@@ -141,6 +256,138 @@ function parseISODate(value: string): Date {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: var(--space-6);
+  }
+
+  /* ---------- Carousel ---------- */
+  .events__stage--carousel .events__viewport {
+    position: relative;
+  }
+
+  .events__track {
+    display: flex;
+    gap: var(--space-6);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    /* Room so the card hover-lift + shadow aren't clipped by the scroll box. */
+    padding-block: var(--space-3);
+  }
+
+  .events__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* One card + peek on phones, two on tablets, a full three across on desktop
+     so the cards get room to breathe rather than being pinned to a narrow width. */
+  .events__track > .events__card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+  }
+
+  @media (min-width: 640px) {
+    .events__track > .events__card {
+      flex-basis: calc((100% - var(--space-6)) / 2);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .events__track > .events__card {
+      flex-basis: calc((100% - 2 * var(--space-6)) / 3);
+    }
+  }
+
+  .events__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    border: 2px solid var(--color-brand-green);
+    background: var(--color-surface-base);
+    color: var(--color-brand-green-dark);
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition:
+      background-color var(--transition-fast),
+      opacity var(--transition-fast);
+  }
+
+  .events__nav:hover {
+    background: var(--color-brand-green);
+    color: var(--color-white);
+  }
+
+  .events__nav:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .events__nav svg {
+    display: block;
+  }
+
+  .events__nav--prev {
+    left: var(--space-3);
+  }
+
+  .events__nav--next {
+    right: var(--space-3);
+  }
+
+  .events__nav[hidden] {
+    display: none;
+  }
+
+  .events__dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+  }
+
+  .events__dots[hidden] {
+    display: none;
+  }
+
+  .events__dot {
+    width: 0.7rem;
+    height: 0.7rem;
+    padding: 0;
+    border-radius: 999px;
+    border: 2px solid var(--color-brand-green);
+    background: transparent;
+    cursor: pointer;
+    transition:
+      background-color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .events__dot:hover {
+    background: var(--color-brand-green-light, var(--color-brand-green));
+  }
+
+  .events__dot.is-active {
+    background: var(--color-brand-green);
+    transform: scale(1.25);
+  }
+
+  /* Touch-first on small screens: swipe to scroll, hide the arrows. */
+  @media (max-width: 640px) {
+    .events__nav {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .events__track {
+      scroll-behavior: auto;
+    }
   }
 
   .events__card {
@@ -229,6 +476,11 @@ function parseISODate(value: string): Date {
     line-height: var(--line-height-snug);
   }
 
+  .events__recurring {
+    color: var(--color-text-accent);
+    font-weight: var(--font-weight-bold);
+  }
+
   .events__excerpt {
     font-size: var(--font-size-base);
     line-height: var(--line-height-base);
@@ -261,3 +513,95 @@ function parseISODate(value: string): Date {
     justify-content: center;
   }
 </style>
+
+<script>
+  // Progressive enhancement: the track is a plain horizontal scroll region,
+  // so swipe/trackpad works with no JS. This wires the arrows + dots and only
+  // reveals them when the cards actually overflow.
+  function initEventsCarousel(root: HTMLElement) {
+    const found = root.querySelector<HTMLUListElement>('[data-events-track]');
+    if (!found) return;
+    const track = found; // non-null binding, stable inside the closures below
+    const cards = Array.from(track.children) as HTMLElement[];
+    if (cards.length === 0) return;
+
+    const prev = root.querySelector<HTMLButtonElement>('[data-events-prev]');
+    const next = root.querySelector<HTMLButtonElement>('[data-events-next]');
+    const dotsWrap = root.querySelector<HTMLElement>('[data-events-dots]');
+    const dots = Array.from(
+      root.querySelectorAll<HTMLButtonElement>('[data-events-dot]'),
+    );
+    const reduce = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+    const behavior: ScrollBehavior = reduce ? 'auto' : 'smooth';
+
+    // Dots paginate in fixed groups; PER_PAGE must match `perPage` in the
+    // frontmatter so the rendered dot count lines up with the pages here.
+    const PER_PAGE = 3;
+
+    const origin = () => (cards[0] ? cards[0].offsetLeft : 0);
+    const step = () =>
+      cards.length > 1
+        ? cards[1].offsetLeft - cards[0].offsetLeft
+        : track.clientWidth;
+    const pageWidth = () => PER_PAGE * step();
+    const hasOverflow = () => track.scrollWidth - track.clientWidth > 4;
+    const atStart = () => track.scrollLeft <= 2;
+    const atEnd = () =>
+      track.scrollLeft + track.clientWidth >= track.scrollWidth - 2;
+
+    function activePage(): number {
+      if (atEnd()) return dots.length - 1;
+      if (atStart()) return 0;
+      const p = Math.round(track.scrollLeft / pageWidth());
+      return Math.max(0, Math.min(p, dots.length - 1));
+    }
+
+    function update() {
+      const overflow = hasOverflow();
+      [prev, next, dotsWrap].forEach((el) => {
+        if (el) el.hidden = !overflow;
+      });
+      if (!overflow) return;
+      if (prev) prev.disabled = atStart();
+      if (next) next.disabled = atEnd();
+      const active = activePage();
+      dots.forEach((dot, i) => {
+        const on = i === active;
+        dot.classList.toggle('is-active', on);
+        if (on) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+    }
+
+    prev?.addEventListener('click', () =>
+      track.scrollBy({ left: -pageWidth(), behavior }),
+    );
+    next?.addEventListener('click', () =>
+      track.scrollBy({ left: pageWidth(), behavior }),
+    );
+    dots.forEach((dot, i) =>
+      dot.addEventListener('click', () => {
+        const target = Math.min(i * PER_PAGE, cards.length - 1);
+        track.scrollTo({ left: cards[target].offsetLeft - origin(), behavior });
+      }),
+    );
+
+    let ticking = false;
+    track.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  document
+    .querySelectorAll<HTMLElement>('[data-events-carousel]')
+    .forEach((root) => initEventsCarousel(root));
+</script>

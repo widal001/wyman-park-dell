@@ -304,6 +304,8 @@ export type EventItem = {
   body: string;
   image?: ImageRef;
   cta?: CtaRef;
+  /** Human-readable cadence for recurring events, e.g. "Second Sunday of every month". */
+  recurrence?: string;
 };
 
 export type EventsBlock = {
@@ -312,6 +314,8 @@ export type EventsBlock = {
   intro?: string;
   events: EventItem[];
   viewAllCta?: CtaRef;
+  /** Layout: 'grid' (default) or 'carousel' (horizontal, swipeable). */
+  display?: 'grid' | 'carousel';
 };
 
 export type ContentBlock =
