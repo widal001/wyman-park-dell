@@ -15,12 +15,14 @@ settings:
       delete: 'chore(content): remove {path}'
       rename: 'chore(content): rename {oldPath} to {newPath}'
 
-# Images live in the repo under public/, served by Astro at the site root. So a
-# file at public/media/foo.jpg is referenced as /media/foo.jpg. `image` fields
-# and rich-text uploads use this library to browse existing files and to store
-# new uploads.
+# Images live in the repo under src/assets/media so Astro's <Image> component
+# optimizes them at build time (hashed, immutable /_astro/* output). `input` is
+# the repo storage folder; `output` is the path written into content — they
+# intentionally differ. Content keeps referencing images as /media/foo.jpg;
+# src/lib/images.ts maps that prefix to the src/assets/media asset at build.
+# `image` fields and rich-text uploads browse/store here.
 media:
-  input: public/media
+  input: src/assets/media
   output: /media
 
 # Custom buttons in the Pages CMS admin sidebar. "Publish" dispatches the

@@ -6,7 +6,7 @@ blocks:
     variant: standard
     heading: Become a Friend of the Dell
     image:
-      src: "/media/2021/12/241433689_10159395889436061_7809489849254585591_n.jpg"
+      src: "/media/pictures/241433689_10159395889436061_7809489849254585591_n.jpg"
       alt: "Friends of Wyman Park Dell volunteers gathered for a clean-up"
   - type: sectionHeading
     variant: lead
@@ -18,7 +18,7 @@ blocks:
     heading: Make a donation
     mediaPosition: left
     image:
-      src: "/media/2021/12/Volunteer.jpg"
+      src: "/media/pictures/Volunteer.jpg"
       alt: "Volunteers gathered at Wyman Park Dell"
     body: |
       Donors like you are critical to maintaining, beautifying, and programming the Dell. Donate today by making a one-time gift or setting up a recurring donation to maximize your impact.
@@ -35,7 +35,7 @@ blocks:
     heading: Become a volunteer
     mediaPosition: right
     image:
-      src: "/media/2021/11/Get-Involved-2-1.jpg"
+      src: "/media/pictures/Get-Involved-2-1.jpg"
       alt: "Volunteers smiling after a Wyman Park Dell clean-up"
     body: |
       The Dell needs you!
@@ -48,11 +48,11 @@ blocks:
   - type: gallery
     layout: mosaic
     images:
-      - src: "/media/2021/11/WPD_Volunteer_1.jpg"
+      - src: "/media/pictures/WPD_Volunteer_1.jpg"
         alt: "Volunteers gathered at Wyman Park Dell"
-      - src: "/media/2021/11/WPD_Volunteer_2.jpg"
+      - src: "/media/pictures/WPD_Volunteer_2.jpg"
         alt: "FWPD volunteers tending to the park"
-      - src: "/media/2021/11/WPD_Volunteer_3.jpg"
+      - src: "/media/pictures/WPD_Volunteer_3.jpg"
         alt: "A volunteer working in the Dell"
-      - src: "/media/2021/11/WPD_Volunteer_4.jpg"
+      - src: "/media/pictures/WPD_Volunteer_4.jpg"
         alt: "Volunteers smiling after a clean-up"

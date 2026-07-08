@@ -4,6 +4,7 @@ import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import Turnstile from '../forms/Turnstile.astro';
 import Honeypot from '../forms/Honeypot.astro';
+import SmartImage from '../ui/SmartImage.astro';
 
 type Props = Omit<VolunteerFormBlock, 'type'>;
 
@@ -23,13 +24,12 @@ const {
   <Container width="wide">
     <div class:list={['vform', `vform--media-${mediaPosition}`]}>
       <figure class="vform__media">
-        <img
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
+        <SmartImage
+          image={image}
           loading="lazy"
           decoding="async"
+          sizes="(max-width: 900px) 100vw, 50vw"
+          widths={[500, 1000]}
         />
       </figure>
 

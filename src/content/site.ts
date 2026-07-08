@@ -5,13 +5,13 @@ export const site: SiteContent = {
   tagline:
     'A green oasis in the heart of Central Baltimore where all are welcome.',
   logo: {
-    src: '/media/2026/01/FWPD-RGB.jpg',
+    src: '/media/logos/FWPD-RGB.jpg',
     alt: 'Friends of Wyman Park Dell',
     width: 160,
     height: 160,
   },
   logoInverse: {
-    src: '/media/2021/11/FWPD-WHITE.png',
+    src: '/media/logos/FWPD-WHITE.png',
     alt: 'Friends of Wyman Park Dell',
     width: 200,
     height: 80,

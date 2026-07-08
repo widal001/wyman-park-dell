@@ -3,6 +3,7 @@ import type { EventsBlock } from '../../types/content';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
+import SmartImage from '../ui/SmartImage.astro';
 
 type Props = Omit<EventsBlock, 'type'>;
 
@@ -59,13 +60,12 @@ function parseISODate(value: string): Date {
                   tabindex="-1"
                   aria-hidden="true"
                 >
-                  <img
-                    src={event.image.src}
-                    alt={event.image.alt}
-                    width={event.image.width}
-                    height={event.image.height}
+                  <SmartImage
+                    image={event.image}
                     loading="lazy"
                     decoding="async"
+                    sizes="(max-width: 700px) 100vw, 350px"
+                    widths={[350, 700]}
                   />
                 </a>
               )}

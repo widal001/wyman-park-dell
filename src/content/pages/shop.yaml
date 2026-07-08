@@ -6,7 +6,7 @@ blocks:
     variant: standard
     heading: Shop
     image:
-      src: "/media/2021/11/About_Dell.jpg"
+      src: "/media/pictures/About_Dell.jpg"
       alt: "Wyman Park Dell"
   - type: sectionHeading
     variant: lead
