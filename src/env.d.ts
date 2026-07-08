@@ -1,9 +1,11 @@
 /// <reference types="astro/client" />
 
 /**
- * Runtime secrets exposed to on-demand (SSR) routes via
- * `Astro.locals.runtime.env`. In local dev these come from `.dev.vars`
- * (git-ignored); in production from `wrangler secret put`.
+ * Worker runtime env: bindings + vars + secrets. Read in on-demand (SSR) routes
+ * via `import { env } from 'cloudflare:workers'`. On Astro 7 / @astrojs/cloudflare
+ * v14 this is the supported way to reach bindings — the old
+ * `Astro.locals.runtime.env` was removed (it errors at runtime). In local dev the
+ * values come from `.dev.vars` (git-ignored); in prod from `wrangler secret put`.
  *
  * The Turnstile *site* key is NOT here — it's public and build-time, read via
  * `import.meta.env.PUBLIC_TURNSTILE_SITE_KEY` (see below).
@@ -26,10 +28,8 @@ type Env = {
   MAILCHIMP_SERVER_PREFIX: string;
 };
 
-type Runtime = import('@astrojs/cloudflare').Runtime<Env>;
-
-declare namespace App {
-  interface Locals extends Runtime {}
+declare module 'cloudflare:workers' {
+  export const env: Env;
 }
 
 interface ImportMetaEnv {
