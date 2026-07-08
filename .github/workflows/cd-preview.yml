@@ -58,6 +58,10 @@ jobs:
 
       - name: Build
         run: pnpm run build
+        env:
+          # Public site key, baked into static HTML at build. Falls back to the
+          # always-pass test key if the variable is unset.
+          PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.PUBLIC_TURNSTILE_SITE_KEY }}
 
       - name: Upload Worker version (preview)
         id: deploy
