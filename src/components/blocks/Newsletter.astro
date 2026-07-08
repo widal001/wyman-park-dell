@@ -2,6 +2,8 @@
 import type { NewsletterBlock } from '../../types/content';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
+import Turnstile from '../forms/Turnstile.astro';
+import Honeypot from '../forms/Honeypot.astro';
 import { site } from '../../content/site';
 
 type Props = Omit<NewsletterBlock, 'type'>;
@@ -13,7 +15,7 @@ const {
   background = 'raised',
 } = Astro.props;
 
-const action = config.action || '#';
+const action = config.action || '/api/subscribe';
 ---
 
 <Section padding="default" background={background}>
@@ -30,6 +32,8 @@ const action = config.action || '#';
         method={config.method ?? 'POST'}
         data-newsletter-form
       >
+        <Honeypot />
+
         {
           config.hiddenFields?.map((field) => (
             <input type="hidden" name={field.name} value={field.value} />
@@ -56,6 +60,15 @@ const action = config.action || '#';
             required
           />
         </label>
+
+        <Turnstile />
+        <p
+          class="form-status"
+          data-form-status
+          role="status"
+          aria-live="polite"
+        >
+        </p>
 
         <button type="submit" class="newsletter-block__submit">
           {config.submitLabel}

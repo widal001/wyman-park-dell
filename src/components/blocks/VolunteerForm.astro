@@ -2,6 +2,8 @@
 import type { VolunteerFormBlock } from '../../types/content';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
+import Turnstile from '../forms/Turnstile.astro';
+import Honeypot from '../forms/Honeypot.astro';
 
 type Props = Omit<VolunteerFormBlock, 'type'>;
 
@@ -10,7 +12,7 @@ const {
   html,
   image,
   mediaPosition = 'right',
-  action = '',
+  action = '/api/volunteer',
   method = 'POST',
   submitLabel = 'Sign up',
   background = 'base',
@@ -41,6 +43,8 @@ const {
           method={method}
           data-volunteer-form
         >
+          <Honeypot />
+
           <label class="vform__field vform__field--full">
             <span class="visually-hidden">Name</span>
             <input
@@ -80,6 +84,14 @@ const {
           </label>
 
           <div class="vform__actions">
+            <Turnstile />
+            <p
+              class="form-status"
+              data-form-status
+              role="status"
+              aria-live="polite"
+            >
+            </p>
             <button type="submit" class="vform__submit">{submitLabel}</button>
           </div>
         </form>
