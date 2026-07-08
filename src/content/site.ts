@@ -65,8 +65,8 @@ export const site: SiteContent = {
   ],
   newsletter: {
     heading: 'Sign up for our newsletter',
-    /** Wire to Mailchimp/Buttondown/Worker endpoint when ready. */
-    action: '',
+    /** Posts to the SSR endpoint, which subscribes via the Mailchimp API. */
+    action: '/api/subscribe',
     method: 'POST',
     fields: {
       name: { name: 'name', placeholder: 'Name', label: 'Name' },

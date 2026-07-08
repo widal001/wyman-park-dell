@@ -1,0 +1,29 @@
+---
+/**
+ * Hidden anti-spam fields shared by every form:
+ *   - a honeypot text input (bots fill it; real users never see it)
+ *   - a timestamp input, populated client-side on load, for the timing check
+ *
+ * The honeypot is hidden off-screen (not `display:none`, which some bots skip)
+ * and removed from the tab order and the accessibility tree.
+ */
+import { HONEYPOT_FIELD, TIMESTAMP_FIELD } from '../../lib/form-utils';
+---
+
+<div class="hp" aria-hidden="true">
+  <label>
+    Company website
+    <input type="text" name={HONEYPOT_FIELD} tabindex="-1" autocomplete="off" />
+  </label>
+</div>
+<input type="hidden" name={TIMESTAMP_FIELD} value="" data-form-timestamp />
+
+<style>
+  .hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>

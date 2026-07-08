@@ -1,0 +1,31 @@
+# Local runtime secrets for `wrangler dev`. Copy to `.dev.vars` (git-ignored)
+# and fill in real values. Read by the Worker at request time via
+# Astro.locals.runtime.env.
+#
+# NOTE: PUBLIC_TURNSTILE_SITE_KEY is a *build-time* public var (goes in `.env`),
+# NOT here.
+
+# --- Cloudflare Turnstile ---
+# Presence-gated: leave EMPTY to keep Turnstile OFF (forms fall back to honeypot
+# + timing). Set the site key and secret TOGETHER to switch it on — a secret
+# without a matching public site key makes every submit fail.
+# To exercise the widget locally, set BOTH to Cloudflare's always-pass test keys:
+#   .env       PUBLIC_TURNSTILE_SITE_KEY=1x00000000000000000000AA
+#   .dev.vars  TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+TURNSTILE_SECRET_KEY=
+
+# --- Gmail SMTP (App Password) ---
+# Requires 2-Step Verification on the Google account, then an App Password.
+# Use YOUR personal Gmail in dev; swap to wymanparkdell@gmail.com for prod.
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=you@gmail.com
+SMTP_PASS=your-16-char-app-password
+MAIL_FROM=you@gmail.com
+MAIL_TO=you@gmail.com
+
+# --- Mailchimp Marketing API ---
+# API key format: xxxxxxxxxxxx-usXX (suffix after the dash is the server prefix).
+MAILCHIMP_API_KEY=your-mailchimp-api-key
+MAILCHIMP_AUDIENCE_ID=your-audience-id
+MAILCHIMP_SERVER_PREFIX=usX

@@ -1,12 +1,14 @@
 ---
 import type { NewsletterConfig } from '../../types/content';
+import Turnstile from '../forms/Turnstile.astro';
+import Honeypot from '../forms/Honeypot.astro';
 
 type Props = {
   config: NewsletterConfig;
 };
 
 const { config } = Astro.props;
-const action = config.action || '#';
+const action = config.action || '/api/subscribe';
 ---
 
 <form
@@ -16,6 +18,8 @@ const action = config.action || '#';
   data-newsletter-form
 >
   <h2 class="newsletter__heading">{config.heading}</h2>
+
+  <Honeypot />
 
   {
     config.hiddenFields?.map((field) => (
@@ -44,6 +48,9 @@ const action = config.action || '#';
     />
   </label>
 
+  <Turnstile />
+  <p class="form-status" data-form-status role="status" aria-live="polite"></p>
+
   <button type="submit" class="newsletter__submit">
     {config.submitLabel}
   </button>
@@ -64,6 +71,12 @@ const action = config.action || '#';
     letter-spacing: var(--letter-spacing-wide);
     color: var(--color-white);
     margin-bottom: var(--space-2);
+  }
+
+  /* Status sits on the orange footer, so keep it readable (white) in both
+     success and error states — the button color carries the success signal. */
+  .newsletter .form-status[data-state] {
+    color: var(--color-white);
   }
 
   .newsletter__field input {

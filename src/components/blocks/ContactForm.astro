@@ -2,6 +2,8 @@
 import type { ContactFormBlock } from '../../types/content';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
+import Turnstile from '../forms/Turnstile.astro';
+import Honeypot from '../forms/Honeypot.astro';
 
 type Props = Omit<ContactFormBlock, 'type'>;
 
@@ -14,7 +16,7 @@ const {
     { label: 'Using the park for an event', value: 'event' },
     { label: 'Other', value: 'other' },
   ],
-  action = '',
+  action = '/api/contact',
   method = 'POST',
   submitLabel = 'Submit',
   background = 'base',
@@ -35,6 +37,8 @@ const {
         method={method}
         data-contact-form
       >
+        <Honeypot />
+
         <label class="cform__field">
           <span class="visually-hidden">First name</span>
           <input
@@ -87,6 +91,14 @@ const {
         </label>
 
         <div class="cform__actions">
+          <Turnstile />
+          <p
+            class="form-status"
+            data-form-status
+            role="status"
+            aria-live="polite"
+          >
+          </p>
           <button type="submit" class="cform__submit">{submitLabel}</button>
         </div>
       </form>

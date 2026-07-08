@@ -53,6 +53,11 @@ const canonical = new URL(
       <slot />
     </main>
     {footerVariant === 'classic' ? <SiteFooterClassic /> : <SiteFooter />}
+
+    <script>
+      // Progressive enhancement for all site forms + lazy Turnstile loading.
+      import '../lib/forms-client.ts';
+    </script>
   </body>
 </html>
 

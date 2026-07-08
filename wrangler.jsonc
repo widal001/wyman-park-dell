@@ -13,4 +13,12 @@
   "observability": {
     "enabled": true,
   },
+  // Pin the SESSION KV namespace the adapter uses for Astro sessions. Without an
+  // explicit id the adapter auto-provisions it, which fails once the namespace
+  // exists ("already exists [code: 10014]") — e.g. on `wrangler versions upload`
+  // for PR previews. Giving the existing id makes it reuse the namespace instead
+  // of trying to create it.
+  "kv_namespaces": [
+    { "binding": "SESSION", "id": "30ca139a1f6644a7b9724d6ffcdf0345" },
+  ],
 }
