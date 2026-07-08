@@ -2,6 +2,7 @@
 import type { VideoEmbedBlock } from '../../types/content';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
+import SmartImage from '../ui/SmartImage.astro';
 
 type Props = Omit<VideoEmbedBlock, 'type'>;
 
@@ -23,7 +24,13 @@ const embedUrl = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1
         data-video-trigger
         data-embed-url={embedUrl}
       >
-        <img src={posterSrc} alt={posterAlt} loading="lazy" decoding="async" />
+        <SmartImage
+          image={{ src: posterSrc, alt: posterAlt }}
+          loading="lazy"
+          decoding="async"
+          sizes="(max-width: 900px) 100vw, 900px"
+          widths={[640, 960, 1280]}
+        />
         <span class="video__play" aria-hidden="true">
           <svg viewBox="0 0 80 80" width="80" height="80">
             <circle cx="40" cy="40" r="40" fill="rgba(255,255,255,0.95)"

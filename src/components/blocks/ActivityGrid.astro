@@ -2,6 +2,7 @@
 import type { ActivityGridBlock } from '../../types/content';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
+import SmartImage from '../ui/SmartImage.astro';
 
 type Props = Omit<ActivityGridBlock, 'type'>;
 
@@ -24,13 +25,12 @@ const hasHeading = Boolean(heading || subheading);
       {
         image && (
           <figure class="activity__image">
-            <img
-              src={image.src}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
+            <SmartImage
+              image={image}
               loading="lazy"
               decoding="async"
+              sizes="(max-width: 900px) 100vw, 50vw"
+              widths={[500, 1000]}
             />
           </figure>
         )
@@ -41,12 +41,9 @@ const hasHeading = Boolean(heading || subheading);
           items.map((item) => (
             <li class="activity__item">
               {item.icon && (
-                <img
+                <SmartImage
                   class="activity__icon"
-                  src={item.icon.src}
-                  alt=""
-                  width={item.icon.width ?? 60}
-                  height={item.icon.height ?? 60}
+                  image={{ ...item.icon, alt: '' }}
                   loading="lazy"
                   decoding="async"
                 />

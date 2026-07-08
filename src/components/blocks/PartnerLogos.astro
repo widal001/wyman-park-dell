@@ -2,6 +2,7 @@
 import type { PartnersBlock } from '../../types/content';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
+import SmartImage from '../ui/SmartImage.astro';
 
 type Props = Omit<PartnersBlock, 'type'>;
 
@@ -25,11 +26,11 @@ const { heading, partners } = Astro.props;
               class="partners__link"
               aria-label={partner.name}
             >
-              <img
-                src={partner.logo.src}
-                alt={partner.logo.alt || partner.name}
-                width={partner.logo.width}
-                height={partner.logo.height}
+              <SmartImage
+                image={{
+                  ...partner.logo,
+                  alt: partner.logo.alt || partner.name,
+                }}
                 loading="lazy"
                 decoding="async"
               />

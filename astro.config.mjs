@@ -10,7 +10,13 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://wymanparkdell.org',
   output: 'static',
-  adapter: cloudflare(),
+  // `imageService: 'compile'` pre-optimizes images with Sharp at BUILD time
+  // (Node), emitting hashed, immutable /_astro/*.webp files referenced directly
+  // — no runtime `/_image` endpoint and no Cloudflare Images (IMAGES) binding.
+  // The default ('cloudflare-binding') would optimize on-demand at the edge,
+  // which forgoes immutable static caching. All image pages are prerendered, so
+  // build-time optimization covers them.
+  adapter: cloudflare({ imageService: 'compile' }),
   // We don't use Astro sessions. @astrojs/cloudflare v14 otherwise auto-provisions
   // a SESSION KV namespace on every deploy, which collides once it already exists
   // ("already exists [code: 10014]", e.g. on `wrangler versions upload`). Setting

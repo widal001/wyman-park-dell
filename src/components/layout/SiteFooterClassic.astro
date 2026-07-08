@@ -2,6 +2,7 @@
 import Container from '../ui/Container.astro';
 import SocialLinks from './SocialLinks.astro';
 import NewsletterForm from './NewsletterForm.astro';
+import SmartImage from '../ui/SmartImage.astro';
 import { site } from '../../content/site';
 ---
 
@@ -11,12 +12,9 @@ import { site } from '../../content/site';
       <div class="site-footer-classic__brand">
         {
           site.logoInverse && (
-            <img
+            <SmartImage
               class="site-footer-classic__logo"
-              src={site.logoInverse.src}
-              alt={site.logoInverse.alt}
-              width={site.logoInverse.width}
-              height={site.logoInverse.height}
+              image={site.logoInverse}
               loading="lazy"
               decoding="async"
             />

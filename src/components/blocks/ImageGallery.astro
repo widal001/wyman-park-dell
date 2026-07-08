@@ -2,6 +2,7 @@
 import type { GalleryBlock } from '../../types/content';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
+import SmartImage from '../ui/SmartImage.astro';
 
 type Props = Omit<GalleryBlock, 'type'>;
 
@@ -30,13 +31,12 @@ const {
         images.map((image) => (
           <li class="gallery__item">
             <figure>
-              <img
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
+              <SmartImage
+                image={image}
                 loading="lazy"
                 decoding="async"
+                sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
+                widths={[400, 800]}
               />
               {image.caption && <figcaption>{image.caption}</figcaption>}
             </figure>

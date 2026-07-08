@@ -2,6 +2,7 @@
 import type { ProjectsBlock } from '../../types/content';
 import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
+import SmartImage from '../ui/SmartImage.astro';
 
 type Props = Omit<ProjectsBlock, 'type'>;
 
@@ -27,13 +28,15 @@ const { heading, intro, projects } = Astro.props;
                   aria-hidden={i === 0 ? 'false' : 'true'}
                 >
                   {project.image && (
-                    <img
-                      src={project.image.src}
-                      alt={project.image.alt || project.title}
-                      width={project.image.width}
-                      height={project.image.height}
+                    <SmartImage
+                      image={{
+                        ...project.image,
+                        alt: project.image.alt || project.title,
+                      }}
                       loading={i === 0 ? 'eager' : 'lazy'}
                       decoding="async"
+                      sizes="(max-width: 900px) 100vw, 50vw"
+                      widths={[500, 1000]}
                     />
                   )}
                 </figure>

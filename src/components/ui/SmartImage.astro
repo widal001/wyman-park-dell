@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageRef } from '../../types/content';
+import { resolveImage, isRemoteImage } from '../../lib/images';
+
+// Renders an optimized <Image> for local assets (stored as /media/... strings,
+// resolved to build-time ImageMetadata) and falls back to a plain <img> for
+// remote URLs (e.g. the YouTube poster fallback), which Astro can't optimize
+// without remote-pattern config. Width/height come from the metadata for local
+// images (CLS-safe); component CSS still controls the displayed size.
+//
+// `...rest` is spread onto the underlying <img> so the parent component's
+// scoped-style attribute (data-astro-cid-*) is forwarded — otherwise the
+// parent's scoped `img` rules (aspect-ratio, max-width, etc.) wouldn't match
+// the image rendered here.
+interface Props {
+  image: ImageRef;
+  class?: string;
+  sizes?: string;
+  widths?: number[];
+  [key: string]: unknown;
+}
+
+const { image, class: className, sizes, widths, ...rest } = Astro.props;
+---
+
+{
+  isRemoteImage(image.src) ? (
+    <img src={image.src} alt={image.alt} class={className} {...rest} />
+  ) : (
+    <Image
+      src={resolveImage(image.src)}
+      alt={image.alt}
+      class={className}
+      sizes={sizes}
+      widths={widths}
+      {...rest}
+    />
+  )
+}

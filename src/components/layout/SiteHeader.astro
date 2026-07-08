@@ -3,6 +3,7 @@ import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import MainNav from './MainNav.astro';
 import MobileMenu from './MobileMenu.astro';
+import SmartImage from '../ui/SmartImage.astro';
 import { site } from '../../content/site';
 ---
 
@@ -10,14 +11,7 @@ import { site } from '../../content/site';
   <Container width="wide">
     <div class="site-header__inner">
       <a href="/" class="site-header__brand" aria-label={`${site.name} home`}>
-        <img
-          src={site.logo.src}
-          alt={site.logo.alt}
-          width={site.logo.width}
-          height={site.logo.height}
-          loading="eager"
-          decoding="sync"
-        />
+        <SmartImage image={site.logo} loading="eager" decoding="sync" />
       </a>
 
       <div class="site-header__desktop">

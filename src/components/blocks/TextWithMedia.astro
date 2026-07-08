@@ -4,6 +4,7 @@ import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import GhostLink from '../ui/GhostLink.astro';
 import Button from '../ui/Button.astro';
+import SmartImage from '../ui/SmartImage.astro';
 
 type Props = Omit<TextWithMediaBlock, 'type'>;
 
@@ -21,13 +22,12 @@ const {
   <Container width="wide">
     <div class:list={['twm', `twm--media-${mediaPosition}`]}>
       <figure class="twm__media">
-        <img
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
+        <SmartImage
+          image={image}
           loading="lazy"
           decoding="async"
+          sizes="(max-width: 900px) 100vw, 50vw"
+          widths={[500, 1000]}
         />
       </figure>
 
