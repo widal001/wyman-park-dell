@@ -27,19 +27,22 @@ image:
   alt: Goats grazing the slope at Wyman Park Dell
 schedule:
   - date: 2026-09-18
-    time: 4pm - 5pm
+    time: 1pm-2pm
     title: Kids Storytime with the herd
-    description: Day one kicks off with a family storytime for kids on the BMA
-      slope, alongside the goats as they get to work.
+    description: "Day one kicks off with a family storytime for kids on the BMA
+      slope, alongside the goats as they get to work. "
   - date: 2026-09-18
-    title: Bluegrass on the lawn
-    description: Cap off the first day with live bluegrass on the lawn. Bring the
-      family and enjoy music alongside our four-legged landscapers.
+    time: 5pm-7pm
+    title: Bluegrass on the Dell
+    description: Cap off the first day with a live bluegrass jam in the Dell. Bring
+      the family and enjoy music alongside our four-legged landscapers.
   - date: 2026-09-19
-    title: Watch the herd at work
-    description: Stop by throughout the day to watch the Eco-Goats clear the slopes.
-      A great chance to say hello and learn how goats help care for the park.
+    time: 1pm-5pm
+    title: Art in the Park in partnership with the Baltimore Museum of Art
+    description: "Stop by to watch the Eco-Goats clear the slopes. Kid-friendly art
+      activities provided "
   - date: 2026-09-20
+    time: 11am-12pm
     title: Yoga in the Park
     description: The goats' visit wraps up with an all-levels yoga session. Roll out
       a mat on the lawn and stretch in the company of the herd.
