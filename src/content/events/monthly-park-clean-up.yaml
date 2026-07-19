@@ -1,13 +1,14 @@
 title: Monthly Park Clean-Up
 slug: monthly-park-clean-up
-date: "2026-07-12"
-time: "10 AM – 12 PM"
-location: "Wyman Park Dell"
-description: "Join the Friends of Wyman Park Dell on the second Sunday of every month to help care for the park."
+date: 2026-07-12
+time: 10 AM – 12 PM
+location: Wyman Park Dell
+description: Join the Friends of Wyman Park Dell on the second Sunday of every
+  month to help care for the park.
 image:
-  src: "/media/pictures/Volunteer.jpg"
-  alt: "Volunteers caring for Wyman Park Dell"
+  src: /media/clean up.jpg
+  alt: Volunteers caring for Wyman Park Dell
 recurrence:
-  label: "Second Sunday of every month"
+  label: Second Sunday of every month
   weekday: 0
   week: 2
