@@ -23,6 +23,10 @@ export async function getStaticPaths() {
 const { event } = Astro.props as { event: CollectionEntry<'events'> };
 const data = event.data;
 
+// The CTA is optional; an untouched CMS object can serialize as empty strings,
+// so treat a CTA with no href as absent rather than rendering an empty button.
+const cta = data.cta?.href ? data.cta : undefined;
+
 marked.setOptions({ async: false });
 const detailsHtml = data.details ? (marked.parse(data.details) as string) : '';
 
@@ -130,9 +134,9 @@ const metaDescription = data.description;
           <p class="event-lead">{data.description}</p>
           {detailsHtml && <div class="event-body" set:html={detailsHtml} />}
           {
-            data.cta && (
+            cta && (
               <div class="event-cta">
-                <Button {...data.cta} size="lg" />
+                <Button {...cta} size="lg" />
               </div>
             )
           }
@@ -247,9 +251,9 @@ const metaDescription = data.description;
             </ul>
 
             {
-              data.cta && (
+              cta && (
                 <div class="facts__cta">
-                  <Button {...data.cta} class="facts__cta-btn" />
+                  <Button {...cta} class="facts__cta-btn" />
                 </div>
               )
             }

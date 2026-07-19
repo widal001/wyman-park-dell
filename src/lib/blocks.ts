@@ -36,9 +36,15 @@ export function renderBlocks(
       case 'events': {
         // Events come from their own collection; `limit` caps how many show
         // (soonest first). Omit limit to show all (the /events page).
-        const { limit, ...rest } = b;
+        const { limit, viewAllCta, ...rest } = b;
         const all = ctx.events ?? [];
-        return { ...rest, events: limit ? all.slice(0, limit) : all };
+        return {
+          ...rest,
+          // The "View all" CTA is optional; an untouched CMS object can
+          // serialize as empty strings, so treat a CTA with no href as absent.
+          viewAllCta: viewAllCta?.href ? viewAllCta : undefined,
+          events: limit ? all.slice(0, limit) : all,
+        };
       }
       default:
         return b;
