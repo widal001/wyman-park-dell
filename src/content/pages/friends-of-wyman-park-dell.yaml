@@ -45,8 +45,8 @@ blocks:
         external: false
   - type: board
     heading: Friends of Wyman Park Dell Board of Directors
-    intro: A volunteer board of neighbors and community partners stewarding the
-      mission of the FWPD.
+    intro: A volunteer board of neighbors and community partners stewarding the FWPD
+      mission.
     members:
       - name: Kelly Danz
         role: President
@@ -71,7 +71,7 @@ blocks:
       - name: Circe Trevant
         role: Director
       - name: Alicia Crosby
-        role: Ex Officio Director,  Baltimore Museum of Art
+        role: Ex Officio Director, Baltimore Museum of Art
       - name: Jason Mathias
         role: Emeritus Director
       - name: Courtney Belew
