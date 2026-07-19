@@ -134,3 +134,9 @@ blocks:
   - type: testimonial
     quote: Great little slice of nature in the middle of Charles Village.
     attribution: Park Visitor
+  - type: textWithMedia
+    heading: Pollinator Garden
+    body: test
+    image:
+      src: /media/wyman park dell pollinator garden.jpg
+    mediaPosition: left
