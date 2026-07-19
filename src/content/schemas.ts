@@ -25,6 +25,18 @@ const cta = z.object({
   external: z.boolean().optional(),
 });
 
+// An optional *singular* CTA field. Pages CMS serializes such an object
+// whenever any sub-field has a value, and its `external` boolean always writes
+// `false` — so an untouched CTA comes back as `{ external: false }`, with no
+// href, which would fail the `cta` schema. A CTA is only meaningful with an
+// href, so coerce a hrefless one to absent rather than letting it break the
+// build. Use this for single-object CTA fields; array CTAs don't need it
+// (an empty CMS list serializes as nothing).
+const optionalCta = z.preprocess(
+  (v) => (v && typeof v === 'object' && !('href' in v && v.href) ? undefined : v),
+  cta.optional(),
+);
+
 const bg = z.enum(['base', 'raised', 'inverse', 'accent']);
 const pad = z.enum(['default', 'small', 'large', 'xl', 'none']);
 
@@ -57,7 +69,7 @@ const events = z.object({
   type: z.literal('events'),
   heading: z.string(),
   intro: z.string().optional(),
-  viewAllCta: cta.optional(),
+  viewAllCta: optionalCta,
   /** Max events to show (soonest first). Omit to show all — e.g. the /events page. */
   limit: z.number().optional(),
   /** Layout: 'grid' (default) or 'carousel' (horizontal, swipeable). */
@@ -344,6 +356,6 @@ export const eventSchema = z.object({
   schedule: z.array(scheduleItem).optional(),
   /** Optional sponsor logos, rendered via the shared PartnerLogos layout. */
   sponsors: z.array(partner).optional(),
-  cta: cta.optional(),
+  cta: optionalCta,
   recurrence: recurrence.optional(),
 });
