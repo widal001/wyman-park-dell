@@ -114,12 +114,18 @@ content:
                   label: Max events to show (soonest first; blank = all),
                   type: number,
                 }
+              - {
+                  name: display,
+                  label: Layout,
+                  type: select,
+                  options: { values: [grid, carousel] },
+                }
               - name: viewAllCta
                 label: '"View all" CTA'
                 type: object
                 fields:
-                  - { name: label, label: Label, type: string, required: true }
-                  - { name: href, label: URL, type: string, required: true }
+                  - { name: label, label: Label, type: string }
+                  - { name: href, label: URL, type: string }
                   - {
                       name: variant,
                       label: Style,
@@ -275,7 +281,7 @@ content:
             fields:
               - { name: eyebrow, label: Eyebrow, type: string }
               - { name: heading, label: Heading, type: string, required: true }
-              - { name: body, label: Body, type: rich-text }
+              - { name: body, label: Body, type: rich-text, required: true }
               - name: image
                 label: Image
                 type: object
@@ -369,9 +375,67 @@ content:
             label: Two-column text
             fields:
               - { name: leftHeading, label: Left heading, type: string }
-              - { name: leftBody, label: Left body, type: rich-text }
+              - {
+                  name: leftBody,
+                  label: Left body,
+                  type: rich-text,
+                  required: true,
+                }
+              - name: leftCtas
+                label: Left CTAs
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: href, label: URL, type: string, required: true }
+                  - {
+                      name: variant,
+                      label: Style,
+                      type: select,
+                      options:
+                        {
+                          values:
+                            [
+                              primary,
+                              outline,
+                              outline-inverse,
+                              solid-inverse,
+                              ghost,
+                            ],
+                        },
+                    }
+                  - { name: external, label: Opens in new tab, type: boolean }
               - { name: rightHeading, label: Right heading, type: string }
-              - { name: rightBody, label: Right body, type: rich-text }
+              - {
+                  name: rightBody,
+                  label: Right body,
+                  type: rich-text,
+                  required: true,
+                }
+              - name: rightCtas
+                label: Right CTAs
+                type: object
+                list: true
+                fields:
+                  - { name: label, label: Label, type: string, required: true }
+                  - { name: href, label: URL, type: string, required: true }
+                  - {
+                      name: variant,
+                      label: Style,
+                      type: select,
+                      options:
+                        {
+                          values:
+                            [
+                              primary,
+                              outline,
+                              outline-inverse,
+                              solid-inverse,
+                              ghost,
+                            ],
+                        },
+                    }
+                  - { name: external, label: Opens in new tab, type: boolean }
               - {
                   name: background,
                   label: Background,
@@ -455,7 +519,7 @@ content:
           - name: richText
             label: Rich text
             fields:
-              - { name: body, label: Body, type: rich-text }
+              - { name: body, label: Body, type: rich-text, required: true }
               - {
                   name: align,
                   label: Align,
@@ -666,12 +730,19 @@ content:
     type: collection
     path: src/content/events
     format: yaml
-    filename: '{fields.title}.yaml'
+    filename: '{fields.slug}.yaml'
     view:
       fields: [title, date]
       primary: title
     fields:
       - { name: title, label: Title, type: string, required: true }
+      - {
+          name: slug,
+          label: URL slug,
+          type: string,
+          required: true,
+          description: 'Used in the event page URL, e.g. goats-on-the-slope',
+        }
       - {
           name: date,
           label: Date,
@@ -679,19 +750,91 @@ content:
           required: true,
           description: 'ISO date, e.g. 2026-05-09',
         }
+      - {
+          name: endDate,
+          label: End date,
+          type: string,
+          description: 'ISO date — only for multi-day events',
+        }
       - { name: time, label: Time, type: string }
       - { name: location, label: Location, type: string }
-      - { name: description, label: Description, type: text, required: true }
+      - {
+          name: description,
+          label: Short description,
+          type: text,
+          required: true,
+          description: 'Shown on event cards and listings',
+        }
+      - {
+          name: details,
+          label: Full details,
+          type: rich-text,
+          description: 'Long-form description shown on the event detail page',
+        }
       - name: image
         label: Image
         type: object
         fields:
           - { name: src, label: Image, type: image, required: true }
           - { name: alt, label: Alt text, type: string }
+      - name: schedule
+        label: Schedule of activities
+        type: object
+        list: true
+        description: 'Per-day/per-activity agenda, grouped by date on the event page'
+        fields:
+          - {
+              name: date,
+              label: Date,
+              type: string,
+              required: true,
+              description: 'ISO date, e.g. 2026-09-18',
+            }
+          - { name: time, label: Time, type: string }
+          - { name: title, label: Title, type: string, required: true }
+          - { name: description, label: Description, type: text }
+      - name: sponsors
+        label: Sponsors
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Name, type: string, required: true }
+          - { name: url, label: URL, type: string, required: true }
+          - name: logo
+            label: Logo
+            type: object
+            fields:
+              - { name: src, label: Image, type: image, required: true }
+              - { name: alt, label: Alt text, type: string }
+              - { name: width, label: Width, type: number }
+              - { name: height, label: Height, type: number }
       - name: cta
         label: CTA
         type: object
         fields:
-          - { name: label, label: Label, type: string, required: true }
-          - { name: href, label: URL, type: string, required: true }
+          - { name: label, label: Label, type: string }
+          - { name: href, label: URL, type: string }
+          - {
+              name: variant,
+              label: Style,
+              type: select,
+              options:
+                {
+                  values:
+                    [primary, outline, outline-inverse, solid-inverse, ghost],
+                },
+            }
           - { name: external, label: Opens in new tab, type: boolean }
+      - name: recurrence
+        label: Recurrence
+        type: object
+        description: 'For recurring events — the site recomputes the next occurrence at build'
+        fields:
+          - {
+              name: label,
+              label: Cadence label,
+              type: string,
+              description: 'e.g. Second Sunday of every month',
+            }
+          - { name: weekday, label: Weekday (0 = Sun … 6 = Sat), type: number }
+          - { name: week, label: Week of month (1–5), type: number }

@@ -5,7 +5,7 @@
   "private": true,
   "packageManager": "pnpm@10.32.1",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.18.0"
   },
   "scripts": {
     "dev": "astro dev",
@@ -16,9 +16,10 @@
     "check:types": "astro check && tsc --noEmit",
     "check:lint": "eslint .",
     "check:format": "prettier --check .",
+    "check:cms": "node scripts/check-cms-config.mjs",
     "lint": "eslint . --fix",
     "format": "prettier --write .",
-    "checks": "pnpm run check:types && pnpm run check:lint && pnpm run check:format"
+    "checks": "pnpm run check:types && pnpm run check:lint && pnpm run check:format && pnpm run check:cms"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.1.1",
@@ -38,6 +39,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.62.1",
-    "wrangler": "^4.107.0"
+    "wrangler": "^4.107.0",
+    "yaml": "^2.9.0"
   }
 }

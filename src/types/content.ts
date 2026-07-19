@@ -294,6 +294,8 @@ export type VideoEmbedBlock = {
 };
 
 export type EventItem = {
+  /** URL slug — the card links to `/events/{slug}`. */
+  slug: string;
   title: string;
   /** ISO date — e.g. "2026-05-17". Component formats for display. */
   date: string;

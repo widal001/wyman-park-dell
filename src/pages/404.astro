@@ -1,0 +1,82 @@
+---
+// Static 404. Astro emits dist/404.html, which the Cloudflare adapter serves
+// for any unmatched path.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Container from '../components/ui/Container.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<BaseLayout
+  title="Page not found"
+  description="Sorry, we couldn't find the page you were looking for."
+>
+  <Section padding="large" background="base">
+    <Container width="narrow">
+      <div class="notfound">
+        <p class="notfound__code">404</p>
+        <h1 class="notfound__heading">This trail leads nowhere</h1>
+        <p class="notfound__body">
+          The page you're looking for may have moved, or the link might be out
+          of date. Let's get you back to the Dell.
+        </p>
+        <div class="notfound__ctas">
+          <Button label="Back to home" href="/" size="lg" />
+          <Button
+            label="See our events"
+            href="/events"
+            variant="outline"
+            size="lg"
+          />
+        </div>
+      </div>
+    </Container>
+  </Section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    text-align: center;
+    max-width: 52ch;
+    margin-inline: auto;
+  }
+
+  .notfound__code {
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-black);
+    font-size: var(--font-size-6xl);
+    line-height: 1;
+    color: var(--color-brand-orange-light);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+
+  .notfound__heading {
+    margin-top: var(--space-4);
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-brand-green-dark);
+    line-height: var(--line-height-tight);
+  }
+
+  .notfound__body {
+    margin-top: var(--space-5);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-base);
+    color: var(--color-text-muted);
+  }
+
+  .notfound__ctas {
+    margin-top: var(--space-8);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 768px) {
+    .notfound__ctas {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

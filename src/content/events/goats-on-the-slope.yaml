@@ -1,0 +1,31 @@
+title: Goats on the Slope
+slug: goats-on-the-slope
+date: "2026-09-18"
+endDate: "2026-09-20"
+location: "BMA Slope, Wyman Park Dell"
+description: "The Eco-Goats return to graze the slopes! Join us for three days of family activities alongside the herd that keeps the Dell's invasive plants in check."
+details: |
+  Each fall, a herd of Eco-Goats spends a few days in Wyman Park Dell doing what
+  they do best — clearing the invasive plants along the steep BMA slope that are
+  too tough for volunteers to tackle by hand. It's chemical-free land management,
+  and it's a delight to watch.
+
+  We build a weekend of free, family-friendly programming around their visit.
+  Come by any time to see the herd at work, and check the schedule below for the
+  storytimes, music, and yoga happening alongside them.
+image:
+  src: "/media/pictures/Projects_Goats-on-the-Slope-Photo.jpg"
+  alt: "Goats grazing the slope at Wyman Park Dell"
+schedule:
+  - date: "2026-09-18"
+    title: "Kids Storytime with the herd"
+    description: "Day one kicks off with a family storytime for kids on the BMA slope, alongside the goats as they get to work."
+  - date: "2026-09-18"
+    title: "Bluegrass on the lawn"
+    description: "Cap off the first day with live bluegrass on the lawn. Bring the family and enjoy music alongside our four-legged landscapers."
+  - date: "2026-09-19"
+    title: "Watch the herd at work"
+    description: "Stop by throughout the day to watch the Eco-Goats clear the slopes. A great chance to say hello and learn how goats help care for the park."
+  - date: "2026-09-20"
+    title: "Yoga in the Park"
+    description: "The goats' visit wraps up with an all-levels yoga session. Roll out a mat on the lawn and stretch in the company of the herd."
