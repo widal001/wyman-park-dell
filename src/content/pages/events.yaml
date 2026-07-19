@@ -19,9 +19,8 @@ blocks:
       external: false
   - type: projects
     heading: Annual events
-    intro: A handful of beloved gatherings return to the Dell every year — celebrate
-      each season and the community alongside us. The FWPD organizes the events
-      below.
+    intro: "A handful of beloved gatherings organized by the FWPD return to the Dell
+      every year — celebrate each season and the community alongside us. "
     projects:
       - title: Annual Meeting
         body: Friends of Wyman Park Dell hosts an Annual Meeting at a different local
