@@ -24,6 +24,14 @@ const cta = z.object({
 const bg = z.enum(['base', 'raised', 'inverse', 'accent']);
 const pad = z.enum(['default', 'small', 'large', 'xl', 'none']);
 
+// A named logo + link. Shared by the `partners` block and event `sponsors`,
+// which render through the same PartnerLogos layout.
+const partner = z.object({
+  name: z.string(),
+  logo: image,
+  url: z.string(),
+});
+
 /* ---------- Block schemas ---------- */
 /* NOTE: rich-text fields are stored as MARKDOWN here (body / leftBody / rightBody)
    and converted to the `html` / `leftHtml` / `rightHtml` props the block
@@ -201,13 +209,7 @@ const partners = z.object({
   type: z.literal('partners'),
   heading: z.string(),
   intro: z.string().optional(),
-  partners: z.array(
-    z.object({
-      name: z.string(),
-      logo: image,
-      url: z.string(),
-    }),
-  ),
+  partners: z.array(partner),
 });
 
 const videoEmbed = z.object({
@@ -315,16 +317,34 @@ const recurrence = z.object({
   week: z.number().int().min(1).max(5),
 });
 
+// One line-item on a multi-day/multi-activity event's schedule (e.g. each of
+// the Goats on the Slope daily activities). Grouped by `date` on the detail page.
+const scheduleItem = z.object({
+  date: ymd,
+  time: z.string().optional(),
+  title: z.string(),
+  description: z.string().optional(),
+});
+
 const events_collection = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/events' }),
   schema: z.object({
     title: z.string(),
+    /** URL slug for the detail page. Falls back to the file id when omitted. */
+    slug: z.string().optional(),
     date: ymd,
     endDate: ymd.optional(),
     time: z.string().optional(),
     location: z.string().optional(),
+    /** Short blurb for cards/listings. */
     description: z.string(),
+    /** Long-form markdown body shown on the event detail page. */
+    details: z.string().optional(),
     image: image.optional(),
+    /** Per-day / per-activity agenda, rendered as a grouped schedule. */
+    schedule: z.array(scheduleItem).optional(),
+    /** Optional sponsor logos, rendered via the shared PartnerLogos layout. */
+    sponsors: z.array(partner).optional(),
     cta: cta.optional(),
     recurrence: recurrence.optional(),
   }),

@@ -666,12 +666,19 @@ content:
     type: collection
     path: src/content/events
     format: yaml
-    filename: '{fields.title}.yaml'
+    filename: '{fields.slug}.yaml'
     view:
       fields: [title, date]
       primary: title
     fields:
       - { name: title, label: Title, type: string, required: true }
+      - {
+          name: slug,
+          label: URL slug,
+          type: string,
+          required: true,
+          description: 'Used in the event page URL, e.g. goats-on-the-slope',
+        }
       - {
           name: date,
           label: Date,
@@ -679,15 +686,64 @@ content:
           required: true,
           description: 'ISO date, e.g. 2026-05-09',
         }
+      - {
+          name: endDate,
+          label: End date,
+          type: string,
+          description: 'ISO date — only for multi-day events',
+        }
       - { name: time, label: Time, type: string }
       - { name: location, label: Location, type: string }
-      - { name: description, label: Description, type: text, required: true }
+      - {
+          name: description,
+          label: Short description,
+          type: text,
+          required: true,
+          description: 'Shown on event cards and listings',
+        }
+      - {
+          name: details,
+          label: Full details,
+          type: rich-text,
+          description: 'Long-form description shown on the event detail page',
+        }
       - name: image
         label: Image
         type: object
         fields:
           - { name: src, label: Image, type: image, required: true }
           - { name: alt, label: Alt text, type: string }
+      - name: schedule
+        label: Schedule of activities
+        type: object
+        list: true
+        description: 'Per-day/per-activity agenda, grouped by date on the event page'
+        fields:
+          - {
+              name: date,
+              label: Date,
+              type: string,
+              required: true,
+              description: 'ISO date, e.g. 2026-09-18',
+            }
+          - { name: time, label: Time, type: string }
+          - { name: title, label: Title, type: string, required: true }
+          - { name: description, label: Description, type: text }
+      - name: sponsors
+        label: Sponsors
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Name, type: string, required: true }
+          - { name: url, label: URL, type: string, required: true }
+          - name: logo
+            label: Logo
+            type: object
+            fields:
+              - { name: src, label: Image, type: image, required: true }
+              - { name: alt, label: Alt text, type: string }
+              - { name: width, label: Width, type: number }
+              - { name: height, label: Height, type: number }
       - name: cta
         label: CTA
         type: object
