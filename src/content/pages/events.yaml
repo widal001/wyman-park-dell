@@ -27,7 +27,7 @@ blocks:
         body: Friends of Wyman Park Dell hosts an Annual Meeting at a different local
           venue each March to celebrate the great things happening in the park.
         image:
-          src: /media/dell.jpg
+          src: /media/view of the dell.jpg
           alt: View of the Dell
         caption: View of the Dell
       - title: Summer Solstice in the Dell
@@ -52,7 +52,7 @@ blocks:
           by the Friends of Wyman Park Dell with the support of local businesses
           and sponsors.
         image:
-          src: /media/pictures/Events_Spooky-Tuesdays-in-the-Dell.jpg
+          src: /media/spooky movies.jpg
           alt: Outdoor movie night at Wyman Park Dell
         caption: Outdoor movie nights every Tuesday in October.
       - title: Winter Solstice in the Dell
@@ -74,7 +74,7 @@ blocks:
           Shakespeare Beyond brings arts programming into neighborhoods across
           Baltimore, with a production of Shakespeare in the Dell each July.
         image:
-          src: /media/pictures/Events_Holi-Colors-Celebration.jpg
+          src: /media/holi.jpg
           alt: Holi Color Celebration at Wyman Park Dell
         caption: Held each spring in partnership with Sweet 27.
   - type: twoColumnText
