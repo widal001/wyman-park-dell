@@ -23,19 +23,6 @@ blocks:
       each season and the community alongside us. The FWPD organizes the events
       below.
     projects:
-      - title: Other events in partnership with our community
-        body: >-
-          The Holi Color Celebration invites the community to a "color fight" in
-          the lower Dell to mark the arrival of spring. This event is organized
-          by local restaurant Sweet 27 in partnership with the Friends of Wyman
-          Park Dell.
-
-          Shakespeare Beyond brings arts programming into neighborhoods across
-          Baltimore, with a production of Shakespeare in the Dell each July.
-        image:
-          src: /media/pictures/Events_Holi-Colors-Celebration.jpg
-          alt: Holi Color Celebration at Wyman Park Dell
-        caption: Held each spring in partnership with Sweet 27.
       - title: Annual Meeting
         body: Friends of Wyman Park Dell hosts an Annual Meeting at a different local
           venue each March to celebrate the great things happening in the park.
@@ -54,7 +41,7 @@ blocks:
         caption: Summer Solstice concert in the Dell
       - title: Goats on the Slope
         body: In the fall, FWPD brings goats to graze the BMA Slope. Goats on the Slope
-          has become a beloved annual event.
+          has become a much-loved annual event.
         image:
           src: /media/goats.jpg
           alt: Goats on the Slope
@@ -76,6 +63,19 @@ blocks:
           src: /media/pictures/Events_Winter-Solstice.jpg
           alt: Winter Solstice gathering at Wyman Park Dell
         caption: December 21 each year — courtesy of Gertrude’s.
+      - title: Other events in partnership with our community
+        body: >-
+          The Holi Color Celebration invites the community to a "color fight" in
+          the lower Dell to mark the arrival of spring. This event is organized
+          by local restaurant Sweet 27 in partnership with the Friends of Wyman
+          Park Dell.
+
+          Shakespeare Beyond brings arts programming into neighborhoods across
+          Baltimore, with a production of Shakespeare in the Dell each July.
+        image:
+          src: /media/pictures/Events_Holi-Colors-Celebration.jpg
+          alt: Holi Color Celebration at Wyman Park Dell
+        caption: Held each spring in partnership with Sweet 27.
   - type: twoColumnText
     leftHeading: How to host an event
     leftBody: Special events in Wyman Park Dell are permitted by Baltimore City. We
