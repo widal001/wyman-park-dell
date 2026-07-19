@@ -159,7 +159,7 @@ blocks:
   - type: gallery
     layout: mosaic
     images:
-      - src: /media/pictures/WPD_Park_Stairs.jpg
+      - src: /media/MD_Baltimore_WymanParkDell_CharlesBirnbaum_2014_04.jpg
         alt: Stone stairs leading into the Dell
       - src: /media/pictures/WPD_Fall.jpg
         alt: Wyman Park Dell in fall
