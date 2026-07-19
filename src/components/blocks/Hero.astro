@@ -62,10 +62,12 @@ const {
     align-items: start;
   }
 
+  /* Standard (inner-page) hero mirrors the event detail hero: the heading sits
+     bottom-left over a green, bottom-weighted scrim. */
   .hero--standard {
     min-height: 380px;
-    align-items: center;
-    padding-block: var(--space-10);
+    align-items: end;
+    padding-block: var(--space-12);
   }
 
   .hero--fullscreen {
@@ -113,12 +115,14 @@ const {
       linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.45));
   }
 
-  /* Standard hero: uniform near-black wash for legibility on inner pages. */
+  /* Standard hero: near-black, bottom-weighted scrim (~0.85 near the heading)
+     so the bottom-aligned title clears WCAG AA contrast on any photo. */
   .hero--standard .hero__overlay {
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.65),
-      rgba(0, 0, 0, 0.7)
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0.6) 40%,
+      rgba(0, 0, 0, 0.85) 100%
     );
   }
 
@@ -149,8 +153,6 @@ const {
 
   .hero--standard .hero__heading {
     font-size: var(--font-size-4xl);
-    font-weight: var(--font-weight-regular);
-    letter-spacing: -0.005em;
     margin-bottom: 0;
   }
 
