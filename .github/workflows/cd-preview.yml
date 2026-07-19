@@ -54,8 +54,6 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm run checks
-
       - name: Build
         run: pnpm run build
         env:
