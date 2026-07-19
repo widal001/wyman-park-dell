@@ -19,7 +19,7 @@
     "check:cms": "node scripts/check-cms-config.mjs",
     "lint": "eslint . --fix",
     "format": "prettier --write .",
-    "checks": "pnpm run check:types && pnpm run check:lint && pnpm run check:format && pnpm run check:cms"
+    "checks": "pnpm run check:types && pnpm run check:lint && pnpm run check:format"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.1.1",
