@@ -44,18 +44,6 @@ blocks:
     paypalExpress: true
     height: 900
     background: raised
-  - type: textWithMedia
-    heading: Become a sponsor
-    body: Join us in maintaining and activating the park! By supporting one or
-      multiple Friends of Wyman Park Dell events and initiatives, you help bring
-      our park to life. The Dell is almost entirely supported by sponsors like
-      you. As a nonprofit, the FWPD requires your support to keep this public
-      space accessible — and extraordinary — for everyone. Sponsorship
-      opportunities for the 2026 calendar year can be found
-      [here](https://drive.google.com/file/d/1XeO1u53sNqC7IyRbzS6nCkSd3loalFlm/view?usp=sharing).
-    image:
-      src: /media/wyman park dell pollinator garden 2.jpg
-    mediaPosition: left
   - type: volunteerForm
     heading: Become a volunteer
     body: >-
@@ -69,6 +57,19 @@ blocks:
       alt: Volunteers smiling after a Wyman Park Dell clean-up
     mediaPosition: right
     submitLabel: Sign up
+  - type: textWithMedia
+    heading: Become a sponsor
+    body: The Dell is almost entirely supported by sponsors like you. Join us in
+      maintaining and activating the park! By sponsoring one or multiple Friends
+      of Wyman Park Dell events and initiatives, you help bring our park to
+      life.  Sponsorship opportunities for the 2026 calendar year can be found
+      [here](https://drive.google.com/file/d/1XeO1u53sNqC7IyRbzS6nCkSd3loalFlm/view?usp=sharing).
+      Custom sponsorship packages are available. Email us at
+      [wymanparkdell@gmail.com](mailto:wymanparkdell@gmail.com) to discuss
+      sponsorship opportunities!
+    image:
+      src: /media/FWPD playground.jpeg
+    mediaPosition: left
   - type: testimonial
     quote: We’re always looking to collaborate with local businesses and
       organizations. Email us if you’d like to collaborate on making something
