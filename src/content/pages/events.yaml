@@ -15,8 +15,6 @@ blocks:
       From park clean-ups to neighborhood festivals, the Dell is the perfect
       place to celebrate community.
     display: carousel
-    viewAllCta:
-      external: false
   - type: projects
     heading: Annual events
     intro: A handful of beloved gatherings return to the Dell every year — celebrate
