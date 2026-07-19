@@ -56,18 +56,26 @@ blocks:
         role: Co-Vice President of Maintenance
       - name: Julia McAleer
         role: Vice President Membership and Development
-      - name: Jessica Douglas
-        role: Secretary
       - name: Savannah Fisher
         role: Treasurer
-      - name: Jason Mathias
-        role: Emeritus Director
-      - name: Randy Lewis
-        role: Director
+      - name: Jessica Douglas
+        role: Secretary
       - name: Chris Merriam
+        role: Director
+      - name: Giacomo Bologna
+        role: Director
+      - name: Billy Daly
+        role: Director
+      - name: Abbie Gruskin
         role: Director
       - name: Circe Trevant
         role: Director
+      - name: Alicia Crosby
+        role: Ex Officio Director,  Baltimore Museum of Art
+      - name: Jason Mathias
+        role: Emeritus Director
+      - name: Courtney Belew
+        role: Emeritus Director
       - name: Martha Waldron
         role: Emeritus Director
       - name: Alice Young
@@ -78,10 +86,8 @@ blocks:
         role: Emeritus Director
       - name: Sandy Sparks
         role: Emeritus Director
-      - name: Jessica Bell Brown
-        role: Ex-Officio, Baltimore Museum of Art
       - name: Vacant
-        role: Ex-Officio, Johns Hopkins University
+        role: Ex Officio Director, Johns Hopkins University
   - type: sectionHeading
     heading: Our mission
     subheading: The mission of the Friends of Wyman Park Dell is to engage our
