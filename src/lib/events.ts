@@ -86,7 +86,6 @@ export function toEventItem(
     location: entry.data.location,
     body: entry.data.description,
     image: entry.data.image,
-    cta: entry.data.cta,
     recurrence: entry.data.recurrence?.label,
   };
 }

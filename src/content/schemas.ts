@@ -203,7 +203,6 @@ const board = z.object({
     z.object({
       name: z.string(),
       role: z.string(),
-      photo: image.optional(),
       bio: z.string().optional(),
     }),
   ),
@@ -344,6 +343,5 @@ export const eventSchema = z.object({
   schedule: z.array(scheduleItem).optional(),
   /** Optional sponsor logos, rendered via the shared PartnerLogos layout. */
   sponsors: z.array(partner).optional(),
-  cta: cta.optional(),
   recurrence: recurrence.optional(),
 });

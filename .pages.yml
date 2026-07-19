@@ -583,12 +583,6 @@ content:
                 fields:
                   - { name: name, label: Name, type: string, required: true }
                   - { name: role, label: Role, type: string, required: true }
-                  - name: photo
-                    label: Photo
-                    type: object
-                    fields:
-                      - { name: src, label: Image, type: image, required: true }
-                      - { name: alt, label: Alt text, type: string }
                   - { name: bio, label: Bio, type: text }
           # ---- partners ----
           - name: partners
@@ -808,23 +802,6 @@ content:
               - { name: alt, label: Alt text, type: string }
               - { name: width, label: Width, type: number }
               - { name: height, label: Height, type: number }
-      - name: cta
-        label: CTA
-        type: object
-        fields:
-          - { name: label, label: Label, type: string }
-          - { name: href, label: URL, type: string }
-          - {
-              name: variant,
-              label: Style,
-              type: select,
-              options:
-                {
-                  values:
-                    [primary, outline, outline-inverse, solid-inverse, ghost],
-                },
-            }
-          - { name: external, label: Opens in new tab, type: boolean }
       - name: recurrence
         label: Recurrence
         type: object

@@ -7,7 +7,6 @@ import { marked } from 'marked';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
 import Container from '../../components/ui/Container.astro';
-import Button from '../../components/ui/Button.astro';
 import SmartImage from '../../components/ui/SmartImage.astro';
 import PartnerLogos from '../../components/blocks/PartnerLogos.astro';
 import { eventSlug, resolveEventDate, todayYmd } from '../../lib/events';
@@ -22,10 +21,6 @@ export async function getStaticPaths() {
 
 const { event } = Astro.props as { event: CollectionEntry<'events'> };
 const data = event.data;
-
-// The CTA is optional; an untouched CMS object can serialize as empty strings,
-// so treat a CTA with no href as absent rather than rendering an empty button.
-const cta = data.cta?.href ? data.cta : undefined;
 
 marked.setOptions({ async: false });
 const detailsHtml = data.details ? (marked.parse(data.details) as string) : '';
@@ -133,13 +128,6 @@ const metaDescription = data.description;
         <div class="event-main">
           <p class="event-lead">{data.description}</p>
           {detailsHtml && <div class="event-body" set:html={detailsHtml} />}
-          {
-            cta && (
-              <div class="event-cta">
-                <Button {...cta} size="lg" />
-              </div>
-            )
-          }
         </div>
 
         <aside class="event-aside" aria-label="Event details">
@@ -249,14 +237,6 @@ const metaDescription = data.description;
                 )
               }
             </ul>
-
-            {
-              cta && (
-                <div class="facts__cta">
-                  <Button {...cta} class="facts__cta-btn" />
-                </div>
-              )
-            }
           </div>
         </aside>
       </div>
@@ -468,10 +448,6 @@ const metaDescription = data.description;
     list-style: disc;
   }
 
-  .event-cta {
-    margin-top: var(--space-8);
-  }
-
   /* ---------- Details / facts card ---------- */
   .facts {
     border: 2px solid var(--color-brand-green);
@@ -545,16 +521,6 @@ const metaDescription = data.description;
   .facts__sub {
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
-  }
-
-  .facts__cta {
-    margin-top: var(--space-6);
-    padding-top: var(--space-6);
-    border-top: 2px solid var(--color-border-base);
-  }
-
-  .facts__cta :global(.facts__cta-btn) {
-    width: 100%;
   }
 
   /* ---------- Schedule ---------- */
