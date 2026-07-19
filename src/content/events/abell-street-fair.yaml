@@ -1,8 +1,12 @@
 title: Abell Street Fair
 slug: abell-street-fair
-date: "2026-09-27"
-location: "Abell neighborhood, Baltimore"
-description: "The neighboring Abell community's annual street fair returns with local vendors, food, and music. Date is tentative — check back for confirmation."
+date: 2026-09-27
+location: Abell neighborhood, Baltimore
+description: The neighboring Abell community's annual street fair returns with
+  local vendors, food, and music.
+details: Stop by our booth at the Abell Street Fair to learn more about the
+  Dell, find ways to get involved, and buy cool merch. We'd hope to see you
+  there!
 image:
-  src: "/media/pictures/WPD-Event-Charles-Village-Festival.jpg"
-  alt: "A neighborhood festival near Wyman Park Dell"
+  src: /media/pictures/WPD-Event-Charles-Village-Festival.jpg
+  alt: A neighborhood festival near Wyman Park Dell
