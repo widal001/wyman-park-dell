@@ -99,8 +99,9 @@ blocks:
         href: /contact
         external: false
   - type: twoColumnText
-    leftBody: The Wyman Park Dell Masterplan process was underwritten through a
-      generous grant from the [Goldseker
+    leftBody: >-
+      The Wyman Park Dell Masterplan process was underwritten through a generous
+      grant from the [Goldseker
       Foundation](https://www.goldsekerfoundation.org/) with additional
       contributions from the [Baltimore Museum of Art](https://artbma.org/),
       [Johns Hopkins University](https://www.jhu.edu/), the Friends of Wyman
@@ -110,13 +111,12 @@ blocks:
       [Baltimore City Department of Recreation and
       Parks](https://bcrp.baltimorecity.gov/), and the [Baltimore Community
       Foundation](https://www.bcf.org/).
-    rightBody: >-
+
+
       The Friends of Wyman Park Dell continue to implement the Master Plan with
       the support of volunteers and Baltimore's philanthropic community.
-
-
-      The Wyman Park Dell Masterplan Update process was underwritten by [The
-      Central Baltimore Partnership](https://www.centralbaltimore.org/) and
+    rightBody: The Wyman Park Dell Masterplan Update process was underwritten by
+      [The Central Baltimore Partnership](https://www.centralbaltimore.org/) and
       [Johns Hopkins University](https://jhfre.jhu.edu/). The effort is
       currently underway and updating the masterplan in the southwest areas of
       the park, with the goal of providing improved pedestrian safety, an
