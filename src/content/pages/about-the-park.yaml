@@ -145,7 +145,14 @@ blocks:
     mediaPosition: right
   - type: textWithMedia
     heading: Pollinator Garden
-    body: test
+    body: The Friends of Wyman Park Dell installed a pollinator garden along 29th
+      Street in 2025, and extended the garden in 2026. The garden is blooming
+      with native species including Black-eyed Susan, Cardinal Flower, and
+      Milkweed, and supports bees and Monarch Butterflies while providing
+      beautification to the park. The Pollinator Garden was made possible by
+      FWPD dedicated board members, volunteers, a grant from the [Chesapeake Bay
+      Trust](https://cbtrust.org/), and in partnership with [Baltimore City
+      Recreation and Parks](https://www.baltimorecity.gov/bcrp).
     image:
       src: /media/wyman park dell pollinator garden.jpg
     mediaPosition: left
