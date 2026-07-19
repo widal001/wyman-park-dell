@@ -44,9 +44,9 @@ blocks:
         variant: outline
         external: false
   - type: board
-    heading: FWPD board of directors
-    intro: A volunteer board of neighbors and community partners stewards the work
-      of the FWPD.
+    heading: Friends of Wyman Park Dell Board of Directors
+    intro: A volunteer board of neighbors and community partners stewarding the
+      mission of the FWPD.
     members:
       - name: Kelly Danz
         role: President
