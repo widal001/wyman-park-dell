@@ -39,10 +39,10 @@ blocks:
     heading: Master plan
     entries:
       - date: Early 2000s
-        title: Developing the master plan
-        body: The Wyman Park Dell Master Plan Steering Committee engaged local landscape
+        title: Developing the Masterplan
+        body: The Wyman Park Dell Masterplan Steering Committee engaged local landscape
           architecture firm Mahan Rykiel Associates to lead the local community
-          in developing a Master Plan for the Dell. The master plan process was
+          in developing a Masterplan for the Dell. The masterplan process was
           grounded in community-based planning with involvement from the
           surrounding communities and institutions.
       - date: August 2006
@@ -75,11 +75,22 @@ blocks:
           improve safety and visibility.
       - date: "2020"
         title: Slope clearing
-        body: The FWPD crowdfunds money to hire Eco-Goats to clear the “BMA Slope” of
-          invasive vegetation.
-      - date: "2024"
+        body: "The FWPD crowdfunds money to hire Eco-Goats to clear the “BMA Slope” of
+          invasive vegetation. "
+      - date: "2022"
+        title: Goats on the Slope
+        body: Goats on the Slope becomes a community-loved annual event! Our goat guests
+          graze the BMA Slope to manage vegetation and maintain sight-lines in
+          the park, and the event is a major fundraiser for the FWPD.
+      - date: 2025 - Ongoing
+        title: Masterplan Update
+        body: Following Baltimore City DOT's closing of the 29th Street parking sweep
+          entrance, the FWPD engaged Mahan Rykiel Associates to update the
+          Dell’s masterplan and study the southwest areas of the park.
+      - date: "2026"
         title: Pollinator Garden
-        body: The FWPD installs a Pollinator Garden along 29th Street.
+        body: "The FWPD completes installation of a Pollinator Garden along 29th Street.
+          "
   - type: cta
     heading: What improvements would you like to see at the park?
     background: bar
@@ -88,7 +99,7 @@ blocks:
         href: /contact
         external: false
   - type: twoColumnText
-    leftBody: The Wyman Park Dell Master Plan process was underwritten through a
+    leftBody: The Wyman Park Dell Masterplan process was underwritten through a
       generous grant from the [Goldseker
       Foundation](https://www.goldsekerfoundation.org/) with additional
       contributions from the [Baltimore Museum of Art](https://artbma.org/),
@@ -99,8 +110,20 @@ blocks:
       [Baltimore City Department of Recreation and
       Parks](https://bcrp.baltimorecity.gov/), and the [Baltimore Community
       Foundation](https://www.bcf.org/).
-    rightBody: The Friends of Wyman Park Dell continue to implement the Master Plan
-      with the support of volunteers and Baltimore's philanthropic community.
+    rightBody: >-
+      The Friends of Wyman Park Dell continue to implement the Master Plan with
+      the support of volunteers and Baltimore's philanthropic community.
+
+
+      The Wyman Park Dell Masterplan Update process was underwritten by [The
+      Central Baltimore Partnership](https://www.centralbaltimore.org/) and
+      [Johns Hopkins University](https://jhfre.jhu.edu/). The effort is
+      currently underway and updating the masterplan in the southwest areas of
+      the park, with the goal of providing improved pedestrian safety, an
+      accessible access to the park, and enhanced usability of the park by all
+      community members. The masterplan process is grounded in community-based
+      planning with involvement from the surrounding neighbors, organizations,
+      and institutions.
     background: raised
     alignAcross: false
     paddingTop: none
