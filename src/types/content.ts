@@ -280,6 +280,16 @@ export type DonorboxEmbedBlock = {
   anchor?: string;
 };
 
+export type DonationPanelBlock = {
+  type: 'donationPanel';
+  heading: string;
+  /** Body content as raw HTML/Markdown-rendered HTML. */
+  html: string;
+  campaignUrl: string;
+  /** Optional slug rendered as the section's HTML id for anchor links. */
+  anchor?: string;
+};
+
 export type EcwidStoreBlock = {
   type: 'ecwidStore';
   storeId: string;
@@ -344,6 +354,7 @@ export type ContentBlock =
   | ContactFormBlock
   | FollowUsBlock
   | DonorboxEmbedBlock
+  | DonationPanelBlock
   | EcwidStoreBlock;
 
 /* ---------- Pages & site-wide ---------- */

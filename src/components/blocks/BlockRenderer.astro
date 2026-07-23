@@ -21,6 +21,7 @@ import MapEmbed from './MapEmbed.astro';
 import ContactForm from './ContactForm.astro';
 import FollowUs from './FollowUs.astro';
 import DonorboxEmbed from './DonorboxEmbed.astro';
+import DonationPanel from './DonationPanel.astro';
 import EcwidStore from './EcwidStore.astro';
 
 type Props = {
@@ -75,6 +76,8 @@ const { blocks } = Astro.props;
         return <FollowUs {...block} />;
       case 'donorbox':
         return <DonorboxEmbed {...block} />;
+      case 'donationPanel':
+        return <DonationPanel {...block} />;
       case 'ecwidStore':
         return <EcwidStore {...block} />;
       default: {

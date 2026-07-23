@@ -276,6 +276,14 @@ const donorbox = z.object({
   anchor: z.string().optional(),
 });
 
+const donationPanel = z.object({
+  type: z.literal('donationPanel'),
+  heading: z.string(),
+  body: z.string(), // markdown -> html
+  campaignUrl: z.string(),
+  anchor: z.string().optional(),
+});
+
 const ecwidStore = z.object({
   type: z.literal('ecwidStore'),
   storeId: z.string(),
@@ -303,6 +311,7 @@ export const block = z.discriminatedUnion('type', [
   mapEmbed,
   contactForm,
   donorbox,
+  donationPanel,
   ecwidStore,
 ]);
 

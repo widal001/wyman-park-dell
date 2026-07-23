@@ -25,6 +25,7 @@ export function renderBlocks(
       case 'textWithMedia':
       case 'volunteerForm':
       case 'richText':
+      case 'donationPanel':
       case 'contactForm': {
         const { body, ...rest } = b;
         return { ...rest, html: md(body) };
