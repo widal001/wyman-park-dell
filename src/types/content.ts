@@ -177,6 +177,8 @@ export type TextWithMediaBlock = {
   /** Optional ghost-style CTA links shown beneath the body text. */
   ctas?: CtaRef[];
   mediaPosition?: 'left' | 'right';
+  /** Optional slug rendered as the section's HTML id for anchor links. */
+  anchor?: string;
 };
 
 export type TwoColumnTextBlock = {
@@ -274,6 +276,18 @@ export type DonorboxEmbedBlock = {
   paypalExpress?: boolean;
   height?: number;
   background?: 'base' | 'raised';
+  /** Optional slug rendered as the section's HTML id for anchor links. */
+  anchor?: string;
+};
+
+export type DonationPanelBlock = {
+  type: 'donationPanel';
+  heading: string;
+  /** Body content as raw HTML/Markdown-rendered HTML. */
+  html: string;
+  campaignUrl: string;
+  /** Optional slug rendered as the section's HTML id for anchor links. */
+  anchor?: string;
 };
 
 export type EcwidStoreBlock = {
@@ -340,6 +354,7 @@ export type ContentBlock =
   | ContactFormBlock
   | FollowUsBlock
   | DonorboxEmbedBlock
+  | DonationPanelBlock
   | EcwidStoreBlock;
 
 /* ---------- Pages & site-wide ---------- */

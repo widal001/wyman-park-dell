@@ -10,6 +10,8 @@ type Props = {
   paddingBottom?: Padding;
   bleed?: boolean;
   class?: string;
+  /** Optional HTML id, enabling anchor links to jump to this section. */
+  id?: string;
 };
 
 const {
@@ -19,10 +21,12 @@ const {
   paddingBottom,
   bleed = false,
   class: className,
+  id,
 } = Astro.props;
 ---
 
 <section
+  id={id}
   class:list={[
     'section',
     `section--bg-${background}`,

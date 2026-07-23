@@ -1,0 +1,77 @@
+---
+import type { DonationPanelBlock } from '../../types/content';
+import Section from '../ui/Section.astro';
+import Container from '../ui/Container.astro';
+
+type Props = Omit<DonationPanelBlock, 'type'>;
+
+const { heading, html, campaignUrl, anchor } = Astro.props;
+
+// Build the embed HTML as a string so the script's non-standard attribute
+// (paypalExpress) is preserved verbatim — Astro normalises JSX attributes
+// and would strip it otherwise. Mirrors DonorboxEmbed.astro.
+const scriptTag = `<script defer src="https://donorbox.org/widget.js" paypalExpress="true"></script>`;
+---
+
+<Section padding="default" id={anchor}>
+  <Container width="wide">
+    <div class="donation-panel">
+      <div class="donation-panel__intro">
+        <h2 class="donation-panel__heading">{heading}</h2>
+        <div class="donation-panel__prose prose" set:html={html} />
+      </div>
+
+      <div class="donation-panel__form">
+        <Fragment set:html={scriptTag} />
+        <iframe
+          src={campaignUrl}
+          name="donorbox"
+          allow="payment"
+          height="900px"
+          width="100%"
+          loading="lazy"
+          title="Donation form"
+          style="border: 0; display: block; max-width: 500px; min-width: 320px; margin-inline: auto;"
+        ></iframe>
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<style>
+  .donation-panel {
+    display: grid;
+    grid-template-columns: 1fr minmax(340px, 500px);
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  .donation-panel__heading {
+    font-size: var(--font-size-3xl);
+    color: var(--color-brand-green-dark);
+    font-weight: var(--font-weight-black);
+    line-height: var(--line-height-tight);
+    text-transform: none;
+    letter-spacing: var(--letter-spacing-base);
+    margin-bottom: var(--space-4);
+  }
+
+  .donation-panel__prose {
+    color: var(--color-text-base);
+  }
+
+  .donation-panel__form iframe {
+    max-height: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .donation-panel {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+
+    .donation-panel__heading {
+      font-size: var(--font-size-2xl);
+    }
+  }
+</style>

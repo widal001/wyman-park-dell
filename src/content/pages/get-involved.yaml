@@ -19,6 +19,7 @@ blocks:
     variant: lead
     width: medium
   - type: textWithMedia
+    anchor: make-a-donation
     heading: Make a donation
     body: >-
       Donors like you are critical to maintaining, beautifying, and programming
@@ -39,7 +40,13 @@ blocks:
       src: /media/pictures/Volunteer.jpg
       alt: Volunteers gathered at Wyman Park Dell
     mediaPosition: left
+    ctas:
+      - label: Donate now ↓
+        href: "#donate-form"
+        variant: primary
+        external: false
   - type: donorbox
+    anchor: donate-form
     campaignUrl: https://donorbox.org/embed/website-donations-208?designation=Area%20of%20greatest%20need&default_interval=o&hide_donation_meter=true
     paypalExpress: true
     height: 900

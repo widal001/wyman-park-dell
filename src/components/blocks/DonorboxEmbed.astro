@@ -10,6 +10,7 @@ const {
   paypalExpress = true,
   height = 900,
   background = 'base',
+  anchor,
 } = Astro.props;
 
 // Build the embed HTML as a string so the script's non-standard attribute
@@ -18,7 +19,7 @@ const {
 const scriptTag = `<script defer src="https://donorbox.org/widget.js" paypalExpress="${paypalExpress ? 'true' : 'false'}"></script>`;
 ---
 
-<Section padding="default" background={background}>
+<Section padding="default" background={background} id={anchor}>
   <Container width="narrow">
     <div class="donorbox-embed">
       <Fragment set:html={scriptTag} />

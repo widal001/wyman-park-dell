@@ -133,6 +133,9 @@ const textWithMedia = z.object({
   image,
   ctas: z.array(cta).optional(),
   mediaPosition: z.enum(['left', 'right']).optional(),
+  // Optional slug that becomes the section's HTML id, so links can jump
+  // directly to this block (e.g. /get-involved/#make-a-donation).
+  anchor: z.string().optional(),
 });
 
 const timeline = z.object({
@@ -270,6 +273,15 @@ const donorbox = z.object({
   paypalExpress: z.boolean().optional(),
   height: z.number().optional(),
   background: z.enum(['base', 'raised']).optional(),
+  anchor: z.string().optional(),
+});
+
+const donationPanel = z.object({
+  type: z.literal('donationPanel'),
+  heading: z.string(),
+  body: z.string(), // markdown -> html
+  campaignUrl: z.string(),
+  anchor: z.string().optional(),
 });
 
 const ecwidStore = z.object({
@@ -299,6 +311,7 @@ export const block = z.discriminatedUnion('type', [
   mapEmbed,
   contactForm,
   donorbox,
+  donationPanel,
   ecwidStore,
 ]);
 
