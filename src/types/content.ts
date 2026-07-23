@@ -83,7 +83,6 @@ export type TimelineBlock = {
 export type BoardMember = {
   name: string;
   role: string;
-  photo?: ImageRef;
   bio?: string;
 };
 
@@ -305,7 +304,6 @@ export type EventItem = {
   location?: string;
   body: string;
   image?: ImageRef;
-  cta?: CtaRef;
   /** Human-readable cadence for recurring events, e.g. "Second Sunday of every month". */
   recurrence?: string;
 };

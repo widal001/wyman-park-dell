@@ -1,98 +1,172 @@
 title: About the park
 slug: about-the-park
-metaDescription: "The Wyman Park Dell is a 16-acre Olmsted-designed public park in Central Baltimore. Read about its history, master plan, and Harriet Tubman Grove."
+metaDescription: The Wyman Park Dell is a 16-acre Olmsted-designed public park
+  in Central Baltimore. Read about its history, master plan, and Harriet Tubman
+  Grove.
 blocks:
   - type: hero
     variant: standard
     heading: About Wyman Park Dell
     image:
-      src: "/media/pictures/About_Dell.jpg"
-      alt: "Wyman Park Dell from above"
+      src: /media/pictures/About_Dell.jpg
+      alt: Wyman Park Dell from above
   - type: textWithMedia
     heading: Park history
-    mediaPosition: left
-    image:
-      src: "/media/pictures/Park-History.jpg"
-      alt: "Historic photograph of the Wyman Park Dell"
-    body: |
-      The Wyman Park Dell is a 16-acre public park that is a landmark in Central Baltimore. Located south of Johns Hopkins University and the Baltimore Museum of Art, it is surrounded by two neighborhoods: Charles Village to the east and south, and Remington to the west.
+    body: >-
+      The Wyman Park Dell is a 16-acre public park that is a landmark in Central
+      Baltimore. Located south of Johns Hopkins University and the Baltimore
+      Museum of Art, it is surrounded by two neighborhoods: Charles Village to
+      the east and south, and Remington to the west.
 
-      The Dell is noted for its steep enclosing slopes and a large, sweeping lower lawn. It is one of the few parks in Baltimore fully conceived and designed by the Olmsted Brothers, the landscape architecture firm responsible for the City's first comprehensive park system plan in 1904.
+
+      The Dell is noted for its steep enclosing slopes and a large, sweeping
+      lower lawn. It is one of the few parks in Baltimore fully conceived and
+      designed by the Olmsted Brothers, the landscape architecture firm
+      responsible for the City's first comprehensive park system plan in 1904.
+    image:
+      src: /media/pictures/Park-History.jpg
+      alt: Historic photograph of the Wyman Park Dell
+    mediaPosition: left
     ctas:
-      - label: "Wyman Park & the Dell"
-        href: "https://drive.google.com/file/d/0B0AAMIyar9c0TDlNaVhQY09NNVdGMUM1NmtKRGtDd2JjeUJn/view?resourcekey=0-rJ0bR9EfnlPTePnDr4RPRw"
+      - label: Wyman Park & the Dell
+        href: https://drive.google.com/file/d/0B0AAMIyar9c0TDlNaVhQY09NNVdGMUM1NmtKRGtDd2JjeUJn/view?resourcekey=0-rJ0bR9EfnlPTePnDr4RPRw
         external: true
-      - label: "Olmsted Brothers’ Vision"
-        href: "https://www.olmstedmaryland.org/olmsted-brothers-vision-for-wyman-and-the-stony-run-stream-valley/"
+      - label: Olmsted Brothers’ Vision
+        href: https://www.olmstedmaryland.org/olmsted-brothers-vision-for-wyman-and-the-stony-run-stream-valley/
         external: true
   - type: timeline
     eyebrow: Wyman Park
     heading: Master plan
     entries:
-      - date: "Early 2000s"
-        title: "Developing the master plan"
-        body: "The Wyman Park Dell Master Plan Steering Committee engaged local landscape architecture firm Mahan Rykiel Associates to lead the local community in developing a Master Plan for the Dell. The master plan process was grounded in community-based planning with involvement from the surrounding communities and institutions."
-      - date: "August 2006"
-        title: "Plan approved"
-        body: "The plan was presented by the Baltimore City Department of Recreation and Parks to the Baltimore City Commission for Historical and Architectural Preservation (CHAP) and approved with the exception of two items."
+      - date: Early 2000s
+        title: Developing the Masterplan
+        body: The Wyman Park Dell Masterplan Steering Committee engaged local landscape
+          architecture firm Mahan Rykiel Associates to lead the local community
+          in developing a Masterplan for the Dell. The masterplan process was
+          grounded in community-based planning with involvement from the
+          surrounding communities and institutions.
+      - date: August 2006
+        title: Plan approved
+        body: The plan was presented by the Baltimore City Department of Recreation and
+          Parks to the Baltimore City Commission for Historical and
+          Architectural Preservation (CHAP) and approved with the exception of
+          two items.
       - date: "2010"
-        title: "Dry stone wall restored"
-        body: "Restoration of the dry stone wall in the Lower Dell, an important Dell icon."
+        title: Dry stone wall restored
+        body: Restoration of the dry stone wall in the Lower Dell, an important Dell
+          icon.
       - date: "2013"
-        title: "Park information board installed"
-        body: "Welcome signs with message boards at the main entrances to the park are installed to orient visitors and provide space to market community events."
+        title: Park information board installed
+        body: Welcome signs with message boards at the main entrances to the park are
+          installed to orient visitors and provide space to market community
+          events.
       - date: "2015"
-        title: "Playground constructed"
-        body: "Baltimore City Department of Recreation and Parks constructs a new playground in the Dell. Ping Pong Baltimore partners with FWPD to install a ping pong table nearby."
+        title: Playground constructed
+        body: Baltimore City Department of Recreation and Parks constructs a new
+          playground in the Dell. Ping Pong Baltimore partners with FWPD to
+          install a ping pong table nearby.
       - date: "2016"
-        title: "Shade sail installed"
-        body: "As an extension of the playground project, a shade sail is installed with support from the Homewood Community Partners Initiative."
+        title: Shade sail installed
+        body: As an extension of the playground project, a shade sail is installed with
+          support from the Homewood Community Partners Initiative.
       - date: "2017"
-        title: "Tree pruning"
-        body: "A grant from the Johns Hopkins Neighborhood Fund helps prune trees to improve safety and visibility."
+        title: Tree pruning
+        body: A grant from the Johns Hopkins Neighborhood Fund helps prune trees to
+          improve safety and visibility.
       - date: "2020"
-        title: "Slope clearing"
-        body: "The FWPD crowdfunds money to hire Eco-Goats to clear the “BMA Slope” of invasive vegetation."
+        title: Slope clearing
+        body: "The FWPD crowdfunds money to hire Eco-Goats to clear the “BMA Slope” of
+          invasive vegetation. "
+      - date: "2022"
+        title: Goats on the Slope
+        body: Goats on the Slope becomes a community-loved annual event! Our goat guests
+          graze the BMA Slope to manage vegetation and maintain sight-lines in
+          the park, and the event is a major fundraiser for the FWPD.
+      - date: 2025 - Ongoing
+        title: Masterplan update
+        body: Following Baltimore City DOT's closing of the 29th Street parking sweep
+          entrance, the FWPD engaged Mahan Rykiel Associates to update the
+          Dell’s masterplan and study the southwest areas of the park.
+      - date: "2026"
+        title: Pollinator Garden
+        body: "The FWPD completes installation of a Pollinator Garden along 29th Street.
+          "
   - type: cta
+    heading: What improvements would you like to see at the park?
     background: bar
-    heading: "What improvements would you like to see at the park?"
     ctas:
-      - label: "Contact us with suggestions and comments"
-        href: "/contact"
+      - label: Contact us with suggestions and comments
+        href: /contact
+        external: false
   - type: twoColumnText
+    leftBody: >-
+      The Wyman Park Dell Masterplan process was underwritten through a generous
+      grant from the [Goldseker
+      Foundation](https://www.goldsekerfoundation.org/) with additional
+      contributions from the [Baltimore Museum of Art](https://artbma.org/),
+      [Johns Hopkins University](https://www.jhu.edu/), the Friends of Wyman
+      Park Dell, Remington community members, the [Charles Village Civic
+      Association](https://charlesvillage.org/), the [Friends of Maryland's
+      Olmsted Parks and Landscapes](https://www.olmstedmaryland.org/), the
+      [Baltimore City Department of Recreation and
+      Parks](https://bcrp.baltimorecity.gov/), and the [Baltimore Community
+      Foundation](https://www.bcf.org/).
+
+
+      The Friends of Wyman Park Dell continue to implement the Master Plan with
+      the support of volunteers and Baltimore's philanthropic community.
+    rightBody: The Wyman Park Dell Masterplan Update process was underwritten by
+      [The Central Baltimore Partnership](https://www.centralbaltimore.org/) and
+      [Johns Hopkins University](https://jhfre.jhu.edu/). The effort is
+      currently underway to revise the masterplan in the southwest areas of the
+      park, with the goal of providing improved pedestrian safety, an accessible
+      access to the park, and enhanced usability of the park by all community
+      members. The masterplan process is grounded in community-based planning
+      with involvement from the surrounding neighbors, organizations, and
+      institutions.
     background: raised
     alignAcross: false
     paddingTop: none
-    leftBody: |
-      The Wyman Park Dell Master Plan process was underwritten through a generous grant from the [Goldseker Foundation](https://www.goldsekerfoundation.org/) with additional contributions from the [Baltimore Museum of Art](https://artbma.org/), [Johns Hopkins University](https://www.jhu.edu/), the Friends of Wyman Park Dell, Remington community members, the [Charles Village Civic Association](https://charlesvillage.org/), the [Friends of Maryland's Olmsted Parks and Landscapes](https://www.olmstedmaryland.org/), the [Baltimore City Department of Recreation and Parks](https://bcrp.baltimorecity.gov/), and the [Baltimore Community Foundation](https://www.bcf.org/).
-    rightBody: |
-      The Friends of Wyman Park Dell continue to implement the Master Plan with the support of volunteers and Baltimore's philanthropic community.
     ctas:
-      - label: "Learn more about the Friends of Wyman Park Dell"
-        href: "/friends-of-wyman-park-dell/"
+      - label: Learn more about the Friends of Wyman Park Dell
+        href: /friends-of-wyman-park-dell/
+        external: false
   - type: textWithMedia
     heading: Harriet Tubman Grove
-    mediaPosition: right
-    image:
-      src: "/media/pictures/WPD_Harriet-Tubman-Grove.jpg"
-      alt: "Harriet Tubman Grove at Wyman Park Dell"
-    body: |
+    body: |-
       The grove on the western plateau of the Dell is now named in honor of Harriet Tubman, an abolitionist and “conductor” on the Underground Railroad. At a community celebration on March 10, 2018, Tubman’s living descendants joined community residents, local activists, and City and State officials to rededicate the area of Wyman Park Dell where a Confederate monument once stood. The monument base remains.
 
       The Lee and Jackson Monument was removed from the Dell on August 16, 2017, as national debate around Confederate monuments intensified after deadly white supremacist violence in Charlottesville, Virginia. More information is available through the [Baltimore Commission on Historical and Architectural Preservation](https://chap.baltimorecity.gov/confederate-monuments) and the [Special Commission to Review Baltimore’s Confederate Monuments](https://baltimoreplanning.wixsite.com/monumentcommission/leeandjacksonmonument).
 
       In 2020, placemaking and [interpretive signage](https://www.baltimoresun.com/maryland/baltimore-city/bs-md-ci-harriet-tubman-grove-signs-wyman-park-dell-20200914-frw5es5rhjdidczjnjdlbfhzl4-story.html) was installed in the grove in collaboration with Baltimore City Department of Recreation and Parks and the Commission for Historical and Architectural Preservation. This project was made possible by the Baltimore National Heritage Area.
+    image:
+      src: /media/pictures/WPD_Harriet-Tubman-Grove.jpg
+      alt: Harriet Tubman Grove at Wyman Park Dell
+    mediaPosition: right
+  - type: textWithMedia
+    heading: Pollinator Garden
+    body: The Friends of Wyman Park Dell installed a pollinator garden along 29th
+      Street in 2025, and extended the garden in 2026. The garden is blooming
+      with native species including Black-eyed Susan, Cardinal Flower, and
+      Milkweed, and supports bees and Monarch Butterflies while providing
+      beautification to the park. The Pollinator Garden was made possible by
+      dedicated FWPD board members, volunteers, a grant from the [Chesapeake Bay
+      Trust](https://cbtrust.org/), and in partnership with [Baltimore City
+      Recreation and Parks](https://www.baltimorecity.gov/bcrp).
+    image:
+      src: /media/wyman park dell pollinator garden.jpg
+    mediaPosition: left
   - type: gallery
     layout: mosaic
     images:
-      - src: "/media/pictures/WPD_Park_Stairs.jpg"
-        alt: "Stone stairs leading into the Dell"
-      - src: "/media/pictures/WPD_Fall.jpg"
-        alt: "Wyman Park Dell in fall"
-      - src: "/media/pictures/Wyman-Park-Dell-2.jpg"
-        alt: "Wyman Park Dell in summer"
-      - src: "/media/pictures/WPD_Winter.jpg"
-        alt: "Wyman Park Dell in winter"
+      - src: /media/MD_Baltimore_WymanParkDell_CharlesBirnbaum_2014_04.jpg
+        alt: Stone stairs leading into the Dell
+      - src: /media/fall in the dell-1.jpg
+        alt: Wyman Park Dell in fall
+      - src: /media/pictures/Wyman-Park-Dell-2.jpg
+        alt: Wyman Park Dell in summer
+      - src: /media/snow in the dell.jpg
+        alt: Wyman Park Dell in winter
   - type: testimonial
-    quote: "Great little slice of nature in the middle of Charles Village."
-    attribution: "Park Visitor"
+    quote: Great little slice of nature in the middle of Charles Village.
+    attribution: Park Visitor

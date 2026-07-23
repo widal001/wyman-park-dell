@@ -44,48 +44,50 @@ blocks:
         variant: outline
         external: false
   - type: board
-    heading: FWPD board of directors
-    intro: A volunteer board of neighbors and community partners stewards the work
-      of the FWPD.
+    heading: Friends of Wyman Park Dell Board of Directors
+    intro: A volunteer board of neighbors and community partners stewarding the FWPD
+      mission.
     members:
-      - name: Jason Mathias
+      - name: Kelly Danz
         role: President
       - name: Tom McGilloway
         role: Co-Vice President of Maintenance
       - name: Harry Holt
         role: Co-Vice President of Maintenance
-      - name: Courtney Belew
-        role: Vice President of Events & Fundraising
-      - name: Jessica Douglas
-        role: Secretary
+      - name: Julia McAleer
+        role: Vice President of Membership and Development
       - name: Savannah Fisher
         role: Treasurer
-      - name: Kelly Danz
-        role: Director
-      - name: Randy Lewis
-        role: Director
-      - name: Julia McAleer
-        role: Director
+      - name: Jessica Douglas
+        role: Secretary
       - name: Chris Merriam
         role: Director
-      - name: Anastasia Tantaros
+      - name: Giacomo Bologna
+        role: Director
+      - name: Billy Daly
+        role: Director
+      - name: Abbie Gruskin
         role: Director
       - name: Circe Trevant
         role: Director
+      - name: Alicia Crosby
+        role: Ex Officio Director, Baltimore Museum of Art
+      - name: Jason Mathias
+        role: Emeritus Director
+      - name: Courtney Belew
+        role: Emeritus Director
       - name: Martha Waldron
-        role: Director
+        role: Emeritus Director
       - name: Alice Young
-        role: Director
+        role: Emeritus Director
       - name: Cailin McGough
         role: Emeritus Director
       - name: John Shields
         role: Emeritus Director
       - name: Sandy Sparks
         role: Emeritus Director
-      - name: Jessica Bell Brown
-        role: Ex-Officio, Baltimore Museum of Art
       - name: Vacant
-        role: Ex-Officio, Johns Hopkins University
+        role: Ex Officio Director, Johns Hopkins University
   - type: sectionHeading
     heading: Our mission
     subheading: The mission of the Friends of Wyman Park Dell is to engage our
@@ -147,7 +149,7 @@ blocks:
           src: /media/pictures/Projects_Harriet-Tubman-Grove.jpg
           alt: Harriet Tubman Grove signage at Wyman Park Dell
         caption: Interpretive signage installed at the grove’s rededication, 2018–2020.
-      - title: Goats on the slope
+      - title: Goats on the Slope
         body: A herd of hungry goats helped to clear the "BMA Slope" in a completely
           eco-friendly way, funded entirely by neighbors.
         image:

@@ -1,31 +1,49 @@
 title: Goats on the Slope
 slug: goats-on-the-slope
-date: "2026-09-18"
-endDate: "2026-09-20"
-location: "BMA Slope, Wyman Park Dell"
-description: "The Eco-Goats return to graze the slopes! Join us for three days of family activities alongside the herd that keeps the Dell's invasive plants in check."
-details: |
-  Each fall, a herd of Eco-Goats spends a few days in Wyman Park Dell doing what
-  they do best — clearing the invasive plants along the steep BMA slope that are
-  too tough for volunteers to tackle by hand. It's chemical-free land management,
-  and it's a delight to watch.
+date: 2026-09-18
+endDate: 2026-09-21
+location: BMA Slope, Wyman Park Dell
+description: The Eco-Goats return to graze the slopes! Join us for a full
+  weekend of activities alongside the herd that keeps the Dell's invasive plants
+  in check.
+details: |-
+  Each fall, a herd of Eco-Goats spends a few days in Wyman Park Dell doing what  they do best — clearing the invasive plants along the steep BMA slope that are  too tough for volunteers to tackle by hand. It's chemical-free land management, and it's a delight to watch.
 
-  We build a weekend of free, family-friendly programming around their visit.
-  Come by any time to see the herd at work, and check the schedule below for the
-  storytimes, music, and yoga happening alongside them.
+  We provide a full weekend of free, family-friendly programming around the goat's visit. Check out the events below and come by and see the herd at work.
+
+  Check out our press from previous years:
+
+  [Baltimore Magazine](https://www.baltimoremagazine.com/section/community/goats-returning-to-bma-slope-wyman-park-dell-to-clear-excess-vegetation/)
+
+  [Baltimore Fishbowl](https://baltimorefishbowl.com/stories/goats-on-the-slope-weekend-is-coming-baaaa-ck-to-wyman-park-dell/)
+
+  [WBAL](https://www.youtube.com/watch?v=4KnY-TUHdWo)
+
+  Please respect our project and stay behind the orange safety fencing while viewing the goats. The BMA slope is steep, full of poison ivy, and the white fence is electric. We don’t want people or goats getting hurt. Do not try to feed or touch the goats.
 image:
-  src: "/media/pictures/Projects_Goats-on-the-Slope-Photo.jpg"
-  alt: "Goats grazing the slope at Wyman Park Dell"
+  src: /media/pictures/Projects_Goats-on-the-Slope-Photo.jpg
+  alt: Goats grazing the slope at Wyman Park Dell
 schedule:
-  - date: "2026-09-18"
-    title: "Kids Storytime with the herd"
-    description: "Day one kicks off with a family storytime for kids on the BMA slope, alongside the goats as they get to work."
-  - date: "2026-09-18"
-    title: "Bluegrass on the lawn"
-    description: "Cap off the first day with live bluegrass on the lawn. Bring the family and enjoy music alongside our four-legged landscapers."
-  - date: "2026-09-19"
-    title: "Watch the herd at work"
-    description: "Stop by throughout the day to watch the Eco-Goats clear the slopes. A great chance to say hello and learn how goats help care for the park."
-  - date: "2026-09-20"
-    title: "Yoga in the Park"
-    description: "The goats' visit wraps up with an all-levels yoga session. Roll out a mat on the lawn and stretch in the company of the herd."
+  - date: 2026-09-18
+    time: 1 PM - 2 PM
+    title: Kids Storytime
+    description: "Day one kicks off with a family storytime for kids on the BMA
+      slope, alongside the goats as they get to work. "
+  - date: 2026-09-18
+    time: 5 PM - 7 PM
+    title: Bluegrass in the Dell
+    description: Cap off the goat's first day with a live bluegrass jam in the Dell.
+      Bring the family, a picnic, and enjoy live music alongside our four-legged
+      landscapers.
+  - date: 2026-09-19
+    time: 2 PM - 6 PM
+    title: Art in the Park, in partnership with the Baltimore Museum of Art
+    description: Stop by to watch the Eco-Goats clear the slope and enjoy
+      kid-friendly art activities provided by the BMA, music, and refreshments
+      for sale by the FWPD.
+  - date: 2026-09-20
+    time: 11 AM - 12 PM
+    title: Yoga in the Park
+    description: The goats' visit wraps up with an all-levels and family friendly
+      yoga session. Roll out a mat on the lawn and stretch in the company of the
+      herd.

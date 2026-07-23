@@ -1,8 +1,8 @@
 title: Get involved
 slug: get-involved
-metaDescription: Become a Friend of the Dell. Donate, volunteer, or partner with
-  the Friends of Wyman Park Dell to help keep this Baltimore park accessible and
-  extraordinary for everyone!
+metaDescription: Become a Friend of the Dell. Donate, volunteer, sponsor, or
+  partner with the Friends of Wyman Park Dell to help keep this Baltimore park
+  accessible and extraordinary for everyone!
 blocks:
   - type: hero
     variant: standard
@@ -12,8 +12,8 @@ blocks:
       alt: Friends of Wyman Park Dell volunteers gathered for a clean-up
   - type: sectionHeading
     heading: The Dell is almost entirely supported by people like you. As a
-      nonprofit, the Friends of Wyman Park Dell need your support to keep this
-      public space accessible, and extraordinary, for everyone!
+      volunteer-led nonprofit, the Friends of Wyman Park Dell need your support
+      to keep this public space accessible, and extraordinary, for everyone!
     align: center
     headingColor: dark
     variant: lead
@@ -57,6 +57,19 @@ blocks:
       alt: Volunteers smiling after a Wyman Park Dell clean-up
     mediaPosition: right
     submitLabel: Sign up
+  - type: textWithMedia
+    heading: Become a sponsor
+    body: The Dell is almost entirely supported by sponsors like you. Join us in
+      maintaining and activating the park! By sponsoring one or multiple Friends
+      of Wyman Park Dell events and initiatives, you help bring our park to
+      life.  Sponsorship opportunities for the 2026 calendar year can be found
+      [here](https://drive.google.com/file/d/1XeO1u53sNqC7IyRbzS6nCkSd3loalFlm/view?usp=sharing).
+      Custom sponsorship packages are available. Email us at
+      [wymanparkdell@gmail.com](mailto:wymanparkdell@gmail.com) to discuss
+      sponsorship opportunities!
+    image:
+      src: /media/FWPD playground.jpeg
+    mediaPosition: left
   - type: testimonial
     quote: We’re always looking to collaborate with local businesses and
       organizations. Email us if you’d like to collaborate on making something
