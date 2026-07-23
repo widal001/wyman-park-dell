@@ -15,10 +15,11 @@ const {
   image,
   ctas = [],
   mediaPosition = 'left',
+  anchor,
 } = Astro.props;
 ---
 
-<Section padding="default">
+<Section padding="default" id={anchor}>
   <Container width="wide">
     <div class:list={['twm', `twm--media-${mediaPosition}`]}>
       <figure class="twm__media">

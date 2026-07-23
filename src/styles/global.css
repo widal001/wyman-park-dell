@@ -8,6 +8,11 @@ html {
   line-height: var(--line-height-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Smooth-scroll in-page anchor jumps (e.g. the "Donate now" button); the
+     reduced-motion reset in reset.css forces this back to `auto`. */
+  scroll-behavior: smooth;
+  /* Keep anchor-linked sections clear of the sticky header when jumped to. */
+  scroll-padding-top: 6rem;
 }
 
 body {
