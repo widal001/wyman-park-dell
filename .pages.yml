@@ -320,6 +320,12 @@ content:
                         },
                     }
                   - { name: external, label: Opens in new tab, type: boolean }
+              - {
+                  name: anchor,
+                  label: Anchor ID,
+                  type: string,
+                  description: 'Optional. Lets links jump straight to this section, e.g. #make-a-donation',
+                }
           # ---- timeline ----
           - name: timeline
             label: Timeline
@@ -707,6 +713,12 @@ content:
                   label: Background,
                   type: select,
                   options: { values: [base, raised] },
+                }
+              - {
+                  name: anchor,
+                  label: Anchor ID,
+                  type: string,
+                  description: 'Optional. Lets links jump straight to this section, e.g. #make-a-donation',
                 }
           # ---- ecwidStore ----
           - name: ecwidStore
