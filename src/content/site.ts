@@ -35,7 +35,7 @@ export const site: SiteContent = {
   ],
   donateCta: {
     label: 'Donate',
-    href: '/get-involved/',
+    href: '/get-involved/#make-a-donation',
     variant: 'outline',
   },
   contact: {
