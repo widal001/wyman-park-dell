@@ -720,6 +720,24 @@ content:
                   type: string,
                   description: 'Optional. Lets links jump straight to this section, e.g. #make-a-donation',
                 }
+          # ---- donationPanel ----
+          - name: donationPanel
+            label: Donation panel
+            fields:
+              - { name: heading, label: Heading, type: string, required: true }
+              - { name: body, label: Body, type: rich-text, required: true }
+              - {
+                  name: campaignUrl,
+                  label: Donorbox campaign URL,
+                  type: string,
+                  required: true,
+                }
+              - {
+                  name: anchor,
+                  label: Anchor ID,
+                  type: string,
+                  description: 'Optional. Lets links jump straight to this section, e.g. #make-a-donation',
+                }
           # ---- ecwidStore ----
           - name: ecwidStore
             label: Ecwid store

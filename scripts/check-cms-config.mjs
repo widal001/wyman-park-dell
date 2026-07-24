@@ -37,8 +37,11 @@ function unwrap(schema) {
     'catch',
     'prefault',
   ]);
-  while (d && wrappers.has(d.type)) {
-    s = d.innerType;
+  // A `pipe` is how Zod v4 models `z.preprocess(fn, schema)`: `.out` holds the
+  // real output schema (e.g. `optionalCta`'s underlying `cta.optional()`).
+  // Descend into it so a preprocessed object isn't mistaken for a scalar.
+  while (d && (wrappers.has(d.type) || d.type === 'pipe')) {
+    s = d.type === 'pipe' ? d.out : d.innerType;
     d = zdef(s);
   }
   return s;
