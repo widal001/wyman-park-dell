@@ -3,9 +3,8 @@ slug: goats-on-the-slope
 date: 2026-09-18
 endDate: 2026-09-21
 location: BMA Slope, Wyman Park Dell
-description: The goats return to graze the slopes! Join us for a full
-  weekend of activities alongside the herd that keeps the Dell's invasive plants
-  in check.
+description: The goats return to graze the slopes! Join us for a full weekend of
+  activities alongside the herd that keeps the Dell's invasive plants in check.
 details: |-
   Each fall, a herd of goats spends a few days in Wyman Park Dell doing what  they do best — clearing the invasive plants along the steep BMA slope that are  too tough for volunteers to tackle by hand. It's chemical-free land management, and it's a delight to watch.
 
@@ -27,8 +26,10 @@ schedule:
   - date: 2026-09-18
     time: 1 PM - 2 PM
     title: Kids Storytime
-    description: "Day one kicks off with a family storytime for kids on the BMA
-      slope, alongside the goats as they get to work. "
+    description: Day one kicks off with a family storytime for kids on the BMA
+      slope, alongside the goats as they get to work.
+    cta:
+      external: false
   - date: 2026-09-18
     time: 5 PM - 7 PM
     title: Bluegrass in the Dell
@@ -43,9 +44,9 @@ schedule:
   - date: 2026-09-19
     time: 2 PM - 6 PM
     title: Art in the Park, in partnership with the Baltimore Museum of Art
-    description: Stop by to watch the goats clear the slope and enjoy
-      kid-friendly art activities provided by the BMA, music, and refreshments
-      for sale by the FWPD.
+    description: Stop by to watch the goats clear the slope and enjoy kid-friendly
+      art activities provided by the BMA, music, and refreshments for sale by
+      the FWPD.
     image:
       src: /media/pictures/Projects_Goats-on-the-Slope-Photo.jpg
       alt: Goats grazing the BMA slope during Art in the Park
@@ -63,6 +64,8 @@ schedule:
     image:
       src: /media/pictures/WPD_Fall.jpg
       alt: A sunny fall afternoon on the lawn at Wyman Park Dell
+    cta:
+      external: false
 sponsorTiers:
   - tier: Advocate Sponsors
     partners:
