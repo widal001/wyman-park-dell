@@ -817,21 +817,59 @@ content:
           - { name: time, label: Time, type: string }
           - { name: title, label: Title, type: string, required: true }
           - { name: description, label: Description, type: text }
-      - name: sponsors
-        label: Sponsors
-        type: object
-        list: true
-        fields:
-          - { name: name, label: Name, type: string, required: true }
-          - { name: url, label: URL, type: string, required: true }
-          - name: logo
-            label: Logo
+          - name: image
+            label: Photo
             type: object
+            description: 'Optional photo shown alongside this activity'
             fields:
               - { name: src, label: Image, type: image, required: true }
               - { name: alt, label: Alt text, type: string }
-              - { name: width, label: Width, type: number }
-              - { name: height, label: Height, type: number }
+          - name: cta
+            label: Call to action
+            type: object
+            description: 'Optional button, e.g. RSVP or learn more'
+            fields:
+              - { name: label, label: Label, type: string }
+              - { name: href, label: URL, type: string }
+              - {
+                  name: variant,
+                  label: Style,
+                  type: select,
+                  options:
+                    {
+                      values:
+                        [
+                          primary,
+                          outline,
+                          outline-inverse,
+                          solid-inverse,
+                          ghost,
+                        ],
+                    },
+                }
+              - { name: external, label: Opens in new tab, type: boolean }
+      - name: sponsorTiers
+        label: Sponsor tiers
+        type: object
+        list: true
+        description: 'Group sponsors by level (e.g. Advocate, Supporting, In-kind)'
+        fields:
+          - { name: tier, label: Tier name, type: string, required: true }
+          - name: partners
+            label: Sponsors
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Name, type: string, required: true }
+              - { name: url, label: URL, type: string, required: true }
+              - name: logo
+                label: Logo
+                type: object
+                fields:
+                  - { name: src, label: Image, type: image, required: true }
+                  - { name: alt, label: Alt text, type: string }
+                  - { name: width, label: Width, type: number }
+                  - { name: height, label: Height, type: number }
       - name: recurrence
         label: Recurrence
         type: object
