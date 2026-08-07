@@ -36,9 +36,10 @@ const escapeAttr = (value: string) =>
 marked.use({
   renderer: {
     image({ href, title, text }) {
-      const src = !isRemoteImage(href) && href.startsWith('/media/')
-        ? resolveImage(href).src
-        : href;
+      const src =
+        !isRemoteImage(href) && href.startsWith('/media/')
+          ? resolveImage(href).src
+          : href;
       const titleAttr = title ? ` title="${escapeAttr(title)}"` : '';
       return `<img src="${escapeAttr(src)}" alt="${escapeAttr(text)}"${titleAttr} loading="lazy" decoding="async" />`;
     },
