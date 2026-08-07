@@ -50,3 +50,8 @@ schedule:
     description: The goats' visit wraps up with an all-levels and family friendly
       yoga session. Roll out a mat on the lawn and stretch in the company of the
       herd.
+sponsors:
+  - name: "Sponsored by:"
+    url: https://baltimore.org/
+    logo:
+      src: /media/baltimore_logo_final_streetlamp.png
