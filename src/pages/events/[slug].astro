@@ -10,6 +10,7 @@ import Container from '../../components/ui/Container.astro';
 import SmartImage from '../../components/ui/SmartImage.astro';
 import PartnerLogos from '../../components/blocks/PartnerLogos.astro';
 import { eventSlug, resolveEventDate, todayYmd } from '../../lib/events';
+import { resolveImage, isRemoteImage } from '../../lib/images';
 
 export async function getStaticPaths() {
   const events = await getCollection('events');
@@ -23,6 +24,28 @@ const { event } = Astro.props as { event: CollectionEntry<'events'> };
 const data = event.data;
 
 marked.setOptions({ async: false });
+
+// Inline markdown images in `details` are stored as plain /media/... strings,
+// just like structured image fields. Unlike those (which flow through
+// SmartImage → resolveImage), a raw `![](...)` becomes a literal
+// <img src="/media/..."> that 404s at runtime — nothing is served under
+// /media/*; assets are hashed into /_astro/* at build. Rewrite local body
+// images through the same resolveImage bridge so they point at the built asset.
+const escapeAttr = (value: string) =>
+  value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+marked.use({
+  renderer: {
+    image({ href, title, text }) {
+      const src =
+        !isRemoteImage(href) && href.startsWith('/media/')
+          ? resolveImage(href).src
+          : href;
+      const titleAttr = title ? ` title="${escapeAttr(title)}"` : '';
+      return `<img src="${escapeAttr(src)}" alt="${escapeAttr(text)}"${titleAttr} loading="lazy" decoding="async" />`;
+    },
+  },
+});
+
 const detailsHtml = data.details ? (marked.parse(data.details) as string) : '';
 
 // Recurring events (e.g. the monthly clean-up) display their next occurrence.
