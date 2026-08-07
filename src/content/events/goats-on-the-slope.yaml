@@ -53,3 +53,11 @@ sponsors:
     url: https://baltimore.org/
     logo:
       src: /media/baltimore_logo_final_streetlamp.png
+  - name: Seawall
+    url: https://www.seawall.com/
+    logo:
+      src: /media/seawall.png
+  - name: "Mahan Rykiel "
+    url: https://www.mahanrykiel.com/
+    logo:
+      src: /media/mahanrykiel.png
