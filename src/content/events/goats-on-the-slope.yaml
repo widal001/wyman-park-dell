@@ -5,9 +5,7 @@ endDate: 2026-09-21
 location: BMA Slope, Wyman Park Dell
 description: The goats return to graze the slope! Join us for a full weekend of
   activities alongside the herd that keeps the Dell's invasive plants in check.
-details: |-
-  
-
+details: |+
   Each fall, a herd of goats spends a few days in Wyman Park Dell doing what  they do best — clearing the invasive plants along the steep BMA slope that are  too tough for volunteers to tackle by hand. It's chemical-free land management, and it's a delight to watch.
 
   We provide a full weekend of free, family-friendly programming around the goat's visit. Check out the events below and come by and see the herd at work.
@@ -23,9 +21,12 @@ details: |-
   [WBAL](https://www.youtube.com/watch?v=4KnY-TUHdWo)
 
   Please respect our project and stay behind the orange safety fencing while viewing the goats. The BMA slope is steep, full of poison ivy, and the white fence is electric. We don’t want people or goats getting hurt. Do not try to feed or touch the goats.
+
+  ![](/media/pictures/Projects_Goats-on-the-Slope-Photo.jpg)
+
 image:
-  src: /media/pictures/Projects_Goats-on-the-Slope-Photo.jpg
-  alt: Goats grazing the slope at Wyman Park Dell
+  src: /media/goats2026small-1.jpg
+  alt: Goats on the Slope 2026 by Alex Fine
 schedule:
   - date: 2026-09-18
     time: 1 PM - 2 PM
