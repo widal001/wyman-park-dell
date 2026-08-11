@@ -71,6 +71,12 @@ schedule:
     cta:
       external: false
 sponsorTiers:
+  - tier: Champion Sponsors
+    partners:
+      - name: Baltimore City Rec and Parks
+        url: https://www.baltimorecity.gov/bcrp
+        logo:
+          src: /media/logos/B-More-City-Logo.jpg
   - tier: Advocate Sponsors
     partners:
       - name: Mahan Rykiel Associates
