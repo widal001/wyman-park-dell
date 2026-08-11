@@ -144,19 +144,26 @@ const hasTiers = Boolean(tiers && tiers.length > 0);
   }
 
   .partners__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: var(--space-6);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    justify-items: center;
+    gap: var(--space-6);
   }
 
-  /* ---------- Tiered event sponsors (left-aligned rows) ---------- */
+  /* Fixed basis, no grow: cards cluster centered instead of stretching. */
+  .partners__grid .logo-card {
+    flex: 0 1 200px;
+    max-width: 200px;
+  }
+
+  /* ---------- Tiered event sponsors (centered rows) ---------- */
   .sponsors__heading {
     font-size: var(--font-size-3xl);
     color: var(--color-brand-green-dark);
     font-weight: var(--font-weight-black);
     margin-bottom: var(--space-10);
+    text-align: center;
   }
 
   .sponsors__tiers {
@@ -173,11 +180,13 @@ const hasTiers = Boolean(tiers && tiers.length > 0);
     letter-spacing: var(--letter-spacing-wide);
     color: var(--color-text-accent);
     margin-bottom: var(--space-5);
+    text-align: center;
   }
 
   .sponsors__row {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-6);
   }
 
