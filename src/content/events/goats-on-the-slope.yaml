@@ -30,10 +30,16 @@ schedule:
   - date: 2026-09-18
     time: 1 PM - 2 PM
     title: Kids Storytime
-    description: Day one kicks off with a family storytime for kids on the BMA
-      slope, alongside the goats as they get to work.
+    description: "Day one kicks off with a family storytime for kids on the BMA
+      slope, alongside the goats as they get to work. Join us in the Dell for a
+      story reading provided by Mary Bowen of Prosperity Acres, owner and
+      provider of the goats for Goats on the Slope! Bring your own picnic and
+      blanket or low chair to enjoy the story. "
     cta:
-      external: false
+      label: Prosperity Acres
+      href: https://www.prosperityacres.com/about/
+      variant: outline
+      external: true
   - date: 2026-09-18
     time: 5 PM - 7 PM
     title: Bluegrass in the Dell
