@@ -106,7 +106,7 @@ sponsorTiers:
           alt: Seawall
           width: 220
           height: 115
-  - tier: In-Kind Sponsors
+  - tier: In-Kind Sponsors & Partners
     partners:
       - name: Yoga Union
         url: https://www.yogaunionbaltimore.com/
@@ -115,3 +115,7 @@ sponsorTiers:
           alt: Yoga Union — Yoga is for every body
           width: 150
           height: 116
+      - name: Baltimore Museum of Art
+        url: https://artbma.org/
+        logo:
+          src: /media/Baltimore_Museum_of_Art_Logo.png
