@@ -77,6 +77,10 @@ sponsorTiers:
         url: https://www.baltimorecity.gov/bcrp
         logo:
           src: /media/logos/B-More-City-Logo.jpg
+      - name: Visit Baltimore
+        url: https://baltimore.org/?gad_source=1&gad_campaignid=202147387&gbraid=0AAAAADoKar3hAj2MQIMxoaMO_tINM1Ezy&gclid=Cj0KCQjwkOvTBhDgARIsAKUNyRs3D287Wc68KCy3LWL4sjSAgXDjrAZfiN-PeiA6aGu03AJoDy-AsocaAkqZEALw_wcB
+        logo:
+          src: /media/baltimore_logo_final_streetlamp.png
   - tier: Advocate Sponsors
     partners:
       - name: Mahan Rykiel Associates
