@@ -44,7 +44,7 @@ export const site: SiteContent = {
       'North Charles and 29th Streets',
       'Baltimore, MD 21218',
     ],
-    email: 'wymanparkdell@gmail.com',
+    email: 'info@wymanparkdell.org',
   },
   social: [
     {

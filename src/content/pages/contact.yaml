@@ -27,7 +27,7 @@ blocks:
   - type: contactForm
     heading: Get in touch
     body: |
-      Fill out the form or email us directly at [wymanparkdell@gmail.com](mailto:wymanparkdell@gmail.com).
+      Fill out the form or email us directly at [info@wymanparkdell.org](mailto:info@wymanparkdell.org).
     submitLabel: Submit
     background: base
   - type: followUs
