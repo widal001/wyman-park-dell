@@ -37,23 +37,22 @@ schedule:
   - date: 2026-09-18
     time: 5 PM - 7 PM
     title: Bluegrass in the Dell
-    description: Cap off the goat's first day with a live bluegrass jam in the Dell.
-      Bring the family, a picnic, and enjoy live music alongside our four-legged
-      landscapers.
+    description: "Cap off the goat's first day with a live bluegrass jam in the
+      Dell. Bring the family, a picnic, and enjoy live music alongside our
+      four-legged landscapers. FWPD will be there selling snacks, drinks, and
+      merch. "
     cta:
-      label: RSVP on Facebook
-      href: https://www.facebook.com/wymanparkdell
-      variant: outline
-      external: true
+      external: false
   - date: 2026-09-19
-    time: 2 PM - 6 PM
-    title: Art in the Park, in partnership with the Baltimore Museum of Art
-    description: Stop by to watch the goats clear the slope and enjoy kid-friendly
-      art activities provided by the BMA, music, and refreshments for sale by
-      the FWPD.
-    image:
-      src: /media/pictures/Projects_Goats-on-the-Slope-Photo.jpg
-      alt: Goats grazing the BMA slope during Art in the Park
+    time: 10 AM - 12PM
+    title: Family Art Adventure, in partnership with the Baltimore Museum of Art
+    description: "Join us for a special iteration of the BMA's Family Art Adventure
+      program at Goats on the Slope! Family Art Adventure is a free, two hour
+      drop-in program once a month on Saturdays. Families are invited to come
+      and go at their leisure, enjoying activities in one specific gallery each
+      month. Typically, activities center around a specific artwork and theme
+      each month and involve a combination of sensory play, imaginative play,
+      artmaking, and wayfinding through the galleries. "
     cta:
       label: Explore the BMA
       href: https://artbma.org/
