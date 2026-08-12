@@ -16,7 +16,7 @@ TURNSTILE_SECRET_KEY=
 
 # --- Gmail SMTP (App Password) ---
 # Requires 2-Step Verification on the Google account, then an App Password.
-# Use YOUR personal Gmail in dev; swap to wymanparkdell@gmail.com for prod.
+# Use YOUR personal Gmail in dev; swap to info@wymanparkdell.org for prod.
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=you@gmail.com
