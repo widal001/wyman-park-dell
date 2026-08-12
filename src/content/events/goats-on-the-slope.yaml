@@ -63,13 +63,22 @@ schedule:
     time: 11 AM - 12 PM
     title: Yoga in the Park
     description: The goats' visit wraps up with an all-levels and family friendly
-      yoga session. Roll out a mat on the lawn and stretch in the company of the
-      herd.
+      yoga session. Roll out a mat on the lawn and stretch while gazing at the
+      herd. Maria Simon of Yoga Union will lead a free outdoor class open to
+      everyone. Participants should bring their own yoga or exercise mat, bottle
+      of water, and any blocks, blankets, straps, or other props they wish to
+      use. Loose fitting or sweat-wicking clothing that allows you to move your
+      body parts is recommended, as is bare feet. FWPD will provide a water
+      cooler for refilling your bottle. We hope you can join us for yoga in the
+      park at Goats on the Slope!
     image:
-      src: /media/pictures/WPD_Fall.jpg
-      alt: A sunny fall afternoon on the lawn at Wyman Park Dell
+      src: /media/yoga in the dell.jpg
+      alt: Yoga on the lawn at Wyman Park Dell
     cta:
-      external: false
+      label: Yoga Union
+      href: https://www.yogaunionbaltimore.com/
+      variant: outline
+      external: true
 sponsorTiers:
   - tier: Champion Sponsors
     partners:
@@ -90,13 +99,6 @@ sponsorTiers:
           alt: Mahan Rykiel Associates — Landscape Architecture, Urban Design & Planning
           width: 320
           height: 55
-      - name: Your Home Group of Cummings and Company Realtors
-        url: https://www.yourhomebaltimore.com/
-        logo:
-          src: /media/logos/Your-Home-Group-logo.webp
-          alt: Your Home Group of Cummings and Company Realtors
-          width: 240
-          height: 85
   - tier: Supporting Sponsors
     partners:
       - name: Seawall
