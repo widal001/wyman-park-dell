@@ -279,14 +279,50 @@ const metaDescription = data.description;
                 </h3>
                 <ul class="schedule__items" role="list">
                   {items.map((item) => (
-                    <li class="schedule__item">
+                    <li
+                      class:list={[
+                        'schedule__item',
+                        item.image && 'schedule__item--media',
+                      ]}
+                    >
                       <span class="schedule__time">
                         {item.time ?? 'All day'}
                       </span>
                       <div class="schedule__detail">
                         <h4 class="schedule__item-title">{item.title}</h4>
                         {item.description && <p>{item.description}</p>}
+                        {item.cta && (
+                          <a
+                            class="schedule__link"
+                            href={item.cta.href}
+                            target={item.cta.external ? '_blank' : undefined}
+                            rel={
+                              item.cta.external
+                                ? 'noopener noreferrer'
+                                : undefined
+                            }
+                          >
+                            {item.cta.label}
+                            <span
+                              class="schedule__link-arrow"
+                              aria-hidden="true"
+                            >
+                              →
+                            </span>
+                          </a>
+                        )}
                       </div>
+                      {item.image && (
+                        <div class="schedule__media">
+                          <SmartImage
+                            image={item.image}
+                            loading="lazy"
+                            decoding="async"
+                            sizes="(min-width: 900px) 210px, 100vw"
+                            widths={[210, 420, 630]}
+                          />
+                        </div>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -299,10 +335,10 @@ const metaDescription = data.description;
   }
 
   {
-    data.sponsors && data.sponsors.length > 0 && (
+    data.sponsorTiers && data.sponsorTiers.length > 0 && (
       <PartnerLogos
-        heading="Thank you to our sponsors"
-        partners={data.sponsors}
+        heading="Thank you to our sponsors and partners"
+        tiers={data.sponsorTiers}
       />
     )
   }
@@ -584,9 +620,30 @@ const metaDescription = data.description;
     border: 2px solid var(--color-brand-green);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
+    overflow: hidden;
     transition:
       transform var(--transition-fast),
       box-shadow var(--transition-fast);
+  }
+
+  /* Activities with a photo add a flush, full-height media panel on the right.
+     The panel bleeds past the card padding to the inner border on three sides;
+     the column gap keeps a clean gutter on the text side. */
+  .schedule__item--media {
+    grid-template-columns: minmax(0, 8rem) minmax(0, 1fr) 210px;
+  }
+
+  .schedule__item--media .schedule__media {
+    align-self: stretch;
+    margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-5))
+      calc(-1 * var(--space-5)) 0;
+  }
+
+  .schedule__item--media .schedule__media :global(img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .schedule__item:hover {
@@ -603,6 +660,10 @@ const metaDescription = data.description;
     color: var(--color-text-accent);
   }
 
+  .schedule__detail {
+    min-width: 0;
+  }
+
   .schedule__item-title {
     font-size: var(--font-size-lg);
     color: var(--color-brand-green-dark);
@@ -614,6 +675,55 @@ const metaDescription = data.description;
     font-size: var(--font-size-base);
     line-height: var(--line-height-base);
     color: var(--color-text-muted);
+  }
+
+  /* Activity CTA — a light arrow link that reads as part of the activity
+     rather than a floating button. The arrow slides on hover. */
+  .schedule__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    font-family: var(--font-display);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-text-accent);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition:
+      border-color var(--transition-fast),
+      gap var(--transition-fast);
+  }
+
+  .schedule__link:hover,
+  .schedule__link:focus-visible {
+    border-bottom-color: var(--color-brand-orange);
+    gap: var(--space-3);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .schedule__link {
+      transition: border-color var(--transition-fast);
+    }
+  }
+
+  /* Stack the media panel below the text on narrow screens: full width,
+     bleeding to the card's bottom and sides. */
+  @media (max-width: 640px) {
+    .schedule__item--media {
+      grid-template-columns: 1fr;
+    }
+
+    .schedule__item--media .schedule__media {
+      margin: var(--space-4) calc(-1 * var(--space-5)) calc(-1 * var(--space-5));
+    }
+
+    .schedule__item--media .schedule__media :global(img) {
+      height: 220px;
+    }
   }
 
   @media (max-width: 560px) {

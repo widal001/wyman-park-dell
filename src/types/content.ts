@@ -106,6 +106,13 @@ export type PartnersBlock = {
   partners: Partner[];
 };
 
+/** A labeled level of sponsorship (e.g. "Advocate Sponsors"), rendered as its
+ * own row of uniform partner-logo cards via the shared PartnerLogos layout. */
+export type SponsorTier = {
+  tier: string;
+  partners: Partner[];
+};
+
 export type ActivityItem = {
   label: string;
   icon?: ImageRef;

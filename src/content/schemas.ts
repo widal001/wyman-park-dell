@@ -40,12 +40,19 @@ const optionalCta = z.preprocess(
 const bg = z.enum(['base', 'raised', 'inverse', 'accent']);
 const pad = z.enum(['default', 'small', 'large', 'xl', 'none']);
 
-// A named logo + link. Shared by the `partners` block and event `sponsors`,
+// A named logo + link. Shared by the `partners` block and event sponsor tiers,
 // which render through the same PartnerLogos layout.
 const partner = z.object({
   name: z.string(),
   logo: image,
   url: z.string(),
+});
+
+// A level of sponsorship (e.g. "Advocate Sponsors"), rendered as its own
+// labeled row of uniform partner-logo cards.
+const sponsorTier = z.object({
+  tier: z.string(),
+  partners: z.array(partner),
 });
 
 /* ---------- Block schemas ---------- */
@@ -349,6 +356,10 @@ const scheduleItem = z.object({
   time: z.string().optional(),
   title: z.string(),
   description: z.string().optional(),
+  /** Optional photo shown alongside the activity. */
+  image: image.optional(),
+  /** Optional call-to-action button for the activity (e.g. RSVP / learn more). */
+  cta: optionalCta,
 });
 
 export const eventSchema = z.object({
@@ -366,7 +377,7 @@ export const eventSchema = z.object({
   image: image.optional(),
   /** Per-day / per-activity agenda, rendered as a grouped schedule. */
   schedule: z.array(scheduleItem).optional(),
-  /** Optional sponsor logos, rendered via the shared PartnerLogos layout. */
-  sponsors: z.array(partner).optional(),
+  /** Sponsor logos grouped by level, rendered via the shared PartnerLogos layout. */
+  sponsorTiers: z.array(sponsorTier).optional(),
   recurrence: recurrence.optional(),
 });
