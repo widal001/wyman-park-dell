@@ -48,6 +48,8 @@ schedule:
       four-legged landscapers. Musicians Cory Chubb and Alex Lacquement will
       provide an amazing Baltimore Bluegrass Jam!  FWPD will be there selling
       snacks, drinks, and merch. "
+    image:
+      src: /media/pictures/summer solstice concert.jpg
     cta:
       label: More about Baltimore Bluegrass Jam
       href: https://www.facebook.com/groups/569707316420150/
