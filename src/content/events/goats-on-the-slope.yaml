@@ -45,10 +45,14 @@ schedule:
     title: Bluegrass in the Dell
     description: "Cap off the goat's first day with a live bluegrass jam in the
       Dell. Bring the family, a picnic, and enjoy live music alongside our
-      four-legged landscapers. FWPD will be there selling snacks, drinks, and
-      merch. "
+      four-legged landscapers. Musicians Cory Chubb and Alex Lacquement will
+      provide an amazing Baltimore Bluegrass Jam!  FWPD will be there selling
+      snacks, drinks, and merch. "
     cta:
-      external: false
+      label: More about Baltimore Bluegrass Jam
+      href: https://www.facebook.com/groups/569707316420150/
+      variant: outline
+      external: true
   - date: 2026-09-19
     time: 10 AM - 12PM
     title: Family Art Adventure, in partnership with the Baltimore Museum of Art
