@@ -103,6 +103,9 @@ schedule:
       Follow CVCBD for the full lineup, event announcements, and more details
       coming soon!
     cta:
+      label: More info from CVCBD
+      href: https://www.instagram.com/p/DcMGrDlEfNC/
+      variant: outline
       external: false
   - date: 2026-09-19
     time: 10 AM - 12PM
