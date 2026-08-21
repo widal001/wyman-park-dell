@@ -58,13 +58,18 @@ schedule:
   - date: 2026-09-19
     time: 10 AM - 12PM
     title: Family Art Adventure, in partnership with the Baltimore Museum of Art
-    description: "Join us for a special iteration of the BMA's Family Art Adventure
+    description: Join us for a special iteration of the BMA's Family Art Adventure
       program at Goats on the Slope! Family Art Adventure is a free, two hour
-      drop-in program once a month on Saturdays. Families are invited to come
-      and go at their leisure, enjoying activities in one specific gallery each
-      month. Typically, activities center around a specific artwork and theme
-      each month and involve a combination of sensory play, imaginative play,
-      artmaking, and wayfinding through the galleries. "
+      drop-in program once a month on Saturdays. Families are invited to meet us
+      in Dell to begin our Nature + Art Scavenger Hunt, an interactive wander
+      through the Dell, outdoor spaces of the BMA, and galleries. While tracking
+      down plants, animals, and art objects, participants will learn more about
+      the natural environment that surrounds the BMA, and where nature emerges
+      inside the Museum walls. As always, the activity will involve a
+      combination of sensory exploration, imaginative play, artmaking, and
+      wayfinding through the galleries. Families that complete the Scavenger
+      Hunt can turn in their booklet in exchange for a special Token of
+      Completion Prize!
     cta:
       label: Explore the BMA
       href: https://artbma.org/
