@@ -153,3 +153,7 @@ sponsorTiers:
         url: https://artbma.org/
         logo:
           src: /media/Baltimore_Museum_of_Art_Logo.png
+      - name: Charles Village Community Benefits District
+        url: https://www.charlesvillage.org/
+        logo:
+          src: /media/CVCBD logo.jpg
