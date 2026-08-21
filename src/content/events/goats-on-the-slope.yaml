@@ -56,53 +56,16 @@ schedule:
       variant: outline
       external: true
   - date: 2026-09-18
-    time: 7PM - 10PM
+    time: 7PM - 11PM
     title: Movie Night in the Dell, in partnership with the Charles Village
       Community Benefits District
-    description: >-
-      CVCBD Presents: Screen on the Green
-
-      🍂 Nights of Fright & Fun at Wyman Park Dell 🍂
-
-
-      Get ready for an entire season of movies, music, community, and fun under
-      the stars! 🌙🍿
-
-
-      Throughout 2026, CVCBD will bring free outdoor movie experiences to Wyman
-      Park Dell and neighborhood locations across Greater Charles Village.
-
-
-      👻 Fall Feature Series: Nights of Fright & Fun
-
-      Join us this fall for six nights of spooky favorites, nostalgic classics,
-      and seasonal fun at Wyman Park Dell.
-
-
-      🍿 Movies under the stars
-
-      🎃 Themed activities
-
-      🛍️ Local vendors & community partners
-
-      🐾 Special family & pet-friendly programming
-
-      🎁 Giveaways and surprises
-
-      ❤️ FREE and open to the public
-
-
-      Bring your blanket, lawn chairs, friends, family, and neighbors — we’ll
-      bring the movies!
-
-
-      📍 Wyman Park Dell
-
-      🎟️ FREE ADMISSION
-
-
-      Follow CVCBD for the full lineup, event announcements, and more details
-      coming soon!
+    description: >
+      Get ready for an outdoor movie under the stars! The CVCBD in partnership
+      with the FWPD will provide a special edition of the Fall Movie Series at
+      Goats on the Slope with an outdoor movie experience of Beetlejuice. Bring
+      your blanket, lawn chairs, friends, family, and neighbors — we’ll bring
+      the movies! Arrive at 7pm after the Bluegrass in the Dell event to claim
+      your seat and purchase some snacks. The movie showing starts at sunset.
     cta:
       label: More information from CVCBD
       href: https://www.instagram.com/p/DcMGrDlEfNC/
