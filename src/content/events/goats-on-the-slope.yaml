@@ -43,11 +43,11 @@ schedule:
   - date: 2026-09-18
     time: 5 PM - 7 PM
     title: Bluegrass in the Dell
-    description: "Cap off the goat's first day with a live bluegrass jam in the
-      Dell. Bring the family, a picnic, and enjoy live music alongside our
-      four-legged landscapers. Musicians Cory Chubb and Alex Lacquement will
-      provide an amazing Baltimore Bluegrass Jam!  FWPD will be there selling
-      snacks, drinks, and merch. "
+    description: Cap off the goat's first day with live music in the Dell. Bring the
+      family, a picnic, and enjoy live music alongside our four-legged
+      landscapers. Musicians Cory Chubb and Alex Lacquement will provide an
+      amazing Baltimore Bluegrass Jam!  FWPD will be there selling snacks,
+      drinks, and merch. Lawn games will be provided as well!
     image:
       src: /media/pictures/summer solstice concert.jpg
     cta:
