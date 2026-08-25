@@ -157,3 +157,8 @@ sponsorTiers:
         url: https://www.charlesvillage.org/
         logo:
           src: /media/CVCBD logo.jpg
+      - name: Doppio Pasticceria
+        url: https://www.doppiobaltimore.com/
+        logo:
+          src: /media/doppio.png
+          alt: Doppio Pasticceria Logo
