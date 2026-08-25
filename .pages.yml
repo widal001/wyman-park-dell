@@ -779,8 +779,9 @@ content:
           name: endDate,
           label: End date,
           type: date,
+          default: '',
           options: { format: 'yyyy-MM-dd' },
-          description: 'Only for multi-day events',
+          description: 'Only for multi-day events (leave blank for single-day)',
         }
       - { name: time, label: Time, type: string }
       - { name: location, label: Location, type: string }
