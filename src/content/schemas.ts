@@ -335,7 +335,16 @@ export const pageSchema = z.object({
 // can come back parsed as a JS Date. Normalize both forms to a YYYY-MM-DD string.
 const ymd = z
   .union([z.string(), z.date()])
-  .transform((v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v));
+  .transform((v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v.trim()))
+  // Reject anything that isn't a real YYYY-MM-DD date at content-load time, so a
+  // malformed value fails `astro build` with a field-level error instead of an
+  // opaque `RangeError: Invalid time value` deep in the prerendered event page.
+  .refine(
+    (v) =>
+      /^\d{4}-\d{2}-\d{2}$/.test(v) &&
+      !Number.isNaN(Date.parse(`${v}T00:00:00Z`)),
+    { message: 'must be a valid date in YYYY-MM-DD format' },
+  );
 
 // Monthly "Nth weekday" recurrence (e.g. the second Sunday of every month).
 // `date` still holds the series anchor; the route recomputes the next

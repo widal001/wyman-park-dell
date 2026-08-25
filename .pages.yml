@@ -770,15 +770,18 @@ content:
       - {
           name: date,
           label: Date,
-          type: string,
+          type: date,
           required: true,
-          description: 'ISO date, e.g. 2026-05-09',
+          options: { format: 'yyyy-MM-dd' },
+          description: 'Pick the event date',
         }
       - {
           name: endDate,
           label: End date,
-          type: string,
-          description: 'ISO date — only for multi-day events',
+          type: date,
+          default: '',
+          options: { format: 'yyyy-MM-dd' },
+          description: 'Only for multi-day events (leave blank for single-day)',
         }
       - { name: time, label: Time, type: string }
       - { name: location, label: Location, type: string }
@@ -810,9 +813,10 @@ content:
           - {
               name: date,
               label: Date,
-              type: string,
+              type: date,
               required: true,
-              description: 'ISO date, e.g. 2026-09-18',
+              options: { format: 'yyyy-MM-dd' },
+              description: 'Pick the activity date',
             }
           - { name: time, label: Time, type: string }
           - { name: title, label: Title, type: string, required: true }
