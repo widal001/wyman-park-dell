@@ -19,7 +19,6 @@ blocks:
     variant: lead
     width: medium
   - type: textWithMedia
-    anchor: make-a-donation
     heading: Make a donation
     body: >-
       Donors like you are critical to maintaining, beautifying, and programming
@@ -45,12 +44,13 @@ blocks:
         href: "#donate-form"
         variant: primary
         external: false
+    anchor: make-a-donation
   - type: donorbox
-    anchor: donate-form
     campaignUrl: https://donorbox.org/embed/website-donations-208?designation=Area%20of%20greatest%20need&default_interval=o&hide_donation_meter=true
     paypalExpress: true
     height: 900
     background: raised
+    anchor: donate-form
   - type: volunteerForm
     heading: Become a volunteer
     body: >-
@@ -66,14 +66,14 @@ blocks:
     submitLabel: Sign up
   - type: textWithMedia
     heading: Become a sponsor
-    body: The Dell is almost entirely supported by sponsors like you. Join us in
+    body: "The Dell is almost entirely supported by sponsors like you. Join us in
       maintaining and activating the park! By sponsoring one or multiple Friends
       of Wyman Park Dell events and initiatives, you help bring our park to
       life.  Sponsorship opportunities for the 2026 calendar year can be found
-      [here](https://drive.google.com/file/d/1XeO1u53sNqC7IyRbzS6nCkSd3loalFlm/view?usp=sharing).
-      Custom sponsorship packages are available. Email us at
+      [here](https://drive.google.com/file/d/1XeO1u53sNqC7IyRbzS6nCkSd3loalFlm/\
+      view?usp=sharing). Custom sponsorship packages are available. Email us at
       [info@wymanparkdell.org](mailto:info@wymanparkdell.org) to discuss
-      sponsorship opportunities!
+      sponsorship opportunities! "
     image:
       src: /media/FWPD playground.jpeg
     mediaPosition: left
