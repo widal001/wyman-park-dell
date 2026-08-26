@@ -45,11 +45,11 @@ blocks:
           src: /media/goats.jpg
           alt: Goats on the Slope
         caption: Goats on the Slope
-      - title: Spooky Tuesdays in the Dell
-        body: Spooky Tuesdays in the Dell brings the big screen to the park each October
+      - title: Spooky Movies in the Dell
+        body: "Spooky Movies in the Dell brings the big screen to the park each October
           with showings of scary (and family-friendly!) films. This event is led
           by the Friends of Wyman Park Dell with the support of local businesses
-          and sponsors.
+          and sponsors. "
         image:
           src: /media/spooky movies.jpg
           alt: Outdoor movie night at Wyman Park Dell
