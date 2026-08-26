@@ -25,19 +25,6 @@ media:
   input: src/assets/media
   output: /media
 
-# Custom buttons in the Pages CMS admin sidebar. "Publish" dispatches the
-# cms-publish workflow against the current branch (ref: current), which merges
-# that branch's open PR into main and then triggers the production deploy
-# (cd-prod). The PR is opened automatically on save (cms-open-pr workflow) and
-# cd-preview posts a preview, so this is the only manual step to go live.
-actions:
-  - name: publish
-    label: Publish changes
-    workflow: cms-publish.yml
-    ref: current
-    cancelable: false
-    confirm: true
-
 content:
   - name: pages
     label: Pages
