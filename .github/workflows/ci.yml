@@ -4,8 +4,6 @@ name: CI
 # required, so this runs on all branches (including forks) — unlike the deploy
 # workflows, which need Cloudflare credentials.
 on:
-  push:
-    branches: [main]
   pull_request:
 
 concurrency:
