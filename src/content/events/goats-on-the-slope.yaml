@@ -135,6 +135,11 @@ sponsorTiers:
           alt: Mahan Rykiel Associates — Landscape Architecture, Urban Design & Planning
           width: 320
           height: 55
+      - name: Your Home Group of Cummings and Company Realtors
+        url: https://yourhomebaltimore.com/
+        logo:
+          src: /media/yourhomebaltimore-1.png
+          alt: Your Home Group of Cummings and Company Realtors
   - tier: Supporting Sponsors
     partners:
       - name: Seawall
