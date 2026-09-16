@@ -27,10 +27,17 @@ const weekdayFmt = new Intl.DateTimeFormat('en-US', {
   weekday: 'long',
   timeZone: 'UTC',
 });
-const longDateFmt = new Intl.DateTimeFormat('en-US', {
-  month: 'long',
+// Abbreviated months keep a full range ("Sep 18 – Sep 21, 2026") on one line in
+// the narrow card column; the long form spilled onto two.
+const shortDateFmt = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
   day: 'numeric',
   year: 'numeric',
+  timeZone: 'UTC',
+});
+const shortMonthDayFmt = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
   timeZone: 'UTC',
 });
 
@@ -85,9 +92,16 @@ function parseISODate(value: string): Date {
           {
             events.map((event) => {
               const start = parseISODate(event.date);
-              const end = event.endDate ? parseISODate(event.endDate) : null;
-              const startLong = longDateFmt.format(start);
-              const endLong = end ? longDateFmt.format(end) : null;
+              const end =
+                event.endDate && event.endDate !== event.date
+                  ? parseISODate(event.endDate)
+                  : null;
+              // A range inside one year prints the year once, at the end.
+              const dateLine = !end
+                ? shortDateFmt.format(start)
+                : start.getUTCFullYear() === end.getUTCFullYear()
+                  ? `${shortMonthDayFmt.format(start)} – ${shortDateFmt.format(end)}`
+                  : `${shortDateFmt.format(start)} – ${shortDateFmt.format(end)}`;
               const datetimeAttr = end
                 ? `${event.date}/${event.endDate}`
                 : event.date;
@@ -114,13 +128,34 @@ function parseISODate(value: string): Date {
                   )}
 
                   <div class="events__body">
+                    {/* Single day: month over day. Multi-day: both ends stack
+                        down the badge, joined by a fixed-length arrow. */}
                     <time class="events__date" datetime={datetimeAttr}>
-                      <span class="events__date-month">
-                        {monthFmt.format(start)}
+                      <span class="events__date-part">
+                        <span class="events__date-month">
+                          {monthFmt.format(start)}
+                        </span>
+                        <span class="events__date-day">
+                          {dayFmt.format(start)}
+                        </span>
                       </span>
-                      <span class="events__date-day">
-                        {dayFmt.format(start)}
-                      </span>
+                      {end && (
+                        <>
+                          <span class="events__date-arrow" aria-hidden="true">
+                            <span class="events__date-shaft" />
+                            <span class="events__date-head" />
+                          </span>
+                          <span class="visually-hidden">to</span>
+                          <span class="events__date-part events__date-part--end">
+                            <span class="events__date-month">
+                              {monthFmt.format(end)}
+                            </span>
+                            <span class="events__date-day">
+                              {dayFmt.format(end)}
+                            </span>
+                          </span>
+                        </>
+                      )}
                     </time>
 
                     <div class="events__details">
@@ -129,13 +164,7 @@ function parseISODate(value: string): Date {
                       </h3>
                       <p class="events__meta">
                         <span>{weekdayFmt.format(start)}</span>
-                        {endLong ? (
-                          <span>
-                            {startLong} – {endLong}
-                          </span>
-                        ) : (
-                          <span>{startLong}</span>
-                        )}
+                        <span>{dateLine}</span>
                         {event.time && <span>{event.time}</span>}
                         {event.location && <span>{event.location}</span>}
                         {event.recurrence && (
@@ -426,6 +455,49 @@ function parseISODate(value: string): Date {
     border-radius: var(--radius-sm);
     text-transform: uppercase;
     line-height: 1;
+  }
+
+  .events__date-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Arrow joining the two halves of a multi-day range. The shaft is a fixed
+     length rather than a flex that fills the badge: cards in a carousel row all
+     stretch to the tallest one, so a connector sized to the column would draw
+     the same event differently depending on what sits beside it that week. */
+  .events__date-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: var(--space-2);
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .events__date-shaft {
+    width: 2px;
+    height: var(--events-date-shaft, 20px);
+    background: currentColor;
+  }
+
+  .events__date-head {
+    width: 0;
+    height: 0;
+    margin-top: -1px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid currentColor;
+  }
+
+  /* The closing date is the secondary one — the start is what you act on. */
+  .events__date-part--end .events__date-month {
+    font-size: var(--font-size-xs);
+    opacity: 0.85;
+  }
+
+  .events__date-part--end .events__date-day {
+    font-size: var(--font-size-xl);
   }
 
   .events__date-month {
