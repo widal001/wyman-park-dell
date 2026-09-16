@@ -65,8 +65,9 @@ const { live: visibleAtBuild, shown: shownAtBuild } = chooseVisible(buildToday);
 
 // Runtime can only ever show fewer cards than the build did (events elapse;
 // none un-elapse), so the build count is a safe upper bound for the dots. The
-// filter script hides any that end up without a page.
-const pageCount = Math.max(1, Math.ceil(shownAtBuild / perPage));
+// filter script hides any that end up without a page — including all of them,
+// when nothing is left to show.
+const pageCount = Math.ceil(shownAtBuild / perPage);
 
 const monthFmt = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -693,7 +694,7 @@ function parseISODate(value: string): Date {
           card.hidden = !visible;
         });
 
-        const pages = Math.max(1, Math.ceil(shown / perPage));
+        const pages = Math.ceil(shown / perPage);
         stage.querySelectorAll('[data-events-dot]').forEach((dot, i) => {
           dot.hidden = i >= pages;
           if (dot.hidden) return;
