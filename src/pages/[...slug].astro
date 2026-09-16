@@ -8,7 +8,7 @@ import type { CollectionEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
 import { renderBlocks } from '../lib/blocks';
-import { getUpcomingEvents } from '../lib/events';
+import { getEventsForDisplay } from '../lib/events';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
@@ -20,11 +20,12 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props as { page: CollectionEntry<'pages'> };
 
-// Events live in their own collection. Each `events` block's `limit` caps how
-// many it shows; renderBlocks handles the injection and only touches the events
-// block type. getUpcomingEvents resolves recurring events, drops past ones, and
-// sorts soonest-first so "upcoming" is truly upcoming.
-const events = await getUpcomingEvents();
+// Events live in their own collection; renderBlocks injects them and only
+// touches the events block type. getEventsForDisplay returns everything
+// upcoming as of this build, soonest first, with recurring events expanded to
+// their next several dates — the events block renders the lot and the browser
+// picks today's slice, so the list stays current between deploys.
+const events = await getEventsForDisplay();
 
 const blocks = renderBlocks(page.data.blocks, { events });
 ---

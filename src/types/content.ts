@@ -327,12 +327,24 @@ export type EventItem = {
   image?: ImageRef;
   /** Human-readable cadence for recurring events, e.g. "Second Sunday of every month". */
   recurrence?: string;
+  /**
+   * Groups the pre-rendered occurrences of one recurring event. The browser
+   * shows the first occurrence in a series that hasn't passed and hides the
+   * others (see getEventsForDisplay).
+   */
+  series?: string;
 };
 
 export type EventsBlock = {
   type: 'events';
   heading: string;
   intro?: string;
+  /**
+   * Cards to show, soonest first. `events` holds more than this — the extras are
+   * spares the browser promotes as earlier ones elapse. Applied at render time
+   * by Events.astro, not by renderBlocks.
+   */
+  limit?: number;
   events: EventItem[];
   viewAllCta?: CtaRef;
   /** Layout: 'grid' (default) or 'carousel' (horizontal, swipeable). */

@@ -4,16 +4,70 @@ import Section from '../ui/Section.astro';
 import Container from '../ui/Container.astro';
 import Button from '../ui/Button.astro';
 import SmartImage from '../ui/SmartImage.astro';
+import { todayInSiteZone, SITE_TIME_ZONE } from '../../lib/events';
 
 type Props = Omit<EventsBlock, 'type'>;
 
-const { heading, intro, events, viewAllCta, display = 'grid' } = Astro.props;
+const {
+  heading,
+  intro,
+  events,
+  limit,
+  viewAllCta,
+  display = 'grid',
+} = Astro.props;
 
 const isCarousel = display === 'carousel';
 // Carousel dots paginate the cards in fixed groups (must match PER_PAGE in the
 // client script below). One dot per group; no dots when everything fits on one.
 const perPage = 3;
-const pageCount = Math.ceil(events.length / perPage);
+
+// `events` is a superset: everything upcoming as of this build, with recurring
+// events expanded to several dates (see getEventsForDisplay). Choosing which of
+// them to show happens twice — here for the HTML we ship, and again in the
+// browser against the reader's own date, which is what keeps a page built in
+// September correct in November.
+//
+// Doing it at build time too is what keeps the no-JS and crawler view right:
+// without the script this renders exactly the list it would have before.
+const buildToday = todayInSiteZone();
+
+function chooseVisible(fromYmd: string) {
+  const seenSeries = new Set<string>();
+  let shown = 0;
+  const live = events.map((event) => {
+    const over = (event.endDate ?? event.date) < fromYmd;
+    // Only the soonest occurrence of a recurring event is ever shown.
+    const duplicate = event.series ? seenSeries.has(event.series) : false;
+    const full = limit ? shown >= limit : false;
+    const visible = !over && !duplicate && !full;
+    if (visible) {
+      if (event.series) seenSeries.add(event.series);
+      shown += 1;
+    }
+    return visible;
+  });
+  return { live, shown };
+}
+
+const { live: visibleAtBuild, shown: shownAtBuild } = chooseVisible(buildToday);
+
+// The browser repeats chooseVisible() against the reader's own date, in the
+// `is:inline` script at the foot of this file. Three constraints shaped it:
+//
+//   * It must be inline, not a bundled module. Astro defers module scripts, so
+//     the reader would see the build's list paint and then change under them.
+//     Inline runs during parse, before first paint.
+//   * It can't import, so `limit`, `perPage` and the timezone ride in on the
+//     stage element as data attributes rather than being written out twice.
+//   * It ships to every visitor unminified, so it stays terse — the reasoning
+//     lives up here, where it costs nothing.
+
+// Runtime can only ever show fewer cards than the build did (events elapse;
+// none un-elapse), so the build count is a safe upper bound for the dots. The
+// filter script hides any that end up without a page — including all of them,
+// when nothing is left to show.
+const pageCount = Math.ceil(shownAtBuild / perPage);
 
 const monthFmt = new Intl.DateTimeFormat('en-US', {
   month: 'short',
@@ -27,10 +81,17 @@ const weekdayFmt = new Intl.DateTimeFormat('en-US', {
   weekday: 'long',
   timeZone: 'UTC',
 });
-const longDateFmt = new Intl.DateTimeFormat('en-US', {
-  month: 'long',
+// Abbreviated months keep a full range ("Sep 18 – Sep 21, 2026") on one line in
+// the narrow card column; the long form spilled onto two.
+const shortDateFmt = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
   day: 'numeric',
   year: 'numeric',
+  timeZone: 'UTC',
+});
+const shortMonthDayFmt = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
   timeZone: 'UTC',
 });
 
@@ -49,6 +110,10 @@ function parseISODate(value: string): Date {
     <div
       class:list={['events__stage', isCarousel && 'events__stage--carousel']}
       data-events-carousel={isCarousel ? '' : undefined}
+      data-events-stage
+      data-events-limit={limit ?? ''}
+      data-events-per-page={perPage}
+      data-events-tz={SITE_TIME_ZONE}
     >
       <div class="events__viewport">
         {
@@ -83,11 +148,18 @@ function parseISODate(value: string): Date {
           tabindex={isCarousel ? -1 : undefined}
         >
           {
-            events.map((event) => {
+            events.map((event, i) => {
               const start = parseISODate(event.date);
-              const end = event.endDate ? parseISODate(event.endDate) : null;
-              const startLong = longDateFmt.format(start);
-              const endLong = end ? longDateFmt.format(end) : null;
+              const end =
+                event.endDate && event.endDate !== event.date
+                  ? parseISODate(event.endDate)
+                  : null;
+              // A range inside one year prints the year once, at the end.
+              const dateLine = !end
+                ? shortDateFmt.format(start)
+                : start.getUTCFullYear() === end.getUTCFullYear()
+                  ? `${shortMonthDayFmt.format(start)} – ${shortDateFmt.format(end)}`
+                  : `${shortDateFmt.format(start)} – ${shortDateFmt.format(end)}`;
               const datetimeAttr = end
                 ? `${event.date}/${event.endDate}`
                 : event.date;
@@ -95,7 +167,14 @@ function parseISODate(value: string): Date {
               const href = `/events/${event.slug}`;
 
               return (
-                <li class="events__card">
+                <li
+                  class="events__card"
+                  data-events-card
+                  data-start={event.date}
+                  data-end={event.endDate ?? event.date}
+                  data-series={event.series}
+                  hidden={!visibleAtBuild[i]}
+                >
                   {event.image && (
                     <a
                       class="events__media"
@@ -114,13 +193,34 @@ function parseISODate(value: string): Date {
                   )}
 
                   <div class="events__body">
+                    {/* Single day: month over day. Multi-day: both ends stack
+                        down the badge, joined by a fixed-length arrow. */}
                     <time class="events__date" datetime={datetimeAttr}>
-                      <span class="events__date-month">
-                        {monthFmt.format(start)}
+                      <span class="events__date-part">
+                        <span class="events__date-month">
+                          {monthFmt.format(start)}
+                        </span>
+                        <span class="events__date-day">
+                          {dayFmt.format(start)}
+                        </span>
                       </span>
-                      <span class="events__date-day">
-                        {dayFmt.format(start)}
-                      </span>
+                      {end && (
+                        <>
+                          <span class="events__date-arrow" aria-hidden="true">
+                            <span class="events__date-shaft" />
+                            <span class="events__date-head" />
+                          </span>
+                          <span class="visually-hidden">to</span>
+                          <span class="events__date-part events__date-part--end">
+                            <span class="events__date-month">
+                              {monthFmt.format(end)}
+                            </span>
+                            <span class="events__date-day">
+                              {dayFmt.format(end)}
+                            </span>
+                          </span>
+                        </>
+                      )}
                     </time>
 
                     <div class="events__details">
@@ -129,13 +229,7 @@ function parseISODate(value: string): Date {
                       </h3>
                       <p class="events__meta">
                         <span>{weekdayFmt.format(start)}</span>
-                        {endLong ? (
-                          <span>
-                            {startLong} – {endLong}
-                          </span>
-                        ) : (
-                          <span>{startLong}</span>
-                        )}
+                        <span>{dateLine}</span>
                         {event.time && <span>{event.time}</span>}
                         {event.location && <span>{event.location}</span>}
                         {event.recurrence && (
@@ -191,8 +285,10 @@ function parseISODate(value: string): Date {
             hidden
           >
             {Array.from({ length: pageCount }, (_, i) => {
+              // Bounded by the visible count, not events.length — `events` is a
+              // superset. The filter script relabels these if fewer survive.
               const start = i * perPage + 1;
-              const end = Math.min((i + 1) * perPage, events.length);
+              const end = Math.min((i + 1) * perPage, shownAtBuild);
               const label =
                 start === end
                   ? `Go to event ${start}`
@@ -314,11 +410,6 @@ function parseISODate(value: string): Date {
     color: var(--color-white);
   }
 
-  .events__nav:disabled {
-    opacity: 0.35;
-    cursor: default;
-  }
-
   .events__nav svg {
     display: block;
   }
@@ -381,6 +472,10 @@ function parseISODate(value: string): Date {
     }
   }
 
+  .events__card[hidden] {
+    display: none;
+  }
+
   .events__card {
     background: var(--color-surface-base);
     border: 2px solid var(--color-brand-green);
@@ -426,6 +521,49 @@ function parseISODate(value: string): Date {
     border-radius: var(--radius-sm);
     text-transform: uppercase;
     line-height: 1;
+  }
+
+  .events__date-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Arrow joining the two halves of a multi-day range. The shaft is a fixed
+     length rather than a flex that fills the badge: cards in a carousel row all
+     stretch to the tallest one, so a connector sized to the column would draw
+     the same event differently depending on what sits beside it that week. */
+  .events__date-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: var(--space-2);
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .events__date-shaft {
+    width: 2px;
+    height: var(--events-date-shaft, 20px);
+    background: currentColor;
+  }
+
+  .events__date-head {
+    width: 0;
+    height: 0;
+    margin-top: -1px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid currentColor;
+  }
+
+  /* The closing date is the secondary one — the start is what you act on. */
+  .events__date-part--end .events__date-month {
+    font-size: var(--font-size-xs);
+    opacity: 0.85;
+  }
+
+  .events__date-part--end .events__date-day {
+    font-size: var(--font-size-xl);
   }
 
   .events__date-month {
@@ -516,6 +654,64 @@ function parseISODate(value: string): Date {
   }
 </style>
 
+<script is:inline>
+  /* Shows the events that are still upcoming for the reader, today. */
+  (() => {
+    const ymdIn = (timeZone) => {
+      const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }).formatToParts(new Date());
+      const at = (type) => parts.find((p) => p.type === type).value;
+      return `${at('year')}-${at('month')}-${at('day')}`;
+    };
+
+    /* Each block's copy sweeps what has parsed so far, then marks it done. */
+    document
+      .querySelectorAll('[data-events-stage]:not([data-events-filtered])')
+      .forEach((stage) => {
+        stage.setAttribute('data-events-filtered', '');
+
+        const today = ymdIn(stage.getAttribute('data-events-tz'));
+        const limit = parseInt(stage.getAttribute('data-events-limit'), 10);
+        const perPage =
+          parseInt(stage.getAttribute('data-events-per-page'), 10) || 3;
+        const seenSeries = new Set();
+        let shown = 0;
+
+        stage.querySelectorAll('[data-events-card]').forEach((card) => {
+          const series = card.getAttribute('data-series');
+          const visible =
+            card.getAttribute('data-end') >= today &&
+            !(series && seenSeries.has(series)) &&
+            !(limit > 0 && shown >= limit);
+          if (visible) {
+            if (series) seenSeries.add(series);
+            shown += 1;
+          }
+          card.hidden = !visible;
+        });
+
+        const pages = Math.ceil(shown / perPage);
+        stage.querySelectorAll('[data-events-dot]').forEach((dot, i) => {
+          dot.hidden = i >= pages;
+          if (dot.hidden) return;
+          const from = i * perPage + 1;
+          const to = Math.min((i + 1) * perPage, shown);
+          dot.setAttribute(
+            'aria-label',
+            from === to ? `Go to event ${from}` : `Go to events ${from}–${to}`,
+          );
+        });
+
+        /* Nothing upcoming: fall back to the heading and "View all" link. */
+        stage.hidden = shown === 0;
+      });
+  })();
+</script>
+
 <script>
   // Progressive enhancement: the track is a plain horizontal scroll region,
   // so swipe/trackpad works with no JS. This wires the arrows + dots and only
@@ -524,7 +720,11 @@ function parseISODate(value: string): Date {
     const found = root.querySelector<HTMLUListElement>('[data-events-track]');
     if (!found) return;
     const track = found; // non-null binding, stable inside the closures below
-    const cards = Array.from(track.children) as HTMLElement[];
+    // The filter script above has already run (it's inline; this one is a
+    // deferred module), so hidden here means "elapsed, or past the limit".
+    const cards = (Array.from(track.children) as HTMLElement[]).filter(
+      (card) => !card.hidden,
+    );
     if (cards.length === 0) return;
 
     const prev = root.querySelector<HTMLButtonElement>('[data-events-prev]');
@@ -532,7 +732,7 @@ function parseISODate(value: string): Date {
     const dotsWrap = root.querySelector<HTMLElement>('[data-events-dots]');
     const dots = Array.from(
       root.querySelectorAll<HTMLButtonElement>('[data-events-dot]'),
-    );
+    ).filter((dot) => !dot.hidden);
     const reduce = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
@@ -560,14 +760,30 @@ function parseISODate(value: string): Date {
       return Math.max(0, Math.min(p, dots.length - 1));
     }
 
+    // Hides a nav arrow, first moving focus off it if it's the active element —
+    // a keyboard user who reaches the last page by pressing "next" would
+    // otherwise have focus dropped to the body mid-interaction.
+    function setNavHidden(el: HTMLButtonElement | null, hide: boolean) {
+      if (!el || el.hidden === hide) return;
+      if (hide && el === document.activeElement) {
+        const sibling = el === prev ? next : prev;
+        if (sibling && !sibling.hidden) sibling.focus();
+        else track.focus();
+      }
+      el.hidden = hide;
+    }
+
     function update() {
       const overflow = hasOverflow();
-      [prev, next, dotsWrap].forEach((el) => {
-        if (el) el.hidden = !overflow;
-      });
+      // An arrow with nowhere to go is removed rather than dimmed: a greyed-out
+      // button still reads as a control and still sits over the artwork.
+      setNavHidden(prev, !overflow || atStart());
+      setNavHidden(next, !overflow || atEnd());
+      // dotsWrap toggles the group; individual dots keep whatever the filter
+      // script decided about them.
+      if (dotsWrap) dotsWrap.hidden = !overflow;
+
       if (!overflow) return;
-      if (prev) prev.disabled = atStart();
-      if (next) next.disabled = atEnd();
       const active = activePage();
       dots.forEach((dot, i) => {
         const on = i === active;

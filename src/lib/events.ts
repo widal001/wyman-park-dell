@@ -13,6 +13,29 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { EventItem } from '../types/content';
 
+/**
+ * The park's timezone. "Upcoming" is judged here rather than in the visitor's
+ * zone so a Saturday clean-up doesn't vanish at 9pm Friday for someone reading
+ * from California.
+ */
+export const SITE_TIME_ZONE = 'America/New_York';
+
+/** Today as YYYY-MM-DD in the park's timezone. */
+export function todayInSiteZone(now = new Date()): string {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: SITE_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+    .formatToParts(now)
+    .reduce<Record<string, string>>((acc, part) => {
+      acc[part.type] = part.value;
+      return acc;
+    }, {});
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
 /** Today as YYYY-MM-DD (local time), the anchor for "upcoming" and recurrence. */
 export function todayYmd(now = new Date()): string {
   return [
@@ -32,6 +55,13 @@ function nthWeekdayOfMonth(
   const first = new Date(Date.UTC(year, monthIdx, 1));
   const shift = (weekday - first.getUTCDay() + 7) % 7;
   return new Date(Date.UTC(year, monthIdx, 1 + shift + (week - 1) * 7));
+}
+
+/** The day after `ymd`, as YYYY-MM-DD. */
+function nextDayYmd(ymd: string): string {
+  const d = new Date(`${ymd}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + 1);
+  return d.toISOString().slice(0, 10);
 }
 
 /** Next occurrence (YYYY-MM-DD) of a monthly Nth-weekday rule on/after `fromYmd`. */
@@ -91,14 +121,54 @@ export function toEventItem(
 }
 
 /**
- * Upcoming events, soonest first: recurring events resolved to their next
- * occurrence, anything already past dropped.
+ * Events for a rendered list, soonest first.
+ *
+ * This ships a superset on purpose. A static page is correct only for the day
+ * it was built, so rather than resolving "upcoming" once at build time, it
+ * renders every event that is upcoming *as of the build* and lets the browser
+ * pick today's slice (see the filter script in Events.astro). Nothing here is
+ * recomputed at runtime — the browser only chooses among cards we rendered.
+ *
+ * Recurring events are the reason this isn't just a filter: their date is
+ * computed, not stored, so a single card would go stale. Each one is expanded
+ * into its next `occurrences` dates as separate cards sharing a `series` id;
+ * the browser shows the first that hasn't passed and hides the rest. That keeps
+ * the recurrence math here, in one place, instead of duplicating it in a script.
+ *
+ * `occurrences` is therefore how long a deploy's markup stays correct — six
+ * months of monthly clean-ups, by default. Every content publish redeploys, so
+ * the real gap between deploys is far shorter than that.
  */
-export async function getUpcomingEvents(): Promise<EventItem[]> {
-  const from = todayYmd();
+export async function getEventsForDisplay(
+  occurrences = 6,
+): Promise<EventItem[]> {
+  const from = todayInSiteZone();
   const entries = await getCollection('events');
-  return entries
-    .map((e) => toEventItem(e, from))
-    .filter((e) => (e.endDate ?? e.date) >= from)
-    .sort((a, b) => a.date.localeCompare(b.date));
+  const items: EventItem[] = [];
+
+  for (const entry of entries) {
+    const rec = entry.data.recurrence;
+
+    if (!rec) {
+      const item = toEventItem(entry, from);
+      // Past-at-build events are dropped for good: they can only get older.
+      if ((item.endDate ?? item.date) >= from) items.push(item);
+      continue;
+    }
+
+    const series = eventSlug(entry);
+    let cursor = from;
+    for (let i = 0; i < occurrences; i++) {
+      const date = nextRecurrenceDate(rec, cursor);
+      items.push({
+        ...toEventItem(entry, from),
+        date,
+        endDate: undefined,
+        series,
+      });
+      cursor = nextDayYmd(date);
+    }
+  }
+
+  return items.sort((a, b) => a.date.localeCompare(b.date));
 }
