@@ -409,11 +409,6 @@ function parseISODate(value: string): Date {
     color: var(--color-white);
   }
 
-  .events__nav:disabled {
-    opacity: 0.35;
-    cursor: default;
-  }
-
   .events__nav svg {
     display: block;
   }
@@ -764,17 +759,30 @@ function parseISODate(value: string): Date {
       return Math.max(0, Math.min(p, dots.length - 1));
     }
 
+    // Hides a nav arrow, first moving focus off it if it's the active element —
+    // a keyboard user who reaches the last page by pressing "next" would
+    // otherwise have focus dropped to the body mid-interaction.
+    function setNavHidden(el: HTMLButtonElement | null, hide: boolean) {
+      if (!el || el.hidden === hide) return;
+      if (hide && el === document.activeElement) {
+        const sibling = el === prev ? next : prev;
+        if (sibling && !sibling.hidden) sibling.focus();
+        else track.focus();
+      }
+      el.hidden = hide;
+    }
+
     function update() {
       const overflow = hasOverflow();
-      [prev, next, dotsWrap].forEach((el) => {
-        if (el) el.hidden = !overflow;
-      });
+      // An arrow with nowhere to go is removed rather than dimmed: a greyed-out
+      // button still reads as a control and still sits over the artwork.
+      setNavHidden(prev, !overflow || atStart());
+      setNavHidden(next, !overflow || atEnd());
       // dotsWrap toggles the group; individual dots keep whatever the filter
       // script decided about them.
+      if (dotsWrap) dotsWrap.hidden = !overflow;
 
       if (!overflow) return;
-      if (prev) prev.disabled = atStart();
-      if (next) next.disabled = atEnd();
       const active = activePage();
       dots.forEach((dot, i) => {
         const on = i === active;
